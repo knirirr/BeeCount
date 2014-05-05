@@ -1,0 +1,1 @@
+A rewrite of the initial BeeCount code. The original data access code uses deprecated APIs and is a bit of a mess, making further development difficult. This should solve the problem whilst continuing to work as an upgrade for existing installations.
