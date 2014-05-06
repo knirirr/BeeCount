@@ -1,7 +1,6 @@
 package com.knirirr.beecount.database;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -53,8 +52,7 @@ public class CountDataSource
 
     long insertId = database.insert(DbHelper.COUNT_TABLE, null, values);
     Cursor cursor = database.query(DbHelper.COUNT_TABLE,
-        allColumns, DbHelper.C_ID + " = " + insertId, null,
-        null, null, null);
+        allColumns, DbHelper.C_ID + " = " + insertId, null, null, null, null);
     cursor.moveToFirst();
     Count newCount = cursorToCount(cursor);
     cursor.close();
@@ -79,15 +77,16 @@ public class CountDataSource
     System.out.println("Count deleted with id: " + id);
     database.delete(DbHelper.COUNT_TABLE, DbHelper.C_ID + " = " + id, null);
 
-    // delete associated counts
+    // delete associated alerts
     database.delete(DbHelper.ALERT_TABLE, DbHelper.A_COUNT_ID  + " = " + id, null);
   }
 
-  public List<Count> getAllCounts()
+  public List<Count> getAllCountsForProject(long project_id)
   {
     List<Count> counts = new ArrayList<Count>();
 
-    Cursor cursor = database.query(DbHelper.COUNT_TABLE, allColumns, null, null, null, null, null);
+    Cursor cursor = database.query(DbHelper.COUNT_TABLE, allColumns,
+        DbHelper.C_PROJECT_ID + " = " + project_id, null, null, null, null);
 
     cursor.moveToFirst();
     while (!cursor.isAfterLast())
