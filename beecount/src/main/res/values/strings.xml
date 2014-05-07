@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BeeCount</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_new_project">NewProjectActivity</string>
@@ -9,5 +8,147 @@
     <string name="title_activity_counting">CountingActivity</string>
     <string name="title_activity_count_options">CountOptionsActivity</string>
     <string name="title_activity_edit_project">EditProjectActivity</string>
+
+    <!-- generic -->
+    <string name="app_name">BeeCount</string>
+    <string name="customMissing">Your custom background image could not be found; the default will be used instead.</string>
+    <string name="customNotDefined">A custom background image is not defined; the default will be used instead.</string>
+    <string name="customTooBig">Sorry, your custom image is too large and has caused an out of memory error.</string>
+
+    <!-- WelcomeActivity -->
+    <string name="hello">Welcome to BeeCount! The purpose of this app is to store count details for several projects and allow you to count each separately. Each project may have multiple \'counts\', each being something such as a pattern repeat or a row which you wish to track. Use the buttons below to create new projects or manage existing ones.\n\n By editing a project after creating it you can also link counts together so that one increments another.\n\nSettings can be changed by accessing the menu on this screen (menu button or 3-dot overflow menu above).\n\nShould you have any questions you may visit the Ravelry group at http://www.ravelry.com/groups/beecount, or email bug reports to knirirr@gmail.com.\n</string>
+    <string name="newProjectButton">New Project</string>
+    <string name="viewProjectButton">View Projects</string>
+    <string name="newProjTitle">Create new project</string>
+    <string name="listProjTitle">List your projects</string>
+    <string name="changeLogTitle">Change Log</string>
+
+    <!-- NewprojActivity -->
+    <string name="labelNewprojSaveButton">Save Project</string>
+    <string name="labelNewproj">Project Name</string>
+    <string name="labelNewprojBox"></string><!-- blank for the moment -->
+    <string name="labelNewCountButton">Add Count</string>
+    <string name="clearCountButton">Remove Count</string>
+    <string name="emptyBox">Please fill in the empty boxes!</string>
+    <string name="noCounts">You must define at least one count!</string>
+    <string name="duplicate">Each count name must be unique!</string>
+    <string name="boxFill">Item no. </string>
+    <string name="newProjHint">New project</string>
+
+    <!-- ListprojActivity -->
+    <string name="titleListProj">Your Projects</string>
+    <string name="noCard">Your sdcard could not be accessed!</string>
+    <string name="saveFail">Your database could not be exported!</string>
+    <string name="saveWin">Your database has been exported to the sdcard.</string>
+    <string name="exportMenu">Export</string>
+    <string name="importMenu">Import</string>
+    <string name="importFail">Your database could not be imported!</string>
+    <string name="importWin">Your database has been imported from the sdcard.</string>
+    <string name="noDb">Please put \'beecount.db\' on your /sdcard partition.</string>
+    <string name="importButton">Import</string>
+    <string name="importCancelButton">Cancel</string>
+    <string name="confirmImport">Are you sure you want to import a backed-up beecount.db? Your current projects will be overwritten!</string>
+
+
+    <!-- CountingActivity -->
+    <string name="titleCount">Start Counting!</string>
+    <string name="buttonCountUp"><b>+</b></string>
+    <string name="buttonCountDown"><b>-</b></string>
+    <string name="saveCountsButton">Save &amp; exit</string>
+    <string name="bizarreError">Snaaks!</string>
+    <string name="projSaving">Saving </string>
+    <string name="linkError">Please check your linked counts: Couldn\'t find value for"</string>
+    <string name="hasAutoReset">has auto-reset!</string>
+    <string name="alertTitle">Buzzzz!</string>
+    <string name="rowAlertTitle">Set row alert</string>
+    <string name="alertOk">OK</string>
+    <string name="alertCancel">Cancel</string>
+    <string name="arTitle">Auto-reset</string>
+    <string name="rlTitle">Reset level</string>
+    <string name="arMsg">Select the value at which this count will reset itself automatically (set to 0 to turn off)</string>
+    <string name="arMsgShort">Set to 0 to turn off</string><!-- sorry about this, 2.3- users -->
+    <string name="rlMsg">Select the value to which this count will reset itself automatically</string>
+    <string name="rlMsgShort">Value to which count will reset</string><!-- sorry about this, 2.3- users -->
+
+    <string name="rowAlertMsg">Select the alert message and the row at which it should be activated (set to 0 to turn off)</string>
+    <string name="rowAlertMsgShort">Set to 0 to turn off</string>
+    <string name="codeCockup">Sorry, you\'ve encountered a bug!</string>
+    <string name="excuses">Some BeeCount installations are affected by a database bug. This can probably be fixed by deleting BeeCount and re-installing, but if you are willing to backup your beecount.db and e-mail it to knirirr@gmail.com before doing that it would be greatly appreciated as it will help me fix this. Apologies again for the nuisance.</string>
+    <string name="srl">Set reset level</string>
+    <string name="sar">Set auto-reset</string>
+    <string name="sal">Set alert</string>
+
+    <!-- CountingActivity Menu -->
+    <string name="editProjTitle">Edit</string>
+    <string name="deleteProjTitle">Delete</string>
+    <string name="confirmDelete">Delete? Are you sure?</string>
+    <string name="yesButton">Yes</string>
+    <string name="noButton">No</string>
+    <string name="resetCount">reset to </string>
+    <string name="postIncr">has incremented</string>
+    <string name="postReset">has reset</string>
+    <string name="postDecr">has decremented</string>
+    <string name="mainHelpTitle">Help</string>
+    <string name="willReset"> will auto-reset at </string>
+    <string name="willAlert"> will show alert at </string>
+
+    <!-- EditprojActivity -->
+    <string name="titleEdit">Project Name</string>
+    <string name="saveEditButton">Save &amp; exit</string>
+    <string name="addCountButton">Add count</string>
+    <string name="addLinkButton">Link counts</string>
+    <string name="deleteCount">Delete</string>
+    <string name="failedToSave">Please check values and try again</string>
+    <string name="mismatch">Please check which counts you have linked</string>
+    <string name="zero">The increment value cannot be zero</string>
+    <string name="integer">The increment value can only contain numbers</string>
+    <string name="instruction">will increment</string>
+    <string name="instruction_reset">will reset</string>
+    <string name="every">every</string>
+    <string name="removeLink">Remove link</string>
+    <string name="incr"> will increment </string>
+    <string name="incr_reset"> will reset </string>
+    <string name="incr_start"> starting at </string>
+    <!-- <string name="incr_decr"> will decrease </string> -->
+    <string name="ev"> every  </string>
+    <string name="randomFail">Sorry, an unexpected error occurred.</string>
+    <string name="dodgyFormat">Save failed; please check the count values.</string>
+    <string name="notesHere">Notes:</string>
+
+    <!-- MainHelpActivity -->
+    <string name="helpTitle">Help</string>
+    <string name="helpWaffle">To call up a menu, press and hold a count name. This will allow resetting a count, setting the value to which it will reset (default is 0), setting it to reset automatically, or setting a row alert. To link counts together, select the \'edit\' option from the menu or icons at the top of the screen and press the \'Link Counts\' button; further help options are available on the edit screen.\n\nIf you have any questions then please feel free to contact the author by email (knirirr@gmail.com).</string>
+
+    <!-- EditHelpActivity -->
+    <string name="editHelpTitle">Help</string>
+    <string name="editHelpWaffle">This screen allows editing of a project, and also the linking together of accounts so that one increases (\'increments\') or resets the other.\n\nWhen two counts are linked, this will be displayed as \'X increments Y every Z\', meaning that if X starts counting from 0, then 1 will be added to Y when X reaches Z, 2Z, 3Z and so on. For example, if rows increment repeats every 5, then 1 repeat will be added on 5,10,15 rows and so on. Each time the increment is reached, a \'toast\' notification will pop up. Links and counts may be both added and deleted on this screen.\n\nFor further assistance please contact the author by email (knirirr@gmail.com).</string>
+
+    <!-- ChangeLog -->
+    <string name="changelog_full_title">Change Log</string>
+    <string name="changelog_title">What\'s New</string>
+    <string name="changelog_ok_button">OK</string>
+    <string name="changelog_show_full">more&#8230;</string>
+
+    <!-- Preferences -->
+    <string name="prefTitle">Preferences</string>
+    <string name="pref_bg">Background</string>
+    <string name="pref_bg_summ">Choose default, custom or no background image.</string>
+    <string name="pref_font">Font</string>
+    <string name="pref_font_summ">Use the default fancy font (everywhere but here ;-).</string>
+    <string name="pref_swap">Swap +/-</string>
+    <string name="pref_swap_summ">Change the position of the + and - buttons.</string>
+    <string name="pref_awake">Keep screen on</string>
+    <string name="pref_awake_summ">Prevent screen from sleeping whilst counting.</string>
+    <string name="chooseImg">Image</string>
+    <string name="explainImg">Select the background image to be used when a custom image is selected.</string>
+    <string name="spinMax">Spinner max.</string>
+    <string name="spinMaxExplain">Maximum value for spinners (e.g. for count auto-reset).</string>
+    <string name="toast_away">Disable toasts</string>
+    <string name="toast_away_summ">This stops the \"x has incremented y\" toasts from popping up during counting.</string>
+    <string name="prefs_appearance">Appearance</string>
+    <string name="prefs_counting">Counting</string>
+
+
+
 
 </resources>

@@ -1,6 +1,8 @@
 package com.knirirr.beecount.database;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -54,13 +56,19 @@ public class DbHelper extends SQLiteOpenHelper
   public void onCreate(SQLiteDatabase db)
   {
     Log.i(TAG, "Creating database: " + DATABASE);
-    String sql = "create table " + PROJ_TABLE + " (" + P_ID + " integer primary key, " + P_CREATED_AT + " int, " + P_NAME + " text, " + P_NOTES + " text)";
+    String sql = "create table " + PROJ_TABLE + " (" + P_ID + " integer primary key, " +
+        P_CREATED_AT + " int, " + P_NAME + " text, " + P_NOTES + " text)";
     db.execSQL(sql);
-    sql = "create table " + COUNT_TABLE + " (" + C_ID + " integer primary key, " + C_PROJECT_ID + " int, " + C_COUNT + " int, " + C_NAME + " text, " + C_AUTO_RESET + " int, " + C_RESET_LEVEL + " int default 0)";
+    sql = "create table " + COUNT_TABLE + " (" + C_ID + " integer primary key, " + C_PROJECT_ID +
+        " int, " + C_COUNT + " int, " + C_NAME + " text, " + C_AUTO_RESET + " int, " +
+        C_RESET_LEVEL + " int default 0)";
     db.execSQL(sql);
-    sql = "create table " + LINK_TABLE + " (" + L_ID + " integer primary key, " + L_PROJECT_ID + " int, " + L_MASTER_ID + " int, " + L_SLAVE_ID + " int, " + L_INCREMENT + " int, " + L_TYPE + " int)"; // type: 0 = reset, 1 = increment
+    sql = "create table " + LINK_TABLE + " (" + L_ID + " integer primary key, " + L_PROJECT_ID +
+        " int, " + L_MASTER_ID + " int, " + L_SLAVE_ID + " int, " + L_INCREMENT + " int, " +
+        L_TYPE + " int)"; // type: 0 = reset, 1 = increment
     db.execSQL(sql);
-    sql = "create table " + ALERT_TABLE + " (" + A_ID + " integer primary key, " + A_COUNT_ID + " int, " + A_ALERT + " int, " + A_ALERT_TEXT + " text)";
+    sql = "create table " + ALERT_TABLE + " (" + A_ID + " integer primary key, " + A_COUNT_ID +
+        " int, " + A_ALERT + " int, " + A_ALERT_TEXT + " text)";
     db.execSQL(sql);
     Log.i(TAG, "Success!");
   }
@@ -127,7 +135,8 @@ public class DbHelper extends SQLiteOpenHelper
 
   public void version_2(SQLiteDatabase db, int oldVersion, int newVersion)
   {
-    String sql = "create table " + LINK_TABLE + " (" + L_ID + " integer primary key, " + L_PROJECT_ID + " int, " + L_MASTER + " text, " + L_SLAVE + " text, " + L_INCREMENT + " int)";
+    String sql = "create table " + LINK_TABLE + " (" + L_ID + " integer primary key, " +
+        L_PROJECT_ID + " int, " + L_MASTER + " text, " + L_SLAVE + " text, " + L_INCREMENT + " int)";
     db.execSQL(sql);
     Log.i(TAG, "Upgraded database to version 2!");
   }
@@ -220,17 +229,24 @@ public class DbHelper extends SQLiteOpenHelper
 
   public void version_8(SQLiteDatabase db, int oldVersion, int newVersion)
   {
-    String sql = "create table " + ALERT_TABLE + " (" + A_ID + " integer primary key, " + A_COUNT_ID + " int, " + A_ALERT + " int, " + A_ALERT_TEXT + " text)";
+    String sql = "create table " + ALERT_TABLE + " (" + A_ID + " integer primary key, " +
+        A_COUNT_ID + " int, " + A_ALERT + " int, " + A_ALERT_TEXT + " text)";
     db.execSQL(sql);
-    sql = "create table count_backup (" + C_ID + " integer primary key, " + C_PROJECT_ID + " int, " + C_COUNT + " int, " + C_NAME + " text, " + C_AUTO_RESET + " int, " + C_RESET_LEVEL + " int default 0)";
+    sql = "create table count_backup (" + C_ID + " integer primary key, " + C_PROJECT_ID +
+        " int, " + C_COUNT + " int, " + C_NAME + " text, " + C_AUTO_RESET + " int, " +
+        C_RESET_LEVEL + " int default 0)";
     db.execSQL(sql);
-    sql = "INSERT INTO count_backup SELECT " + C_ID + "," + C_PROJECT_ID + "," + C_COUNT + "," + C_NAME + "," + C_AUTO_RESET + "," + C_RESET_LEVEL + " FROM " + COUNT_TABLE;
+    sql = "INSERT INTO count_backup SELECT " + C_ID + "," + C_PROJECT_ID + "," + C_COUNT + "," +
+        C_NAME + "," + C_AUTO_RESET + "," + C_RESET_LEVEL + " FROM " + COUNT_TABLE;
     db.execSQL(sql);
     sql = "DROP TABLE " + COUNT_TABLE;
     db.execSQL(sql);
-    sql = "create table " + COUNT_TABLE + "(" + C_ID + " integer primary key, " + C_PROJECT_ID + " int, " + C_COUNT + " int, " + C_NAME + " text, " + C_AUTO_RESET + " int, " + C_RESET_LEVEL + " int default 0)";    Log.i(TAG, "Upgraded database to version 8!");
+    sql = "create table " + COUNT_TABLE + "(" + C_ID + " integer primary key, " + C_PROJECT_ID +
+        " int, " + C_COUNT + " int, " + C_NAME + " text, " + C_AUTO_RESET + " int, " +
+        C_RESET_LEVEL + " int default 0)";
     db.execSQL(sql);
-    sql = "INSERT INTO " + COUNT_TABLE + " SELECT " + C_ID + "," + C_PROJECT_ID + "," + C_COUNT + "," + C_NAME + "," + C_AUTO_RESET + "," + C_RESET_LEVEL + " FROM count_backup";
+    sql = "INSERT INTO " + COUNT_TABLE + " SELECT " + C_ID + "," + C_PROJECT_ID + "," + C_COUNT +
+        "," + C_NAME + "," + C_AUTO_RESET + "," + C_RESET_LEVEL + " FROM count_backup";
     db.execSQL(sql);
     sql = "DROP TABLE count_backup";
     db.execSQL(sql);
@@ -240,8 +256,50 @@ public class DbHelper extends SQLiteOpenHelper
   public void version_9(SQLiteDatabase db, int oldVersion, int newVersion)
   {
     /*
-    TODO
-    Convert master and slave in the links;
-     */
+    Convert master and slave in the links from text to int;
+    */
+    String sql = "create table temp_link_table (" + L_ID + " integer primary key, " + L_PROJECT_ID +
+        " int, " + L_MASTER_ID + " int, " + L_SLAVE_ID + " int, " + L_INCREMENT + " int, " +
+        L_TYPE + " int)"; // type: 0 = reset, 1 = increment
+    db.execSQL(sql);
+    Cursor cursor = db.query(DbHelper.LINK_TABLE, new String[]{DbHelper.L_ID,
+            DbHelper.L_PROJECT_ID, DbHelper.L_MASTER, DbHelper.L_SLAVE, DbHelper.L_INCREMENT,
+            DbHelper.L_TYPE},  null, null, null, null, null );
+    while (cursor.moveToNext())
+    {
+      long projId = cursor.getLong(cursor.getColumnIndex(DbHelper.L_PROJECT_ID));
+      long linkId = cursor.getLong(cursor.getColumnIndex(DbHelper.L_ID));
+      int increment = cursor.getInt(cursor.getColumnIndex(DbHelper.L_INCREMENT));
+      int type = cursor.getInt(cursor.getColumnIndex(DbHelper.L_TYPE));
+      String masterName = cursor.getString(cursor.getColumnIndex(DbHelper.L_MASTER));
+      String slaveName = cursor.getString(cursor.getColumnIndex(DbHelper.L_SLAVE));
+
+      Cursor master_cursor = db.query(DbHelper.COUNT_TABLE, new String[] {DbHelper.C_ID,
+          DbHelper.C_NAME}, DbHelper.C_PROJECT_ID + " =? and " + DbHelper.C_NAME + " =? ",
+          new String[] { String.valueOf(projId), masterName }, null, null, null);
+      master_cursor.moveToFirst();
+      long masterId = master_cursor.getLong(cursor.getColumnIndex(DbHelper.C_ID));
+      master_cursor.close();
+
+      Cursor slave_cursor = db.query(DbHelper.COUNT_TABLE, new String[] {DbHelper.C_ID,
+          DbHelper.C_NAME}, DbHelper.C_PROJECT_ID + " =? and " + DbHelper.C_NAME + " =? ",
+          new String[] { String.valueOf(projId), slaveName }, null, null, null);
+      master_cursor.moveToFirst();
+      long slaveId = slave_cursor.getLong(cursor.getColumnIndex(DbHelper.C_ID));
+      slave_cursor.close();
+
+      ContentValues values = new ContentValues();
+      values.put(DbHelper.L_ID, linkId);
+      values.put(DbHelper.L_PROJECT_ID, projId);
+      values.put(DbHelper.L_MASTER_ID, masterId);
+      values.put(DbHelper.L_SLAVE_ID, slaveId);
+      values.put(DbHelper.L_INCREMENT, increment);
+      values.put(DbHelper.L_TYPE, type);
+      long insertId = db.insert("temp_link_table", null, values);
+      Log.i(TAG, "Inserted: " + String.valueOf(insertId));
+
+      // move the table
+    }
+    cursor.close();
   }
 }

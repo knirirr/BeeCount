@@ -6,11 +6,63 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.knirirr.beecount.WelcomeActivity">
+    tools:context="com.knirirr.beecount.WelcomeActivity"
+    android:background="@drawable/beecount_knitting">
 
     <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:layout_margin="10sp"
+            android:id="@+id/welcomeTitle"
+            android:textColor="@android:color/white"
+            android:text="@string/app_name" />
 
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fillViewport="true"
+            android:layout_below="@+id/welcomeTitle"
+            >
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/welcomeWaffle"
+            android:textColor="@android:color/white"
+            android:autoLink="email|web"
+            android:text="@string/hello"
+            android:background="@drawable/rounded_corner"
+            android:textSize="16sp"
+            android:padding="10dp"/>
+
+        <LinearLayout
+                android:id="@+id/welcomeButtons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+            <Button android:id="@+id/newProjectButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/newProjectButton"
+                    />
+
+            <Button android:id="@+id/viewProjectButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|bottom"
+                    android:text="@string/viewProjectButton"
+                    />
+
+        </LinearLayout>
+    </LinearLayout>
+  </ScrollView>
 </RelativeLayout>
