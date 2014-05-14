@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="pref_bg_entries">        
+    <item>None</item>
+    <item>Custom (select below)</item>
+    <item>BeeCount (default)</item>
+  </string-array>
+  <string-array name="pref_bg_values">        
+    <item>none</item>
+    <item>custom</item>
+    <item>default</item>
+  </string-array>
+</resources>

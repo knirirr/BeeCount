@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/prefs_appearance">
+        android:key="key_prefs_appearance">
+        <CheckBoxPreference
+            android:key="pref_font"
+            android:title="@string/pref_font"
+            android:summary="@string/pref_font_summ"
+            android:defaultValue="true" />
+        <ListPreference
+            android:key="pref_back"
+            android:title="@string/pref_bg"
+            android:summary="@string/pref_bg_summ"
+            android:entries="@array/pref_bg_entries"
+            android:entryValues="@array/pref_bg_values"
+            />
+        <Preference
+            android:title="@string/chooseImg"
+            android:key="button"
+            android:summary="@string/explainImg"/>
+    </PreferenceCategory>
+
+     <PreferenceCategory
+        android:title="@string/prefs_counting">
+        android:key="key_prefs_counting">
+    <CheckBoxPreference
+        android:key="pref_swap"
+        android:title="@string/pref_swap"
+        android:summary="@string/pref_swap_summ"
+        android:defaultValue="false" />
+    <CheckBoxPreference
+        android:key="pref_awake"
+        android:title="@string/pref_awake"
+        android:summary="@string/pref_awake_summ"
+        android:defaultValue="true" />
+    <CheckBoxPreference
+        android:key="toast_away"
+        android:title="@string/toast_away"
+        android:summary="@string/toast_away_summ"
+        android:defaultValue="false" />
+    <EditTextPreference
+        android:title="@string/spinMax"
+        android:key="spinmax"
+        android:inputType="number"
+        android:summary="@string/spinMaxExplain" />
+    </PreferenceCategory>
+</PreferenceScreen>
