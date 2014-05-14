@@ -147,6 +147,7 @@
     <string name="toast_away_summ">This stops the \"x has incremented y\" toasts from popping up during counting.</string>
     <string name="prefs_appearance">Appearance</string>
     <string name="prefs_counting">Counting</string>
+    <string name="image_error">Error setting custom image!</string>
 
 
 
