@@ -69,15 +69,13 @@ public class SettingsActivity extends PreferenceActivity
         Cursor cursor = getContentResolver().query(_uri, new String[] { android.provider.MediaStore.Images.ImageColumns.DATA }, null, null, null);
         try
         {
-          cursor.moveToFirst();
+          cursor.moveToFirst(); // blows up here if file manager used
         }
         catch (Exception e)
         {
           Log.e(TAG, "Failed to select image: " + e.toString());
           Toast.makeText(this, getString(R.string.image_error), Toast.LENGTH_SHORT).show();
         }
-
-
 
         //Link to the image
         imageFilePath = cursor.getString(0);

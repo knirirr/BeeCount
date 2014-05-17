@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 
 
@@ -61,6 +62,16 @@ public class WelcomeActivity extends Activity implements SharedPreferences.OnSha
         return true;
       }
       return super.onOptionsItemSelected(item);
+  }
+
+  public void newProject(View view)
+  {
+    startActivity(new Intent(this, NewProjectActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+  }
+
+  public void viewProjects(View view)
+  {
+    startActivity(new Intent(this, ListProjectActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
   }
 
   public void onSharedPreferenceChanged(SharedPreferences prefs, String key)

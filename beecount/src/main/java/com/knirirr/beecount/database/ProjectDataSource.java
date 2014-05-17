@@ -64,7 +64,7 @@ public class ProjectDataSource
   {
     Project project = new Project();
     project.setId(cursor.getLong(cursor.getColumnIndex(DbHelper.P_ID)));
-    project.setCreatedAt(cursor.getInt(cursor.getColumnIndex(DbHelper.P_CREATED_AT)));
+    project.setCreatedAt(cursor.getLong(cursor.getColumnIndex(DbHelper.P_CREATED_AT)));
     project.setName(cursor.getString(cursor.getColumnIndex(DbHelper.P_NAME)));
     project.setNotes(cursor.getString(cursor.getColumnIndex(DbHelper.P_NOTES)));
     return project;

@@ -1,21 +1,31 @@
 package com.knirirr.beecount;
 
 import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.knirirr.beecount.database.Project;
 import com.knirirr.beecount.database.ProjectDataSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class ListProjectActivity extends Activity
+public class ListProjectActivity extends ListActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
   private ProjectDataSource projectDataSource;
   private static String TAG = "BeeCountListProjectActivity";
+  BeeCountApplication beeCount;
+  SharedPreferences prefs;
+  ArrayAdapter<String> adapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -23,22 +33,40 @@ public class ListProjectActivity extends Activity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_list_project);
 
-    projectDataSource  = new ProjectDataSource(this);
-    projectDataSource.open();
+    beeCount = (BeeCountApplication) getApplication();
+    prefs = BeeCountApplication.getPrefs();
+    prefs.registerOnSharedPreferenceChangeListener(this);
+
+    LinearLayout list_view = (LinearLayout) findViewById(R.id.list_view);
+    list_view.setBackgroundDrawable(beeCount.setBackground());
   }
 
   @Override
   protected void onResume()
   {
-    // return if there are no deliveries with which to deal
-    List<Project> projects = projectDataSource.getAllProjects();
-    for (Project p : projects)
-    {
-      Log.i(TAG, "PROJECT: " + p.toString());
-      return;
-    }
+    super.onResume();
+    showData();
   }
 
+  @Override
+  protected void onPause()
+  {
+    super.onPause();
+    projectDataSource.close();
+  }
+
+  private void showData()
+  {
+    projectDataSource = new ProjectDataSource(this);
+    projectDataSource.open();
+
+    List<Project> values = projectDataSource.getAllProjects();
+
+    ProjectListAdapter adapter = new ProjectListAdapter(this,
+        R.layout.listview_project_row, values);
+    setListAdapter(adapter);
+
+  }
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu)
@@ -57,8 +85,15 @@ public class ListProjectActivity extends Activity
     int id = item.getItemId();
     if (id == R.id.action_settings)
     {
+      startActivity(new Intent(this, SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
       return true;
     }
     return super.onOptionsItemSelected(item);
+  }
+
+  public void onSharedPreferenceChanged(SharedPreferences prefs, String key)
+  {
+    LinearLayout list_view = (LinearLayout) findViewById(R.id.list_view);
+    list_view.setBackgroundDrawable(beeCount.setBackground());
   }
 }

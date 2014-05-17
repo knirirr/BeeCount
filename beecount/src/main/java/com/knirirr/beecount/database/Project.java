@@ -1,12 +1,16 @@
 package com.knirirr.beecount.database;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by milo on 05/05/2014.
  */
 public class Project
 {
   private long id;
-  private int created_at;
+  private long created_at;
   private String name;
   private String notes;
 
@@ -18,7 +22,7 @@ public class Project
     return id;
   }
 
-  public int getCreatedAt()
+  public long getCreatedAt()
   {
     return created_at;
   }
@@ -33,6 +37,13 @@ public class Project
     return notes;
   }
 
+  public String getDate()
+  {
+    Date date = new Date(created_at);
+    DateFormat df = SimpleDateFormat.getDateInstance();
+    return df.format(date);
+  }
+
   /*
   * setters
   */
@@ -41,7 +52,7 @@ public class Project
     this.id = id;
   }
 
-  public void setCreatedAt(int created_at)
+  public void setCreatedAt(long created_at)
   {
     this.created_at = created_at;
   }

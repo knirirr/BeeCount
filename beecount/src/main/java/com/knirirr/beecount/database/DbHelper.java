@@ -36,8 +36,8 @@ public class DbHelper extends SQLiteOpenHelper
   public static final String L_PROJECT_ID = "project_id";
   public static final String L_MASTER_ID = "master_id";
   public static final String L_SLAVE_ID = "slave_id";
-  public static final String L_MASTER = "master_id"; // deprecated
-  public static final String L_SLAVE = "slave_id"; // deprecated
+  public static final String L_MASTER = "master"; // deprecated
+  public static final String L_SLAVE = "slave"; // deprecated
   public static final String L_INCREMENT = "increment";
   public static final String L_TYPE = "type";
   public static final String A_ID = "_id";
@@ -258,6 +258,7 @@ public class DbHelper extends SQLiteOpenHelper
     /*
     Convert master and slave in the links from text to int;
     */
+    Log.i(TAG, "Upgrading to version 9...");
     String sql = "create table temp_link_table (" + L_ID + " integer primary key, " + L_PROJECT_ID +
         " int, " + L_MASTER_ID + " int, " + L_SLAVE_ID + " int, " + L_INCREMENT + " int, " +
         L_TYPE + " int)"; // type: 0 = reset, 1 = increment
@@ -273,19 +274,22 @@ public class DbHelper extends SQLiteOpenHelper
       int type = cursor.getInt(cursor.getColumnIndex(DbHelper.L_TYPE));
       String masterName = cursor.getString(cursor.getColumnIndex(DbHelper.L_MASTER));
       String slaveName = cursor.getString(cursor.getColumnIndex(DbHelper.L_SLAVE));
+      //Log.i(TAG, "Master, slave: " + masterName + ", " + slaveName);
 
       Cursor master_cursor = db.query(DbHelper.COUNT_TABLE, new String[] {DbHelper.C_ID,
           DbHelper.C_NAME}, DbHelper.C_PROJECT_ID + " =? and " + DbHelper.C_NAME + " =? ",
           new String[] { String.valueOf(projId), masterName }, null, null, null);
       master_cursor.moveToFirst();
-      long masterId = master_cursor.getLong(cursor.getColumnIndex(DbHelper.C_ID));
+      long masterId = master_cursor.getLong(master_cursor.getColumnIndex(DbHelper.C_ID));
+      //Log.i(TAG, "Master cursor: " + String.valueOf(masterId));
       master_cursor.close();
 
       Cursor slave_cursor = db.query(DbHelper.COUNT_TABLE, new String[] {DbHelper.C_ID,
           DbHelper.C_NAME}, DbHelper.C_PROJECT_ID + " =? and " + DbHelper.C_NAME + " =? ",
           new String[] { String.valueOf(projId), slaveName }, null, null, null);
-      master_cursor.moveToFirst();
-      long slaveId = slave_cursor.getLong(cursor.getColumnIndex(DbHelper.C_ID));
+      slave_cursor.moveToFirst();
+      long slaveId = slave_cursor.getLong(slave_cursor.getColumnIndex(DbHelper.C_ID));
+      //Log.i(TAG, "Slave cursor: " + String.valueOf(slaveId));
       slave_cursor.close();
 
       ContentValues values = new ContentValues();
@@ -296,10 +300,20 @@ public class DbHelper extends SQLiteOpenHelper
       values.put(DbHelper.L_INCREMENT, increment);
       values.put(DbHelper.L_TYPE, type);
       long insertId = db.insert("temp_link_table", null, values);
-      Log.i(TAG, "Inserted: " + String.valueOf(insertId));
-
-      // move the table
+      //Log.i(TAG, "Inserted: " + String.valueOf(insertId));
     }
+    // move the table
+    sql = "DROP TABLE " + DbHelper.LINK_TABLE;
+    db.execSQL(sql);
+    sql = "create table " + LINK_TABLE + " (" + L_ID + " integer primary key, " + L_PROJECT_ID +
+          " int, " + L_MASTER_ID + " int, " + L_SLAVE_ID + " int, " + L_INCREMENT + " int, " +
+          L_TYPE + " int)"; // type: 0 = reset, 1 = increment
+    db.execSQL(sql);
+    sql = "INSERT INTO " + DbHelper.LINK_TABLE + " SELECT * FROM temp_link_table";
+    db.execSQL(sql);
+    sql = "DROP TABLE temp_link_table";
+    db.execSQL(sql);
+    Log.i(TAG, "Upgraded database to version 9!");
     cursor.close();
   }
 }

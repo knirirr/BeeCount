@@ -1,4 +1,5 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+      xmlns:android="http://schemas.android.com/apk/res/android"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:fillViewport="true">
@@ -44,12 +45,14 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center|bottom"
+                  android:onClick="newProject"
                   android:text="@string/newProjectButton"
                   />
 
           <Button android:id="@+id/viewProjectButton"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
+                  android:onClick="viewProjects"
                   android:text="@string/viewProjectButton"
                   />
       </LinearLayout>
