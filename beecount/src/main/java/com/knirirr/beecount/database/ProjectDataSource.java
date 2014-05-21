@@ -41,13 +41,12 @@ public class ProjectDataSource
     dbHelper.close();
   }
 
-  public Project createProject(String name, String notes)
+  public Project createProject(String name)
   {
     Date date = new Date();
     long timeMilliseconds = date.getTime();
     ContentValues values = new ContentValues();
     values.put(DbHelper.P_NAME, name);
-    values.put(DbHelper.P_NOTES, notes);
     values.put(DbHelper.P_CREATED_AT, timeMilliseconds);
 
     long insertId = database.insert(DbHelper.PROJ_TABLE, null, values);

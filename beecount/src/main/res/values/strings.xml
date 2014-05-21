@@ -34,6 +34,8 @@
     <string name="duplicate">Each count name must be unique!</string>
     <string name="boxFill">Item no. </string>
     <string name="newProjHint">New project</string>
+    <string name="projectSaved">Project saved!</string>
+
 
     <!-- ListprojActivity -->
     <string name="titleListProj">Your Projects</string>

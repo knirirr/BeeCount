@@ -41,11 +41,11 @@ public class CountDataSource
     dbHelper.close();
   }
 
-  public Count createCount(long count_id, String name)
+  public Count createCount(long project_id, String name)
   {
     ContentValues values = new ContentValues();
     values.put(DbHelper.C_NAME, name);
-    values.put(DbHelper.C_PROJECT_ID, count_id);
+    values.put(DbHelper.C_PROJECT_ID, project_id);
     values.put(DbHelper.C_COUNT, 0);
     values.put(DbHelper.C_AUTO_RESET, 0);
     values.put(DbHelper.C_RESET_LEVEL, 0);
