@@ -1,6 +1,7 @@
 package com.knirirr.beecount;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -94,14 +95,16 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
   @Override
   public boolean onOptionsItemSelected(MenuItem item)
   {
-      // Handle action bar item clicks here. The action bar will
-      // automatically handle clicks on the Home/Up button, so long
-      // as you specify a parent activity in AndroidManifest.xml.
-      int id = item.getItemId();
-      if (id == R.id.action_settings) {
-          return true;
-      }
-      return super.onOptionsItemSelected(item);
+    // Handle action bar item clicks here. The action bar will
+    // automatically handle clicks on the Home/Up button, so long
+    // as you specify a parent activity in AndroidManifest.xml.
+    int id = item.getItemId();
+    if (id == R.id.action_settings)
+    {
+      startActivity(new Intent(this, SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+      return true;
+    }
+    return super.onOptionsItemSelected(item);
   }
 
   public void newCount(View view)
@@ -118,7 +121,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
     c.setPadding(5,5,5,5);
     c.setTextSize(24);
 
-    layout.addView(c,params);
+    layout.addView(c, params);
     myTexts.add(c);
     newBox++;
   }
