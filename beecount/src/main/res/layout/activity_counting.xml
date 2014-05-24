@@ -1,16 +1,43 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.knirirr.beecount.CountingActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:id="@+id/countingScreen"
+              android:orientation="vertical" >
 
     <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            android:id="@+id/titleCounting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:textSize="30sp"
+            android:textColor="@android:color/white"
+            android:text="@string/titleCount">
+    </TextView>
 
-</RelativeLayout>
+    <Button android:id="@+id/saveCountsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:onClick="saveAndExit"
+            android:text="@string/saveCountsButton" />
+
+    <ScrollView
+            android:id="@+id/countCountList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+                android:id="@+id/countCountLayout"
+                android:orientation="vertical"
+                android:fillViewport="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <!-- insert the new counts as they are created in here -->
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

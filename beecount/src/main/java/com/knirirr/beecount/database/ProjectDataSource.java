@@ -62,16 +62,16 @@ public class ProjectDataSource
   private Project cursorToProject(Cursor cursor)
   {
     Project project = new Project();
-    project.setId(cursor.getLong(cursor.getColumnIndex(DbHelper.P_ID)));
-    project.setCreatedAt(cursor.getLong(cursor.getColumnIndex(DbHelper.P_CREATED_AT)));
-    project.setName(cursor.getString(cursor.getColumnIndex(DbHelper.P_NAME)));
-    project.setNotes(cursor.getString(cursor.getColumnIndex(DbHelper.P_NOTES)));
+    project.id = cursor.getLong(cursor.getColumnIndex(DbHelper.P_ID));
+    project.created_at = cursor.getLong(cursor.getColumnIndex(DbHelper.P_CREATED_AT));
+    project.name = cursor.getString(cursor.getColumnIndex(DbHelper.P_NAME));
+    project.notes = cursor.getString(cursor.getColumnIndex(DbHelper.P_NOTES));
     return project;
   }
 
   public void deleteProject(Project project)
   {
-    long id = project.getId();
+    long id = project.id;
     System.out.println("Project deleted with id: " + id);
     database.delete(DbHelper.PROJ_TABLE, DbHelper.P_ID + " = " + id, null);
 
@@ -102,5 +102,16 @@ public class ProjectDataSource
     // Make sure to close the cursor
     cursor.close();
     return projects;
+  }
+
+  public Project getProject(long project_id)
+  {
+    Project project = null;
+    Cursor cursor = database.query(DbHelper.PROJ_TABLE, allColumns, DbHelper.P_ID + " = ?", new String[] { String.valueOf(project_id) }, null, null, null);
+    cursor.moveToFirst();
+    project = cursorToProject(cursor);
+    // Make sure to close the cursor
+    cursor.close();
+    return project;
   }
 }

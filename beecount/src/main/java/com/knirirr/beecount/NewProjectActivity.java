@@ -194,7 +194,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
     for (EditText c : myTexts)
     {
       count_name = c.getText().toString();
-      Count newCount = countDataSource.createCount(newProject.getId(),count_name);
+      Count newCount = countDataSource.createCount(newProject.id,count_name);
     }
 
     // Huzzah!

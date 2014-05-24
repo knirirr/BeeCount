@@ -62,23 +62,35 @@ public class CountDataSource
   private Count cursorToCount(Cursor cursor)
   {
     Count newcount = new Count();
-    newcount.setId(cursor.getLong(cursor.getColumnIndex(DbHelper.C_ID)));
-    newcount.setName(cursor.getString(cursor.getColumnIndex(DbHelper.C_NAME)));
-    newcount.setProjectId(cursor.getLong(cursor.getColumnIndex(DbHelper.C_PROJECT_ID)));
-    newcount.setCount(cursor.getInt(cursor.getColumnIndex(DbHelper.C_COUNT)));
-    newcount.setAutoReset(cursor.getInt(cursor.getColumnIndex(DbHelper.C_AUTO_RESET)));
-    newcount.setResetLevel(cursor.getInt(cursor.getColumnIndex(DbHelper.C_RESET_LEVEL)));
+    newcount.id = cursor.getLong(cursor.getColumnIndex(DbHelper.C_ID));
+    newcount.name = cursor.getString(cursor.getColumnIndex(DbHelper.C_NAME));
+    newcount.project_id = cursor.getLong(cursor.getColumnIndex(DbHelper.C_PROJECT_ID));
+    newcount.count = cursor.getInt(cursor.getColumnIndex(DbHelper.C_COUNT));
+    newcount.auto_reset = cursor.getInt(cursor.getColumnIndex(DbHelper.C_AUTO_RESET));
+    newcount.reset_level = cursor.getInt(cursor.getColumnIndex(DbHelper.C_RESET_LEVEL));
     return newcount;
   }
 
   public void deleteCount(Count count)
   {
-    long id = count.getId();
+    long id = count.id;
     System.out.println("Count deleted with id: " + id);
     database.delete(DbHelper.COUNT_TABLE, DbHelper.C_ID + " = " + id, null);
 
     // delete associated alerts
     database.delete(DbHelper.ALERT_TABLE, DbHelper.A_COUNT_ID  + " = " + id, null);
+  }
+
+  public void saveCount(Count count)
+  {
+    ContentValues dataToInsert = new ContentValues();
+    dataToInsert.put(DbHelper.C_COUNT, count.count);
+    dataToInsert.put(DbHelper.C_NAME, count.name);
+    dataToInsert.put(DbHelper.C_AUTO_RESET, count.auto_reset);
+    dataToInsert.put(DbHelper.C_RESET_LEVEL, count.reset_level);
+    String where = DbHelper.C_ID + " = ?";
+    String[] whereArgs = {String.valueOf(count.id)};
+    database.update(DbHelper.COUNT_TABLE, dataToInsert, where, whereArgs);
   }
 
   public List<Count> getAllCountsForProject(long project_id)

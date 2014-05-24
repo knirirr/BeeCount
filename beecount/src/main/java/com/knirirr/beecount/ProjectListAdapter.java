@@ -51,7 +51,7 @@ public class ProjectListAdapter extends ArrayAdapter<Project>
     }
 
     Project project = projects.get(position);
-    holder.txtTitle.setText(project.getName());
+    holder.txtTitle.setText(project.name);
     holder.txtDate.setText(project.getDate());
 
     return row;

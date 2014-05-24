@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -25,7 +27,12 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
   private static String TAG = "BeeCountListProjectActivity";
   BeeCountApplication beeCount;
   SharedPreferences prefs;
-  ArrayAdapter<String> adapter;
+  List<Project> projects;
+  ListView list;
+
+  /*
+   * NEEDS LONG PRESS TO DELETE PROJECTS
+   */
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -39,6 +46,20 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
 
     LinearLayout list_view = (LinearLayout) findViewById(R.id.list_view);
     list_view.setBackgroundDrawable(beeCount.setBackground());
+    list = (ListView) findViewById(android.R.id.list);
+
+    list.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      @Override
+      public void onItemClick(AdapterView<?> arg0, View view, int position, long id)
+      {
+        //Take action here.
+        Project proj = projects.get(position);
+        Intent intent = new Intent(ListProjectActivity.this, CountingActivity.class);
+        intent.putExtra("project_id",proj.id);
+        startActivity(intent);
+      }
+    });
   }
 
   @Override
@@ -60,12 +81,11 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
     projectDataSource = new ProjectDataSource(this);
     projectDataSource.open();
 
-    List<Project> values = projectDataSource.getAllProjects();
+    projects = projectDataSource.getAllProjects();
 
     ProjectListAdapter adapter = new ProjectListAdapter(this,
-        R.layout.listview_project_row, values);
+        R.layout.listview_project_row, projects);
     setListAdapter(adapter);
-
   }
 
   @Override

@@ -59,16 +59,16 @@ public class AlertDataSource
   private Alert cursorToAlert(Cursor cursor)
   {
     Alert newalert = new Alert();
-    newalert.setId(cursor.getLong(cursor.getColumnIndex(DbHelper.A_ID)));
-    newalert.setCountId(cursor.getLong(cursor.getColumnIndex(DbHelper.A_COUNT_ID)));
-    newalert.setAlert(cursor.getInt(cursor.getColumnIndex(DbHelper.A_ALERT)));
-    newalert.setAlertText(cursor.getString(cursor.getColumnIndex(DbHelper.A_ALERT_TEXT)));
+    newalert.id = cursor.getLong(cursor.getColumnIndex(DbHelper.A_ID));
+    newalert.count_id = cursor.getLong(cursor.getColumnIndex(DbHelper.A_COUNT_ID));
+    newalert.alert = cursor.getInt(cursor.getColumnIndex(DbHelper.A_ALERT));
+    newalert.alert_text = cursor.getString(cursor.getColumnIndex(DbHelper.A_ALERT_TEXT));
     return newalert;
   }
 
   public void deleteAlert(Alert alert)
   {
-    long id = alert.getId();
+    long id = alert.id;
     System.out.println("Alert deleted with id: " + id);
     database.delete(DbHelper.ALERT_TABLE, DbHelper.A_ID + " = " + id, null);
   }

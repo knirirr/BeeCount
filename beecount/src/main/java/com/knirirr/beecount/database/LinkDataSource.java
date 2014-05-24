@@ -61,18 +61,18 @@ public class LinkDataSource
   private Link cursorToLink(Cursor cursor)
   {
     Link newlink = new Link();
-    newlink.setId(cursor.getLong(cursor.getColumnIndex(DbHelper.L_ID)));
-    newlink.setProjectId(cursor.getLong(cursor.getColumnIndex(DbHelper.L_PROJECT_ID)));
-    newlink.setMasterId(cursor.getLong(cursor.getColumnIndex(DbHelper.L_MASTER_ID)));
-    newlink.setSlaveId(cursor.getLong(cursor.getColumnIndex(DbHelper.L_SLAVE_ID)));
-    newlink.setIncrement(cursor.getInt(cursor.getColumnIndex(DbHelper.L_INCREMENT)));
-    newlink.setType(cursor.getInt(cursor.getColumnIndex(DbHelper.L_TYPE)));
+    newlink.id = cursor.getLong(cursor.getColumnIndex(DbHelper.L_ID));
+    newlink.project_id = cursor.getLong(cursor.getColumnIndex(DbHelper.L_PROJECT_ID));
+    newlink.master_id = cursor.getLong(cursor.getColumnIndex(DbHelper.L_MASTER_ID));
+    newlink.slave_id = cursor.getLong(cursor.getColumnIndex(DbHelper.L_SLAVE_ID));
+    newlink.increment = cursor.getInt(cursor.getColumnIndex(DbHelper.L_INCREMENT));
+    newlink.type = cursor.getInt(cursor.getColumnIndex(DbHelper.L_TYPE));
     return newlink;
   }
 
   public void deleteLink(Link link)
   {
-    long id = link.getId();
+    long id = link.id;
     database.delete(DbHelper.LINK_TABLE, DbHelper.L_ID + " = " + id, null);
     System.out.println("Link deleted with id: " + id);
   }
