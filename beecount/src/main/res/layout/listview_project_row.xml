@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="horizontal">
+              android:layout_height="wrap_content"
+              android:background="@drawable/rounded_corner"
+              android:orientation="horizontal"
+              android:padding="5dp">
 
     <TextView android:layout_height="wrap_content"
               android:layout_width="fill_parent"
@@ -12,7 +14,8 @@
               android:textColor="#FFFFFF"
               android:textSize="22sp"
               android:padding="5sp"
-              android:textStyle="bold" />
+              android:textStyle="bold"
+            />
 
     <TextView android:layout_height="wrap_content"
               android:layout_width="fill_parent"

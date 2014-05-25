@@ -5,26 +5,6 @@
               android:id="@+id/countingScreen"
               android:orientation="vertical" >
 
-    <TextView
-            android:id="@+id/titleCounting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:textSize="30sp"
-            android:textColor="@android:color/white"
-            android:text="@string/titleCount">
-    </TextView>
-
-    <Button android:id="@+id/saveCountsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:onClick="saveAndExit"
-            android:text="@string/saveCountsButton" />
-
     <ScrollView
             android:id="@+id/countCountList"
             android:layout_width="match_parent"

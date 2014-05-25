@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -19,7 +20,9 @@ import com.knirirr.beecount.database.Link;
 import com.knirirr.beecount.database.LinkDataSource;
 import com.knirirr.beecount.database.Project;
 import com.knirirr.beecount.database.ProjectDataSource;
+import com.knirirr.beecount.widgets.CountingWidget;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,12 +32,16 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
   BeeCountApplication beeCount;
   SharedPreferences prefs;
   long project_id;
+  LinearLayout count_area;
 
   // the actual data
   Project project;
   List<Count> counts;
   List<Alert> alerts;
   List<Link> links;
+
+  List<CountingWidget> countingWidgets;
+
   private ProjectDataSource projectDataSource;
   private CountDataSource countDataSource;
   private AlertDataSource alertDataSource;
@@ -52,6 +59,8 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
 
     LinearLayout counting_screen = (LinearLayout) findViewById(R.id.countingScreen);
     counting_screen.setBackgroundDrawable(beeCount.setBackground());
+
+    count_area = (LinearLayout) findViewById(R.id.countCountLayout);
 
     /*
      * Everything should be obtainable from the project_id.
@@ -87,7 +96,17 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
     getActionBar().setTitle(project.name);
 
     // counts
+    countingWidgets = new ArrayList<CountingWidget>();
     counts = countDataSource.getAllCountsForProject(project.id);
+
+    // display all the counts by adding them to countCountLayout
+    for (Count count : counts)
+    {
+      CountingWidget widget = new CountingWidget(this,null);
+      widget.setCount(count);
+      countingWidgets.add(widget);
+      count_area.addView(widget);
+    }
 
   }
 
@@ -122,6 +141,54 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
     super.finish();
   }
 
+  //**************************************
+
+  /*
+   * The next three methods are called from a counting widget.
+   * It may well be the case that this means of identifying which widget to increase/decreaes
+   * by tagging the buttons with the relevant count ID is a bit crap. Suggestions welcome if so.
+   */
+  public void countUp(View view)
+  {
+    Log.i(TAG, "View clicked: " + view.toString());
+    Log.i(TAG, "View tag: " + view.getTag().toString());
+    CountingWidget widget = getCountFromId(Long.valueOf(view.getTag().toString()));
+    if (widget != null)
+    {
+      widget.countUp();
+    }
+  }
+
+  public void countDown(View view)
+  {
+    Log.i(TAG, "View clicked: " + view.toString());
+    Log.i(TAG, "View tag: " + view.getTag().toString());
+    CountingWidget widget = getCountFromId(Long.valueOf(view.getTag().toString()));
+    if (widget != null)
+    {
+      widget.countDown();
+    }
+
+  }
+
+  public void edit(View view)
+  {
+    Log.i(TAG, "Would edit this count: " + view.toString());
+  }
+
+  public CountingWidget getCountFromId(long id)
+  {
+    for (CountingWidget widget : countingWidgets)
+    {
+      if (widget.count.id == id)
+      {
+        return widget;
+      }
+    }
+    return null;
+  }
+
+  //**************************************
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu)
