@@ -36,7 +36,7 @@ public class WelcomeActivity extends Activity implements SharedPreferences.OnSha
     */
 
     LinearLayout baseLayout = (LinearLayout) findViewById(R.id.baseLayout);
-    baseLayout.setBackgroundDrawable(beeCount.setBackground());
+    baseLayout.setBackgroundDrawable(beeCount.getBackground());
 
   }
 

@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.knirirr.beecount.database.Alert;
@@ -57,8 +58,8 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
     prefs = BeeCountApplication.getPrefs();
     prefs.registerOnSharedPreferenceChangeListener(this);
 
-    LinearLayout counting_screen = (LinearLayout) findViewById(R.id.countingScreen);
-    counting_screen.setBackgroundDrawable(beeCount.setBackground());
+    ScrollView counting_screen = (ScrollView) findViewById(R.id.countingScreen);
+    counting_screen.setBackgroundDrawable(beeCount.getBackground());
 
     count_area = (LinearLayout) findViewById(R.id.countCountLayout);
 
@@ -108,6 +109,10 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
       count_area.addView(widget);
     }
 
+    // display project notes
+
+    // display summary of links and that
+
   }
 
   @Override
@@ -139,6 +144,11 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
   {
     saveData();
     super.finish();
+  }
+
+  public void editProject(View view)
+  {
+    // some stuff to go here
   }
 
   //**************************************
@@ -215,7 +225,7 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
 
   public void onSharedPreferenceChanged(SharedPreferences prefs, String key)
   {
-    LinearLayout counting_screen = (LinearLayout) findViewById(R.id.countingScreen);
+    ScrollView counting_screen = (ScrollView) findViewById(R.id.countingScreen);
     counting_screen.setBackgroundDrawable(beeCount.setBackground());
   }
 }

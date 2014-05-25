@@ -52,7 +52,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
     prefs.registerOnSharedPreferenceChangeListener(this);
 
     LinearLayout baseLayout = (LinearLayout) findViewById(R.id.newprojScreen);
-    baseLayout.setBackgroundDrawable(beeCount.setBackground());
+    baseLayout.setBackgroundDrawable(beeCount.getBackground());
 
     // data access using CrowTrack method
     projectDataSource = new ProjectDataSource(this);

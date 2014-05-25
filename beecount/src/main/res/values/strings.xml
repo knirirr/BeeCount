@@ -81,7 +81,7 @@
     <string name="sal">Set alert</string>
 
     <!-- CountingActivity Menu -->
-    <string name="editProjTitle">Edit</string>
+    <string name="editProjTitle">Edit Project</string>
     <string name="deleteProjTitle">Delete</string>
     <string name="confirmDelete">Delete? Are you sure?</string>
     <string name="yesButton">Yes</string>

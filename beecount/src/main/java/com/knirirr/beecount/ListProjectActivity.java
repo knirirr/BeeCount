@@ -45,7 +45,7 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
     prefs.registerOnSharedPreferenceChangeListener(this);
 
     LinearLayout list_view = (LinearLayout) findViewById(R.id.list_view);
-    list_view.setBackgroundDrawable(beeCount.setBackground());
+    list_view.setBackgroundDrawable(beeCount.getBackground());
     list = (ListView) findViewById(android.R.id.list);
 
     list.setOnItemClickListener(new AdapterView.OnItemClickListener()

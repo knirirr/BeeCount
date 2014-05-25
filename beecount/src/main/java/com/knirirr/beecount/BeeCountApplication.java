@@ -23,14 +23,14 @@ import java.io.File;
 public class BeeCountApplication extends Application
 {
   private static String TAG = "BeeCount";
-
+  public BitmapDrawable ob;
   private static SharedPreferences prefs;
 
   @Override
   public void onCreate()
   {
     super.onCreate();
-
+    ob = null;
     try
     {
       prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -41,13 +41,30 @@ public class BeeCountApplication extends Application
     }
   }
 
+  /*
+   * The idea here is to keep ob around as a pre-prepared bitmap, only setting it up
+   * when the user's settings change or when the application starts up.
+   */
+
+  public BitmapDrawable getBackground()
+  {
+    if (ob == null)
+    {
+      return setBackground();
+    }
+    else
+    {
+      return ob;
+    }
+  }
+
   public BitmapDrawable setBackground()
   {
     // set background
+    Bitmap bMap = null;
 
     String backgroundPref = prefs.getString("pref_back", "default");
     String pictPref = prefs.getString("imagePath", "");
-    Bitmap bMap = null;
 
     if (backgroundPref.equals("none"))
     {
@@ -87,7 +104,8 @@ public class BeeCountApplication extends Application
       bMap = BitmapFactory.decodeResource(getResources(), R.drawable.beecount_knitting);
     }
 
-    BitmapDrawable ob = new BitmapDrawable(bMap);
+    ob = new BitmapDrawable(bMap);
+    bMap = null;
     return ob;
   }
 

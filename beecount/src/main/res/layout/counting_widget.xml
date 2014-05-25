@@ -1,86 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:paddingTop="5dp"
-                android:paddingRight="5dp"
-                android:paddingLeft="5dp"
-                android:background="@drawable/rounded_corner">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="5dp"
+              android:layout_marginTop="5dp"
+              android:layout_marginRight="5dp"
+              android:background="@drawable/rounded_corner"
+              android:padding="5dp">
 
-    <TextView
-            android:layout_width="wrap_content"
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="7.5"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/countCount"
-            android:padding="5dp"
-            android:hint="0"
-            android:minWidth="50dp"
-            android:minHeight="50dp"
-            android:phoneNumber="true"
-            android:textAlignment="center"
-            android:gravity="center|center_vertical|center_horizontal|fill_vertical"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/count_background"
-            android:layout_alignTop="@+id/countName"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignBottom="@+id/buttonUp"
-            android:layout_toRightOf="@+id/buttonUp"
-            android:textSize="48dp"
-            android:layout_marginBottom="5dp"
-            android:singleLine="false"
-            android:numeric="integer"
-            />
-    <TextView
-            android:layout_width="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp">
+
+        <TextView
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/countName"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:hint="Count Name"
             android:layout_marginLeft="5dp"
             android:layout_marginBottom="5dp"/>
 
-    <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="edit"
-            android:text="Edit"
-            android:id="@+id/buttonEdit"
-            android:layout_below="@+id/countName"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                    >
 
-    <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="countDown"
-            android:text="-"
-            android:textStyle="bold"
-            android:maxHeight="40dp"
-            android:id="@+id/buttonDown"
-            android:layout_alignTop="@+id/buttonEdit"
-            android:layout_toRightOf="@+id/buttonEdit"/>
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="edit"
+                    android:text="Edit"
+                    android:id="@+id/buttonEdit"
+                    android:layout_below="@+id/countName"
+                    android:layout_weight="1"/>
 
-    <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="countDown"
+                    android:text="@string/buttonCountDown"
+                    android:textStyle="bold"
+                    android:id="@+id/buttonDown"
+                    android:layout_weight="2"/>
+
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="countUp"
+                    android:text="@string/buttonCountUp"
+                    android:textStyle="bold"
+                    android:id="@+id/buttonUp"
+                    android:layout_weight="7"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="2.5"
             android:layout_height="wrap_content"
-            android:onClick="countUp"
-            android:text="+"
-            android:textStyle="bold"
-            android:maxHeight="40dp"
-            android:id="@+id/buttonUp"
-            android:layout_alignTop="@+id/buttonDown"
-            android:layout_toRightOf="@+id/buttonDown"
-            android:minWidth="50dp"
-            android:width="160dp"/>
-</RelativeLayout>
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/countCount"
+            android:padding="10dp"
+            android:hint="0"
+            android:phoneNumber="true"
+            android:textAlignment="center"
+            android:gravity="center|center_vertical|center_horizontal"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/count_background"
+            android:textSize="48dp"
+            android:layout_marginBottom="5dp"
+            android:numeric="integer"
+            android:layout_gravity="bottom|left|right|top"/>
+        </LinearLayout>
+</LinearLayout>
