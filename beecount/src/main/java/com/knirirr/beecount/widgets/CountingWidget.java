@@ -69,6 +69,12 @@ public class CountingWidget extends RelativeLayout
     countCount.setText(String.valueOf(count.count));
   }
 
+  public void resetZero()
+  {
+    count.count = 0;
+    countCount.setText(String.valueOf(count.count));
+  }
+
   /*
    * Saving the counts should perhaps go in this widget?
    */

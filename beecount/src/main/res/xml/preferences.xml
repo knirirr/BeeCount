@@ -3,11 +3,6 @@
     <PreferenceCategory
         android:title="@string/prefs_appearance">
         android:key="key_prefs_appearance">
-        <CheckBoxPreference
-            android:key="pref_font"
-            android:title="@string/pref_font"
-            android:summary="@string/pref_font_summ"
-            android:defaultValue="true" />
         <ListPreference
             android:key="pref_back"
             android:title="@string/pref_bg"
@@ -24,11 +19,6 @@
      <PreferenceCategory
         android:title="@string/prefs_counting">
         android:key="key_prefs_counting">
-    <CheckBoxPreference
-        android:key="pref_swap"
-        android:title="@string/pref_swap"
-        android:summary="@string/pref_swap_summ"
-        android:defaultValue="false" />
     <CheckBoxPreference
         android:key="pref_awake"
         android:title="@string/pref_awake"

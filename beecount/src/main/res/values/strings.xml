@@ -60,7 +60,7 @@
     <string name="bizarreError">Snaaks!</string>
     <string name="projSaving">Saving </string>
     <string name="linkError">Please check your linked counts: Couldn\'t find value for"</string>
-    <string name="hasAutoReset">has auto-reset!</string>
+    <string name="hasAutoReset">%1$s has auto-reset!</string>
     <string name="alertTitle">Buzzzz!</string>
     <string name="rowAlertTitle">Set row alert</string>
     <string name="alertOk">OK</string>
@@ -79,6 +79,9 @@
     <string name="srl">Set reset level</string>
     <string name="sar">Set auto-reset</string>
     <string name="sal">Set alert</string>
+    <string name="willLinkReset">- %1$s will reset %2$s at %3$d.</string>
+    <string name="willLinkIncrease">- %1$s will increase %2$s at %3$d.</string>
+    <string name="willLinkDecrease">- %1$s will decrease %2$s at %3$d.</string>
 
     <!-- CountingActivity Menu -->
     <string name="editProjTitle">Edit Project</string>
@@ -87,12 +90,12 @@
     <string name="yesButton">Yes</string>
     <string name="noButton">No</string>
     <string name="resetCount">reset to </string>
-    <string name="postIncr">has incremented</string>
-    <string name="postReset">has reset</string>
-    <string name="postDecr">has decremented</string>
+    <string name="postIncr">%1$s has incremented %2$s!</string>
+    <string name="postReset">%1$s has reset %2$s!</string>
+    <string name="postDecr">%1$s has decremented %2$s!</string>
     <string name="mainHelpTitle">Help</string>
-    <string name="willReset"> will auto-reset at </string>
-    <string name="willAlert"> will show alert at </string>
+    <string name="willReset">- %1$s will auto-reset to %2$d at %3$d.</string>
+    <string name="willAlert">- %1$s will show alert at  %2$d.</string>
     <string name="deleteButton">Delete</string>
     <string name="cancelButton">Cancel</string>
 
