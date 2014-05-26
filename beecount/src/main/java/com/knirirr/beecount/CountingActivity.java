@@ -148,11 +148,14 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
     links = linkDataSource.getAllLinksForProject(project_id);
 
     // display project notes
-    if (!project.notes.isEmpty())
+    if (project.notes != null)
     {
-      NotesWidget project_notes = new NotesWidget(this,null);
-      project_notes.setNotes(project.notes);
-      count_area.addView(project_notes);
+      if (!project.notes.isEmpty())
+      {
+        NotesWidget project_notes = new NotesWidget(this, null);
+        project_notes.setNotes(project.notes);
+        count_area.addView(project_notes);
+      }
     }
 
     // display summary of links; resets and alerts should already have
@@ -426,8 +429,6 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
       Toast.makeText(CountingActivity.this, String.format(getString(R.string.postReset),master,slave), Toast.LENGTH_SHORT).show();
     }
   }
-
-
 
 
   //**************************************
