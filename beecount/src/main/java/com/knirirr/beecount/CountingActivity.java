@@ -1,6 +1,8 @@
 package com.knirirr.beecount;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,6 +32,7 @@ import java.util.List;
 public class CountingActivity extends Activity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
   private static String TAG = "BeeCountCountingActivity";
+  private AlertDialog.Builder row_alert;
   BeeCountApplication beeCount;
   SharedPreferences prefs;
   long project_id;
@@ -79,6 +82,9 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
   protected void onResume()
   {
     super.onResume();
+    // clear any existing views
+    count_area.removeAllViews();
+
     // setup the data sources
     projectDataSource = new ProjectDataSource(this);
     projectDataSource.open();
@@ -101,13 +107,21 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
     counts = countDataSource.getAllCountsForProject(project.id);
 
     // display all the counts by adding them to countCountLayout
+    alerts = new ArrayList<Alert>();
     for (Count count : counts)
     {
       CountingWidget widget = new CountingWidget(this,null);
       widget.setCount(count);
       countingWidgets.add(widget);
       count_area.addView(widget);
+      // get add all alerts for this project
+      List<Alert> tmpAlerts = alertDataSource.getAllAlertsForCount(count.id);
+      for (Alert a : tmpAlerts)
+      {
+        alerts.add(a);
+      }
     }
+    links = linkDataSource.getAllLinksForProject(project_id);
 
     // display project notes
 
@@ -160,24 +174,30 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
    */
   public void countUp(View view)
   {
-    Log.i(TAG, "View clicked: " + view.toString());
-    Log.i(TAG, "View tag: " + view.getTag().toString());
-    CountingWidget widget = getCountFromId(Long.valueOf(view.getTag().toString()));
+    //Log.i(TAG, "View clicked: " + view.toString());
+    //Log.i(TAG, "View tag: " + view.getTag().toString());
+    long count_id = Long.valueOf(view.getTag().toString());
+    CountingWidget widget = getCountFromId(count_id);
     if (widget != null)
     {
       widget.countUp();
     }
+    checkAlert(widget.count.id,widget.count.count,true);
+    checkLink(widget.count.id, widget.count.count, true);
+
   }
 
   public void countDown(View view)
   {
-    Log.i(TAG, "View clicked: " + view.toString());
-    Log.i(TAG, "View tag: " + view.getTag().toString());
+    //Log.i(TAG, "View clicked: " + view.toString());
+    //Log.i(TAG, "View tag: " + view.getTag().toString());
     CountingWidget widget = getCountFromId(Long.valueOf(view.getTag().toString()));
     if (widget != null)
     {
       widget.countDown();
     }
+    checkAlert(widget.count.id,widget.count.count,false);
+    checkLink(widget.count.id,widget.count.count,false);
 
   }
 
@@ -197,6 +217,39 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
     }
     return null;
   }
+
+  //**************************************
+
+  /*
+   * Link and alert checking...
+   */
+  public void checkAlert(long count_id, int count_value, boolean up)
+  {
+    for (Alert a : alerts)
+    {
+      if (a.count_id == count_id && a.alert == count_value)
+      {
+        row_alert = new AlertDialog.Builder(this);
+        row_alert.setTitle(getString(R.string.alertTitle));
+        row_alert.setMessage(a.alert_text);
+        row_alert.setNegativeButton("OK", new DialogInterface.OnClickListener()
+        {
+          public void onClick(DialogInterface dialog, int whichButton)
+          {
+            // Canceled.
+          }
+        });
+        row_alert.show();
+        break;
+      }
+    }
+  }
+
+  public void checkLink(long count_id, int count_value, boolean up)
+  {
+
+  }
+
 
   //**************************************
 
