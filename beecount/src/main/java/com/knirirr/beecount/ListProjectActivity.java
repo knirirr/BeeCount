@@ -1,7 +1,9 @@
 package com.knirirr.beecount;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,11 +26,13 @@ import java.util.List;
 public class ListProjectActivity extends ListActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
   private ProjectDataSource projectDataSource;
+  private ProjectListAdapter adapter;
   private static String TAG = "BeeCountListProjectActivity";
   BeeCountApplication beeCount;
   SharedPreferences prefs;
   List<Project> projects;
   ListView list;
+  private Project p; // a project selected from the list
 
   /*
    * NEEDS LONG PRESS TO DELETE PROJECTS
@@ -48,16 +52,49 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
     list_view.setBackgroundDrawable(beeCount.getBackground());
     list = (ListView) findViewById(android.R.id.list);
 
+    // single tap selects an item for viewing
     list.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       @Override
       public void onItemClick(AdapterView<?> arg0, View view, int position, long id)
       {
         //Take action here.
-        Project proj = projects.get(position);
+        p = projects.get(position);
         Intent intent = new Intent(ListProjectActivity.this, CountingActivity.class);
-        intent.putExtra("project_id",proj.id);
+        intent.putExtra("project_id",p.id);
         startActivity(intent);
+      }
+    });
+
+    // long press to delete a project
+    list.setOnItemLongClickListener (new AdapterView.OnItemLongClickListener() {
+      public boolean onItemLongClick(AdapterView parent, View view, final int position, long id) {
+        p = projects.get(position);
+        // http://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog
+        // could make the dialog central in the popup - to do later
+        AlertDialog.Builder builder = new AlertDialog.Builder(ListProjectActivity.this);
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+        builder.setMessage(p.name + ": " + getString(R.string.confirmDelete)).setCancelable(false).setPositiveButton(R.string.deleteButton, new DialogInterface.OnClickListener()
+        {
+          public void onClick(DialogInterface dialog, int id)
+          {
+            // perform the deleting here
+            projectDataSource.deleteProject(p);
+            projects.remove(position);
+            showData();
+            list.invalidate();
+
+          }
+        }).setNegativeButton(R.string.cancelButton, new DialogInterface.OnClickListener()
+        {
+          public void onClick(DialogInterface dialog, int id)
+          {
+            dialog.cancel();
+          }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+        return true;
       }
     });
   }
@@ -66,6 +103,8 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
   protected void onResume()
   {
     super.onResume();
+    projectDataSource = new ProjectDataSource(this);
+    projectDataSource.open();
     showData();
   }
 
@@ -78,13 +117,8 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
 
   private void showData()
   {
-    projectDataSource = new ProjectDataSource(this);
-    projectDataSource.open();
-
     projects = projectDataSource.getAllProjects();
-
-    ProjectListAdapter adapter = new ProjectListAdapter(this,
-        R.layout.listview_project_row, projects);
+    adapter = new ProjectListAdapter(this, R.layout.listview_project_row, projects);
     setListAdapter(adapter);
   }
 

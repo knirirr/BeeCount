@@ -76,14 +76,17 @@ public class ProjectDataSource
     database.delete(DbHelper.PROJ_TABLE, DbHelper.P_ID + " = " + id, null);
 
     /*
-    TODO
-    Get the id of all associated counts here; use this to delete all alerts.
-    Then, proceed as below to delete links and counts.
+    Get the id of all associated counts here; alerts are the only things which can't
+    be removed directly as the project_id is not stored in them. A join is therefore required.
      */
-
     // delete associated links and counts
+    String sql = "DELETE FROM " + DbHelper.ALERT_TABLE + " WHERE " + DbHelper.A_COUNT_ID + " IN "
+        + "(SELECT " + DbHelper.C_ID + " FROM " + DbHelper.COUNT_TABLE + " WHERE "
+        + DbHelper.C_PROJECT_ID + " = " + id + ")";
+    database.execSQL(sql);
     database.delete(DbHelper.LINK_TABLE, DbHelper.L_PROJECT_ID  + " = " + id, null);
     database.delete(DbHelper.COUNT_TABLE, DbHelper.C_PROJECT_ID  + " = " + id, null);
+
   }
 
   public List<Project> getAllProjects()
