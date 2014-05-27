@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginLeft="5dp"
+              android:layout_marginTop="5dp"
+              android:layout_marginRight="5dp"
+              android:background="@drawable/rounded_corner"
+              android:padding="5dp">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/help_text"
+            android:textAlignment="textStart"
+            android:gravity="center_vertical|left"
+            android:textColor="#FFFFFF"
+            android:textSize="12dp"
+            android:layout_gravity="bottom|left|right|top"
+            android:hint="Instructions."/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_weight="2"
+            android:id="@+id/count_parameter_edit"
+            android:padding="5dp"
+            android:hint="0"
+            android:editable="true"
+            android:phoneNumber="true"
+            android:textAlignment="center"
+            android:gravity="center|center_vertical|center_horizontal"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/count_background"
+            android:textSize="18dp"
+            android:layout_marginBottom="5dp"
+            android:numeric="integer"
+            android:layout_gravity="bottom|left|right|top"/>
+</LinearLayout>
+

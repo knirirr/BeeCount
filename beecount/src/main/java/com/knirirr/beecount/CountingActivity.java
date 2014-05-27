@@ -293,7 +293,10 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
 
   public void edit(View view)
   {
-    Log.i(TAG, "Would edit this count: " + view.toString());
+    long count_id = Long.valueOf(view.getTag().toString());
+    Intent intent = new Intent(CountingActivity.this, CountOptionsActivity.class);
+    intent.putExtra("count_id",count_id);
+    startActivity(intent);
   }
 
   /*

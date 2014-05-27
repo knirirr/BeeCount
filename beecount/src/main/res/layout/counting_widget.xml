@@ -31,9 +31,9 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                    >
+                android:layout_height="wrap_content" >
 
+                <!-- perhaps replace with ImageButton http://developer.android.com/guide/topics/ui/controls/button.html -->
                 <Button
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"

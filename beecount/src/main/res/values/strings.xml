@@ -156,6 +156,12 @@
     <string name="prefs_counting">Counting</string>
     <string name="image_error">Error setting custom image!</string>
 
+    <!-- CountOptionsActivity -->
+    <string name="setResetValue">Set the value at which this count will reset itself. The count will be reset to 0 unless the reset level (see below) is also changed. Set to 0 to disable.</string>
+    <string name="setResetLevel">When %1$s resets it will reset to the number here. To cause it to reset the auto reset value (above) must be set to a value higher than 0.</string>
+    <string name="editCountValue">You may change the value of %1$s from its current value of %2$d by editing it here.</string>
+    <string name="addSomeAlerts">Each count may have zero or more alerts which will be triggered when the count reaches that level. Use the add button to the right to add more and the close button on each alert to remove it.</string>
+
 
 
 

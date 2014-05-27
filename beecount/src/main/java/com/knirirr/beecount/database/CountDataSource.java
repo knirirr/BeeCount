@@ -111,4 +111,15 @@ public class CountDataSource
     cursor.close();
     return counts;
   }
+
+  public Count getCountById(long count_id)
+  {
+    Cursor cursor = database.query(DbHelper.COUNT_TABLE, allColumns,
+        DbHelper.C_ID + " = " + count_id, null, null, null, null);
+
+    cursor.moveToFirst();
+    Count count = cursorToCount(cursor);
+    cursor.close();
+    return count;
+  }
 }
