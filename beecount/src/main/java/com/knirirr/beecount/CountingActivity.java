@@ -80,11 +80,14 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
      * It should not be possible to start this activity without a project_id having
      * been supplied, hence the error below not being caught.
      */
-    Bundle extras = getIntent().getExtras();
-    if(extras !=null)
+    /*
+    Bundle bundle = getIntent().getExtras();
+    if(bundle !=null)
     {
-      project_id = extras.getLong("project_id");
+      project_id = bundle.getLong("project_id");
     }
+    */
+
   }
 
   /*
@@ -99,6 +102,8 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
   protected void onResume()
   {
     super.onResume();
+    project_id = beeCount.project_id;
+
     // clear any existing views
     count_area.removeAllViews();
 
@@ -115,6 +120,7 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
 
     // load the data
     // projects
+    Log.i(TAG,"Project ID: " + String.valueOf(project_id));
     project = projectDataSource.getProject(project_id);
     Log.i(TAG, "Got project: " + project.name);
     getActionBar().setTitle(project.name);
@@ -192,6 +198,7 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
 
     // save the data
     saveData();
+    beeCount.project_id = project_id;
 
     // close the data sources
     projectDataSource.close();

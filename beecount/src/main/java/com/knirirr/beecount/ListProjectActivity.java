@@ -61,7 +61,8 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
         //Take action here.
         p = projects.get(position);
         Intent intent = new Intent(ListProjectActivity.this, CountingActivity.class);
-        intent.putExtra("project_id",p.id);
+        //intent.putExtra("project_id",p.id);
+        beeCount.project_id = p.id;
         startActivity(intent);
       }
     });

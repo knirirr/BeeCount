@@ -3,6 +3,7 @@ package com.knirirr.beecount.widgets;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,7 +25,7 @@ public class OptionsWidget extends LinearLayout
     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     inflater.inflate(R.layout.options_widget, this, true);
     instructions = (TextView) findViewById(R.id.help_text);
-    number = (TextView) findViewById(R.id.count_parameter_edit);
+    number = (EditText) findViewById(R.id.count_parameter_edit);
   }
 
   public void setInstructions(String i)

@@ -73,6 +73,7 @@ public class CountOptionsActivity extends Activity implements SharedPreferences.
     alertDataSource.open();
 
     count = countDataSource.getCountById(count_id);
+    getActionBar().setTitle(count.name);
 
     // setup the static widgets in the following order
     // 1. Auto reset value (value at which reset is triggered)

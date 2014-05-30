@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:id="@+id/countingScreen"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:id="@+id/countCountLayout"
+                    android:orientation="vertical"
+                    android:fillViewport="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+            <!-- insert the new counts as they are created in here -->
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                <Space
+                        android:layout_width="20px"
+                        android:layout_height="20px"
+                        android:layout_weight="1"/>
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/saveCountsButton"
+                        android:id="@+id/saveExit"
+                        android:onClick="saveAndExit"
+                        android:layout_weight="1"/>
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/editProjTitle"
+                        android:id="@+id/editProject"
+                        android:onClick="editProject"
+                        android:layout_weight="1"/>
+
+                <Space
+                        android:layout_width="20px"
+                        android:layout_height="20px"
+                        android:layout_weight="1"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+

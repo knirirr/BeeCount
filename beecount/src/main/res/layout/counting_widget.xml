@@ -23,10 +23,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="26dp"
             android:id="@+id/countName"
             android:hint="Count Name"
             android:layout_marginLeft="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+                />
 
             <LinearLayout
                 android:orientation="horizontal"

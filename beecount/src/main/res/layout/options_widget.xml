@@ -11,9 +11,7 @@
               android:padding="5dp">
 
     <TextView
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="8"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/help_text"
             android:textAlignment="textStart"
@@ -21,25 +19,31 @@
             android:textColor="#FFFFFF"
             android:textSize="12dp"
             android:layout_gravity="bottom|left|right|top"
-            android:hint="Instructions."/>
+            android:hint="Instructions."
+            android:layout_width="wrap_content"
+            android:layout_weight="18"
+            android:padding="5dp"/>
 
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+    <EditText
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:maxWidth="100dp"
+            android:minWidth="100dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_weight="2"
             android:id="@+id/count_parameter_edit"
-            android:padding="5dp"
             android:hint="0"
-            android:editable="true"
             android:phoneNumber="true"
             android:textAlignment="center"
             android:gravity="center|center_vertical|center_horizontal"
             android:textColor="#FFFFFF"
             android:background="@drawable/count_background"
-            android:textSize="18dp"
+            android:textSize="35dp"
             android:layout_marginBottom="5dp"
             android:numeric="integer"
-            android:layout_gravity="bottom|left|right|top"/>
+            android:layout_gravity="bottom|left|right|top"
+            android:layout_weight="2"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"/>
 </LinearLayout>
 

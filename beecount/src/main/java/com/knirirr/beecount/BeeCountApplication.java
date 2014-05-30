@@ -24,6 +24,7 @@ public class BeeCountApplication extends Application
 {
   private static String TAG = "BeeCount";
   public BitmapDrawable ob;
+  public Long project_id;
   private static SharedPreferences prefs;
 
   @Override
@@ -31,6 +32,7 @@ public class BeeCountApplication extends Application
   {
     super.onCreate();
     ob = null;
+    project_id = null;
     try
     {
       prefs = PreferenceManager.getDefaultSharedPreferences(this);
