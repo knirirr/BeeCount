@@ -14,7 +14,6 @@ import com.knirirr.beecount.R;
  */
 public class OptionsWidget extends LinearLayout
 {
-  public int count_parameter_value;
   private TextView instructions;
   private TextView number;
 
@@ -35,8 +34,12 @@ public class OptionsWidget extends LinearLayout
 
   public void setParameterValue(int i)
   {
-    count_parameter_value = i;
     number.setText(String.valueOf(i));
+  }
+
+  public int getParameterValue()
+  {
+    return Integer.parseInt(number.getText().toString());
   }
 
 }

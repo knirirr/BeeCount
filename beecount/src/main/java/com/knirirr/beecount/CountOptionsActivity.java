@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.knirirr.beecount.database.AlertDataSource;
 import com.knirirr.beecount.database.Count;
 import com.knirirr.beecount.database.CountDataSource;
+import com.knirirr.beecount.widgets.AddAlertWidget;
 import com.knirirr.beecount.widgets.OptionsWidget;
 
 
@@ -32,6 +35,7 @@ public class CountOptionsActivity extends Activity implements SharedPreferences.
   OptionsWidget ar_value_widget;
   OptionsWidget ar_level_widget;
   OptionsWidget curr_val_widget;
+  AddAlertWidget aa_widget;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -87,14 +91,21 @@ public class CountOptionsActivity extends Activity implements SharedPreferences.
 
     ar_level_widget = new OptionsWidget(this,null);
     ar_level_widget.setInstructions(String.format(getString(R.string.setResetLevel), count.name));
-    //ar_level_widget.setParameterValue(count.reset_level);
-    ar_level_widget.setParameterValue(0);
+    ar_level_widget.setParameterValue(count.reset_level);
     static_widget_area.addView(ar_level_widget);
 
     curr_val_widget = new OptionsWidget(this,null);
     curr_val_widget.setInstructions(String.format(getString(R.string.editCountValue), count.name, count.count));
     curr_val_widget.setParameterValue(count.count);
     static_widget_area.addView(curr_val_widget);
+
+    aa_widget = new AddAlertWidget(this,null);
+    static_widget_area.addView(aa_widget);
+
+    /*
+     * There should be a method to add all counts in order to re-draw when one is deleted.
+     */
+
 
 
   }
@@ -103,10 +114,26 @@ public class CountOptionsActivity extends Activity implements SharedPreferences.
   protected void onPause()
   {
     super.onPause();
+    Toast.makeText(CountOptionsActivity.this, getString(R.string.projSaving) + " " + count.name + "!", Toast.LENGTH_SHORT).show();
+    count.auto_reset = ar_value_widget.getParameterValue();
+    count.reset_level = ar_level_widget.getParameterValue();
+    count.count = curr_val_widget.getParameterValue();
+    countDataSource.saveCount(count);
+
+    /*
+     * Get all the alerts from the dynamic_widget_area and save each one.
+     */
+
 
     countDataSource.close();
     alertDataSource.close();
 
+  }
+
+
+  public void addAnAlert(View view)
+  {
+    Log.i(TAG, "Adding an alert!");
   }
 
 
