@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginLeft="5dp"
+              android:layout_marginTop="5dp"
+              android:layout_marginRight="5dp"
+              android:background="@drawable/rounded_corner"
+              android:paddingLeft="5dp"
+              android:paddingTop="5dp"
+              android:paddingRight="5dp">
+
+    <EditText
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/alert_name"
+            android:textAlignment="textStart"
+            android:gravity="center_vertical|left"
+            android:textColor="#FFFFFF"
+            android:textSize="12dp"
+            android:background="@drawable/count_background"
+            android:layout_gravity="bottom|left|right|top"
+            android:hint="@string/alertName"
+            android:layout_weight="10"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:padding="5dp"/>
+
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:maxWidth="100dp"
+            android:minWidth="100dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/alert_value"
+            android:hint="0"
+            android:phoneNumber="true"
+            android:textAlignment="center"
+            android:gravity="center|center_vertical|center_horizontal"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/count_background"
+            android:textSize="30dp"
+            android:numeric="integer"
+            android:layout_gravity="bottom|right|top"
+            android:layout_weight="3"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"/>
+
+    <ImageButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:onClick="deleteWidget"
+            android:id="@+id/delete_button"
+            android:gravity="center_vertical|right"
+            android:src="@android:drawable/ic_menu_delete"
+            android:layout_gravity="bottom|right|top"
+            android:layout_margin="5dp"/>
+
+</LinearLayout>

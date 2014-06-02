@@ -39,12 +39,12 @@ public class AlertDataSource
     dbHelper.close();
   }
 
-  public Alert createAlert(long count_id)
+  public Alert createAlert(long count_id, int alert_value, String alert_text)
   {
     ContentValues values = new ContentValues();
     values.put(DbHelper.A_COUNT_ID, count_id);
-    values.put(DbHelper.A_ALERT, 0);
-    values.put(DbHelper.A_ALERT_TEXT, "");
+    values.put(DbHelper.A_ALERT, alert_value);
+    values.put(DbHelper.A_ALERT_TEXT, alert_text);
 
     long insertId = database.insert(DbHelper.ALERT_TABLE, null, values);
     Cursor cursor = database.query(DbHelper.ALERT_TABLE,
@@ -71,6 +71,22 @@ public class AlertDataSource
     long id = alert.id;
     System.out.println("Alert deleted with id: " + id);
     database.delete(DbHelper.ALERT_TABLE, DbHelper.A_ID + " = " + id, null);
+  }
+
+  public void deleteAlertById(long id)
+  {
+    System.out.println("Alert deleted with id: " + id);
+    database.delete(DbHelper.ALERT_TABLE, DbHelper.A_ID + " = " + id, null);
+  }
+
+  public void saveAlert(long alert_id, int alert_value, String alert_text)
+  {
+    ContentValues dataToInsert = new ContentValues();
+    dataToInsert.put(DbHelper.A_ALERT, alert_value);
+    dataToInsert.put(DbHelper.A_ALERT_TEXT, alert_text);
+    String where = DbHelper.A_ID + " = ?";
+    String[] whereArgs = {String.valueOf(alert_id)};
+    database.update(DbHelper.ALERT_TABLE, dataToInsert, where, whereArgs);
   }
 
   public List<Alert> getAllAlertsForCount(long count_id)
