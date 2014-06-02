@@ -152,20 +152,20 @@ public class CountOptionsActivity extends Activity implements SharedPreferences.
     for (int i=0; i < childcount; i++)
     {
       AlertCreateWidget acw = (AlertCreateWidget) dynamic_widget_area.getChildAt(i);
-      // skip this if there are null values
-      if (acw.getAlertValue() > 0 && !StringUtils.isEmpty(acw.getAlertName()))
+      if (StringUtils.isNotEmpty(acw.getAlertName()))
       {
-        continue;
-      }
-
-      // save or create
-      if (acw.getAlertId() == 0)
-      {
-        alertDataSource.createAlert(count_id,acw.getAlertValue(),acw.getAlertName());
+        // save or create
+        if (acw.getAlertId() == 0)
+        {
+          alertDataSource.createAlert(count_id, acw.getAlertValue(), acw.getAlertName());
+        } else
+        {
+          alertDataSource.saveAlert(acw.getAlertId(), acw.getAlertValue(), acw.getAlertName());
+        }
       }
       else
       {
-        alertDataSource.saveAlert(acw.getAlertId(), acw.getAlertValue(), acw.getAlertName());
+        Log.i(TAG, "Failed to save alert: " + acw.getAlertId());
       }
     }
 
@@ -193,13 +193,13 @@ public class CountOptionsActivity extends Activity implements SharedPreferences.
     deleteAnAlert = (Long) view.getTag();
     if (deleteAnAlert == 0)
     {
-      Log.i(TAG, "(1) View tag was " + String.valueOf(deleteAnAlert));
+      //Log.i(TAG, "(1) View tag was " + String.valueOf(deleteAnAlert));
       // the actual AlertCreateWidget is two levels up from the button in which it is embedded
       dynamic_widget_area.removeView((AlertCreateWidget) view.getParent().getParent());
     }
     else
     {
-      Log.i(TAG, "(2) View tag was " + String.valueOf(deleteAnAlert));
+      //Log.i(TAG, "(2) View tag was " + String.valueOf(deleteAnAlert));
       // before removing this widget it is necessary to do the following:
       // (1) Check the user is sure they want to delete it and, if so...
       // (2) Delete the associated alert from the database.

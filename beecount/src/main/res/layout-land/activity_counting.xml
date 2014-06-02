@@ -16,38 +16,48 @@
             <!-- insert the new counts as they are created in here -->
             </LinearLayout>
             <LinearLayout
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_weight="5"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center">
+                    android:layout_height="wrap_content">
 
-                <Space
-                        android:layout_width="20px"
-                        android:layout_height="20px"
-                        android:layout_weight="1"/>
+                <LinearLayout
+                    android:id="@+id/countNotesLayout"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <!-- insert the notes here as they are created -->
+                </LinearLayout>
 
-                <Button
-                        android:layout_width="wrap_content"
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/saveCountsButton"
-                        android:id="@+id/saveExit"
-                        android:onClick="saveAndExit"
-                        android:layout_weight="1"/>
-
-                <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/editProjTitle"
-                        android:id="@+id/editProject"
-                        android:onClick="editProject"
-                        android:layout_weight="1"/>
-
-                <Space
-                        android:layout_width="20px"
-                        android:layout_height="20px"
-                        android:layout_weight="1"/>
-            </LinearLayout>
+                        android:layout_gravity="center">
+                    <Space
+                            android:layout_width="20px"
+                            android:layout_height="20px"
+                            android:layout_weight="1"/>
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/saveCountsButton"
+                            android:id="@+id/saveExit"
+                            android:onClick="saveAndExit"
+                            android:layout_weight="1"/>
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/editProjTitle"
+                            android:id="@+id/editProject"
+                            android:onClick="editProject"
+                            android:layout_weight="1"/>
+                    <Space
+                            android:layout_width="20px"
+                            android:layout_height="20px"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+                </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

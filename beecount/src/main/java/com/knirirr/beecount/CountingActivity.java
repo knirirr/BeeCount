@@ -42,6 +42,7 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
   SharedPreferences prefs;
   long project_id;
   LinearLayout count_area;
+  LinearLayout notes_area;
 
   // preferences
   private boolean toastPref;
@@ -74,6 +75,7 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
     counting_screen.setBackgroundDrawable(beeCount.getBackground());
 
     count_area = (LinearLayout) findViewById(R.id.countCountLayout);
+    notes_area = (LinearLayout) findViewById(R.id.countNotesLayout);
 
     /*
      * Everything should be obtainable from the project_id.
@@ -106,6 +108,7 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
 
     // clear any existing views
     count_area.removeAllViews();
+    notes_area.removeAllViews();
 
     // setup the data sources
     projectDataSource = new ProjectDataSource(this);
@@ -160,7 +163,7 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
       {
         NotesWidget project_notes = new NotesWidget(this, null);
         project_notes.setNotes(project.notes);
-        count_area.addView(project_notes);
+        notes_area.addView(project_notes);
       }
     }
 
@@ -187,7 +190,7 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
     {
       NotesWidget extra_notes = new NotesWidget(this,null);
       extra_notes.setNotes(StringUtils.join(extras,"\n"));
-      count_area.addView(extra_notes);
+      notes_area.addView(extra_notes);
     }
   }
 
