@@ -1,7 +1,10 @@
 package com.knirirr.beecount;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Display;
@@ -16,6 +20,9 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created by milo on 14/05/2014.
@@ -26,6 +33,7 @@ public class BeeCountApplication extends Application
   public BitmapDrawable ob;
   public Long project_id;
   private static SharedPreferences prefs;
+
 
   @Override
   public void onCreate()
@@ -115,5 +123,7 @@ public class BeeCountApplication extends Application
   {
     return prefs;
   }
+
+
 
 }

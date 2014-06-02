@@ -143,6 +143,11 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
       startActivity(new Intent(this, SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
       return true;
     }
+    else if (id == R.id.newProj)
+    {
+      startActivity(new Intent(this, NewProjectActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+      return true;
+    }
     return super.onOptionsItemSelected(item);
   }
 

@@ -6,4 +6,9 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never" />
+    <item android:id="@+id/newProj"
+          android:title="@string/newProjTitle"
+          app:showAsAction="ifRoom"
+          android:icon="@android:drawable/ic_menu_add">
+    </item>
 </menu>

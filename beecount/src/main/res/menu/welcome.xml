@@ -5,5 +5,16 @@
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"
+        android:icon="@android:drawable/ic_menu_preferences"
         app:showAsAction="never" />
+    <item android:id="@+id/exportMenu"
+        android:title="@string/exportMenu"
+        app:showAsAction="never"
+        android:icon="@android:drawable/ic_menu_save">
+    </item>
+    <item android:id="@+id/importMenu"
+        android:title="@string/importMenu"
+        app:showAsAction="never"
+        android:icon="@android:drawable/ic_menu_upload">
+    </item>
 </menu>
