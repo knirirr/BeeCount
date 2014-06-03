@@ -154,6 +154,7 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
   public void onSharedPreferenceChanged(SharedPreferences prefs, String key)
   {
     LinearLayout list_view = (LinearLayout) findViewById(R.id.list_view);
+    list_view.setBackgroundDrawable(null);
     list_view.setBackgroundDrawable(beeCount.setBackground());
   }
 }

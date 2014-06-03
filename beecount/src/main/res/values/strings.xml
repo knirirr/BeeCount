@@ -13,7 +13,7 @@
     <string name="app_name">BeeCount</string>
     <string name="customMissing">Your custom background image could not be found; the default will be used instead.</string>
     <string name="customNotDefined">A custom background image is not defined; the default will be used instead.</string>
-    <string name="customTooBig">Sorry, your custom image is too large and has caused an out of memory error.</string>
+    <string name="customTooBig">Sorry, trying to set the background image has caused an out of memory error.</string>
 
     <!-- WelcomeActivity -->
     <string name="hello">Welcome to BeeCount! The purpose of this app is to store count details for several projects and allow you to count each separately. Each project may have multiple \'counts\', each being something such as a pattern repeat or a row which you wish to track. Use the buttons below to create new projects or manage existing ones.\n\n By editing a project after creating it you can also link counts together so that one increments another.\n\nSettings can be changed by accessing the menu on this screen (menu button or 3-dot overflow menu above).\n\nShould you have any questions you may visit the Ravelry group at http://www.ravelry.com/groups/beecount, or email bug reports to knirirr@gmail.com.\n</string>

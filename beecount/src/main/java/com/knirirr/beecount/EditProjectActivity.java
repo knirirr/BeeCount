@@ -242,6 +242,7 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
   public void onSharedPreferenceChanged(SharedPreferences prefs, String key)
   {
     ScrollView counting_screen = (ScrollView) findViewById(R.id.editingScreen);
+    counting_screen.setBackgroundDrawable(null);
     counting_screen.setBackgroundDrawable(beeCount.setBackground());
   }
 }

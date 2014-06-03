@@ -459,6 +459,7 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
   public void onSharedPreferenceChanged(SharedPreferences prefs, String key)
   {
     ScrollView counting_screen = (ScrollView) findViewById(R.id.countingScreen);
+    counting_screen.setBackgroundDrawable(null);
     counting_screen.setBackgroundDrawable(beeCount.setBackground());
     getPrefs();
   }

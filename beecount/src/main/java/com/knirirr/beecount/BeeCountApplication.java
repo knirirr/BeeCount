@@ -1,29 +1,20 @@
 package com.knirirr.beecount;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 /**
  * Created by milo on 14/05/2014.
@@ -73,6 +64,8 @@ public class BeeCountApplication extends Application
 
   public BitmapDrawable setBackground()
   {
+    ob = null;
+
     String backgroundPref = prefs.getString("pref_back", "default");
     String pictPref = prefs.getString("imagePath", "");
 
@@ -161,7 +154,15 @@ public class BeeCountApplication extends Application
 
     // Decode bitmap with inSampleSize set
     options.inJustDecodeBounds = false;
-    return BitmapFactory.decodeResource(getResources(), resId, options);
+    try
+    {
+      return BitmapFactory.decodeResource(getResources(), resId, options);
+    }
+    catch (OutOfMemoryError e)
+    {
+      Toast.makeText(getApplicationContext(), getString(R.string.customTooBig), Toast.LENGTH_SHORT).show();
+      return null;
+    }
   }
 
 }

@@ -217,6 +217,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
   public void onSharedPreferenceChanged(SharedPreferences prefs, String key)
   {
     LinearLayout baseLayout = (LinearLayout) findViewById(R.id.newprojScreen);
+    baseLayout.setBackgroundDrawable(null);
     baseLayout.setBackgroundDrawable(beeCount.setBackground());
   }
 
