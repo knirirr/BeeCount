@@ -21,6 +21,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import sheetrock.panda.changelog.ChangeLog;
+
 
 public class WelcomeActivity extends Activity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
@@ -28,6 +30,7 @@ public class WelcomeActivity extends Activity implements SharedPreferences.OnSha
   private static String TAG = "BeeCountWelcomeActivity";
   BeeCountApplication beeCount;
   SharedPreferences prefs;
+  ChangeLog cl;
 
   // import/export stuff
   File infile;
@@ -47,14 +50,13 @@ public class WelcomeActivity extends Activity implements SharedPreferences.OnSha
     prefs = BeeCountApplication.getPrefs();
     prefs.registerOnSharedPreferenceChangeListener(this);
 
-    /*
-    String backgroundPref = prefs.getString("pref_back", "default");
-    Boolean fontPref = prefs.getBoolean("pref_font", true);
-    String pictPref = prefs.getString("imagePath", "");
-    */
-
     LinearLayout baseLayout = (LinearLayout) findViewById(R.id.baseLayout);
     baseLayout.setBackgroundDrawable(beeCount.getBackground());
+
+    cl = new ChangeLog(this);
+    if (cl.firstRun())
+      cl.getLogDialog().show();
+
 
   }
 
@@ -89,6 +91,13 @@ public class WelcomeActivity extends Activity implements SharedPreferences.OnSha
       importDb();
       return true;
     }
+    else if (id == R.id.changeLog)
+    {
+      cl.getFullLogDialog().show();
+      return true;
+    }
+
+
     return super.onOptionsItemSelected(item);
   }
 

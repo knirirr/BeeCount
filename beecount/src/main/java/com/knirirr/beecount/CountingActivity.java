@@ -5,16 +5,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.knirirr.beecount.database.Alert;
@@ -76,19 +73,6 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
 
     count_area = (LinearLayout) findViewById(R.id.countCountLayout);
     notes_area = (LinearLayout) findViewById(R.id.countNotesLayout);
-
-    /*
-     * Everything should be obtainable from the project_id.
-     * It should not be possible to start this activity without a project_id having
-     * been supplied, hence the error below not being caught.
-     */
-    /*
-    Bundle bundle = getIntent().getExtras();
-    if(bundle !=null)
-    {
-      project_id = bundle.getLong("project_id");
-    }
-    */
 
   }
 
@@ -229,6 +213,9 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
   public void editProject(View view)
   {
     // some stuff to go here
+    beeCount.project_id = project_id;
+    Intent intent = new Intent(CountingActivity.this, EditProjectActivity.class);
+    startActivity(intent);
   }
 
   //**************************************

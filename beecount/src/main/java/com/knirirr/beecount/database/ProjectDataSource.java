@@ -89,6 +89,16 @@ public class ProjectDataSource
 
   }
 
+  public void saveProject(Project project)
+  {
+    ContentValues dataToInsert = new ContentValues();
+    dataToInsert.put(DbHelper.P_NAME, project.name);
+    dataToInsert.put(DbHelper.P_NOTES, project.notes);
+    String where = DbHelper.P_ID + " = ?";
+    String[] whereArgs = {String.valueOf(project.id)};
+    database.update(DbHelper.PROJ_TABLE, dataToInsert, where, whereArgs);
+  }
+
   public List<Project> getAllProjects()
   {
     List<Project> projects = new ArrayList<Project>();

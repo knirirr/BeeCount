@@ -20,7 +20,7 @@ public class AddAlertWidget extends LinearLayout
     super(context, attrs);
 
     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    inflater.inflate(R.layout.add_alert_widget, this, true);
+    inflater.inflate(R.layout.widget_add_alert, this, true);
     textView = (TextView) findViewById(R.id.add_alert_text);
   }
 

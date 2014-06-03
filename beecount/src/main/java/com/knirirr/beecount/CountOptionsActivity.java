@@ -73,6 +73,15 @@ public class CountOptionsActivity extends Activity implements SharedPreferences.
       count_id = extras.getLong("count_id");
     }
 
+    /*
+     * Just in case this activity starts up without an intent having been supplied, e.g. when the user
+     * resumes after having done some editing.
+     */
+    if (count_id == 0)
+    {
+      startActivity(new Intent(this, WelcomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+    }
+
   }
 
   @Override

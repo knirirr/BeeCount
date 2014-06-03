@@ -29,10 +29,5 @@
         android:title="@string/toast_away"
         android:summary="@string/toast_away_summ"
         android:defaultValue="false" />
-    <EditTextPreference
-        android:title="@string/spinMax"
-        android:key="spinmax"
-        android:inputType="number"
-        android:summary="@string/spinMaxExplain" />
     </PreferenceCategory>
 </PreferenceScreen>

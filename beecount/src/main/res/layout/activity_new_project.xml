@@ -34,6 +34,7 @@
        android:layout_height="wrap_content"
        android:onClick="newCount"
        android:text="@string/labelNewCountButton"
+       android:layout_weight="1"
        android:maxLines="1">
       </Button>
       <Button
@@ -42,6 +43,7 @@
        android:layout_height="wrap_content"
        android:onClick="clearCount"
        android:text="@string/clearCountButton"
+       android:layout_weight="1"
        android:maxLines="1">
       </Button>
       <Button
@@ -50,6 +52,7 @@
        android:layout_height="wrap_content"
        android:onClick="saveProject"
        android:text="@string/labelNewprojSaveButton"
+       android:layout_weight="1"
        android:maxLines="1">
       </Button>
   </LinearLayout>

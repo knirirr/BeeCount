@@ -1,16 +1,72 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.knirirr.beecount.EditProjectActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:id="@+id/editingScreen"
+            android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+         <LinearLayout
+                android:id="@+id/editingNotesLayout"
+                android:orientation="vertical"
+                android:fillViewport="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <!-- insert project title and notes -->
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/editingCountsLayout"
+                android:orientation="vertical"
+                android:fillViewport="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <!-- insert counts as they are created in here -->
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/editingLinksLayout"
+                android:orientation="vertical"
+                android:fillViewport="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <!-- insert links as they are created in here -->
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:shrinkColumns="*"
+                android:stretchColumns="*">
+            <Button
+                    android:id="@+id/addNewCountButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="newCount"
+                    android:layout_weight="1"
+                    android:text="@string/labelNewCountButton"
+                    android:maxLines="1">
+            </Button>
+            <Button
+                    android:id="@+id/clearCountButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="newLink"
+                    android:layout_weight="1"
+                    android:text="@string/addLinkButton"
+                    android:maxLines="1">
+            </Button>
+            <Button
+                    android:id="@+id/newprojSaveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="saveAndExit"
+                    android:layout_weight="1"
+                    android:text="@string/labelNewprojSaveButton"
+                    android:maxLines="1">
+            </Button>
+        </LinearLayout>
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>
 
-</RelativeLayout>

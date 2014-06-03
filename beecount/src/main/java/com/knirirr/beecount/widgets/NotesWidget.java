@@ -21,7 +21,7 @@ public class NotesWidget extends LinearLayout
     super(context, attrs);
 
     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    inflater.inflate(R.layout.notes_widget, this, true);
+    inflater.inflate(R.layout.widget_notes, this, true);
     textView = (TextView) findViewById(R.id.notes_text);
   }
 

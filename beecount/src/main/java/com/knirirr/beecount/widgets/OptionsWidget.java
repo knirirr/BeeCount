@@ -22,7 +22,7 @@ public class OptionsWidget extends LinearLayout
     super(context, attrs);
 
     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    inflater.inflate(R.layout.options_widget, this, true);
+    inflater.inflate(R.layout.widget_options, this, true);
     instructions = (TextView) findViewById(R.id.help_text);
     number = (EditText) findViewById(R.id.count_parameter_edit);
   }

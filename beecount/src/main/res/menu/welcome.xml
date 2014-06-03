@@ -17,4 +17,9 @@
         app:showAsAction="never"
         android:icon="@android:drawable/ic_menu_upload">
     </item>
+    <item android:id="@+id/changeLog"
+        android:title="@string/changeLogTitle"
+        app:showAsAction="never"
+        android:icon="@android:drawable/ic_menu_help">
+    </item>
 </menu>

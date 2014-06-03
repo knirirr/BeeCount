@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.knirirr.beecount.R;
 
@@ -26,7 +25,7 @@ public class AlertCreateWidget extends LinearLayout
     super(context, attrs);
 
     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    inflater.inflate(R.layout.alert_create_widget, this, true);
+    inflater.inflate(R.layout.widget_alert_create, this, true);
     alert_name = (EditText) findViewById(R.id.alert_name);
     alert_value = (EditText) findViewById(R.id.alert_value);
     alert_id = 0;
