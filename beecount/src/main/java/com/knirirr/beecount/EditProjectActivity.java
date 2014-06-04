@@ -1,6 +1,8 @@
 package com.knirirr.beecount;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,6 +21,8 @@ import com.knirirr.beecount.database.Link;
 import com.knirirr.beecount.database.LinkDataSource;
 import com.knirirr.beecount.database.Project;
 import com.knirirr.beecount.database.ProjectDataSource;
+import com.knirirr.beecount.widgets.AlertCreateWidget;
+import com.knirirr.beecount.widgets.CountEditWidget;
 import com.knirirr.beecount.widgets.CountingWidget;
 import com.knirirr.beecount.widgets.EditTitleWidget;
 import com.knirirr.beecount.widgets.NotesWidget;
@@ -51,6 +55,9 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
   LinearLayout links_area;
   EditTitleWidget etw;
   EditTitleWidget enw;
+  private View markedForDelete;
+  private long idToDelete;
+  private AlertDialog.Builder are_you_sure;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -116,6 +123,10 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
     for (Count count : counts)
     {
       // widget
+      CountEditWidget cew = new CountEditWidget(this,null);
+      cew.setCountName(count.name);
+      cew.setCountId(count.id);
+      counts_area.addView(cew);
     }
 
     // links
@@ -137,7 +148,6 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
     super.onPause();
 
     // save the data
-    saveData();
     beeCount.project_id = project_id;
 
     // close the data sources
@@ -176,6 +186,31 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
     }
 
     // save counts
+    int childcount = counts_area.getChildCount();
+    for (int i=0; i < childcount; i++)
+    {
+      Log.i(TAG, "Childcount: " + String.valueOf(childcount));
+      CountEditWidget cew = (CountEditWidget) counts_area.getChildAt(i);
+      if (StringUtils.isNotEmpty(cew.getCountName()))
+      {
+        Log.i(TAG, "CEW: " + String.valueOf(cew.countId) + ", " + cew.getCountName());
+        // save or create
+        if (cew.countId == 0)
+        {
+          Log.i(TAG, "Creating!");
+          countDataSource.createCount(project_id,cew.getCountName());
+        }
+        else
+        {
+          Log.i(TAG, "Updating!");
+          countDataSource.updateCountName(cew.countId,cew.getCountName());
+        }
+      }
+      else
+      {
+        Log.i(TAG, "Failed to save count: " + cew.countId);
+      }
+    }
 
     // save/create links
   }
@@ -191,29 +226,66 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
 
   public void newCount(View view)
   {
-
+    CountEditWidget cew = new CountEditWidget(this,null);
+    counts_area.addView(cew);
   }
 
   /*
    * These are required for purging counts (with associated alerts) and links (with associated counts and alerts)
    */
 
-  public void deleteLink()
+  public void deleteLink(View view)
   {
-    // find counts and delete with deleteCount()
+    // find counts and delete them, deleting their alerts first
 
     // then delete link and remove widget from screen
 
   }
 
-  public void deleteCount()
+  public void deleteCount(View view)
   {
-    // find and delete alerts
 
-    // then delete count and remove widget from sdreen
+    /*
+     * These global variables keep a track of the view containing an alert to be deleted and also the id
+     * of the alert itself, to make sure that they're available inside the code for the alert dialog by
+     * which they will be deleted.
+     */
+    markedForDelete = view;
+    idToDelete = (Long) view.getTag();
+    if (idToDelete == 0)
+    {
+      // the actual CountEditWidget is two levels up from the button in which it is embedded
+      counts_area.removeView((CountEditWidget) view.getParent().getParent());
+    }
+    else
+    {
+      //Log.i(TAG, "(2) View tag was " + String.valueOf(deleteAnAlert));
+      // before removing this widget it is necessary to do the following:
+      // (1) Check the user is sure they want to delete it and, if so...
+      // (2) Delete the associated alert from the database.
+      are_you_sure = new AlertDialog.Builder(this);
+      are_you_sure.setTitle(getString(R.string.deleteCount));
+      are_you_sure.setMessage(getString(R.string.reallyDeleteCount));
+      are_you_sure.setPositiveButton(R.string.yesDeleteIt, new DialogInterface.OnClickListener()
+      {
+        public void onClick(DialogInterface dialog, int whichButton)
+        {
+          // go ahead for the delete
+          countDataSource.deleteCountById(idToDelete);
+          counts_area.removeView((CountEditWidget) markedForDelete.getParent().getParent());
+        }
+      });
+      are_you_sure.setNegativeButton(R.string.noCancel, new DialogInterface.OnClickListener()
+      {
+        public void onClick(DialogInterface dialog, int whichButton)
+        {
+          // Cancelled.
+        }
+      });
+      are_you_sure.show();
+    }
 
   }
-
 
 
   @Override

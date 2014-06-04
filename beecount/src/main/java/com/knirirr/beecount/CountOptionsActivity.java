@@ -146,6 +146,21 @@ public class CountOptionsActivity extends Activity implements SharedPreferences.
   protected void onPause()
   {
     super.onPause();
+
+    // finally, close the database
+    countDataSource.close();
+    alertDataSource.close();
+
+  }
+
+  public void saveAndExit(View view)
+  {
+    saveData();
+    super.finish();
+  }
+
+  public void saveData()
+  {
     Toast.makeText(CountOptionsActivity.this, getString(R.string.projSaving) + " " + count.name + "!", Toast.LENGTH_SHORT).show();
     count.auto_reset = ar_value_widget.getParameterValue();
     count.reset_level = ar_level_widget.getParameterValue();
@@ -177,12 +192,6 @@ public class CountOptionsActivity extends Activity implements SharedPreferences.
         Log.i(TAG, "Failed to save alert: " + acw.getAlertId());
       }
     }
-
-
-    // finally, close the database
-    countDataSource.close();
-    alertDataSource.close();
-
   }
 
   public void addAnAlert(View view)

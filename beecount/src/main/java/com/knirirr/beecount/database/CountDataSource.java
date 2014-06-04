@@ -81,6 +81,15 @@ public class CountDataSource
     database.delete(DbHelper.ALERT_TABLE, DbHelper.A_COUNT_ID  + " = " + id, null);
   }
 
+  public void deleteCountById(long id)
+  {
+    System.out.println("Count deleted with id: " + id);
+    database.delete(DbHelper.COUNT_TABLE, DbHelper.C_ID + " = " + id, null);
+
+    // delete associated alerts
+    database.delete(DbHelper.ALERT_TABLE, DbHelper.A_COUNT_ID  + " = " + id, null);
+  }
+
   public void saveCount(Count count)
   {
     ContentValues dataToInsert = new ContentValues();
@@ -90,6 +99,15 @@ public class CountDataSource
     dataToInsert.put(DbHelper.C_RESET_LEVEL, count.reset_level);
     String where = DbHelper.C_ID + " = ?";
     String[] whereArgs = {String.valueOf(count.id)};
+    database.update(DbHelper.COUNT_TABLE, dataToInsert, where, whereArgs);
+  }
+
+  public void updateCountName(long id, String name)
+  {
+    ContentValues dataToInsert = new ContentValues();
+    dataToInsert.put(DbHelper.C_NAME, name);
+    String where = DbHelper.C_ID + " = ?";
+    String[] whereArgs = {String.valueOf(id)};
     database.update(DbHelper.COUNT_TABLE, dataToInsert, where, whereArgs);
   }
 
