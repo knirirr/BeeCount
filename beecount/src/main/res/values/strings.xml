@@ -112,7 +112,8 @@
     <string name="instruction_reset">will reset</string>
     <string name="every">every</string>
     <string name="removeLink">Remove link</string>
-    <string name="incr"> will increment </string>
+    <string name="incr_up"> will increase </string>
+    <string name="incr_down"> will decrease </string>
     <string name="incr_reset"> will reset </string>
     <string name="incr_start"> starting at </string>
     <!-- <string name="incr_decr"> will decrease </string> -->

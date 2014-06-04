@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginLeft="5dp"
+              android:layout_marginTop="5dp"
+              android:layout_marginRight="5dp"
+              android:paddingLeft="5dp"
+              android:paddingRight="5dp"
+              android:paddingBottom="5dp"
+              android:background="@drawable/rounded_corner">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            <Spinner
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/masterSpinner"/>
+
+            <Spinner
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/choiceSpinner"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            <Spinner
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/slaveSpinner"/>
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:text="@string/every"
+                    android:id="@+id/everyText"/>
+
+            <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:background="@drawable/count_background"
+                    android:id="@+id/linkIncrement"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+        <ImageButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:onClick="deleteLink"
+                android:id="@+id/deleteLink"
+                android:gravity="center_vertical|right"
+                android:src="@android:drawable/ic_menu_delete"
+                android:layout_gravity="bottom|right|top"
+                android:layout_margin="5dp"/>
+    </LinearLayout>
+
+</LinearLayout>

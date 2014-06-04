@@ -25,6 +25,7 @@ import com.knirirr.beecount.widgets.AlertCreateWidget;
 import com.knirirr.beecount.widgets.CountEditWidget;
 import com.knirirr.beecount.widgets.CountingWidget;
 import com.knirirr.beecount.widgets.EditTitleWidget;
+import com.knirirr.beecount.widgets.LinkEditWidget;
 import com.knirirr.beecount.widgets.NotesWidget;
 
 import org.apache.commons.lang3.StringUtils;
@@ -221,7 +222,8 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
 
   public void newLink(View view)
   {
-
+    LinkEditWidget lew = new LinkEditWidget(this,null);
+    links_area.addView(lew);
   }
 
   public void newCount(View view)
