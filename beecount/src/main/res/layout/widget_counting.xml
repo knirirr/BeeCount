@@ -36,12 +36,13 @@
                 android:layout_height="wrap_content" >
 
                 <!-- perhaps replace with ImageButton http://developer.android.com/guide/topics/ui/controls/button.html -->
-                <Button
+                <ImageButton
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="edit"
                     android:text="Edit"
+                    android:src="@android:drawable/ic_menu_edit"
                     android:id="@+id/buttonEdit"
                     android:layout_below="@+id/countName"
                     android:layout_weight="1"/>
@@ -90,7 +91,7 @@
             android:gravity="center|center_vertical|center_horizontal"
             android:textColor="#FFFFFF"
             android:background="@drawable/count_background"
-            android:textSize="48dp"
+            android:textSize="38dp"
             android:layout_marginBottom="5dp"
             android:numeric="integer"
             android:layout_gravity="bottom|left|right|top"/>

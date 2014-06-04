@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -47,7 +48,7 @@ public class CountingWidget extends RelativeLayout
     countUpButton.setTag(count.id);
     Button countDownButton = (Button) findViewById(R.id.buttonDown);
     countDownButton.setTag(count.id);
-    Button editButton = (Button) findViewById(R.id.buttonEdit);
+    ImageButton editButton = (ImageButton) findViewById(R.id.buttonEdit);
     editButton.setTag(count.id);
   }
 

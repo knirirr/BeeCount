@@ -54,8 +54,8 @@
 
     <!-- CountingActivity -->
     <string name="titleCount">Start Counting!</string>
-    <string name="buttonCountUp"><b>+</b></string>
-    <string name="buttonCountDown"><b>-</b></string>
+    <string name="buttonCountUp"><b>&#43;</b></string>
+    <string name="buttonCountDown"><b>&#45;</b></string>
     <string name="saveCountsButton">Save &amp; exit</string>
     <string name="bizarreError">Snaaks!</string>
     <string name="projSaving">Saving </string>
@@ -135,8 +135,6 @@
     <string name="pref_bg_summ">Choose default, custom or no background image.</string>
     <string name="pref_font">Font</string>
     <string name="pref_font_summ">Use the default fancy font (everywhere but here ;-).</string>
-    <string name="pref_swap">Swap +/-</string>
-    <string name="pref_swap_summ">Change the position of the + and - buttons.</string>
     <string name="pref_awake">Keep screen on</string>
     <string name="pref_awake_summ">Prevent screen from sleeping whilst counting.</string>
     <string name="chooseImg">Image</string>
