@@ -264,7 +264,7 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
     idToDelete = (Long) view.getTag();
     if (idToDelete == 0)
     {
-      // the actual CountEditWidget is three levels up from the button in which it is embedded
+      // the actual CountEditWidget is two levels up from the button in which it is embedded
       counts_area.removeView((CountEditWidget) view.getParent().getParent());
     }
     else
