@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,6 +30,9 @@ public class LinkEditWidget extends LinearLayout
   Spinner slaveSpinner;
   Spinner choiceSpinner;
   EditText linkIncrement;
+  ImageButton deleteLink;
+
+  public long linkId;
 
 
   public LinkEditWidget(Context context, AttributeSet attrs)
@@ -41,6 +45,8 @@ public class LinkEditWidget extends LinearLayout
     slaveSpinner = (Spinner) findViewById(R.id.slaveSpinner);
     choiceSpinner = (Spinner) findViewById(R.id.choiceSpinner);
     linkIncrement = (EditText) findViewById(R.id.linkIncrement);
+    deleteLink = (ImageButton) findViewById(R.id.deleteLink);
+    deleteLink.setTag(Long.valueOf(0));
 
     /*
      * Some sort of static array would be better here, and should be added when a cunning idea for how
@@ -51,10 +57,19 @@ public class LinkEditWidget extends LinearLayout
     choices.add(getResources().getString(R.string.incr_down));
     choices.add(getResources().getString(R.string.incr_reset));
 
-    /*
-     * This is to make sure that the text in the spinner is white.
-     */
-    ArrayAdapter<String> adapterChoice = new ArrayAdapter<String>(getContext(), R.layout.custom_spinner, choices)
+    setSpinnerAdapter("choice",choices);
+
+  }
+
+  public void setLinkId(long id)
+  {
+    linkId = id;
+    deleteLink.setTag(id);
+  }
+
+  public void setSpinnerAdapter(String spinner, ArrayList<String> array)
+  {
+    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.custom_spinner, array)
     {
       public View getView(int position, View convertView, ViewGroup parent)
       {
@@ -69,8 +84,18 @@ public class LinkEditWidget extends LinearLayout
         return v;
       }
     };
-
-    choiceSpinner.setAdapter(adapterChoice);
+    if (spinner.equals("master"))
+    {
+      masterSpinner.setAdapter(adapter);
+    }
+    else if (spinner.equals("slave"))
+    {
+      slaveSpinner.setAdapter(adapter);
+    }
+    else if (spinner.equals("choice"))
+    {
+      choiceSpinner.setAdapter(adapter);
+    }
 
   }
 

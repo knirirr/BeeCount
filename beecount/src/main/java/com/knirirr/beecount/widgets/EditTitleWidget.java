@@ -41,4 +41,10 @@ public class EditTitleWidget extends LinearLayout
     widget_title.setText(title);
   }
 
+  public void setHint(String hint)
+  {
+    project_name.setHint(hint);
+  }
+
+
 }

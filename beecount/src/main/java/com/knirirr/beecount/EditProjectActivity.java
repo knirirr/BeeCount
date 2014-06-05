@@ -115,6 +115,7 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
     enw = new EditTitleWidget(this,null);
     enw.setProjectName(project.notes);
     enw.setWidgetTitle(getString(R.string.notesHere));
+    enw.setHint(getString(R.string.notesHint));
     notes_area.addView(enw);
 
     // counts
@@ -238,15 +239,22 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
 
   public void deleteLink(View view)
   {
-    // find counts and delete them, deleting their alerts first
-
-    // then delete link and remove widget from screen
+    markedForDelete = view;
+    idToDelete = (Long) view.getTag();
+    if (idToDelete == 0)
+    {
+      // the actual LinkEditWidget is three levels up from the button in which it is embedded
+      links_area.removeView((LinkEditWidget) view.getParent().getParent().getParent());
+    }
+    else
+    {
+      // TODO - finish this
+    }
 
   }
 
   public void deleteCount(View view)
   {
-
     /*
      * These global variables keep a track of the view containing an alert to be deleted and also the id
      * of the alert itself, to make sure that they're available inside the code for the alert dialog by
@@ -256,7 +264,7 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
     idToDelete = (Long) view.getTag();
     if (idToDelete == 0)
     {
-      // the actual CountEditWidget is two levels up from the button in which it is embedded
+      // the actual CountEditWidget is three levels up from the button in which it is embedded
       counts_area.removeView((CountEditWidget) view.getParent().getParent());
     }
     else

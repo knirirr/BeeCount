@@ -53,7 +53,9 @@
                     android:layout_height="wrap_content"
                     android:textColor="#FFFFFF"
                     android:text="@string/every"
-                    android:id="@+id/everyText"/>
+                    android:id="@+id/everyText"
+                    android:gravity="center|center_vertical"
+                    android:padding="5dp"/>
 
             <EditText
                     android:layout_width="0dp"
@@ -62,7 +64,12 @@
                     android:inputType="number"
                     android:ems="10"
                     android:background="@drawable/count_background"
-                    android:id="@+id/linkIncrement"/>
+                    android:id="@+id/linkIncrement"
+                    android:padding="5dp"
+                    android:textColor="#FFFFFF"
+                    android:hint="0"
+                    android:gravity="center|center_vertical|center_horizontal"
+                    android:layout_gravity="right"/>
         </LinearLayout>
     </LinearLayout>
 

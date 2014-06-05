@@ -121,6 +121,7 @@
     <string name="randomFail">Sorry, an unexpected error occurred.</string>
     <string name="dodgyFormat">Save failed; please check the count values.</string>
     <string name="notesHere">Notes</string>
+    <string name="notesHint">Type some notes here...</string>
     <string name="deleteCount">Delete Count</string>
     <string name="reallyDeleteCount">Are you sure you\'d like to do this? This count will be deleted immediately.</string>
 
