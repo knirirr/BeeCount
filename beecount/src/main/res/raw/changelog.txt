@@ -23,8 +23,9 @@ $ 1.9.0
   % Version 1.9.0
   _ 2014-06-03
   ! First release of the Beta for BeeCount 2.0
-    * Everything working except project editing.
     * Multiple alerts and tablet layout added.
+    * Various other UI improvements.
+    * Much code refactoring to make maintenance and further development easier.
 $ END_OF_CHANGE_LOG
   </body>
 </html>
