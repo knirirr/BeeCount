@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by milo on 04/06/2014.
@@ -33,6 +34,8 @@ public class LinkEditWidget extends LinearLayout
   ImageButton deleteLink;
 
   public long linkId;
+  public ArrayList<String> countNames;
+  public ArrayList<Long> countIds;
 
 
   public LinkEditWidget(Context context, AttributeSet attrs)
@@ -53,11 +56,14 @@ public class LinkEditWidget extends LinearLayout
      * to do it springs to mind.
      */
     ArrayList<String> choices = new ArrayList<String>();
+    choices.add(getResources().getString(R.string.incr_reset));
     choices.add(getResources().getString(R.string.incr_up));
     choices.add(getResources().getString(R.string.incr_down));
-    choices.add(getResources().getString(R.string.incr_reset));
 
-    setSpinnerAdapter("choice",choices);
+    setSpinnerAdapter("choice", choices);
+
+    ArrayList<String> countNames = new ArrayList<String>();
+    ArrayList<Long> countIds = new ArrayList<Long>();
 
   }
 
@@ -67,7 +73,19 @@ public class LinkEditWidget extends LinearLayout
     deleteLink.setTag(id);
   }
 
-  public void setSpinnerAdapter(String spinner, ArrayList<String> array)
+  public void setCountNames(ArrayList<String> names)
+  {
+    countNames = names;
+    setSpinnerAdapter("master", names);
+    setSpinnerAdapter("slave", names);
+  }
+
+  public void setCountIds(ArrayList<Long> ids)
+  {
+    countIds = ids;
+  }
+
+  private void setSpinnerAdapter(String spinner, ArrayList<String> array)
   {
     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.custom_spinner, array)
     {
@@ -77,7 +95,8 @@ public class LinkEditWidget extends LinearLayout
         ((TextView) v).setTextColor(Color.WHITE);
         return v;
       }
-      public View getDropDownView(int position,  View convertView,  ViewGroup parent)
+
+      public View getDropDownView(int position, View convertView, ViewGroup parent)
       {
         View v = super.getDropDownView(position, convertView, parent);
         ((TextView) v).setTextColor(Color.WHITE);
@@ -87,16 +106,51 @@ public class LinkEditWidget extends LinearLayout
     if (spinner.equals("master"))
     {
       masterSpinner.setAdapter(adapter);
-    }
-    else if (spinner.equals("slave"))
+    } else if (spinner.equals("slave"))
     {
       slaveSpinner.setAdapter(adapter);
-    }
-    else if (spinner.equals("choice"))
+    } else if (spinner.equals("choice"))
     {
       choiceSpinner.setAdapter(adapter);
     }
 
+  }
+
+  public long getMasterId()
+  {
+    return countIds.get(masterSpinner.getSelectedItemPosition());
+  }
+
+  public long getSlaveId()
+  {
+    return countIds.get(slaveSpinner.getSelectedItemPosition());
+  }
+
+  public int getChoice()
+  {
+    return choiceSpinner.getSelectedItemPosition();
+  }
+
+  public int getLinkIncrement()
+  {
+    try
+    {
+      return Integer.valueOf(linkIncrement.getText().toString());
+    }
+    catch (NumberFormatException e)
+    {
+      return 0;
+    }
+  }
+
+  public String getMasterName()
+  {
+    return masterSpinner.getSelectedItem().toString();
+  }
+
+  public String getSlaveName()
+  {
+    return slaveSpinner.getSelectedItem().toString();
   }
 
 }

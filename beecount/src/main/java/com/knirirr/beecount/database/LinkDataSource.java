@@ -70,6 +70,7 @@ public class LinkDataSource
     return newlink;
   }
 
+
   public void deleteLink(Link link)
   {
     long id = link.id;

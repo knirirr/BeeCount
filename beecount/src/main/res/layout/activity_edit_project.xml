@@ -24,6 +24,14 @@
             <!-- insert counts as they are created in here -->
         </LinearLayout>
         <LinearLayout
+                android:id="@+id/existingLinksLayout"
+                android:orientation="vertical"
+                android:fillViewport="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <!-- links which have already been defined -->
+        </LinearLayout>
+        <LinearLayout
                 android:id="@+id/editingLinksLayout"
                 android:orientation="vertical"
                 android:fillViewport="true"

@@ -12,4 +12,11 @@ public class Link
   public int increment;
   public int type;
 
+  /*
+   * Type is:
+   * 0: reset
+   * 1: increase
+   * 2: decrease
+   */
+
 }

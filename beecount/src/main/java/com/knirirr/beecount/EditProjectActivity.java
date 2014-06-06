@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.knirirr.beecount.database.Alert;
 import com.knirirr.beecount.database.AlertDataSource;
@@ -54,11 +55,14 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
   LinearLayout counts_area;
   LinearLayout notes_area;
   LinearLayout links_area;
+  LinearLayout existing_links_area;
   EditTitleWidget etw;
   EditTitleWidget enw;
   private View markedForDelete;
   private long idToDelete;
   private AlertDialog.Builder are_you_sure;
+  public ArrayList<String> countNames;
+  public ArrayList<Long> countIds;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -76,6 +80,10 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
     notes_area = (LinearLayout) findViewById(R.id.editingNotesLayout);
     counts_area = (LinearLayout) findViewById(R.id.editingCountsLayout);
     links_area = (LinearLayout) findViewById(R.id.editingLinksLayout);
+    existing_links_area = (LinearLayout) findViewById(R.id.existingLinksLayout);
+
+    countNames = new ArrayList<String>();
+    countIds = new ArrayList<Long>();
   }
 
   @Override
@@ -130,11 +138,14 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
       cew.setCountId(count.id);
       counts_area.addView(cew);
     }
+    // these are needed to fill the spinners for the link widgets
+    getCountNames();
 
     // links
     links = linkDataSource.getAllLinksForProject(project_id);
 
     // display all the links
+    // add to existing_links_area
     for (Link link : links)
     {
       // widget
@@ -160,15 +171,89 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
 
   }
 
-  public void saveAndExit(View view)
+  public void getCountNames()
   {
-    saveData();
-    super.finish();
+    /*
+     * My plan here is that both the names and ids arrays contain the entries in the same
+     * order, so I can link a count name to its id by knowing the index.
+     */
+    countNames.clear();
+    countIds.clear();
+    int childcount = counts_area.getChildCount();
+    for (int i=0; i < childcount; i++)
+    {
+      CountEditWidget cew = (CountEditWidget) counts_area.getChildAt(i);
+      String name = cew.getCountName();
+      // ignore count widgets where the user has filled nothing in. Id will be 0
+      // if this is a new count.
+      if (StringUtils.isNotEmpty(name))
+      {
+        countNames.add(name);
+        countIds.add(cew.countId);
+      }
+    }
+    childcount = links_area.getChildCount();
+    for (int i=0; i < childcount; i++)
+    {
+      LinkEditWidget lew = (LinkEditWidget) links_area.getChildAt(i);
+      lew.setCountNames(countNames);
+    }
   }
 
-  public void saveData()
+  public void saveAndExit(View view)
   {
-    // save title and notes
+    if (saveData())
+      super.finish();
+  }
+
+  public boolean saveData()
+  {
+    // first of all deal with the links, as some links will contain new counts which must be created
+    String message = getString(R.string.failedToSave);
+    ArrayList<LinkEditWidget> linkEditWidgets = new ArrayList<LinkEditWidget>();
+    boolean stop = false;
+    int childcount = links_area.getChildCount();
+    for (int i=0; i < childcount; i++)
+    {
+      LinkEditWidget lew = (LinkEditWidget) links_area.getChildAt(i);
+      linkEditWidgets.add(lew);
+      if (lew.getMasterId() == lew.getSlaveId())
+      {
+        stop = true;
+        message = getString(R.string.mismatch);
+      }
+      if (lew.getLinkIncrement() <= 0)
+      {
+        stop = true;
+        message = getString(R.string.zero);
+      }
+    }
+    if (stop)
+    {
+      Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+      return false;
+    }
+
+    // if we've got this far then the links in the link edit widgets should be OK, and links can be created from them
+    ArrayList<String> newlyCreatedCounts = new ArrayList<String>();
+    for (LinkEditWidget lew : linkEditWidgets)
+    {
+      long masterId = lew.getMasterId();
+      long slaveId = lew.getSlaveId();
+      if (masterId == 0) // new count
+      {
+        masterId = countDataSource.createCount(project_id,lew.getMasterName()).id;
+        newlyCreatedCounts.add(lew.getMasterName());
+      }
+      if (slaveId == 0) // new count
+      {
+        slaveId = countDataSource.createCount(project_id,lew.getSlaveName()).id;
+        newlyCreatedCounts.add(lew.getSlaveName());
+      }
+      linkDataSource.createLink(project_id,masterId,slaveId,lew.getLinkIncrement(),lew.getChoice());
+    }
+
+    // save title and notes only if they have changed
     boolean saveproject = false;
     String newtitle = etw.getProjectName();
     if (StringUtils.isNotEmpty(newtitle))
@@ -188,7 +273,7 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
     }
 
     // save counts
-    int childcount = counts_area.getChildCount();
+    childcount = counts_area.getChildCount();
     for (int i=0; i < childcount; i++)
     {
       Log.i(TAG, "Childcount: " + String.valueOf(childcount));
@@ -199,6 +284,9 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
         // save or create
         if (cew.countId == 0)
         {
+          // make sure a count is not created twice if it's already been done in a link, above
+          if (newlyCreatedCounts.contains(cew.getCountName()))
+            continue;
           Log.i(TAG, "Creating!");
           countDataSource.createCount(project_id,cew.getCountName());
         }
@@ -214,7 +302,7 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
       }
     }
 
-    // save/create links
+    return true;
   }
 
   /*
@@ -223,7 +311,10 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
 
   public void newLink(View view)
   {
+    getCountNames(); // a new count may have been added
     LinkEditWidget lew = new LinkEditWidget(this,null);
+    lew.setCountNames(countNames);
+    lew.setCountIds(countIds);
     links_area.addView(lew);
   }
 
@@ -294,6 +385,7 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
       });
       are_you_sure.show();
     }
+    getCountNames();
 
   }
 

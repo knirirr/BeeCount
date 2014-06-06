@@ -104,9 +104,9 @@
     <string name="saveEditButton">Save &amp; exit</string>
     <string name="addCountButton">Add count</string>
     <string name="addLinkButton">Link Counts</string>
-    <string name="failedToSave">Please check values and try again</string>
+    <string name="failedToSave">Sorry, your project failed to save. Please check your links and try again.</string>
     <string name="mismatch">Please check which counts you have linked</string>
-    <string name="zero">The increment value cannot be zero</string>
+    <string name="zero">The link increment value cannot be zero; save failed!</string>
     <string name="integer">The increment value can only contain numbers</string>
     <string name="instruction">will increment</string>
     <string name="instruction_reset">will reset</string>
