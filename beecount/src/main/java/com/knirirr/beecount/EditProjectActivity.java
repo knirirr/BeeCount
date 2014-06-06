@@ -26,6 +26,7 @@ import com.knirirr.beecount.widgets.AlertCreateWidget;
 import com.knirirr.beecount.widgets.CountEditWidget;
 import com.knirirr.beecount.widgets.CountingWidget;
 import com.knirirr.beecount.widgets.EditTitleWidget;
+import com.knirirr.beecount.widgets.ExistingLinkWidget;
 import com.knirirr.beecount.widgets.LinkEditWidget;
 import com.knirirr.beecount.widgets.NotesWidget;
 
@@ -148,10 +149,16 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
     // add to existing_links_area
     for (Link link : links)
     {
-      // widget
-
+      ExistingLinkWidget elw = new ExistingLinkWidget(this,null);
+      elw.setLinkId(link.id);
+      elw.masterId = link.master_id;
+      elw.slaveId = link.slave_id;
+      elw.setInfo(countDataSource.getCountById(link.master_id).name,
+          countDataSource.getCountById(link.slave_id).name,
+          link.type,
+          link.increment);
+      existing_links_area.addView(elw);
     }
-
 
   }
 
@@ -339,7 +346,27 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
     }
     else
     {
-      // TODO - finish this
+      // this link will be in the existing_links_area if it doesn't have an id of 0
+      are_you_sure = new AlertDialog.Builder(this);
+      are_you_sure.setTitle(getString(R.string.deleteLink));
+      are_you_sure.setMessage(getString(R.string.reallyDeleteLink));
+      are_you_sure.setPositiveButton(R.string.yesDeleteIt, new DialogInterface.OnClickListener()
+      {
+        public void onClick(DialogInterface dialog, int whichButton)
+        {
+          // go ahead with the delete
+          linkDataSource.deleteLinkById(idToDelete);
+          existing_links_area.removeView((ExistingLinkWidget) markedForDelete.getParent().getParent());
+        }
+      });
+      are_you_sure.setNegativeButton(R.string.noCancel, new DialogInterface.OnClickListener()
+      {
+        public void onClick(DialogInterface dialog, int whichButton)
+        {
+          // Cancelled.
+        }
+      });
+      are_you_sure.show();
     }
 
   }
@@ -374,6 +401,17 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
           // go ahead for the delete
           countDataSource.deleteCountById(idToDelete);
           counts_area.removeView((CountEditWidget) markedForDelete.getParent().getParent());
+          // there may be links which reference this count, and they too must be deleted
+          int childcount = existing_links_area.getChildCount();
+          for (int i=0; i < childcount; i++)
+          {
+            ExistingLinkWidget elw = (ExistingLinkWidget) existing_links_area.getChildAt(i);
+            if (elw.masterId == idToDelete || elw.slaveId == idToDelete)
+            {
+              linkDataSource.deleteLinkById(elw.linkId);
+              existing_links_area.removeView(elw);
+            }
+          }
         }
       });
       are_you_sure.setNegativeButton(R.string.noCancel, new DialogInterface.OnClickListener()

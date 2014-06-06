@@ -78,6 +78,12 @@ public class LinkDataSource
     System.out.println("Link deleted with id: " + id);
   }
 
+  public void deleteLinkById(long id)
+  {
+    database.delete(DbHelper.LINK_TABLE, DbHelper.L_ID + " = " + id, null);
+    System.out.println("Link deleted with id: " + id);
+  }
+
   public List<Link> getAllLinksForProject(long project_id)
   {
     List<Link> links = new ArrayList<Link>();
