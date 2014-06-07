@@ -20,25 +20,21 @@
     <string name="newProjectButton">New Project</string>
     <string name="viewProjectButton">View Projects</string>
     <string name="newProjTitle">Create new project</string>
-    <string name="listProjTitle">List your projects</string>
     <string name="changeLogTitle">Change Log</string>
 
     <!-- NewprojActivity -->
     <string name="labelNewprojSaveButton">Save Project</string>
     <string name="labelNewproj">Project Name</string>
-    <string name="labelNewprojBox"></string><!-- blank for the moment -->
     <string name="labelNewCountButton">Add Count</string>
     <string name="clearCountButton">Remove Count</string>
     <string name="emptyBox">Please fill in the empty boxes!</string>
     <string name="noCounts">You must define at least one count!</string>
     <string name="duplicate">Each count name must be unique!</string>
     <string name="boxFill">Item no. </string>
-    <string name="newProjHint">New project</string>
     <string name="projectSaved">Project saved!</string>
 
 
     <!-- ListprojActivity -->
-    <string name="titleListProj">Your Projects</string>
     <string name="noCard">Your sdcard could not be accessed!</string>
     <string name="saveFail">Your database could not be exported!</string>
     <string name="saveWin">Your database has been exported to the sdcard.</string>
@@ -53,32 +49,12 @@
 
 
     <!-- CountingActivity -->
-    <string name="titleCount">Start Counting!</string>
     <string name="buttonCountUp"><b>&#43;</b></string>
     <string name="buttonCountDown"><b>&#45;</b></string>
     <string name="saveCountsButton">Save &amp; exit</string>
-    <string name="bizarreError">Snaaks!</string>
     <string name="projSaving">Saving </string>
-    <string name="linkError">Please check your linked counts: Couldn\'t find value for"</string>
     <string name="hasAutoReset">%1$s has auto-reset!</string>
     <string name="alertTitle">Buzzzz!</string>
-    <string name="rowAlertTitle">Set row alert</string>
-    <string name="alertOk">OK</string>
-    <string name="alertCancel">Cancel</string>
-    <string name="arTitle">Auto-reset</string>
-    <string name="rlTitle">Reset level</string>
-    <string name="arMsg">Select the value at which this count will reset itself automatically (set to 0 to turn off)</string>
-    <string name="arMsgShort">Set to 0 to turn off</string><!-- sorry about this, 2.3- users -->
-    <string name="rlMsg">Select the value to which this count will reset itself automatically</string>
-    <string name="rlMsgShort">Value to which count will reset</string><!-- sorry about this, 2.3- users -->
-
-    <string name="rowAlertMsg">Select the alert message and the row at which it should be activated (set to 0 to turn off)</string>
-    <string name="rowAlertMsgShort">Set to 0 to turn off</string>
-    <string name="codeCockup">Sorry, you\'ve encountered a bug!</string>
-    <string name="excuses">Some BeeCount installations are affected by a database bug. This can probably be fixed by deleting BeeCount and re-installing, but if you are willing to backup your beecount.db and e-mail it to knirirr@gmail.com before doing that it would be greatly appreciated as it will help me fix this. Apologies again for the nuisance.</string>
-    <string name="srl">Set reset level</string>
-    <string name="sar">Set auto-reset</string>
-    <string name="sal">Set alert</string>
     <string name="willLinkReset">- %1$s will reset %2$s at %3$d.</string>
     <string name="willLinkIncrease">- %1$s will increase %2$s at %3$d.</string>
     <string name="willLinkDecrease">- %1$s will decrease %2$s at %3$d.</string>
@@ -87,13 +63,9 @@
     <string name="editProjTitle">Edit Project</string>
     <string name="deleteProjTitle">Delete</string>
     <string name="confirmDelete">Are you sure you want to delete this project?</string>
-    <string name="yesButton">Yes</string>
-    <string name="noButton">No</string>
-    <string name="resetCount">reset to </string>
     <string name="postIncr">%1$s has incremented %2$s!</string>
     <string name="postReset">%1$s has reset %2$s!</string>
     <string name="postDecr">%1$s has decremented %2$s!</string>
-    <string name="mainHelpTitle">Help</string>
     <string name="willReset">- %1$s will auto-reset to %2$d at %3$d.</string>
     <string name="willAlert">- %1$s will show alert at  %2$d.</string>
     <string name="deleteButton">Delete</string>
@@ -101,8 +73,6 @@
 
     <!-- EditprojActivity -->
     <string name="titleEdit">Project Name</string>
-    <string name="saveEditButton">Save &amp; exit</string>
-    <string name="addCountButton">Add count</string>
     <string name="addLinkButton">Link Counts</string>
     <string name="failedToSave">Sorry, your project failed to save. Please check your links and try again.</string>
     <string name="mismatch">Please check which counts you have linked</string>
@@ -161,6 +131,13 @@
     <string name="reallyDeleteAlert">Are you sure you\'d like to do this? The alert will be deleted immediately.</string>
     <string name="yesDeleteIt">Delete</string>
     <string name="noCancel">Cancel</string>
+
+    <!-- other stuff -->
+    <string name="charZero">0</string>
+    <string name="countNameHint">Count Name</string>
+    <string name="hintTitle">Title</string>
+    <string name="hintProjectNotes">Project notes.</string>
+    <string name="hintInstructions">Instructions.</string>
 
 
 

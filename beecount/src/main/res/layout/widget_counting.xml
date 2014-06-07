@@ -23,9 +23,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="26dp"
+            android:textSize="26sp"
             android:id="@+id/countName"
-            android:hint="Count Name"
+            android:hint="@string/countNameHint"
             android:layout_marginLeft="5dp"
             android:layout_marginBottom="5dp"
                 />
@@ -41,7 +41,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="edit"
-                    android:text="Edit"
                     android:src="@android:drawable/ic_menu_edit"
                     android:id="@+id/buttonEdit"
                     android:layout_below="@+id/countName"
@@ -85,15 +84,13 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/countCount"
             android:padding="10dp"
-            android:hint="0"
-            android:phoneNumber="true"
+            android:hint="@string/charZero"
             android:textAlignment="center"
             android:gravity="center|center_vertical|center_horizontal"
             android:textColor="#FFFFFF"
             android:background="@drawable/count_background"
-            android:textSize="38dp"
+            android:textSize="38sp"
             android:layout_marginBottom="5dp"
-            android:numeric="integer"
             android:layout_gravity="bottom|left|right|top"/>
         </LinearLayout>
 </LinearLayout>
