@@ -2,10 +2,12 @@ package com.knirirr.beecount;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,6 +45,8 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
 
   // preferences
   private boolean toastPref;
+  private boolean awakePref;
+  private PowerManager.WakeLock wl;
 
   // the actual data
   Project project;
@@ -74,6 +78,12 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
     count_area = (LinearLayout) findViewById(R.id.countCountLayout);
     notes_area = (LinearLayout) findViewById(R.id.countNotesLayout);
 
+    if (awakePref == true)
+    {
+      PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+      wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");
+    }
+
   }
 
   /*
@@ -82,6 +92,7 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
   private void getPrefs()
   {
     toastPref = prefs.getBoolean("toast_away", false);
+    awakePref = prefs.getBoolean("pref_awake", true);
   }
 
   @Override
@@ -176,6 +187,12 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
       extra_notes.setNotes(StringUtils.join(extras,"\n"));
       notes_area.addView(extra_notes);
     }
+
+    // finally, check to see if the screen should be kept on whilst counting
+    if (awakePref == true)
+    {
+      wl.acquire();
+    }
   }
 
   @Override
@@ -192,6 +209,24 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
     countDataSource.close();
     alertDataSource.close();
     linkDataSource.close();
+
+
+    // N.B. a wakelock might not be held, e.g. if someone is using Cyanogenmod and
+    // has denied wakelock permission to BeeCount
+    if (awakePref == true)
+    {
+      if (wl.isHeld())
+      {
+        try
+        {
+          wl.release();
+        }
+        catch (Exception e)
+        {
+          Log.e(TAG, "Couldn't release wakelock: " + e.toString());
+        }
+      }
+    }
 
   }
 
