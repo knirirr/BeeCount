@@ -19,6 +19,12 @@
     </style>
   </head>
   <body>
+$ 1.9.2
+  % Version 1.9.2
+  _ 2014-06-09
+    * Crash fix.
+    * Improved icons.
+    * Text cleanup.
 $ 1.9.1
   % Version 1.9.1
   _ 2014-06-08

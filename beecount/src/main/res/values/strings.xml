@@ -56,8 +56,8 @@
     <string name="hasAutoReset">%1$s has auto-reset!</string>
     <string name="alertTitle">Buzzzz!</string>
     <string name="willLinkReset">- %1$s will reset %2$s at %3$d.</string>
-    <string name="willLinkIncrease">- %1$s will increase %2$s at %3$d.</string>
-    <string name="willLinkDecrease">- %1$s will decrease %2$s at %3$d.</string>
+    <string name="willLinkIncrease">- %1$s will increase %2$s every %3$d.</string>
+    <string name="willLinkDecrease">- %1$s will decrease %2$s every %3$d.</string>
 
     <!-- CountingActivity Menu -->
     <string name="editProjTitle">Edit Project</string>

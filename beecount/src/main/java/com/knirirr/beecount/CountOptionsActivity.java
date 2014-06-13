@@ -161,10 +161,12 @@ public class CountOptionsActivity extends Activity implements SharedPreferences.
 
   public void saveData()
   {
+    // don't crash if the user hasn't filled things in...
     Toast.makeText(CountOptionsActivity.this, getString(R.string.projSaving) + " " + count.name + "!", Toast.LENGTH_SHORT).show();
     count.auto_reset = ar_value_widget.getParameterValue();
     count.reset_level = ar_level_widget.getParameterValue();
     count.count = curr_val_widget.getParameterValue();
+
     countDataSource.saveCount(count);
 
     /*

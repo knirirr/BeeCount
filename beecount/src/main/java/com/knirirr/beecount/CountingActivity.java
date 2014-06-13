@@ -99,7 +99,14 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
   protected void onResume()
   {
     super.onResume();
-    project_id = beeCount.project_id;
+    try
+    {
+      project_id = beeCount.project_id;
+    }
+    catch (NullPointerException e)
+    {
+      finish();
+    }
 
     // clear any existing views
     count_area.removeAllViews();

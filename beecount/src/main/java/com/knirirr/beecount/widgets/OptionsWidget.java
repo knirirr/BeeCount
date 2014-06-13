@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.knirirr.beecount.R;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Created by milo on 27/05/2014.
  */
@@ -37,9 +39,19 @@ public class OptionsWidget extends LinearLayout
     number.setText(String.valueOf(i));
   }
 
+  // this is set to return 0 if it can't parse a value from the box in order
+  // that BeeCount doesn't crash
   public int getParameterValue()
   {
-    return Integer.parseInt(number.getText().toString());
+    String text = number.getText().toString();
+    if (StringUtils.isEmpty(text))
+    {
+      return Integer.valueOf(0);
+    }
+    else
+    {
+      return Integer.parseInt(text);
+    }
   }
 
 }
