@@ -19,21 +19,11 @@
     </style>
   </head>
   <body>
-$ 1.9.2
-  % Version 1.9.2
-  _ 2014-06-09
-    * Crash fix.
-    * Improved icons.
-    * Text cleanup.
-$ 1.9.1
-  % Version 1.9.1
-  _ 2014-06-08
-    * Wakelock code added back in to prevent screen from sleeping whilst counting.
-$ 1.9.0
-  % Version 1.9.0
-  _ 2014-06-03
-  ! First release of the Beta for BeeCount 2.0
-    * Multiple alerts and tablet layout added.
+$ 2.0.0
+  % Version 2.0.0
+  _ 2014-06-14
+  ! BeeCount 2.0!
+    * Multiple alerts and tablet layouts added.
     * Various other UI improvements.
     * Much code refactoring to make maintenance and further development easier.
 $ END_OF_CHANGE_LOG
