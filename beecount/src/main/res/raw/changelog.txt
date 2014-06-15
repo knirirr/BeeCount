@@ -19,6 +19,12 @@
     </style>
   </head>
   <body>
+$ 2.0.1
+  % Version 2.0.1
+  _ 2014-06-15
+  ! Please back up your data before proceeding! The export option from the menu above can be used for this purpose.
+    * Projects can now be deleted with a button rather than a long press.
+    * Some links can't be imported, but BeeCount will no longer crash if this happens.
 $ 2.0.0
   % Version 2.0.0
   _ 2014-06-14

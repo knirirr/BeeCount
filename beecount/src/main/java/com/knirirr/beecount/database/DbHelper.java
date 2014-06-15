@@ -1,11 +1,19 @@
 package com.knirirr.beecount.database;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.knirirr.beecount.R;
 
 
 /**
@@ -45,10 +53,13 @@ public class DbHelper extends SQLiteOpenHelper
   public static final String A_ALERT = "alert";
   public static final String A_ALERT_TEXT = "alert_text";
 
+  private Context mContext;
+
   // constructor
   public DbHelper(Context context)
   {
     super(context, DATABASE, null, VERSION);
+    this.mContext = context;
   }
 
   // called once on database creation
@@ -77,6 +88,7 @@ public class DbHelper extends SQLiteOpenHelper
   @Override
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
   {
+
     if (oldVersion == 8)
     {
       version_9(db,oldVersion,newVersion);
@@ -266,42 +278,59 @@ public class DbHelper extends SQLiteOpenHelper
     Cursor cursor = db.query(DbHelper.LINK_TABLE, new String[]{DbHelper.L_ID,
             DbHelper.L_PROJECT_ID, DbHelper.L_MASTER, DbHelper.L_SLAVE, DbHelper.L_INCREMENT,
             DbHelper.L_TYPE},  null, null, null, null, null );
+    boolean upgrade_fail = false;
     while (cursor.moveToNext())
     {
-      long projId = cursor.getLong(cursor.getColumnIndex(DbHelper.L_PROJECT_ID));
-      long linkId = cursor.getLong(cursor.getColumnIndex(DbHelper.L_ID));
-      int increment = cursor.getInt(cursor.getColumnIndex(DbHelper.L_INCREMENT));
-      int type = cursor.getInt(cursor.getColumnIndex(DbHelper.L_TYPE));
-      String masterName = cursor.getString(cursor.getColumnIndex(DbHelper.L_MASTER));
-      String slaveName = cursor.getString(cursor.getColumnIndex(DbHelper.L_SLAVE));
-      //Log.i(TAG, "Master, slave: " + masterName + ", " + slaveName);
+      try
+      {
+        long projId = cursor.getLong(cursor.getColumnIndex(DbHelper.L_PROJECT_ID));
+        long linkId = cursor.getLong(cursor.getColumnIndex(DbHelper.L_ID));
+        int increment = cursor.getInt(cursor.getColumnIndex(DbHelper.L_INCREMENT));
+        int type = cursor.getInt(cursor.getColumnIndex(DbHelper.L_TYPE));
+        String masterName = cursor.getString(cursor.getColumnIndex(DbHelper.L_MASTER));
+        String slaveName = cursor.getString(cursor.getColumnIndex(DbHelper.L_SLAVE));
+        Log.i(TAG, "Master, slave: " + masterName + ", " + slaveName);
 
-      Cursor master_cursor = db.query(DbHelper.COUNT_TABLE, new String[] {DbHelper.C_ID,
-          DbHelper.C_NAME}, DbHelper.C_PROJECT_ID + " =? and " + DbHelper.C_NAME + " =? ",
-          new String[] { String.valueOf(projId), masterName }, null, null, null);
-      master_cursor.moveToFirst();
-      long masterId = master_cursor.getLong(master_cursor.getColumnIndex(DbHelper.C_ID));
-      //Log.i(TAG, "Master cursor: " + String.valueOf(masterId));
-      master_cursor.close();
+        Cursor master_cursor = db.query(DbHelper.COUNT_TABLE, new String[]{DbHelper.C_ID,
+                DbHelper.C_NAME}, DbHelper.C_PROJECT_ID + " =? and " + DbHelper.C_NAME + " =? ",
+            new String[]{String.valueOf(projId), masterName}, null, null, null
+        );
+        master_cursor.moveToFirst();
+        long masterId = master_cursor.getLong(master_cursor.getColumnIndex(DbHelper.C_ID));
+        //Log.i(TAG, "Master cursor: " + String.valueOf(masterId));
+        master_cursor.close();
 
-      Cursor slave_cursor = db.query(DbHelper.COUNT_TABLE, new String[] {DbHelper.C_ID,
-          DbHelper.C_NAME}, DbHelper.C_PROJECT_ID + " =? and " + DbHelper.C_NAME + " =? ",
-          new String[] { String.valueOf(projId), slaveName }, null, null, null);
-      slave_cursor.moveToFirst();
-      long slaveId = slave_cursor.getLong(slave_cursor.getColumnIndex(DbHelper.C_ID));
-      //Log.i(TAG, "Slave cursor: " + String.valueOf(slaveId));
-      slave_cursor.close();
+        Cursor slave_cursor = db.query(DbHelper.COUNT_TABLE, new String[]{DbHelper.C_ID,
+                DbHelper.C_NAME}, DbHelper.C_PROJECT_ID + " =? and " + DbHelper.C_NAME + " =? ",
+            new String[]{String.valueOf(projId), slaveName}, null, null, null
+        );
+        slave_cursor.moveToFirst();
+        long slaveId = slave_cursor.getLong(slave_cursor.getColumnIndex(DbHelper.C_ID));
+        //Log.i(TAG, "Slave cursor: " + String.valueOf(slaveId));
+        slave_cursor.close();
 
-      ContentValues values = new ContentValues();
-      values.put(DbHelper.L_ID, linkId);
-      values.put(DbHelper.L_PROJECT_ID, projId);
-      values.put(DbHelper.L_MASTER_ID, masterId);
-      values.put(DbHelper.L_SLAVE_ID, slaveId);
-      values.put(DbHelper.L_INCREMENT, increment);
-      values.put(DbHelper.L_TYPE, type);
-      long insertId = db.insert("temp_link_table", null, values);
-      //Log.i(TAG, "Inserted: " + String.valueOf(insertId));
+        ContentValues values = new ContentValues();
+        values.put(DbHelper.L_ID, linkId);
+        values.put(DbHelper.L_PROJECT_ID, projId);
+        values.put(DbHelper.L_MASTER_ID, masterId);
+        values.put(DbHelper.L_SLAVE_ID, slaveId);
+        values.put(DbHelper.L_INCREMENT, increment);
+        values.put(DbHelper.L_TYPE, type);
+        long insertId = db.insert("temp_link_table", null, values);
+        //Log.i(TAG, "Inserted: " + String.valueOf(insertId));
+      }
+      catch (CursorIndexOutOfBoundsException e)
+      {
+        upgrade_fail = true;
+      }
     }
+
+    // could not copy all links
+    if (upgrade_fail)
+    {
+      Toast.makeText(this.mContext, this.mContext.getString(R.string.upgradeFail), Toast.LENGTH_LONG).show();
+    }
+
     // move the table
     sql = "DROP TABLE " + DbHelper.LINK_TABLE;
     db.execSQL(sql);

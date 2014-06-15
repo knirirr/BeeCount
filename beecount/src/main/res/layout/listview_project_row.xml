@@ -7,8 +7,8 @@
               android:padding="5dp">
 
     <TextView android:layout_height="wrap_content"
-              android:layout_width="fill_parent"
-              android:layout_weight="1"
+              android:layout_width="0dp"
+              android:layout_weight="5"
               android:id="@+id/txtTitle"
               android:gravity="left"
               android:textColor="#FFFFFF"
@@ -18,11 +18,24 @@
             />
 
     <TextView android:layout_height="wrap_content"
-              android:layout_width="fill_parent"
-              android:layout_weight="1"
+              android:layout_width="0dp"
+              android:layout_weight="2"
               android:textColor="#FFFFFF"
               android:gravity="right"
               android:padding="5sp"
               android:id="@+id/txtDate" />
+
+    <ImageButton
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/deleteProject"
+            android:gravity="center_vertical|right"
+            android:src="@android:drawable/ic_menu_delete"
+            android:layout_gravity="bottom|right|top"
+            android:layout_margin="5dp"/>
+
+
+    <!-- android:onClick="deleteProject" -->
 
 </LinearLayout>

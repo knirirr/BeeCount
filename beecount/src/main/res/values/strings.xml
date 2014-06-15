@@ -119,7 +119,7 @@
     <string name="toast_away_summ">This stops the \"x has incremented y\" toasts from popping up during counting.</string>
     <string name="prefs_appearance">Appearance</string>
     <string name="prefs_counting">Counting</string>
-    <string name="image_error">Error setting custom image!</string>
+    <string name="image_error">Error setting custom image! Please try using the gallery rather than a file manager.</string>
 
     <!-- CountOptionsActivity -->
     <string name="setResetValue">Set the value at which this count will reset itself. The count will be reset to 0 unless the reset level (see below) is also changed. Set to 0 to disable.</string>
@@ -139,6 +139,7 @@
     <string name="hintTitle">Title</string>
     <string name="hintProjectNotes">Project notes.</string>
     <string name="hintInstructions">Instructions.</string>
+    <string name="upgradeFail">Some of your links could not be upgraded to the new data format. Please check your projects to see which ones, and re-add them manually. Sorry for the inconvenience.</string>
 
 
 
