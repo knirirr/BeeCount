@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -50,7 +51,8 @@ public class WelcomeActivity extends Activity implements SharedPreferences.OnSha
     prefs = BeeCountApplication.getPrefs();
     prefs.registerOnSharedPreferenceChangeListener(this);
 
-    LinearLayout baseLayout = (LinearLayout) findViewById(R.id.baseLayout);
+    //LinearLayout baseLayout = (LinearLayout) findViewById(R.id.baseLayout);
+    ScrollView baseLayout = (ScrollView) findViewById(R.id.baseLayout);
     baseLayout.setBackgroundDrawable(beeCount.getBackground());
 
     cl = new ChangeLog(this);
@@ -113,7 +115,8 @@ public class WelcomeActivity extends Activity implements SharedPreferences.OnSha
 
   public void onSharedPreferenceChanged(SharedPreferences prefs, String key)
   {
-    LinearLayout baseLayout = (LinearLayout) findViewById(R.id.baseLayout);
+    //LinearLayout baseLayout = (LinearLayout) findViewById(R.id.baseLayout);
+    ScrollView baseLayout = (ScrollView) findViewById(R.id.baseLayout);
     baseLayout.setBackgroundDrawable(null);
     baseLayout.setBackgroundDrawable(beeCount.setBackground());
   }
