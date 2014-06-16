@@ -225,10 +225,25 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
     {
       LinkEditWidget lew = (LinkEditWidget) links_area.getChildAt(i);
       linkEditWidgets.add(lew);
-      if (lew.getMasterId() == lew.getSlaveId())
+      //Log.i(TAG, "Master: " + lew.getMasterId() + ", Slave: " + lew.getSlaveId());
+      Long mid = lew.getMasterId();
+      Long sid = lew.getSlaveId();
+      if (mid == sid)
       {
-        stop = true;
-        message = getString(R.string.mismatch);
+        if (mid == 0 && sid == 0) // both are new counts
+        {
+          if (lew.getMasterName().equals(lew.getSlaveName())) // check matching names
+          {
+            stop = true;
+            message = getString(R.string.mismatch);
+          }
+          // if they don't match and are new counts then all is well
+        }
+        else
+        {
+          stop = true;
+          message = getString(R.string.mismatch);
+        }
       }
       if (lew.getLinkIncrement() <= 0)
       {
