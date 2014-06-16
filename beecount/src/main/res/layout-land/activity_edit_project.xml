@@ -36,6 +36,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="newCount"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="@string/labelNewCountButton"
                     android:maxLines="1">
                 </Button>
@@ -45,6 +46,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="newLink"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="@string/addLinkButton"
                     android:maxLines="1">
                 </Button>
@@ -54,6 +56,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="saveAndExit"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="@string/labelNewprojSaveButton"
                     android:maxLines="1">
                 </Button>

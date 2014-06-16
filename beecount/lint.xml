@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+
+    <!-- Ignore the ObsoleteLayoutParam issue in the given files -->
+    <!--
+    <issue id="ObsoleteLayoutParam">
+        <ignore path="res/layout/activation.xml" />
+        <ignore path="res/layout-xlarge/activation.xml" />
+    </issue>
+    -->
+
+    <issue id="ButtonStyle">
+       <ignore path="src/main/res/layout/activity_edit_project.xml"/>
+       <ignore path="src/main/res/layout-xlarge/activity_edit_project.xml"/>
+       <ignore path="src/main/res/layout-land/activity_edit_project.xml"/>
+       <ignore path="src/main/res/layout/activity_new_project.xml"/>
+       <ignore path="src/main/res/layout/activity_welcome.xml"/>
+    </issue>
+
+</lint>

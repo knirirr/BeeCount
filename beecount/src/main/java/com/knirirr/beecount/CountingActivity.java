@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CountingActivity extends Activity implements SharedPreferences.OnSharedPreferenceChangeListener
+public class CountingActivity extends ActionBarActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
   private static String TAG = "BeeCountCountingActivity";
   private AlertDialog.Builder row_alert;
@@ -128,7 +129,7 @@ public class CountingActivity extends Activity implements SharedPreferences.OnSh
     Log.i(TAG,"Project ID: " + String.valueOf(project_id));
     project = projectDataSource.getProject(project_id);
     Log.i(TAG, "Got project: " + project.name);
-    getActionBar().setTitle(project.name);
+    getSupportActionBar().setTitle(project.name);
     List<String> extras = new ArrayList<String>();
 
     // counts

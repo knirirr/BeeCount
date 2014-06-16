@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EditProjectActivity extends Activity implements SharedPreferences.OnSharedPreferenceChangeListener
+public class EditProjectActivity extends ActionBarActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
   BeeCountApplication beeCount;
   SharedPreferences prefs;
@@ -111,7 +112,7 @@ public class EditProjectActivity extends Activity implements SharedPreferences.O
     // load the data
     // projects
     project = projectDataSource.getProject(project_id);
-    getActionBar().setTitle(project.name);
+    getSupportActionBar().setTitle(project.name);
 
     // display an editable project title
     etw = new EditTitleWidget(this,null);

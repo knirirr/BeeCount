@@ -16,7 +16,7 @@
     <string name="customTooBig">Sorry, trying to set the background image has caused an out of memory error.</string>
 
     <!-- WelcomeActivity -->
-    <string name="hello">Welcome to BeeCount! The purpose of this app is to store count details for several projects and allow you to count each separately. Each project may have multiple \'counts\', each being something such as a pattern repeat or a row which you wish to track. Use the buttons below to create new projects or manage existing ones.\n\n By editing a project after creating it you can also link counts together so that one increments another.\n\nSettings can be changed by accessing the menu on this screen (menu button or 3-dot overflow menu above).\n\nShould you have any questions you may visit the Ravelry group at http://www.ravelry.com/groups/beecount, or email bug reports to knirirr@gmail.com.\n</string>
+    <string name="hello">Welcome to BeeCount! The purpose of this app is to store count details for several knitting or crochet projects and allow you to count each separately. Each project may have multiple \'counts\', each being something such as a pattern repeat or a row which you wish to track. Use the buttons below to create new projects or manage existing ones.\n\n By editing a project after creating it you can also link counts together so that one increments another.\n\nSettings can be changed by accessing the menu on this screen (menu button or 3-dot overflow menu above).\n\nShould you have any questions you may visit the Ravelry group at http://www.ravelry.com/groups/beecount, or email bug reports to knirirr@gmail.com.\n</string>
     <string name="newProjectButton">New Project</string>
     <string name="viewProjectButton">View Projects</string>
     <string name="newProjTitle">Create new project</string>
@@ -61,11 +61,10 @@
 
     <!-- CountingActivity Menu -->
     <string name="editProjTitle">Edit Project</string>
-    <string name="deleteProjTitle">Delete</string>
     <string name="confirmDelete">Are you sure you want to delete this project?</string>
-    <string name="postIncr">%1$s has incremented %2$s!</string>
+    <string name="postIncr">%1$s has increased %2$s!</string>
     <string name="postReset">%1$s has reset %2$s!</string>
-    <string name="postDecr">%1$s has decremented %2$s!</string>
+    <string name="postDecr">%1$s has decreased %2$s!</string>
     <string name="willReset">- %1$s will auto-reset to %2$d at %3$d.</string>
     <string name="willAlert">- %1$s will show alert at  %2$d.</string>
     <string name="deleteButton">Delete</string>
@@ -77,21 +76,12 @@
     <string name="failedToSave">Sorry, your project failed to save. Please check your links and try again.</string>
     <string name="mismatch">Please check which counts you have linked</string>
     <string name="zero">The link increment value cannot be zero; save failed!</string>
-    <string name="integer">The increment value can only contain numbers</string>
-    <string name="instruction">will increment</string>
-    <string name="instruction_reset">will reset</string>
     <string name="every">every</string>
-    <string name="removeLink">Remove link</string>
     <string name="incr_up"> will increase </string>
     <string name="incr_down"> will decrease </string>
     <string name="incr_reset"> will reset </string>
-    <string name="incr_start"> starting at </string>
-    <!-- <string name="incr_decr"> will decrease </string> -->
-    <string name="ev"> every  </string>
-    <string name="randomFail">Sorry, an unexpected error occurred.</string>
-    <string name="dodgyFormat">Save failed; please check the count values.</string>
     <string name="notesHere">Notes</string>
-    <string name="notesHint">Type some notes here...</string>
+    <string name="notesHint">Type some notes here&#8230;</string>
     <string name="deleteCount">Delete Count</string>
     <string name="reallyDeleteCount">Are you sure you\'d like to do this? This count will be deleted immediately.</string>
     <string name="deleteLink">Delete Link</string>
@@ -106,11 +96,8 @@
     <string name="changelog_show_full">more&#8230;</string>
 
     <!-- Preferences -->
-    <string name="prefTitle">Preferences</string>
     <string name="pref_bg">Background</string>
     <string name="pref_bg_summ">Choose default, custom or no background image.</string>
-    <string name="pref_font">Font</string>
-    <string name="pref_font_summ">Use the default fancy font (everywhere but here ;-).</string>
     <string name="pref_awake">Keep screen on</string>
     <string name="pref_awake_summ">Prevent screen from sleeping whilst counting.</string>
     <string name="chooseImg">Image</string>

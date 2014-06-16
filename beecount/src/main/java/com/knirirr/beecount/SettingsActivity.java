@@ -1,6 +1,7 @@
 package com.knirirr.beecount;
 
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -23,6 +24,7 @@ public class SettingsActivity extends PreferenceActivity
   SharedPreferences.Editor editor;
 
   @Override
+  @SuppressLint("CommitPrefEdits")
   @SuppressWarnings("deprecation")
   public void onCreate(Bundle savedInstanceState) 
   {
@@ -40,8 +42,14 @@ public class SettingsActivity extends PreferenceActivity
       }
     });
     prefs = PreferenceManager.getDefaultSharedPreferences(this);
-    editor = prefs.edit();
-    
+    editor = prefs.edit(); // will be committed on pause
+  }
+
+  @Override
+  protected void onPause()
+  {
+    super.onPause();
+    editor.commit();
   }
 
   public void getImage()
@@ -53,6 +61,7 @@ public class SettingsActivity extends PreferenceActivity
   }
 
   @Override
+  @SuppressLint("CommitPrefEdits")
   protected void onActivityResult(int requestCode, int resultCode, Intent data) 
   {
     if(requestCode == SELECT_PICTURE && data != null && data.getData() != null)
@@ -83,7 +92,7 @@ public class SettingsActivity extends PreferenceActivity
 
         // save the image path
         editor.putString("imagePath", imageFilePath);
-        editor.commit();
+        //editor.commit();
         try
         {
           Log.i(TAG, "IMAGE (in Settings): " + imageFilePath);

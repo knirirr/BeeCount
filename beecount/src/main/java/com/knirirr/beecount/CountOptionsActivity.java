@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CountOptionsActivity extends Activity implements SharedPreferences.OnSharedPreferenceChangeListener
+public class CountOptionsActivity extends ActionBarActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
   private static String TAG = "BeeCountCountOptionsActivity";
   BeeCountApplication beeCountApplication;
@@ -100,7 +101,7 @@ public class CountOptionsActivity extends Activity implements SharedPreferences.
     alertDataSource.open();
 
     count = countDataSource.getCountById(count_id);
-    getActionBar().setTitle(count.name);
+    getSupportActionBar().setTitle(count.name);
 
     List<Alert> alerts = alertDataSource.getAllAlertsForCount(count_id);
 
