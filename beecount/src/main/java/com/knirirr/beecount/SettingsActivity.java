@@ -84,6 +84,7 @@ public class SettingsActivity extends PreferenceActivity
         {
           Log.e(TAG, "Failed to select image: " + e.toString());
           Toast.makeText(this, getString(R.string.image_error), Toast.LENGTH_SHORT).show();
+          return;
         }
 
         //Link to the image
