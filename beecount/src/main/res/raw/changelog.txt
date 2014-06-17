@@ -19,6 +19,13 @@
     </style>
   </head>
   <body>
+$ 2.0.2
+  % Version 2.0.2
+  _ 2014-06-17
+    * A preliminary French translation has been added.
+    * A small background image error on the welcome screen has been fixed.
+    * A crash bug when setting a background image has been addressed.
+    * Project deletion has revered back to long-pressing a row, for now (apologies).
 $ 2.0.1
   % Version 2.0.1
   _ 2014-06-15
