@@ -25,17 +25,14 @@
               android:padding="5sp"
               android:id="@+id/txtDate" />
 
-    <!--
     <ImageButton
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:id="@+id/deleteProject"
             android:gravity="center_vertical|right"
             android:src="@android:drawable/ic_menu_delete"
             android:layout_gravity="bottom|right|top"
             android:layout_margin="5dp"/>
-            -->
-
 
 </LinearLayout>

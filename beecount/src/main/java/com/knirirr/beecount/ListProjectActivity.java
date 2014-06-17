@@ -52,58 +52,11 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
     list_view.setBackgroundDrawable(beeCount.getBackground());
     list = (ListView) findViewById(android.R.id.list);
 
-    // single tap selects an item for viewing
-    list.setOnItemClickListener(new AdapterView.OnItemClickListener()
-    {
-      @Override
-      public void onItemClick(AdapterView<?> arg0, View view, int position, long id)
-      {
-        //Take action here.
-        p = projects.get(position);
-        Intent intent = new Intent(ListProjectActivity.this, CountingActivity.class);
-        //intent.putExtra("project_id",p.id);
-        beeCount.project_id = p.id;
-        startActivity(intent);
-      }
-    });
-
-    // long press to delete a project
-    list.setOnItemLongClickListener (new AdapterView.OnItemLongClickListener() {
-      public boolean onItemLongClick(AdapterView parent, View view, final int position, long id) {
-        p = projects.get(position);
-        // http://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog
-        // could make the dialog central in the popup - to do later
-        AlertDialog.Builder builder = new AlertDialog.Builder(ListProjectActivity.this);
-        builder.setIcon(android.R.drawable.ic_dialog_alert);
-        builder.setMessage(p.name + ": " + getString(R.string.confirmDelete)).setCancelable(false).setPositiveButton(R.string.deleteButton, new DialogInterface.OnClickListener()
-        {
-          public void onClick(DialogInterface dialog, int id)
-          {
-            // perform the deleting here
-            projectDataSource.deleteProject(p);
-            projects.remove(position);
-            showData();
-            list.invalidate();
-
-          }
-        }).setNegativeButton(R.string.cancelButton, new DialogInterface.OnClickListener()
-        {
-          public void onClick(DialogInterface dialog, int id)
-          {
-            dialog.cancel();
-          }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
-        return true;
-      }
-    });
   }
 
-  public void deleteProject(Project p, int position)
+  public void deleteProject(Project p)
   {
     projectDataSource.deleteProject(p);
-    projects.remove(position);
     showData();
     list.invalidate();
   }
