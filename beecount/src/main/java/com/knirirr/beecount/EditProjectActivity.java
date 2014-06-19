@@ -324,7 +324,7 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
         Log.i(TAG, "Failed to save count: " + cew.countId);
       }
     }
-
+    Toast.makeText(EditProjectActivity.this, getString(R.string.projSaving) + " " + project.name + "!", Toast.LENGTH_SHORT).show();
     return true;
   }
 

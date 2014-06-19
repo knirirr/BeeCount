@@ -31,7 +31,7 @@
             android:minWidth="100dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/count_parameter_edit"
-            android:hint="@string/zero"
+            android:hint="@string/charZero"
             android:phoneNumber="true"
             android:textAlignment="center"
             android:gravity="center|center_vertical|center_horizontal"
