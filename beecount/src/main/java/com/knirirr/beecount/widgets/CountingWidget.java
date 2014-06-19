@@ -44,9 +44,9 @@ public class CountingWidget extends RelativeLayout
     count = newcount;
     countCount.setText(String.valueOf(count.count));
     countName.setText(count.name);
-    Button countUpButton = (Button) findViewById(R.id.buttonUp);
+    ImageButton countUpButton = (ImageButton) findViewById(R.id.buttonUp);
     countUpButton.setTag(count.id);
-    Button countDownButton = (Button) findViewById(R.id.buttonDown);
+    ImageButton countDownButton = (ImageButton) findViewById(R.id.buttonDown);
     countDownButton.setTag(count.id);
     ImageButton editButton = (ImageButton) findViewById(R.id.buttonEdit);
     editButton.setTag(count.id);

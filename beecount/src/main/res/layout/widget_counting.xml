@@ -33,39 +33,40 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="40dp" >
 
                 <!-- perhaps replace with ImageButton http://developer.android.com/guide/topics/ui/controls/button.html -->
                 <ImageButton
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:onClick="edit"
                     android:src="@android:drawable/ic_menu_edit"
                     android:id="@+id/buttonEdit"
                     android:layout_below="@+id/countName"
-                    android:layout_weight="1"/>
+                    android:layout_weight="2"/>
 
-                <Button
+                <ImageButton
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:onClick="countDown"
-                    android:text="@string/buttonCountDown"
+                    android:src="@drawable/minus"
+                    android:scaleType="fitCenter"
                     android:textStyle="bold"
                     android:id="@+id/buttonDown"
                     android:layout_weight="2"/>
 
-
-                <Button
+                <ImageButton
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:onClick="countUp"
-                    android:text="@string/buttonCountUp"
+                    android:src="@drawable/plus"
+                    android:scaleType="fitCenter"
                     android:textStyle="bold"
                     android:id="@+id/buttonUp"
-                    android:layout_weight="7"/>
+                    android:layout_weight="6"/>
                 </LinearLayout>
             </LinearLayout>
 

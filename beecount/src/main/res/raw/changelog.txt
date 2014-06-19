@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.0.4
+  % Version 2.0.4
+  _ 2014-06-19
+    * The plus and minus signs on the count buttons have been made clearer.
 $ 2.0.3
   % Version 2.0.3
   _ 2014-06-18

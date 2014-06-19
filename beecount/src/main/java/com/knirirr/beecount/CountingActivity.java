@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.CursorIndexOutOfBoundsException;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.v7.app.ActionBarActivity;
@@ -127,7 +129,17 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     // load the data
     // projects
     Log.i(TAG,"Project ID: " + String.valueOf(project_id));
-    project = projectDataSource.getProject(project_id);
+    try
+    {
+      project = projectDataSource.getProject(project_id);
+    }
+    catch (CursorIndexOutOfBoundsException e)
+    {
+      Log.e(TAG, "Problem loading project: " + e.toString());
+      Toast.makeText(CountingActivity.this, getString(R.string.getHelp), Toast.LENGTH_LONG).show();
+      this.finish();
+    }
+
     Log.i(TAG, "Got project: " + project.name);
     getSupportActionBar().setTitle(project.name);
     List<String> extras = new ArrayList<String>();
@@ -157,7 +169,19 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
         extras.add(String.format(getString(R.string.willAlert), count.name, a.alert));
       }
     }
-    links = linkDataSource.getAllLinksForProject(project_id);
+    /*
+     * A crash here is a mystery, and users should seek further assistance.
+     */
+    try
+    {
+      links = linkDataSource.getAllLinksForProject(project_id);
+    }
+    catch (SQLiteException e)
+    {
+      Log.e(TAG, "Problem loading links table: " + e.toString());
+      Toast.makeText(CountingActivity.this, getString(R.string.getHelp), Toast.LENGTH_LONG).show();
+      this.finish();
+    }
 
     // display project notes
     if (project.notes != null)
