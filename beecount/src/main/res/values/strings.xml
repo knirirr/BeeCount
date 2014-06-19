@@ -49,8 +49,6 @@
 
 
     <!-- CountingActivity -->
-    <string name="buttonCountUp"><b>&#43;</b></string>
-    <string name="buttonCountDown"><b>&#45;</b></string>
     <string name="saveCountsButton">Save &amp; exit</string>
     <string name="projSaving">Saving </string>
     <string name="hasAutoReset">%1$s has auto-reset!</string>

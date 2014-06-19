@@ -299,23 +299,23 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
     childcount = counts_area.getChildCount();
     for (int i=0; i < childcount; i++)
     {
-      Log.i(TAG, "Childcount: " + String.valueOf(childcount));
+      //Log.i(TAG, "Childcount: " + String.valueOf(childcount));
       CountEditWidget cew = (CountEditWidget) counts_area.getChildAt(i);
       if (StringUtils.isNotEmpty(cew.getCountName()))
       {
-        Log.i(TAG, "CEW: " + String.valueOf(cew.countId) + ", " + cew.getCountName());
+        //Log.i(TAG, "CEW: " + String.valueOf(cew.countId) + ", " + cew.getCountName());
         // save or create
         if (cew.countId == 0)
         {
           // make sure a count is not created twice if it's already been done in a link, above
           if (newlyCreatedCounts.contains(cew.getCountName()))
             continue;
-          Log.i(TAG, "Creating!");
+          //Log.i(TAG, "Creating!");
           countDataSource.createCount(project_id,cew.getCountName());
         }
         else
         {
-          Log.i(TAG, "Updating!");
+          //Log.i(TAG, "Updating!");
           countDataSource.updateCountName(cew.countId,cew.getCountName());
         }
       }
