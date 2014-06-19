@@ -127,6 +127,7 @@
     <string name="hintProjectNotes">Project notes.</string>
     <string name="hintInstructions">Instructions.</string>
     <string name="upgradeFail">Some of your links could not be upgraded to the new data format. Please check your projects to see which ones, and re-add them manually. Sorry for the inconvenience.</string>
+    <string name="getHelp">Sorry, there was a problem with your database. Please email for assistance, attaching your exported beecount.db.</string>
 
 
 
