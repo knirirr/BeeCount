@@ -129,6 +129,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     // load the data
     // projects
     Log.i(TAG,"Project ID: " + String.valueOf(project_id));
+    boolean frc = false;
     try
     {
       project = projectDataSource.getProject(project_id);
@@ -137,7 +138,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     {
       Log.e(TAG, "Problem loading project: " + e.toString());
       Toast.makeText(CountingActivity.this, getString(R.string.getHelp), Toast.LENGTH_LONG).show();
-      this.finish();
+      frc = true;
     }
 
     Log.i(TAG, "Got project: " + project.name);
@@ -172,15 +173,15 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     /*
      * A crash here is a mystery, and users should seek further assistance.
      */
+    links = new ArrayList<Link>();
     try
     {
       links = linkDataSource.getAllLinksForProject(project_id);
     }
     catch (SQLiteException e)
     {
-      Log.e(TAG, "Problem loading links table: " + e.toString());
+      frc = true;
       Toast.makeText(CountingActivity.this, getString(R.string.getHelp), Toast.LENGTH_LONG).show();
-      this.finish();
     }
 
     // display project notes
@@ -225,6 +226,16 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     {
       wl.acquire();
     }
+
+    if (frc)
+    {
+      shutDown();
+    }
+  }
+
+  protected void shutDown()
+  {
+    finish();
   }
 
   @Override

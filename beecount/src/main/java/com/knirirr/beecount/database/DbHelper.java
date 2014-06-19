@@ -319,7 +319,7 @@ public class DbHelper extends SQLiteOpenHelper
         long insertId = db.insert("temp_link_table", null, values);
         //Log.i(TAG, "Inserted: " + String.valueOf(insertId));
       }
-      catch (CursorIndexOutOfBoundsException e)
+      catch (Exception e) // generic exception because I don't know if it's just CursorOutOfBounds which is occurring here
       {
         upgrade_fail = true;
       }
@@ -345,4 +345,5 @@ public class DbHelper extends SQLiteOpenHelper
     Log.i(TAG, "Upgraded database to version 9!");
     cursor.close();
   }
+
 }
