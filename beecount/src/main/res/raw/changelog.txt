@@ -23,6 +23,7 @@ $ 2.0.4
   % Version 2.0.4
   _ 2014-06-19
     * The plus and minus signs on the count buttons have been made clearer.
+    * Fixed missing save button on count options landscape layout.
 $ 2.0.3
   % Version 2.0.3
   _ 2014-06-18
