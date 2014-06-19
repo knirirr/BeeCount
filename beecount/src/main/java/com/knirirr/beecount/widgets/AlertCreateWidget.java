@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 
 import com.knirirr.beecount.R;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Created by milo on 02/06/2014.
  * This is the widget for creating an alert in the CountOptionsActivity.
@@ -38,9 +40,19 @@ public class AlertCreateWidget extends LinearLayout
     return alert_name.getText().toString();
   }
 
+  // this is set to return 0 if it can't parse a value from the box in order
+  // that BeeCount doesn't crash
   public int getAlertValue()
   {
-    return Integer.parseInt(alert_value.getText().toString());
+    String text = alert_value.getText().toString();
+    if (StringUtils.isEmpty(text))
+    {
+      return Integer.valueOf(0);
+    }
+    else
+    {
+      return Integer.parseInt(text);
+    }
   }
 
   public long getAlertId()
