@@ -125,7 +125,7 @@
     <string name="hintProjectNotes">Notes de projet.</string>
     <string name="hintInstructions">Instructions.</string>
     <string name="upgradeFail">On n\'a pas pu mettre à jour quelques liens dans vos projets. Il faut examiner vos projets pour trouver les liens manquants et les remplacer. Veuillez accepter nos excuses pour cette erreur.</string>
-    <string name="getHelp">Désolé, il y a un problème avec votre base de données. Veuillez envoyer un email pour obtenir l\'aide, en joignant le beecount.db que vous avez exporté.</string>
+    <string name="getHelp">Désolé, il y a un problème avec votre base de données. Veuillez envoyer un email pour obtenir l\'aide, si vous en avez besoin, en joignant le beecount.db que vous avez exporté.</string>
 
 
 

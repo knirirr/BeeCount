@@ -64,9 +64,10 @@ public class CountingWidget extends RelativeLayout
     countCount.setText(String.valueOf(count.count));
   }
 
+  // sets to the reset level
   public void resetZero()
   {
-    count.count = 0;
+    count.count = count.reset_level;
     countCount.setText(String.valueOf(count.count));
   }
 
