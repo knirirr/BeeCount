@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -72,7 +73,14 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_edit_project);
 
+    Bundle extras = getIntent().getExtras();
+    if(extras !=null)
+    {
+      project_id = extras.getLong("project_id");
+    }
+
     beeCount = (BeeCountApplication) getApplication();
+    //project_id = beeCount.project_id;
     prefs = BeeCountApplication.getPrefs();
     prefs.registerOnSharedPreferenceChangeListener(this);
 
@@ -92,7 +100,6 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
   protected void onResume()
   {
     super.onResume();
-    project_id = beeCount.project_id;
 
     // clear any existing views
     counts_area.removeAllViews();
@@ -167,9 +174,6 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
   protected void onPause()
   {
     super.onPause();
-
-    // save the data
-    beeCount.project_id = project_id;
 
     // close the data sources
     projectDataSource.close();
@@ -463,6 +467,13 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
     {
       startActivity(new Intent(this, SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
       return true;
+    }
+    else if (id == R.id.home)
+    {
+      Intent intent = NavUtils.getParentActivityIntent(this);
+      intent.putExtra("project_id",project_id);
+      intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+      NavUtils.navigateUpTo(this, intent);
     }
     return super.onOptionsItemSelected(item);
   }

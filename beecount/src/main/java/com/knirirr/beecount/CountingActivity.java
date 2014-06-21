@@ -70,7 +70,19 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_counting);
 
+    Bundle extras = getIntent().getExtras();
+    if(extras !=null)
+    {
+      project_id = extras.getLong("project_id");
+    }
+
+    projectDataSource = new ProjectDataSource(this);
+    countDataSource = new CountDataSource(this);
+    alertDataSource = new AlertDataSource(this);
+    linkDataSource = new LinkDataSource(this);
+
     beeCount = (BeeCountApplication) getApplication();
+    //project_id = beeCount.project_id;
     prefs = BeeCountApplication.getPrefs();
     prefs.registerOnSharedPreferenceChangeListener(this);
     getPrefs();
@@ -102,34 +114,20 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   protected void onResume()
   {
     super.onResume();
-    try
-    {
-      project_id = beeCount.project_id;
-    }
-    catch (NullPointerException e)
-    {
-      finish();
-    }
 
     // clear any existing views
     count_area.removeAllViews();
     notes_area.removeAllViews();
 
     // setup the data sources
-    projectDataSource = new ProjectDataSource(this);
     projectDataSource.open();
-
-    countDataSource = new CountDataSource(this);
     countDataSource.open();
-    alertDataSource = new AlertDataSource(this);
     alertDataSource.open();
-    linkDataSource = new LinkDataSource(this);
     linkDataSource.open();
 
     // load the data
     // projects
     Log.i(TAG,"Project ID: " + String.valueOf(project_id));
-    boolean frc = false;
     try
     {
       project = projectDataSource.getProject(project_id);
@@ -138,7 +136,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     {
       Log.e(TAG, "Problem loading project: " + e.toString());
       Toast.makeText(CountingActivity.this, getString(R.string.getHelp), Toast.LENGTH_LONG).show();
-      frc = true;
+      finish();
     }
 
     Log.i(TAG, "Got project: " + project.name);
@@ -180,8 +178,8 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     }
     catch (SQLiteException e)
     {
-      frc = true;
       Toast.makeText(CountingActivity.this, getString(R.string.getHelp), Toast.LENGTH_LONG).show();
+      finish();
     }
 
     // display project notes
@@ -227,15 +225,6 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
       wl.acquire();
     }
 
-    if (frc)
-    {
-      shutDown();
-    }
-  }
-
-  protected void shutDown()
-  {
-    finish();
   }
 
   @Override
@@ -245,7 +234,10 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
 
     // save the data
     saveData();
-    beeCount.project_id = project_id;
+    // save project id in case it is lost on pause
+    SharedPreferences.Editor editor = prefs.edit();
+    editor.putLong("pref_project_id",project_id);
+    editor.commit();
 
     // close the data sources
     projectDataSource.close();
@@ -291,8 +283,9 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   public void editProject(View view)
   {
     // some stuff to go here
-    beeCount.project_id = project_id;
+    //beeCount.project_id = project_id;
     Intent intent = new Intent(CountingActivity.this, EditProjectActivity.class);
+    intent.putExtra("project_id",project_id);
     startActivity(intent);
   }
 
@@ -371,6 +364,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     long count_id = Long.valueOf(view.getTag().toString());
     Intent intent = new Intent(CountingActivity.this, CountOptionsActivity.class);
     intent.putExtra("count_id",count_id);
+    intent.putExtra("project_id",project_id);
     startActivity(intent);
   }
 

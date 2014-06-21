@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -44,6 +45,7 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
   private AlertDialog.Builder are_you_sure;
   private View markedForDelete;
   private long deleteAnAlert;
+  private long project_id;
 
   LinearLayout static_widget_area;
   LinearLayout dynamic_widget_area;
@@ -72,16 +74,19 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
     if(extras !=null)
     {
       count_id = extras.getLong("count_id");
+      project_id = extras.getLong("project_id");
     }
 
     /*
      * Just in case this activity starts up without an intent having been supplied, e.g. when the user
      * resumes after having done some editing.
      */
+    /*
     if (count_id == 0)
     {
       startActivity(new Intent(this, WelcomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
+    */
 
   }
 
@@ -267,6 +272,13 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
     {
       startActivity(new Intent(this, SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
       return true;
+    }
+    else if (id == R.id.home)
+    {
+      Intent intent = NavUtils.getParentActivityIntent(this);
+      intent.putExtra("project_id",project_id);
+      intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+      NavUtils.navigateUpTo(this, intent);
     }
     return super.onOptionsItemSelected(item);
   }

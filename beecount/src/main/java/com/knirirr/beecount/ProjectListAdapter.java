@@ -93,7 +93,8 @@ public class ProjectListAdapter extends ArrayAdapter<Project>
     {
       p = (Project) v.getTag();
       Intent intent = new Intent(getContext(), CountingActivity.class);
-      beeCount.project_id = p.id;
+      intent.putExtra("project_id",p.id);
+      //beeCount.project_id = p.id;
       mContext.startActivity(intent);
     }
   };
@@ -104,7 +105,8 @@ public class ProjectListAdapter extends ArrayAdapter<Project>
     {
       p = (Project) v.getTag();
       Intent intent = new Intent(getContext(), CountingActivity.class);
-      beeCount.project_id = p.id;
+      intent.putExtra("project_id",p.id);
+      //beeCount.project_id = p.id;
       mContext.startActivity(intent);
     }
   };
@@ -123,7 +125,6 @@ public class ProjectListAdapter extends ArrayAdapter<Project>
         public void onClick(DialogInterface dialog, int id)
         {
           // perform the deleting in the activity
-
           ((ListProjectActivity) mContext).deleteProject(p);
         }
       }).setNegativeButton(R.string.cancelButton, new DialogInterface.OnClickListener()

@@ -24,7 +24,6 @@ public class BeeCountApplication extends Application
   private static String TAG = "BeeCount";
   public BitmapDrawable ob;
   private Bitmap bMap;
-  public Long project_id;
   private static SharedPreferences prefs;
 
 
@@ -33,7 +32,6 @@ public class BeeCountApplication extends Application
   {
     super.onCreate();
     ob = null;
-    project_id = null;
     bMap = null;
     try
     {

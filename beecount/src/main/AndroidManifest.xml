@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.knirirr.beecount"
     android:largeHeap="true"
-    android:versionName="2.0.5">
+    android:versionName="2.0.6">
 
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -52,6 +52,7 @@
             android:name="com.knirirr.beecount.CountingActivity"
             android:label="@string/title_activity_counting"
             android:theme="@style/Theme.AppCompat"
+            android:launchMode="singleTop"
             android:parentActivityName="com.knirirr.beecount.ListProjectActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

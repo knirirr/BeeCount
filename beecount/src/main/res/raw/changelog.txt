@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.0.6
+  % Version 2.0.6
+  _ 2014-06-21
+    * Improved stability when resuming from pause.
 $ 2.0.5
   % Version 2.0.5
   _ 2014-06-20
