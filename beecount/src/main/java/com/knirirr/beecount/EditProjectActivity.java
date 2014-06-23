@@ -466,7 +466,6 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
     if (id == R.id.action_settings)
     {
       startActivity(new Intent(this, SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-      return true;
     }
     else if (id == R.id.home)
     {
@@ -474,6 +473,11 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
       intent.putExtra("project_id",project_id);
       intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
       NavUtils.navigateUpTo(this, intent);
+    }
+    else if (id == R.id.menuSaveExit)
+    {
+      if (saveData())
+        super.finish();
     }
     return super.onOptionsItemSelected(item);
   }

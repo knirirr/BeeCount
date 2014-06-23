@@ -271,7 +271,6 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
     if (id == R.id.action_settings)
     {
       startActivity(new Intent(this, SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-      return true;
     }
     else if (id == R.id.home)
     {
@@ -279,6 +278,11 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
       intent.putExtra("project_id",project_id);
       intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
       NavUtils.navigateUpTo(this, intent);
+    }
+    else if (id == R.id.menuSaveExit)
+    {
+      saveData();
+      super.finish();
     }
     return super.onOptionsItemSelected(item);
   }

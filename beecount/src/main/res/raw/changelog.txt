@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.0.7
+  % Version 2.0.7
+  _ 2014-06-23
+    * Additional action bar buttons have been added.
 $ 2.0.6
   % Version 2.0.6
   _ 2014-06-21

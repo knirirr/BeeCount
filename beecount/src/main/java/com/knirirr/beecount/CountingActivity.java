@@ -236,7 +236,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     saveData();
     // save project id in case it is lost on pause
     SharedPreferences.Editor editor = prefs.edit();
-    editor.putLong("pref_project_id",project_id);
+    editor.putLong("pref_project_id", project_id);
     editor.commit();
 
     // close the data sources
@@ -523,6 +523,19 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     if (id == R.id.action_settings)
     {
       startActivity(new Intent(this, SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+      return true;
+    }
+    else if (id == R.id.menuEditProject)
+    {
+      Intent intent = new Intent(CountingActivity.this, EditProjectActivity.class);
+      intent.putExtra("project_id",project_id);
+      startActivity(intent);
+      return true;
+    }
+    else if (id == R.id.menuSaveExit)
+    {
+      saveData();
+      super.finish();
       return true;
     }
     return super.onOptionsItemSelected(item);

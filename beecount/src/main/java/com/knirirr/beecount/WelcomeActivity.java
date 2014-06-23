@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +26,7 @@ import java.io.IOException;
 import sheetrock.panda.changelog.ChangeLog;
 
 
-public class WelcomeActivity extends Activity implements SharedPreferences.OnSharedPreferenceChangeListener
+public class WelcomeActivity extends ActionBarActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
 
   private static String TAG = "BeeCountWelcomeActivity";
@@ -55,10 +56,12 @@ public class WelcomeActivity extends Activity implements SharedPreferences.OnSha
     ScrollView baseLayout = (ScrollView) findViewById(R.id.baseLayout);
     baseLayout.setBackgroundDrawable(beeCount.getBackground());
 
+    // a title isn't necessary on this welcome screen as it appears below
+    getSupportActionBar().setTitle("");
+
     cl = new ChangeLog(this);
     if (cl.firstRun())
       cl.getLogDialog().show();
-
 
   }
 
@@ -96,6 +99,16 @@ public class WelcomeActivity extends Activity implements SharedPreferences.OnSha
     else if (id == R.id.changeLog)
     {
       cl.getFullLogDialog().show();
+      return true;
+    }
+    else if (id == R.id.newProject)
+    {
+      startActivity(new Intent(this, NewProjectActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+      return true;
+    }
+    else if (id == R.id.viewProjects)
+    {
+      startActivity(new Intent(this, ListProjectActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
       return true;
     }
 
