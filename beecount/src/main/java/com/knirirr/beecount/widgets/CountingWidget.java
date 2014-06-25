@@ -43,6 +43,7 @@ public class CountingWidget extends RelativeLayout
   {
     count = newcount;
     countCount.setText(String.valueOf(count.count));
+    setFont();
     countName.setText(count.name);
     ImageButton countUpButton = (ImageButton) findViewById(R.id.buttonUp);
     countUpButton.setTag(count.id);
@@ -56,12 +57,14 @@ public class CountingWidget extends RelativeLayout
   {
     count.increase();
     countCount.setText(String.valueOf(count.count));
+    setFont();
   }
 
   public void countDown()
   {
     count.decrease();
     countCount.setText(String.valueOf(count.count));
+    setFont();
   }
 
   // sets to the reset level
@@ -69,6 +72,28 @@ public class CountingWidget extends RelativeLayout
   {
     count.count = count.reset_level;
     countCount.setText(String.valueOf(count.count));
+    setFont();
+  }
+
+  /*
+   * The purpose of this function is to flip out and change the font size for the count box depending on how many
+   * digits are in it, in order that the count doesn't wrap when going over 100.
+   */
+  public void setFont()
+  {
+    String currCount = countCount.getText().toString();
+    if (currCount.length() <= 2)
+    {
+      countCount.setTextSize(38);
+    }
+    else if (currCount.length() == 3)
+    {
+      countCount.setTextSize(30);
+    }
+    else if (currCount.length() >= 4)
+    {
+      countCount.setTextSize(22);
+    }
   }
 
   /*

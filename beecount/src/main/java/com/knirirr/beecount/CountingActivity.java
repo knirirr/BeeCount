@@ -153,6 +153,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     {
       CountingWidget widget = new CountingWidget(this,null);
       widget.setCount(count);
+      widget.setFont();
       countingWidgets.add(widget);
       count_area.addView(widget);
       if (count.auto_reset > 0)
