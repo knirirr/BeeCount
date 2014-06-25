@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.0.8
+  % Version 2.0.8
+  _ 2014-06-25
+    * The font size now changes when counting to accommodate counts greater than 99.
 $ 2.0.7
   % Version 2.0.7
   _ 2014-06-23
