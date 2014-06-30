@@ -309,6 +309,8 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     }
     checkAlert(widget.count.id,widget.count.count);
     checkLink(widget.count.id, widget.count.count, true);
+    if (widget.count.auto_reset > 0)
+      checkReset(widget.count);
   }
 
   public void countDown(long count_id)
@@ -320,6 +322,8 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     }
     checkAlert(widget.count.id,widget.count.count);
     checkLink(widget.count.id,widget.count.count,false);
+    if (widget.count.auto_reset > 0)
+      checkReset(widget.count);
   }
 
   public void countUp(View view)
