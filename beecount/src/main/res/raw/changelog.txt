@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.0.10
+  % Version 2.0.10
+  _ 2014-07-11
+    * Fix for a crash caused by deleting linked counts.
 $ 2.0.9
   % Version 2.0.9
   _ 2014-06-30

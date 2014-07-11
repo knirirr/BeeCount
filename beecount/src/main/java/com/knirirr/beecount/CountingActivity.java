@@ -198,8 +198,33 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     // been dealt with during setup, above
     for (Link l : links)
     {
-      String master = getCountFromId(l.master_id).count.name;
-      String slave = getCountFromId(l.slave_id).count.name;
+      String master;
+      String slave;
+      /*
+       * Sometimes it seems that links are not being deleted at the same time as counts.
+       * Therefore, the try/catch blocks below deal with this problem by deleting those links.
+       */
+      try
+      {
+          slave = getCountFromId(l.slave_id).count.name;
+      }
+      catch (Exception e)
+      {
+        Log.e(TAG, "Would have crashed due to not being able to find a slave count; deleting.");
+        linkDataSource.deleteLink(l);
+        return;
+      }
+      try
+      {
+          master = getCountFromId(l.master_id).count.name;
+      }
+      catch (Exception e)
+      {
+        Log.e(TAG, "Would have crashed due to not being able to find a master count; deleting.");
+        linkDataSource.deleteLink(l);
+        return;
+      }
+
       if (l.type == 0)
       {
         extras.add(String.format(getString(R.string.willLinkReset), master, slave, l.increment));

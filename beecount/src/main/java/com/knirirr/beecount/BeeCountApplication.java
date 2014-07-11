@@ -87,7 +87,18 @@ public class BeeCountApplication extends Application
       {
         if (new File(pictPref).isFile())
         {
-          bMap = BitmapFactory.decodeFile(pictPref);
+          /*
+           * This should hopefully stop crashes caused by large image files.
+           */
+          try
+          {
+            bMap = BitmapFactory.decodeFile(pictPref);
+          }
+          catch (Exception e)
+          {
+            Toast.makeText(this, getString(R.string.customTooBig), Toast.LENGTH_SHORT).show();
+            bMap = decodeBitmap(R.drawable.beecount_knitting, width, height);
+          }
         }
         else
         {

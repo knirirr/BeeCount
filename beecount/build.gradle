@@ -16,7 +16,7 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 19
-        versionCode 77
+        versionCode 78
     }
     buildTypes {
         release {
