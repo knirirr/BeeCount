@@ -92,11 +92,16 @@ public class BeeCountApplication extends Application
            */
           try
           {
-            bMap = BitmapFactory.decodeFile(pictPref);
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = false;
+            options.inPreferredConfig = Bitmap.Config.RGB_565;
+            options.inDither = true;
+            bMap = BitmapFactory.decodeFile(pictPref,options);
           }
-          catch (Exception e)
+          catch (OutOfMemoryError e)
           {
             Toast.makeText(this, getString(R.string.customTooBig), Toast.LENGTH_SHORT).show();
+            bMap = null;
             bMap = decodeBitmap(R.drawable.beecount_knitting, width, height);
           }
         }
