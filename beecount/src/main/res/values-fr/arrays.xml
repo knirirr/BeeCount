@@ -10,4 +10,16 @@
     <item>custom</item>
     <item>default</item>
   </string-array>
+    <string-array name="pref_sort_entries">
+        <item>Date, ascendant</item>
+        <item>Date, descendant</item>
+        <item>Nom, ascendant</item>
+        <item>Nom, descendant</item>
+    </string-array>
+    <string-array name="pref_sort_values">
+        <item>date_asc</item>
+        <item>date_desc</item>
+        <item>name_asc</item>
+        <item>name_desc</item>
+    </string-array>
 </resources>

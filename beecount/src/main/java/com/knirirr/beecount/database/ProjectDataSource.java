@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -97,6 +98,38 @@ public class ProjectDataSource
     String where = DbHelper.P_ID + " = ?";
     String[] whereArgs = {String.valueOf(project.id)};
     database.update(DbHelper.PROJ_TABLE, dataToInsert, where, whereArgs);
+  }
+
+  public List<Project> getAllProjects(SharedPreferences prefs)
+  {
+    List<Project> projects = new ArrayList<Project>();
+
+    String orderBy =  DbHelper.P_CREATED_AT + " DESC";
+    String sortString = prefs.getString("pref_sort", "date_desc");
+    if (sortString.equals("date_asc"))
+    {
+      orderBy =  DbHelper.P_CREATED_AT + " ASC";
+    }
+    else if (sortString.equals("name_asc"))
+    {
+      orderBy =  DbHelper.P_NAME + " ASC";
+    }
+    else if (sortString.equals("name_desc"))
+    {
+      orderBy =  DbHelper.P_NAME + " DESC";
+    }
+    Cursor cursor = database.query(DbHelper.PROJ_TABLE, allColumns, null, null, null, null, orderBy);
+
+    cursor.moveToFirst();
+    while (!cursor.isAfterLast())
+    {
+      Project project = cursorToProject(cursor);
+      projects.add(project);
+      cursor.moveToNext();
+    }
+    // Make sure to close the cursor
+    cursor.close();
+    return projects;
   }
 
   public List<Project> getAllProjects()

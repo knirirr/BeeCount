@@ -14,6 +14,13 @@
             android:title="@string/chooseImg"
             android:key="button"
             android:summary="@string/explainImg"/>
+        <ListPreference
+                android:key="pref_sort"
+                android:title="Sorting"
+                android:summary="Sort order when viewing your list of projects."
+                android:entries="@array/pref_sort_entries"
+                android:entryValues="@array/pref_sort_values"
+            />
     </PreferenceCategory>
 
      <PreferenceCategory

@@ -79,7 +79,7 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
 
   private void showData()
   {
-    projects = projectDataSource.getAllProjects();
+    projects = projectDataSource.getAllProjects(prefs);
     adapter = new ProjectListAdapter(this, R.layout.listview_project_row, projects);
     setListAdapter(adapter);
   }
@@ -117,5 +117,6 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
     LinearLayout list_view = (LinearLayout) findViewById(R.id.list_view);
     list_view.setBackgroundDrawable(null);
     list_view.setBackgroundDrawable(beeCount.setBackground());
+    prefs = BeeCountApplication.getPrefs();
   }
 }
