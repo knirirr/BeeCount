@@ -105,6 +105,10 @@
     <string name="prefs_appearance">Apparance</string>
     <string name="prefs_counting">Compter</string>
     <string name="image_error">Erreur avec l\'image customisé! Veuillez utiliser la galerie de photos plutôt qu\'un gestionnaire de fichiers.</string>
+    <string name="pref_note_font">Fonte pour notes</string>
+    <string name="pref_note_font_summ">Choisissez cette option pour aggrandir les fontes sur l\'ecran des comptes.</string>
+    <string name="pref_sort_order">Tri</string>
+    <string name="pref_sort_order_summ">Ordre de tri pour la liste des projets.</string>
 
     <!-- CountOptionsActivity -->
     <string name="setResetValue">Réglez la valeur à laquelle un compte se remettra. Le compte deviendra 0 à moins que que le niveau de remettre (voir ci-dessous) soit aussi changé. Mettez à 0 pour désactiver.</string>

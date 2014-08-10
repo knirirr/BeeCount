@@ -30,4 +30,17 @@ public class NotesWidget extends LinearLayout
     project_notes = notes;
     textView.setText(project_notes);
   }
+
+  public void setFont(Boolean large)
+  {
+    if (large)
+    {
+      textView.setTextSize(20);
+    }
+    else
+    {
+      textView.setTextSize(12);
+    }
+  }
+
 }

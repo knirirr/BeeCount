@@ -105,6 +105,11 @@
     <string name="prefs_appearance">Appearance</string>
     <string name="prefs_counting">Counting</string>
     <string name="image_error">Error setting custom image! Please try using the gallery rather than a file manager.</string>
+    <string name="pref_note_font">Note font</string>
+    <string name="pref_note_font_summ">Select this option to increase the size of note fonts on the counting screen.</string>
+    <string name="pref_sort_order">Sorting</string>
+    <string name="pref_sort_order_summ">Sort order when viewing your list of projects.</string>
+
 
     <!-- CountOptionsActivity -->
     <string name="setResetValue">Set the value at which this count will reset itself. The count will be reset to 0 unless the reset level (see below) is also changed. Set to 0 to disable.</string>

@@ -49,6 +49,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   // preferences
   private boolean toastPref;
   private boolean awakePref;
+  private boolean fontPref;
   private PowerManager.WakeLock wl;
 
   // the actual data
@@ -108,6 +109,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   {
     toastPref = prefs.getBoolean("toast_away", false);
     awakePref = prefs.getBoolean("pref_awake", true);
+    fontPref = prefs.getBoolean("pref_note_font", false);
   }
 
   @Override
@@ -190,6 +192,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
       {
         NotesWidget project_notes = new NotesWidget(this, null);
         project_notes.setNotes(project.notes);
+        project_notes.setFont(fontPref);
         notes_area.addView(project_notes);
       }
     }
