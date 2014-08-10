@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.knirirr.beecount.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -25,7 +26,7 @@ import java.util.Locale;
 /**
  * Created by milo on 04/06/2014.
  */
-public class LinkEditWidget extends LinearLayout
+public class LinkEditWidget extends LinearLayout implements Serializable
 {
   Spinner masterSpinner;
   Spinner slaveSpinner;

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
@@ -66,6 +67,8 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
   private AlertDialog.Builder are_you_sure;
   public ArrayList<String> countNames;
   public ArrayList<Long> countIds;
+  public ArrayList<LinkEditWidget> savedLinks;
+  public ArrayList<CountEditWidget> savedCounts;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -73,10 +76,35 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_edit_project);
 
+    countNames = new ArrayList<String>();
+    countIds = new ArrayList<Long>();
+    savedLinks = new ArrayList<LinkEditWidget>();
+    savedCounts = new ArrayList<CountEditWidget>();
+
+    notes_area = (LinearLayout) findViewById(R.id.editingNotesLayout);
+    counts_area = (LinearLayout) findViewById(R.id.editingCountsLayout);
+    links_area = (LinearLayout) findViewById(R.id.editingLinksLayout);
+    existing_links_area = (LinearLayout) findViewById(R.id.existingLinksLayout);
+
     Bundle extras = getIntent().getExtras();
     if(extras !=null)
     {
       project_id = extras.getLong("project_id");
+    }
+
+    /*
+     * Restore any edit widgets the user has added previously
+     */
+    if (savedInstanceState != null)
+    {
+      if (savedInstanceState.getSerializable("savedLinks") != null)
+      {
+        savedLinks = (ArrayList<LinkEditWidget>) savedInstanceState.getSerializable("savedLinks");
+      }
+      if (savedInstanceState.getSerializable("savedCounts") != null)
+      {
+        savedCounts = (ArrayList<CountEditWidget>) savedInstanceState.getSerializable("savedCounts");
+      }
     }
 
     beeCount = (BeeCountApplication) getApplication();
@@ -86,14 +114,26 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
 
     ScrollView counting_screen = (ScrollView) findViewById(R.id.editingScreen);
     counting_screen.setBackgroundDrawable(beeCount.getBackground());
+  }
 
-    notes_area = (LinearLayout) findViewById(R.id.editingNotesLayout);
-    counts_area = (LinearLayout) findViewById(R.id.editingCountsLayout);
-    links_area = (LinearLayout) findViewById(R.id.editingLinksLayout);
-    existing_links_area = (LinearLayout) findViewById(R.id.existingLinksLayout);
-
-    countNames = new ArrayList<String>();
-    countIds = new ArrayList<Long>();
+  @Override
+  protected void onSaveInstanceState(Bundle outState)
+  {
+    /*
+     * Before these widgets can be serialised they must be removed from their parent, or else
+     * trying to add them to a new parent causes a crash because they've already got one.
+     */
+    super.onSaveInstanceState(outState);
+    for (LinkEditWidget lew : savedLinks)
+    {
+      ((ViewGroup) lew.getParent()).removeView(lew);
+    }
+    outState.putSerializable("savedLinks", savedLinks);
+    for (CountEditWidget cew : savedCounts)
+    {
+      ((ViewGroup)cew.getParent()).removeView(cew);
+    }
+    outState.putSerializable("savedCounts", savedCounts);
   }
 
   @Override
@@ -147,6 +187,11 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
       cew.setCountId(count.id);
       counts_area.addView(cew);
     }
+    for (CountEditWidget cew: savedCounts)
+    {
+      counts_area.addView(cew);
+    }
+
     // these are needed to fill the spinners for the link widgets
     getCountNames();
 
@@ -167,7 +212,10 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
           link.increment);
       existing_links_area.addView(elw);
     }
-
+    for (LinkEditWidget lew: savedLinks)
+    {
+      links_area.addView(lew);
+    }
   }
 
   @Override
@@ -215,6 +263,9 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
   public void saveAndExit(View view)
   {
     if (saveData())
+      // empty the list of linkEditWidgets in case it hangs around to create a nuisance later
+      savedCounts.clear();
+      savedLinks.clear();
       super.finish();
   }
 
@@ -329,6 +380,8 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
       }
     }
     Toast.makeText(EditProjectActivity.this, getString(R.string.projSaving) + " " + project.name + "!", Toast.LENGTH_SHORT).show();
+
+
     return true;
   }
 
@@ -343,12 +396,14 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
     lew.setCountNames(countNames);
     lew.setCountIds(countIds);
     links_area.addView(lew);
+    savedLinks.add(lew);
   }
 
   public void newCount(View view)
   {
     CountEditWidget cew = new CountEditWidget(this,null);
     counts_area.addView(cew);
+    savedCounts.add(cew);
   }
 
   /*

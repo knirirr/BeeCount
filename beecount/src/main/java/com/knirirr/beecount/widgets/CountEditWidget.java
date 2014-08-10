@@ -9,10 +9,12 @@ import android.widget.LinearLayout;
 
 import com.knirirr.beecount.R;
 
+import java.io.Serializable;
+
 /**
  * Created by milo on 04/06/2014.
  */
-public class CountEditWidget extends LinearLayout
+public class CountEditWidget extends LinearLayout implements Serializable
 {
   private EditText countName;
   private ImageButton deleteButton;
