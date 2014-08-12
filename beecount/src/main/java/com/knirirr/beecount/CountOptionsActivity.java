@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewManager;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -54,6 +55,8 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
   OptionsWidget curr_val_widget;
   AddAlertWidget aa_widget;
 
+  ArrayList<AlertCreateWidget> savedAlerts;
+
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
@@ -77,16 +80,15 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
       project_id = extras.getLong("project_id");
     }
 
-    /*
-     * Just in case this activity starts up without an intent having been supplied, e.g. when the user
-     * resumes after having done some editing.
-     */
-    /*
-    if (count_id == 0)
+    savedAlerts = new ArrayList<AlertCreateWidget>();
+    if (savedInstanceState != null)
     {
-      startActivity(new Intent(this, WelcomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+      if (savedInstanceState.getSerializable("savedAlerts") != null)
+      {
+        savedAlerts = (ArrayList<AlertCreateWidget>) savedInstanceState.getSerializable("savedAlerts");
+      }
     }
-    */
+
 
   }
 
@@ -145,7 +147,28 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
       dynamic_widget_area.addView(acw);
     }
 
+    /*
+     * Add saved alert create widgets
+     */
+    for (AlertCreateWidget acw : savedAlerts)
+    {
+      dynamic_widget_area.addView(acw);
+    }
+  }
 
+  @Override
+  protected void onSaveInstanceState(Bundle outState)
+  {
+    /*
+     * Before these widgets can be serialised they must be removed from their parent, or else
+     * trying to add them to a new parent causes a crash because they've already got one.
+     */
+    super.onSaveInstanceState(outState);
+    for (AlertCreateWidget acw : savedAlerts)
+    {
+      ((ViewGroup) acw.getParent()).removeView(acw);
+    }
+    outState.putSerializable("savedAlerts", savedAlerts);
   }
 
   @Override
@@ -162,6 +185,7 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
   public void saveAndExit(View view)
   {
     saveData();
+    savedAlerts.clear();
     super.finish();
   }
 
@@ -205,6 +229,7 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
   public void addAnAlert(View view)
   {
     AlertCreateWidget acw = new AlertCreateWidget(this,null);
+    savedAlerts.add(acw);
     dynamic_widget_area.addView(acw);
   }
 

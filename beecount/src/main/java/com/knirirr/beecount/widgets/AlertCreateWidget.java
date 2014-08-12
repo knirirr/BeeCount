@@ -11,11 +11,13 @@ import com.knirirr.beecount.R;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.Serializable;
+
 /**
  * Created by milo on 02/06/2014.
  * This is the widget for creating an alert in the CountOptionsActivity.
  */
-public class AlertCreateWidget extends LinearLayout
+public class AlertCreateWidget extends LinearLayout implements Serializable
 {
   EditText alert_name;
   EditText alert_value;

@@ -67,14 +67,11 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
 
     if (savedInstanceState != null)
     {
-      Log.i(TAG,"HOLYCARP");
       if (savedInstanceState.getSerializable("savedTexts") != null)
       {
         myTexts = (ArrayList<NewCount>) savedInstanceState.getSerializable("savedTexts");
-        Log.i(TAG,"FTANG");
         for (NewCount c : myTexts)
         {
-          Log.i(TAG,"WIBBLE");
           LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
               LinearLayout.LayoutParams.WRAP_CONTENT);
           params.setMargins(5, 5, 5, 5);
