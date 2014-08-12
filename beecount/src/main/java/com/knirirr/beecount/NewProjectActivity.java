@@ -34,7 +34,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
   SharedPreferences prefs;
   int newBox;
   ViewGroup layout;
-  private ArrayList<EditText> myTexts;
+  private ArrayList<NewCount> myTexts;
   private ArrayList<String> countNames;
   EditText newprojName;
   ProjectDataSource projectDataSource;
@@ -61,9 +61,33 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
     // setup from previous version
     newBox = 1;
     layout = (ViewGroup) findViewById(R.id.newCountLayout);
-    myTexts = new ArrayList<EditText>();
+    myTexts = new ArrayList<NewCount>();
     newprojName = (EditText) findViewById(R.id.newprojName);
     countNames = new ArrayList<String>();
+
+    if (savedInstanceState != null)
+    {
+      Log.i(TAG,"HOLYCARP");
+      if (savedInstanceState.getSerializable("savedTexts") != null)
+      {
+        myTexts = (ArrayList<NewCount>) savedInstanceState.getSerializable("savedTexts");
+        Log.i(TAG,"FTANG");
+        for (NewCount c : myTexts)
+        {
+          Log.i(TAG,"WIBBLE");
+          LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+              LinearLayout.LayoutParams.WRAP_CONTENT);
+          params.setMargins(5, 5, 5, 5);
+          c.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+          c.setHint(this.getString(R.string.boxFill) + " " + newBox);
+          c.setBackgroundResource(R.drawable.rounded_corner);
+          c.setPadding(5,5,5,5);
+          c.setTextSize(24);
+          layout.addView(c, params);
+          newBox++;
+        }
+      }
+    }
 
   }
 
@@ -74,6 +98,21 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
     projectDataSource.open();
     countDataSource.open();
     super.onResume();
+  }
+
+  @Override
+  protected void onSaveInstanceState(Bundle outState)
+  {
+    /*
+     * Before these widgets can be serialised they must be removed from their parent, or else
+     * trying to add them to a new parent causes a crash because they've already got one.
+     */
+    super.onSaveInstanceState(outState);
+    for (NewCount c : myTexts)
+    {
+      ((ViewGroup) c.getParent()).removeView(c);
+    }
+    outState.putSerializable("savedTexts", myTexts);
   }
 
   @Override
@@ -114,7 +153,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
         LinearLayout.LayoutParams.WRAP_CONTENT);
     params.setMargins(5, 5, 5, 5);
-    EditText c = new EditText(this);
+    NewCount c = new NewCount(this);
     c.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
     c.setHint(this.getString(R.string.boxFill) + " " + newBox);
     c.setBackgroundResource(R.drawable.rounded_corner);
@@ -155,7 +194,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
     {
       carryon = 0;
     }
-    for (EditText c : myTexts)
+    for (NewCount c : myTexts)
     {
       count_name = c.getText().toString();
       if (StringUtils.isBlank(count_name))
@@ -172,7 +211,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
 
     // check for unique names
     countNames.clear();
-    for (EditText c : myTexts)
+    for (NewCount c : myTexts)
     {
       count_name = c.getText().toString();
       if (countNames.contains(count_name))
@@ -191,7 +230,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
      */
 
     Project newProject = projectDataSource.createProject(proj_name); // might need to escape the name
-    for (EditText c : myTexts)
+    for (NewCount c : myTexts)
     {
       count_name = c.getText().toString();
       Count newCount = countDataSource.createCount(newProject.id,count_name);
