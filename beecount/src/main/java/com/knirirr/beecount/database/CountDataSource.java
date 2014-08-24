@@ -23,7 +23,8 @@ public class CountDataSource
       DbHelper.C_COUNT,
       DbHelper.C_NAME,
       DbHelper.C_AUTO_RESET,
-      DbHelper.C_RESET_LEVEL
+      DbHelper.C_RESET_LEVEL,
+      DbHelper.C_NOTES
   };
 
   public CountDataSource(Context context)
@@ -49,6 +50,7 @@ public class CountDataSource
     values.put(DbHelper.C_COUNT, 0);
     values.put(DbHelper.C_AUTO_RESET, 0);
     values.put(DbHelper.C_RESET_LEVEL, 0);
+    // notes should be default null and so isn't created here
 
     long insertId = database.insert(DbHelper.COUNT_TABLE, null, values);
     Cursor cursor = database.query(DbHelper.COUNT_TABLE,
@@ -68,6 +70,7 @@ public class CountDataSource
     newcount.count = cursor.getInt(cursor.getColumnIndex(DbHelper.C_COUNT));
     newcount.auto_reset = cursor.getInt(cursor.getColumnIndex(DbHelper.C_AUTO_RESET));
     newcount.reset_level = cursor.getInt(cursor.getColumnIndex(DbHelper.C_RESET_LEVEL));
+    newcount.notes = cursor.getString(cursor.getColumnIndex(DbHelper.C_NOTES));
     return newcount;
   }
 
@@ -97,6 +100,7 @@ public class CountDataSource
     dataToInsert.put(DbHelper.C_NAME, count.name);
     dataToInsert.put(DbHelper.C_AUTO_RESET, count.auto_reset);
     dataToInsert.put(DbHelper.C_RESET_LEVEL, count.reset_level);
+    dataToInsert.put(DbHelper.C_NOTES, count.notes);
     String where = DbHelper.C_ID + " = ?";
     String[] whereArgs = {String.valueOf(count.id)};
     database.update(DbHelper.COUNT_TABLE, dataToInsert, where, whereArgs);

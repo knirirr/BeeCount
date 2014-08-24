@@ -11,6 +11,7 @@ public class Count
   public String name;
   public int auto_reset;
   public int reset_level;
+  public String notes;
 
   public int increase()
   {

@@ -163,6 +163,15 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
         extras.add(String.format(getString(R.string.willReset), count.name, count.reset_level, count.auto_reset));
       }
 
+      // add a project note widget if there are any notes
+      if (StringUtils.isNotBlank(count.notes))
+      {
+        NotesWidget count_notes = new NotesWidget(this, null);
+        count_notes.setNotes(count.notes);
+        count_notes.setFont(fontPref);
+        count_area.addView(count_notes);
+      }
+
       // get add all alerts for this project
       List<Alert> tmpAlerts = alertDataSource.getAllAlertsForCount(count.id);
       for (Alert a : tmpAlerts)
@@ -185,17 +194,6 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
       finish();
     }
 
-    // display project notes
-    if (project.notes != null)
-    {
-      if (!project.notes.isEmpty())
-      {
-        NotesWidget project_notes = new NotesWidget(this, null);
-        project_notes.setNotes(project.notes);
-        project_notes.setFont(fontPref);
-        notes_area.addView(project_notes);
-      }
-    }
 
     // display summary of links; resets and alerts should already have
     // been dealt with during setup, above
@@ -246,6 +244,19 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
       NotesWidget extra_notes = new NotesWidget(this,null);
       extra_notes.setNotes(StringUtils.join(extras,"\n"));
       notes_area.addView(extra_notes);
+    }
+
+    // display project notes
+    // moved to bottom so it doesn't look like a count note
+    if (project.notes != null)
+    {
+      if (!project.notes.isEmpty())
+      {
+        NotesWidget project_notes = new NotesWidget(this, null);
+        project_notes.setNotes(project.notes);
+        project_notes.setFont(fontPref);
+        notes_area.addView(project_notes);
+      }
     }
 
     // finally, check to see if the screen should be kept on whilst counting

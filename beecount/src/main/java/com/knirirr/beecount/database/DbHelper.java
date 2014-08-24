@@ -23,7 +23,7 @@ public class DbHelper extends SQLiteOpenHelper
 {
   static final String TAG = "BeeCount DB";
   static final String DATABASE = "beecount.db";
-  static final int VERSION = 9;
+  static final int VERSION = 10;
   static final String PROJ_TABLE = "projects";
   static final String COUNT_TABLE = "counts";
   static final String LINK_TABLE = "links";
@@ -40,6 +40,7 @@ public class DbHelper extends SQLiteOpenHelper
   public static final String C_RESET_LEVEL = "reset_level";
   public static final String C_ALERT = "alert";
   public static final String C_ALERT_TEXT = "alert_text";
+  public static final String C_NOTES = "notes";
   public static final String L_ID = "_id";
   public static final String L_PROJECT_ID = "project_id";
   public static final String L_MASTER_ID = "master_id";
@@ -72,7 +73,7 @@ public class DbHelper extends SQLiteOpenHelper
     db.execSQL(sql);
     sql = "create table " + COUNT_TABLE + " (" + C_ID + " integer primary key, " + C_PROJECT_ID +
         " int, " + C_COUNT + " int, " + C_NAME + " text, " + C_AUTO_RESET + " int, " +
-        C_RESET_LEVEL + " int default 0)";
+        C_RESET_LEVEL + " int default 0, " + C_NOTES + " text default NULL)";
     db.execSQL(sql);
     sql = "create table " + LINK_TABLE + " (" + L_ID + " integer primary key, " + L_PROJECT_ID +
         " int, " + L_MASTER_ID + " int, " + L_SLAVE_ID + " int, " + L_INCREMENT + " int, " +
@@ -89,25 +90,35 @@ public class DbHelper extends SQLiteOpenHelper
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
   {
 
+    if (oldVersion == 9)
+    {
+      version_10(db,oldVersion,newVersion);
+    }
     if (oldVersion == 8)
     {
       version_9(db,oldVersion,newVersion);
+      version_10(db,oldVersion,newVersion);
     }
     if (oldVersion == 7)
     {
       version_8(db,oldVersion,newVersion);
       version_9(db,oldVersion,newVersion);
+      version_10(db,oldVersion,newVersion);
     }
     if (oldVersion == 6)
     {
       version_7(db,oldVersion,newVersion);
       version_8(db,oldVersion,newVersion);
+      version_9(db,oldVersion,newVersion);
+      version_10(db,oldVersion,newVersion);
     }
     if (oldVersion == 5)
     {
       version_6(db,oldVersion,newVersion);
       version_7(db,oldVersion,newVersion);
       version_8(db,oldVersion,newVersion);
+      version_9(db,oldVersion,newVersion);
+      version_10(db,oldVersion,newVersion);
     }
     if (oldVersion == 4)
     {
@@ -115,6 +126,8 @@ public class DbHelper extends SQLiteOpenHelper
       version_6(db,oldVersion,newVersion);
       version_7(db,oldVersion,newVersion);
       version_8(db,oldVersion,newVersion);
+      version_9(db,oldVersion,newVersion);
+      version_10(db,oldVersion,newVersion);
     }
     else if (oldVersion == 3)
     {
@@ -123,6 +136,8 @@ public class DbHelper extends SQLiteOpenHelper
       version_6(db,oldVersion,newVersion);
       version_7(db,oldVersion,newVersion);
       version_8(db,oldVersion,newVersion);
+      version_9(db,oldVersion,newVersion);
+      version_10(db,oldVersion,newVersion);
     }
     else if (oldVersion == 2)
     {
@@ -132,6 +147,8 @@ public class DbHelper extends SQLiteOpenHelper
       version_6(db,oldVersion,newVersion);
       version_7(db,oldVersion,newVersion);
       version_8(db,oldVersion,newVersion);
+      version_9(db,oldVersion,newVersion);
+      version_10(db,oldVersion,newVersion);
     }
     else if (oldVersion == 1)
     {
@@ -142,6 +159,8 @@ public class DbHelper extends SQLiteOpenHelper
       version_6(db,oldVersion,newVersion);
       version_7(db,oldVersion,newVersion);
       version_8(db,oldVersion,newVersion);
+      version_9(db,oldVersion,newVersion);
+      version_10(db,oldVersion,newVersion);
     }
   }
 
@@ -344,6 +363,13 @@ public class DbHelper extends SQLiteOpenHelper
     db.execSQL(sql);
     Log.i(TAG, "Upgraded database to version 9!");
     cursor.close();
+  }
+
+  public void version_10(SQLiteDatabase db, int oldVersion, int newVersion)
+  {
+    String sql = "alter table " + COUNT_TABLE + " add column " + C_NOTES + " text default NULL";
+    db.execSQL(sql);
+    Log.i(TAG, "Upgraded database to version 10!");
   }
 
 }

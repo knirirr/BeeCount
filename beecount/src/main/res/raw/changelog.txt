@@ -19,10 +19,14 @@
     </style>
   </head>
   <body>
-$ 2.1.0-beta
-  % Version 2.1.0-beta
-  _ 2014-08-10
-    * Fixed a bug where new counts and links on the editing screen would disappear on screen rotation.
+$ 2.2.0
+  % Version 2.2.0
+  _ 2014-08-24
+    * Counts can now have individual notes, in addition to the overall project notes.
+$ 2.1.0
+  % Version 2.1.0
+  _ 2014-08-18
+    * Fixed a bug where elements would disappear from some screens on device rotation.
     * Added an option to increase the font size of project notes on the counting screen.
     * Added an option to change the sort order of projects on the project list screen.
 $ 2.0.10

@@ -24,6 +24,7 @@ import com.knirirr.beecount.database.Count;
 import com.knirirr.beecount.database.CountDataSource;
 import com.knirirr.beecount.widgets.AddAlertWidget;
 import com.knirirr.beecount.widgets.AlertCreateWidget;
+import com.knirirr.beecount.widgets.EditTitleWidget;
 import com.knirirr.beecount.widgets.OptionsWidget;
 
 import org.apache.commons.lang3.StringUtils;
@@ -53,6 +54,7 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
   OptionsWidget ar_value_widget;
   OptionsWidget ar_level_widget;
   OptionsWidget curr_val_widget;
+  EditTitleWidget enw;
   AddAlertWidget aa_widget;
 
   ArrayList<AlertCreateWidget> savedAlerts;
@@ -132,6 +134,12 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
     curr_val_widget.setParameterValue(count.count);
     static_widget_area.addView(curr_val_widget);
 
+    enw = new EditTitleWidget(this,null);
+    enw.setProjectName(count.notes);
+    enw.setWidgetTitle(getString(R.string.notesHere));
+    enw.setHint(getString(R.string.notesHint));
+    static_widget_area.addView(enw);
+
     aa_widget = new AddAlertWidget(this,null);
     static_widget_area.addView(aa_widget);
 
@@ -196,6 +204,7 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
     count.auto_reset = ar_value_widget.getParameterValue();
     count.reset_level = ar_level_widget.getParameterValue();
     count.count = curr_val_widget.getParameterValue();
+    count.notes = enw.getProjectName();
 
     countDataSource.saveCount(count);
 

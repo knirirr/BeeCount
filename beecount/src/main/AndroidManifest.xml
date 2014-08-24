@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.knirirr.beecount"
     android:largeHeap="true"
-    android:versionName="2.1.0-beta">
+    android:versionName="2.2.0">
 
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
