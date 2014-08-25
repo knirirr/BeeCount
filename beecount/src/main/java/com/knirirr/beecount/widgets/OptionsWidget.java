@@ -39,6 +39,11 @@ public class OptionsWidget extends LinearLayout
     number.setText(String.valueOf(i));
   }
 
+  public void setSize(int i)
+  {
+    instructions.setTextSize(i);
+  }
+
   // this is set to return 0 if it can't parse a value from the box in order
   // that BeeCount doesn't crash
   public int getParameterValue()

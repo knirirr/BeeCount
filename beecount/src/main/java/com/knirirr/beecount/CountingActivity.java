@@ -576,6 +576,13 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
       startActivity(intent);
       return true;
     }
+    else if (id == R.id.menuCalculate)
+    {
+      Intent intent = new Intent(CountingActivity.this, CalculateActivity.class);
+      intent.putExtra("project_id",project_id);
+      startActivity(intent);
+      return true;
+    }
     else if (id == R.id.menuSaveExit)
     {
       saveData();

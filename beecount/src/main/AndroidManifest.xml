@@ -76,6 +76,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="CountingActivity" />
         </activity>
+        <activity
+            android:name="com.knirirr.beecount.CalculateActivity"
+            android:label="@string/calcButton"
+            android:theme="@style/Theme.AppCompat"
+            android:parentActivityName="com.knirirr.beecount.CountingActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="CountingActivity" />
+        </activity>
     </application>
 
 </manifest>
