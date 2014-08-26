@@ -19,6 +19,13 @@
     </style>
   </head>
   <body>
+$ 2.3.0-beta1
+  % Version 2.3.0-beta1
+  _ 2014-08-26
+  ! A rough draft of increase/decrease calculation is now ready! Remaining issues:
+    * Decrease calculations are dodgy.
+    * French localisations are incomplete.
+    * A landscape layout has not yet been provided.
 $ 2.2.0
   % Version 2.2.0
   _ 2014-08-24
