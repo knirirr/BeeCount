@@ -131,7 +131,7 @@ public class CalculateActivity extends ActionBarActivity implements SharedPrefer
     {
       if (StringUtils.isNotBlank(project.notes))
       {
-        project.notes = project.notes + "\n" + result_text;
+        project.notes = project.notes + "\n\n" + result_text;
       }
       else
       {
