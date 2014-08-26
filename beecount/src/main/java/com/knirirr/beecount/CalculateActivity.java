@@ -16,6 +16,8 @@ import com.knirirr.beecount.widgets.OptionsWidget;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.lang.Math;
+
 /**
  * Created by milo on 25/08/2014.
  */
@@ -60,13 +62,13 @@ public class CalculateActivity extends ActionBarActivity implements SharedPrefer
 
     spr_widget = new OptionsWidget(this,null);
     spr_widget.setInstructions(getString(R.string.perRow));
-    spr_widget.setParameterValue(0);
+    //spr_widget.setParameterValue(0);
     spr_widget.setSize(18);
     calc_area.addView(spr_widget);
 
     sti_widget = new OptionsWidget(this,null);
     sti_widget.setInstructions(getString(R.string.toIncrease));
-    sti_widget.setParameterValue(0);
+    //sti_widget.setParameterValue(0);
     sti_widget.setSize(18);
     calc_area.addView(sti_widget);
 
@@ -79,16 +81,74 @@ public class CalculateActivity extends ActionBarActivity implements SharedPrefer
   public void performCalculation(View view)
   {
     TextView results = (TextView) findViewById(R.id.calcResults);
-    int spr = spr_widget.getParameterValue(); // stitches
-    int sti = sti_widget.getParameterValue(); // decStitches
+    int stitches = spr_widget.getParameterValue();
+    int decStitches = sti_widget.getParameterValue();
+    int finalStitches = stitches + decStitches; // work this out
     results.setText("");
     String result_string = "";
+
+    if (stitches == 0 || decStitches == 0)
+    {
+      Toast.makeText(this,getString(R.string.dont_set_zero),Toast.LENGTH_SHORT).show();
+      return;
+    }
 
     // if the calculation has succeeded...
     int id = view.getId();
     if (id == R.id.increaseBalanced)
     {
+      /*
+      This code is directly plagiarised from this:
+      http://www.thedietdiary.com/knittingfiend/tools/IncreaseEvenlySpace.html
+      With permission, I hasten to add.
+      */
+      int knitBet2_1;
+      int times2_1;
+      int knitBet2_2;
+      int times2_2;
+      int knitBet2_3;
+      int times2_3;
+      int knitBeg2;
+      int knitEnd2;
+      int highTimes = stitches % decStitches;
+      int lowTimes = decStitches - highTimes;
+      double nonRoundBet = (double) stitches / (double) decStitches;
+      int lowBet =  (int) Math.floor(nonRoundBet);
+      int highBet = (int) Math.ceil(nonRoundBet);
+
+      if(highTimes%2 == 1) // high repeated an odd number of times so in center.
+      {
+        times2_2 = highTimes;
+        knitBet2_2 = highBet;
+        times2_1= (int) Math.ceil(((double) lowTimes-1)/2);
+        knitBet2_1 = lowBet;
+        times2_3 = (int) Math.floor(((double) lowTimes-1)/2);
+        knitBet2_3 = lowBet;
+        knitEnd2 = (int) Math.floor((double) lowBet / 2);
+        knitBeg2 = (int) Math.ceil((double) lowBet / 2);
+      }
+      else
+      {
+        times2_2 = lowTimes-1;
+        knitBet2_2 = lowBet;
+        times2_1 = (int) Math.ceil((double) highTimes/2);
+        knitBet2_1 = highBet;
+        times2_3 = (int) Math.floor((double) highTimes/2);
+        knitBet2_3 = highBet;
+        knitEnd2 = (int) Math.floor((double) lowBet/2);
+        knitBeg2 = (int) Math.ceil((double) lowBet/2);
+
+      }
       result_string = "Increase Balanced:\n";
+      result_string += String.format(getString(R.string.increase_balanced),knitEnd2,
+                                                                           knitBet2_1,
+                                                                           times2_1,
+                                                                           knitBet2_2,
+                                                                           times2_2,
+                                                                           knitBet2_3,
+                                                                           times2_3,
+                                                                           knitBeg2);
+      result_string += "\n" + String.format(getString(R.string.number_on_needle),finalStitches);
     }
     else if (id == R.id.decreaseBalanced)
     {
@@ -96,19 +156,13 @@ public class CalculateActivity extends ActionBarActivity implements SharedPrefer
     }
     else if (id == R.id.increaseUnbalanced)
     {
-      // knitBet1
-      // times1_1
-      // knitEnd1
-      // times1_1=decStitches;
-      // p.times1_1.value=times1_1; // => spr
-      // knitBet1 = Math.floor(divide(stitches,decStitches));
-      // p.knitBet1.value=knitBet1-1;
-      // knitEnd1 = stitches-(knitBet1)*decStitches;
-      // p.knitEnd1.value=knitEnd1
-      int knitBet1 = (int) java.lang.Math.floor((double) spr / (double) sti);
-      int finalStitches = spr + sti; // work this out
+      /*
+       This code is also taken from the IncreaseEvenlySpace.html file, but as it was a bit simpler
+       I was able to fiddle with the variable names without losing my place.
+       */
+      int knitBet1 = (int) Math.floor((double) stitches / (double) decStitches);
       result_string = "Increase Unbalanced:\n";
-      result_string += String.format(getString(R.string.increase_unbalanced),knitBet1 - 1,sti,spr - (knitBet1*sti));
+      result_string += String.format(getString(R.string.increase_unbalanced),knitBet1 - 1,decStitches,stitches - (knitBet1*decStitches));
       result_string += "\n" + String.format(getString(R.string.number_on_needle),finalStitches);
 
     }
