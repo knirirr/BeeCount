@@ -140,7 +140,7 @@
     <string name="aboutCalc">Cet écran permet le calcul de l\'augmentation ou de la diminution du nombre de mailles en utilisant la « formule magique » décrit par Ann Budd et tiré de « Sweater 101 » par Cheryl Brunette - veuillez consulter http://www.annbuddknits.com/Magic_Increase_Decrease_Formula.pdf pour en savoir plus.</string>
     <string name="stitchTotal">Nombre total de mailles</string>
     <string name="toIncrease">Nombre de mailles à augmenter/diminuer</string>
-    <string name="increaseOutput">Augmenter %2$d fois toutes les %1$s mailles, et %4$d fois toutes les %3$s mailles.</string>
+    <string name="increaseOutput">Augmenter/diminuer %2$d fois toutes les %1$s mailles, et %4$d fois toutes les %3$s mailles.</string>
     <string name="dont_set_zero">Veuillez mettre toutes les valeurs à plus que zéro.</string>
 
 

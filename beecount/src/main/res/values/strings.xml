@@ -137,7 +137,7 @@
     <string name="aboutCalc">This screen allows the calculation of increases or decreases using the \"magic formula\" as described by Ann Budd from the original by Cheryl Brunette, who published it in \"Sweater 101.\" Please refer to the PDF at http://www.annbuddknits.com/Magic_Increase_Decrease_Formula.pdf for more details.</string>
     <string name="stitchTotal">Total number of stitches</string>
     <string name="toIncrease">Number of stitches to increase/decrease</string>
-    <string name="increaseOutput">"Increase every %1$s stitch %2$d times, and every %3$s stitch %4$d times."</string>
+    <string name="increaseOutput">"Increase/decrease every %1$s stitch %2$d times, and every %3$s stitch %4$d times."</string>
     <string name="calcTitle">Calculation results</string>
     <string name="calcError">Calculation error!</string>
     <string name="updating_with_calc">Updating project notes!</string>
