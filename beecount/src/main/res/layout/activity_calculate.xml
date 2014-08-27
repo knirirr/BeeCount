@@ -10,81 +10,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:id="@+id/calcIntroText"
-                android:textColor="@android:color/white"
-                android:autoLink="email|web"
-                android:text="@string/aboutCalc"
-                android:background="@drawable/rounded_corner"
-                android:textSize="12sp"
-                android:padding="10dp"
-                android:layout_margin="5dp"/>
-
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/calc_area">
-        </LinearLayout>
-        <!-- buttons for choosing which calculation to do -->
-        <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:shrinkColumns="*"
-                android:stretchColumns="*">
-            <Button
-                    android:id="@+id/increaseBalanced"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:onClick="performCalculation"
-                    android:layout_weight="1"
-                    android:textSize="10sp"
-                    android:text="@string/increaseBalanced"
-                    android:maxLines="1">
-            </Button>
-            <Button
-                    android:id="@+id/increaseUnbalanced"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:onClick="performCalculation"
-                    android:layout_weight="1"
-                    android:textSize="10sp"
-                    android:text="@string/increaseUnbalanced"
-                    android:maxLines="1">
-            </Button>
-        </LinearLayout>
-        <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:shrinkColumns="*"
-                android:stretchColumns="*">
-            <Button
-                    android:id="@+id/decreaseBalanced"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:onClick="performCalculation"
-                    android:layout_weight="1"
-                    android:textSize="10sp"
-                    android:text="@string/decreaseBalanced"
-                    android:maxLines="1">
-            </Button>
-            <Button
-                    android:id="@+id/decreaseUnbalanced"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:onClick="performCalculation"
-                    android:layout_weight="1"
-                    android:textSize="10sp"
-                    android:text="@string/decreaseUnbalanced"
-                    android:maxLines="1">
-            </Button>
         </LinearLayout>
 
         <!-- area for results -->
@@ -99,6 +29,7 @@
                   android:paddingRight="5dp"
                   android:paddingBottom="5dp"
                   android:background="@drawable/rounded_corner">
+
             <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -116,7 +47,7 @@
         </LinearLayout>
 
 
-        <!-- save and exit -->
+        <!-- buttons -->
         <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -124,10 +55,15 @@
                 android:orientation="horizontal"
                 android:shrinkColumns="*"
                 android:stretchColumns="*">
-            <Space
+              <Button
+                    android:id="@+id/performCalculation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:onClick="performCalculation"
+                    android:layout_weight="1"
+                    android:text="@string/calcButton"
+                    android:maxLines="1">
+            </Button>
             <Button
                     android:id="@+id/clearCountButton"
                     android:layout_width="0dp"
@@ -137,29 +73,23 @@
                     android:text="@string/saveCountsButton"
                     android:maxLines="1">
             </Button>
-            <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+
         </LinearLayout>
 
         <!-- area for explanation -->
 
-
-        <TextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:id="@+id/calcExplanation"
+                android:id="@+id/calcIntroText"
                 android:textColor="@android:color/white"
                 android:autoLink="email|web"
-                android:text="@string/calcExplanation"
+                android:text="@string/aboutCalc"
                 android:background="@drawable/rounded_corner"
                 android:textSize="12sp"
                 android:padding="10dp"
                 android:layout_margin="5dp"/>
 
-
     </LinearLayout>
-
 </ScrollView>

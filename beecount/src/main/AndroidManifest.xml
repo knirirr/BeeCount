@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.knirirr.beecount"
     android:largeHeap="true"
-    android:versionName="2.3.0-beta1">
+    android:versionName="2.3.0-beta2">
 
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -79,11 +79,7 @@
         <activity
             android:name="com.knirirr.beecount.CalculateActivity"
             android:label="@string/calcButton"
-            android:theme="@style/Theme.AppCompat"
-            android:parentActivityName="com.knirirr.beecount.CountingActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="CountingActivity" />
+            android:theme="@style/Theme.AppCompat">
         </activity>
     </application>
 

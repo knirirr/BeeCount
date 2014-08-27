@@ -134,21 +134,12 @@
 
     <!-- calculations -->
     <string name="calcButton">Calculate</string>
-    <string name="aboutCalc">This screen allows the calculation of increases or decreases using the \"magic formula\" - thanks to The Knitting Fiend (http://www.thedietdiary.com/blog) for permission to use these calculations. See below for more information.</string>
-    <string name="perRow">Number of stitches in a row</string>
+    <string name="aboutCalc">This screen allows the calculation of increases or decreases using the \"magic formula\" as described by Ann Budd - please refer to the PDF at http://www.annbuddknits.com/Magic_Increase_Decrease_Formula.pdf for more details.</string>
+    <string name="stitchTotal">Total number of stitches</string>
     <string name="toIncrease">Number of stitches to increase/decrease</string>
-    <string name="increaseBalanced">Increase, balanced</string>
-    <string name="increaseUnbalanced">Increase, unbalanced</string>
-    <string name="decreaseBalanced">Decrease, balanced</string>
-    <string name="decreaseUnbalanced">Decrease, unbalanced</string>
+    <string name="increaseOutput">"Increase every %1$s stitch %2$d times, and every %3$s stitch %4$d times."</string>
     <string name="calcTitle">Calculation results</string>
-    <string name="calcExplanation">The unbalanced method reduces sort of evenly, but the first decrease and last decreases may be different distances from the edge. Sometimes, depending on the number of stitches in the row, this \"unbalanced\" decrease happens to work out the same as the next increase. For many items, this a perfectly good method to calculate decreases. Most people can also figure out that if they take stitches from the first groups and shift them to the end, things get more balanced.\n\n The balanced method is as symmetric as possible around the center stitch. It is a pain in the neck to calculate, but it prevents your sweater hem from shifting strangely to one side.  Some people don\'t ever bother to do make sure their increases are balanced and work unbalanced increases even when it matters. On the other hand, some people use the percentage method to calculate their sweaters and tolerate tight or loose sleeves, tight or loose armholes and other uncomfortable ugly knitting phenomena.</string>
     <string name="calcError">Calculation error!</string>
-    <string name="increase_unbalanced">(Knit %1$d, M1 knit 1) %2$d times, end knit %3$d.</string>
-    <string name="increase_balanced">Knit %1$d, (M1, knit %2$d) %3$d times, (M1, knit %4$d) %5$d times, (M1, knit %6$d) %7$d times, M1, knit %8$d.</string>
-    <string name="decrease_unbalanced">(Knit %1$d, k2 tog) %2$d times, end knit %3$d.</string>
-    <string name="decrease_balanced">Knit %1$d, (k2 tog, knit %2$d) %3$d times, (k2 tog, knit %4$d) %5$d times, (k2 tog, knit %6$d) %7$d times, k2 tog, knit %8$d.</string>
-    <string name="number_on_needle">Number on needle after increasing: %1$d</string>
     <string name="updating_with_calc">Updating project notes!</string>
     <string name="dont_set_zero">Please set all the input values to something greater than zero!</string>
 

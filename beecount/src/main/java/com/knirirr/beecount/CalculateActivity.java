@@ -61,14 +61,12 @@ public class CalculateActivity extends ActionBarActivity implements SharedPrefer
     calc_area = (LinearLayout) findViewById(R.id.calc_area);
 
     spr_widget = new OptionsWidget(this,null);
-    spr_widget.setInstructions(getString(R.string.perRow));
-    //spr_widget.setParameterValue(0);
+    spr_widget.setInstructions(getString(R.string.stitchTotal));
     spr_widget.setSize(18);
     calc_area.addView(spr_widget);
 
     sti_widget = new OptionsWidget(this,null);
     sti_widget.setInstructions(getString(R.string.toIncrease));
-    //sti_widget.setParameterValue(0);
     sti_widget.setSize(18);
     calc_area.addView(sti_widget);
 
@@ -82,11 +80,11 @@ public class CalculateActivity extends ActionBarActivity implements SharedPrefer
   {
     TextView results = (TextView) findViewById(R.id.calcResults);
     int stitches = spr_widget.getParameterValue();
-    int creases = sti_widget.getParameterValue();
+    int rows = sti_widget.getParameterValue();
     results.setText("");
     String result_string = "";
 
-    if (stitches == 0 || creases == 0)
+    if (stitches == 0 || rows == 0)
     {
       Toast.makeText(this,getString(R.string.dont_set_zero),Toast.LENGTH_SHORT).show();
       return;
@@ -95,143 +93,15 @@ public class CalculateActivity extends ActionBarActivity implements SharedPrefer
     // if the calculation has succeeded...
     try
     {
-      int id = view.getId();
-      if (id == R.id.increaseBalanced)
-      {
-        int decStitches = (int) Math.floor(stitches - 1);
-        int finalStitches = stitches + decStitches;
-      /*
-      This code is directly plagiarised from this:
-      http://www.thedietdiary.com/knittingfiend/tools/IncreaseEvenlySpace.html
-      With permission, I hasten to add.
-      */
-        int knitBet2_1;
-        int times2_1;
-        int knitBet2_2;
-        int times2_2;
-        int knitBet2_3;
-        int times2_3;
-        int knitBeg2;
-        int knitEnd2;
-        int highTimes = stitches % decStitches;
-        int lowTimes = decStitches - highTimes;
-        double nonRoundBet = (double) stitches / (double) decStitches;
-        int lowBet = (int) Math.floor(nonRoundBet);
-        int highBet = (int) Math.ceil(nonRoundBet);
+      int times = stitches / rows;
+      int remainder = stitches % rows;
+      int bottom_no = rows - remainder;
+      int top_no = times + 1;
 
-        if (highTimes % 2 == 1) // high repeated an odd number of times so in center.
-        {
-          times2_2 = highTimes;
-          knitBet2_2 = highBet;
-          times2_1 = (int) Math.ceil(((double) lowTimes - 1) / 2);
-          knitBet2_1 = lowBet;
-          times2_3 = (int) Math.floor(((double) lowTimes - 1) / 2);
-          knitBet2_3 = lowBet;
-          knitEnd2 = (int) Math.floor((double) lowBet / 2);
-          knitBeg2 = (int) Math.ceil((double) lowBet / 2);
-        }
-        else
-        {
-          times2_2 = lowTimes - 1;
-          knitBet2_2 = lowBet;
-          times2_1 = (int) Math.ceil((double) highTimes / 2);
-          knitBet2_1 = highBet;
-          times2_3 = (int) Math.floor((double) highTimes / 2);
-          knitBet2_3 = highBet;
-          knitEnd2 = (int) Math.floor((double) lowBet / 2);
-          knitBeg2 = (int) Math.ceil((double) lowBet / 2);
+      result_string += String.format(getString(R.string.increaseOutput),ordinal(times),bottom_no,ordinal(top_no),remainder);
+      //"Increase every #{times}th stitch #{bottom_no} times, and every #{top_no}th stitch #{remainder} times."
 
-        }
-        result_string = "Increase Balanced:\n";
-        result_string += String.format(getString(R.string.increase_balanced), knitEnd2,
-            knitBet2_1,
-            times2_1,
-            knitBet2_2,
-            times2_2,
-            knitBet2_3,
-            times2_3,
-            knitBeg2);
-        result_string += "\n" + String.format(getString(R.string.number_on_needle), finalStitches);
-      }
-      else if (id == R.id.decreaseBalanced)
-      {
-        int decStitches = (int) Math.floor((double) stitches / 2);
-        int finalStitches = stitches - decStitches;
-        int highTimes = (int) (stitches-2*decStitches)%decStitches;
-        int lowTimes = decStitches-highTimes;
 
-        double nonRoundBet = (stitches-2*decStitches)/decStitches;
-        int lowBet = (int) Math.floor(nonRoundBet);
-        int highBet = (int) Math.ceil(nonRoundBet);
-
-        int times2_2;
-        int knitBet2_2;
-        int times2_1;
-        int knitBet2_1;
-        int times2_3;
-        int knitBet2_3;
-        int knitEnd2;
-        int knitBeg2;
-        if(highTimes%2==1) // high repeated an odd number of times so in center.
-        {
-          times2_2 = highTimes;
-          knitBet2_2 = highBet;
-          times2_1 = (int) Math.ceil((lowTimes-1)/2);
-          knitBet2_1 = lowBet;
-          times2_3 = (int) Math.floor((lowTimes-1)/2);
-          knitBet2_3 = lowBet;
-          knitEnd2 = (int) Math.floor(lowBet/2);
-          knitBeg2 = (int) Math.ceil(lowBet/2);
-        }
-        else
-        {
-          times2_2 = lowTimes-1;
-          knitBet2_2 = lowBet;
-          times2_1 =  (int) Math.ceil(highTimes/2);
-          knitBet2_1 = highBet;
-          times2_3 = (int) Math.floor(highTimes/2);
-          knitBet2_3 = highBet;
-          knitEnd2 = (int) Math.floor(lowBet/2);
-          knitBeg2 = (int) Math.ceil(lowBet/2);
-        }
-        result_string = "Decrease Balanced:\n";
-        result_string += String.format(getString(R.string.decrease_balanced), knitBeg2,
-            knitBet2_1,
-            times2_1,
-            knitBet2_2,
-            times2_2,
-            knitBet2_3,
-            times2_3,
-            knitEnd2);
-        result_string += "\n" + String.format(getString(R.string.number_on_needle), finalStitches);
-      }
-      else if (id == R.id.increaseUnbalanced)
-      {
-      /*
-       This code is also taken from the IncreaseEvenlySpace.html file, but as it was a bit simpler
-       I was able to fiddle with the variable names without losing my place.
-       */
-        int decStitches = (int) Math.floor(stitches - 1);
-        int finalStitches = stitches + decStitches;
-        int knitBet1 = (int) Math.floor((double) stitches / (double) decStitches);
-        result_string = "Increase Unbalanced:\n";
-        result_string += String.format(getString(R.string.increase_unbalanced), knitBet1 - 1, decStitches, stitches - (knitBet1 * decStitches));
-        result_string += "\n" + String.format(getString(R.string.number_on_needle), finalStitches);
-
-      }
-      else if (id == R.id.decreaseUnbalanced)
-      {
-        int decStitches = (int) Math.floor((double) stitches / 2);
-        int finalStitches = stitches - decStitches;
-
-        // calculate first
-        int times1_1 = decStitches;
-        int knitBet1 = (int) Math.floor((stitches - (2 * decStitches)) / decStitches);
-        int knitEnd1 = stitches - ((knitBet1 + 2) * decStitches);
-        result_string = "Decrease Unbalanced:\n";
-        result_string += String.format(getString(R.string.decrease_unbalanced), knitBet1, times1_1, knitEnd1);
-        result_string += "\n" + String.format(getString(R.string.number_on_needle), finalStitches);
-      }
     }
     catch (Exception e)
     {
@@ -242,6 +112,12 @@ public class CalculateActivity extends ActionBarActivity implements SharedPrefer
     // this should be set no matter what
     results.setText(result_string);
 
+  }
+
+  // from http://stackoverflow.com/questions/6810336/is-there-a-library-or-utility-in-java-to-convert-an-integer-to-its-ordinal
+  public static String ordinal(int i)
+  {
+    return i % 100 == 11 || i % 100 == 12 || i % 100 == 13 ? i + "th" : i + new String[]{"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"}[i % 10];
   }
 
   // copy the contents of the results box to the project notes and exit this activity
