@@ -19,6 +19,11 @@
     </style>
   </head>
   <body>
+$ 2.3.0-beta3
+  % Version 2.3.0-beta3
+  _ 2014-08-26
+    * French localisations are complete.
+    * A landscape layout has not yet been provided.
 $ 2.3.0-beta2
   % Version 2.3.0-beta2
   _ 2014-08-26

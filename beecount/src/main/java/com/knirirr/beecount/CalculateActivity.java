@@ -1,5 +1,6 @@
 package com.knirirr.beecount;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -17,6 +18,7 @@ import com.knirirr.beecount.widgets.OptionsWidget;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.Math;
+import java.util.Locale;
 
 /**
  * Created by milo on 25/08/2014.
@@ -117,7 +119,15 @@ public class CalculateActivity extends ActionBarActivity implements SharedPrefer
   // from http://stackoverflow.com/questions/6810336/is-there-a-library-or-utility-in-java-to-convert-an-integer-to-its-ordinal
   public static String ordinal(int i)
   {
-    return i % 100 == 11 || i % 100 == 12 || i % 100 == 13 ? i + "th" : i + new String[]{"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"}[i % 10];
+    String language = Locale.getDefault().getLanguage();
+    if (language == "fr")
+    {
+      return String.valueOf(i) + "e";
+    }
+    else
+    {
+      return i % 100 == 11 || i % 100 == 12 || i % 100 == 13 ? i + "th" : i + new String[]{"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"}[i % 10];
+    }
   }
 
   // copy the contents of the results box to the project notes and exit this activity

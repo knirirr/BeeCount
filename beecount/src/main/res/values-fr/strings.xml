@@ -137,11 +137,11 @@
     <string name="calcError">Erreur!</string>
     <string name="updating_with_calc">Mise à jour des notes de projet!</string>
     <!-- TODO -->
-    <string name="aboutCalc">This screen allows the calculation of increases or decreases using the \"magic formula\" as described by Ann Budd - please refer to the PDF at http://www.annbuddknits.com/Magic_Increase_Decrease_Formula.pdf for more details.</string>
-    <string name="stitchTotal">Total number of stitches</string>
-    <string name="toIncrease">Number of stitches to increase/decrease</string>
-    <string name="increaseOutput">"Increase every %1$s stitch %2$d times, and every %3$s stitch %4$d times."</string>
-    <string name="dont_set_zero">Please set all values to greater than zero.</string>
+    <string name="aboutCalc">Cet écran permet le calcul de l\'augmentation ou de la diminution du nombre de mailles en utilisant la « formule magique » décrit par Ann Budd et tiré de « Sweater 101 » par Cheryl Brunette - veuillez consulter http://www.annbuddknits.com/Magic_Increase_Decrease_Formula.pdf pour en savoir plus.</string>
+    <string name="stitchTotal">Nombre total de mailles</string>
+    <string name="toIncrease">Nombre de mailles à augmenter/diminuer</string>
+    <string name="increaseOutput">Augmenter %2$d fois toutes les %1$s mailles, et %4$d fois toutes les %3$s mailles.</string>
+    <string name="dont_set_zero">Veuillez mettre toutes les valeurs à plus que zéro.</string>
 
 
 
