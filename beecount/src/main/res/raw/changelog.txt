@@ -19,25 +19,10 @@
     </style>
   </head>
   <body>
-$ 2.3.0-beta3
-  % Version 2.3.0-beta3
-  _ 2014-08-26
-    * French localisations are complete.
-    * A landscape layout has not yet been provided.
-$ 2.3.0-beta2
-  % Version 2.3.0-beta2
-  _ 2014-08-26
-  ! The calculation method for increases/decreases has been replaced.
-    * Calculation should now work.
-    * French localisations are partially complete.
-    * A landscape layout has not yet been provided.
-$ 2.3.0-beta1
-  % Version 2.3.0-beta1
-  _ 2014-08-26
-  ! A rough draft of increase/decrease calculation is now ready! Remaining issues:
-    * Decrease calculations are dodgy.
-    * French localisations are incomplete.
-    * A landscape layout has not yet been provided.
+$ 2.3.0
+  % Version 2.3.0
+   _ 2014-09-05
+    * Basic increase/decrease calculation has been added. Please refer to the linked pdf for more information.
 $ 2.2.0
   % Version 2.2.0
   _ 2014-08-24
