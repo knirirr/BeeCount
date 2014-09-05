@@ -78,6 +78,7 @@ public class BeeCountApplication extends Application
     if (backgroundPref.equals("none"))
     {
       // boring black screen
+      bMap = null;
       bMap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
       bMap.eraseColor(Color.BLACK);
     }
