@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.3.0
+  % Version 2.3.0
+   _ 2014-09-05
+    * Basic increase/decrease calculation has been added. Please refer to the linked pdf for more information.
 $ 2.2.0
   % Version 2.2.0
   _ 2014-08-24

@@ -529,6 +529,12 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
       intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
       NavUtils.navigateUpTo(this, intent);
     }
+    else if (id == R.id.menuCalculate)
+    {
+      Intent intent = new Intent(EditProjectActivity.this, CalculateActivity.class);
+      intent.putExtra("project_id",project_id);
+      startActivity(intent);
+    }
     else if (id == R.id.menuSaveExit)
     {
       if (saveData())
