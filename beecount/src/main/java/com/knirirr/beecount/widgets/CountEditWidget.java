@@ -16,7 +16,7 @@ import java.io.Serializable;
  */
 public class CountEditWidget extends LinearLayout implements Serializable
 {
-  private EditText countName;
+  private transient EditText countName;
   private ImageButton deleteButton;
   public long countId;
 
