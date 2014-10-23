@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteException;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.v7.app.ActionBarActivity;
@@ -50,6 +53,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   private boolean toastPref;
   private boolean awakePref;
   private boolean fontPref;
+  private boolean soundPref;
   private PowerManager.WakeLock wl;
 
   // the actual data
@@ -110,6 +114,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     toastPref = prefs.getBoolean("toast_away", false);
     awakePref = prefs.getBoolean("pref_awake", true);
     fontPref = prefs.getBoolean("pref_note_font", false);
+    soundPref = prefs.getBoolean("pref_sound",false);
   }
 
   @Override
@@ -450,7 +455,28 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
           }
         });
         row_alert.show();
+        soundAlert();
         break;
+      }
+    }
+  }
+
+  /*
+   * If the user has set the preference for an audible alert, then sound it here.
+   */
+  public void soundAlert()
+  {
+    if (soundPref)
+    {
+      try
+      {
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        r.play();
+      }
+      catch (Exception e)
+      {
+        e.printStackTrace();
       }
     }
   }

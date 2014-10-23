@@ -57,6 +57,7 @@
     <string name="willLinkIncrease">- %1$s will increase %2$s every %3$d.</string>
     <string name="willLinkDecrease">- %1$s will decrease %2$s every %3$d.</string>
 
+
     <!-- CountingActivity Menu -->
     <string name="editProjTitle">Edit Project</string>
     <string name="confirmDelete">Are you sure you want to delete this project?</string>
@@ -109,6 +110,8 @@
     <string name="pref_note_font_summ">Select this option to increase the size of note fonts on the counting screen.</string>
     <string name="pref_sort_order">Sorting</string>
     <string name="pref_sort_order_summ">Sort order when viewing your list of projects.</string>
+    <string name="pref_sound">Audible alerts</string>
+    <string name="pref_sound_summary">Sound an audible alert when a row alert is triggered.</string>
 
 
     <!-- CountOptionsActivity -->

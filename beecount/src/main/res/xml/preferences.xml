@@ -41,5 +41,10 @@
         android:title="@string/toast_away"
         android:summary="@string/toast_away_summ"
         android:defaultValue="false" />
+    <CheckBoxPreference
+        android:key="pref_sound"
+        android:title="@string/pref_sound"
+        android:summary="@string/pref_sound_summary"
+        android:defaultValue="false"/>
     </PreferenceCategory>
 </PreferenceScreen>
