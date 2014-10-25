@@ -112,6 +112,8 @@
     <string name="pref_sort_order_summ">Sort order when viewing your list of projects.</string>
     <string name="pref_sound">Audible alerts</string>
     <string name="pref_sound_summary">Sound an audible alert when a row alert is triggered.</string>
+    <string name="choose_alert">Notification sound</string>
+    <string name="explain_alert">Choose a notification tone for alerts.</string>
 
 
     <!-- CountOptionsActivity -->

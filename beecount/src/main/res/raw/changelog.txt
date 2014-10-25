@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.3.1-beta3
+  % Version 2.3.1-beta3
+   _ 2014-10-25
+    * A custom alert tone can now be selected. Please test that this works nicely on your device!
 $ 2.3.1-beta2
   % Version 2.3.1-beta2
    _ 2014-10-23

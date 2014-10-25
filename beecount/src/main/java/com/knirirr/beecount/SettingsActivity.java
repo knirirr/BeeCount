@@ -2,6 +2,8 @@ package com.knirirr.beecount;
 
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.media.RingtoneManager;
 import android.util.Log;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -15,7 +17,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 
-public class SettingsActivity extends PreferenceActivity 
+public class SettingsActivity extends PreferenceActivity
 {
   private static String TAG = "BeeCountPreferenceActivity";
   private static final int SELECT_PICTURE = 1;
@@ -26,18 +28,29 @@ public class SettingsActivity extends PreferenceActivity
   @Override
   @SuppressLint("CommitPrefEdits")
   @SuppressWarnings("deprecation")
-  public void onCreate(Bundle savedInstanceState) 
+  public void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
     addPreferencesFromResource(R.xml.preferences);
 
     Preference button = (Preference) findPreference("button");
-    button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() 
+    button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
     {
       @Override
-      public boolean onPreferenceClick(Preference arg0) 
-      { 
+      public boolean onPreferenceClick(Preference arg0)
+      {
         getImage();
+        return true;
+      }
+    });
+
+    Preference sound_button = (Preference) findPreference("sound_button");
+    sound_button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+    {
+      @Override
+      public boolean onPreferenceClick(Preference arg0)
+      {
+        getSound();
         return true;
       }
     });
@@ -59,6 +72,16 @@ public class SettingsActivity extends PreferenceActivity
     pickIntent.setAction(Intent.ACTION_GET_CONTENT);
     startActivityForResult(pickIntent, SELECT_PICTURE);
   }
+
+  public void getSound()
+  {
+    Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, getString(R.string.pref_sound));
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, (Uri) null);
+    this.startActivityForResult(intent, 5);
+  }
+
 
   @Override
   @SuppressLint("CommitPrefEdits")
@@ -105,8 +128,22 @@ public class SettingsActivity extends PreferenceActivity
         }
       }
     }
+    else if (resultCode == Activity.RESULT_OK && requestCode == 5)
+    {
+      Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+      String ringtone = null;
+      if (uri != null)
+      {
+        ringtone = uri.toString();
+        editor.putString("alertSound",ringtone);
+      }
+      //Log.i(TAG, "RINGTONE: " + ringtone);
+    }
+
+
     super.onActivityResult(requestCode, resultCode, data);
   }
+
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item)

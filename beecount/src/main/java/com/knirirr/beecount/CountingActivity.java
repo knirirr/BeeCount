@@ -35,6 +35,7 @@ import com.knirirr.beecount.widgets.NotesWidget;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +55,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   private boolean awakePref;
   private boolean fontPref;
   private boolean soundPref;
+  private String alertSound;
   private PowerManager.WakeLock wl;
 
   // the actual data
@@ -115,6 +117,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     awakePref = prefs.getBoolean("pref_awake", true);
     fontPref = prefs.getBoolean("pref_note_font", false);
     soundPref = prefs.getBoolean("pref_sound",false);
+    alertSound = prefs.getString("alertSound",null);
   }
 
   @Override
@@ -470,7 +473,15 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     {
       try
       {
-        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Uri notification;
+        if (StringUtils.isNotBlank(alertSound) && alertSound != null)
+        {
+          notification = Uri.parse(alertSound);
+        }
+        else
+        {
+          notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        }
         Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
         r.play();
       }
