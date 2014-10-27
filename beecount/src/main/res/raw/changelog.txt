@@ -19,19 +19,11 @@
     </style>
   </head>
   <body>
-$ 2.3.1-beta3
-  % Version 2.3.1-beta3
-   _ 2014-10-25
-    * A custom alert tone can now be selected. Please test that this works nicely on your device!
-$ 2.3.1-beta2
-  % Version 2.3.1-beta2
-   _ 2014-10-23
+$ 2.3.1
+  % Version 2.3.1
+   _ 2014-10-27
     * A new setting allows alerts to also make a sound when triggered.
-    * At present this is just the default system alert, but options to set a custom alert will follow.
-$ 2.3.1-beta
-  % Version 2.3.1-beta
-   _ 2014-09-30
-    * Small bugfix.
+    * Some small bugfixes have been added.
 $ 2.3.0
   % Version 2.3.0
    _ 2014-09-05
