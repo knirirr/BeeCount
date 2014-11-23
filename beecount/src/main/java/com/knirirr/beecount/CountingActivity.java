@@ -520,9 +520,14 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
 
   public void checkLink(long count_id, int count_value, boolean up)
   {
-    Log.i(TAG, "STARTING checkLink");
+    Log.i(TAG, "STARTING checkLink: " + String.valueOf(count_id));
     for (Link l : links)
     {
+      if (l.id == count_id)
+      {
+        Log.i(TAG, "Got self: " + String.valueOf(count_id));
+        continue;
+      }
       Log.i(TAG, "LINKS: " + String.valueOf(l.id));
       if (l.slave_id == count_id)
       {
