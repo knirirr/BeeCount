@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.2'
+        classpath 'com.android.tools.build:gradle:0.14.4'
     }
 }
 
@@ -18,12 +18,14 @@ android {
         targetSdkVersion 20
         versionCode 91
     }
+    /*
     buildTypes {
         release {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    */
 }
 
 dependencies {

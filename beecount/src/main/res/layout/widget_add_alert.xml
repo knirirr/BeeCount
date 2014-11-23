@@ -15,8 +15,6 @@
             android:layout_width="match_parent"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/add_alert_text"
-            android:textAlignment="textStart"
-            android:gravity="center_vertical|left"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             android:layout_gravity="bottom|left|right|top"

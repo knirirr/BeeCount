@@ -44,6 +44,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
 {
   private static String TAG = "BeeCountCountingActivity";
   private AlertDialog.Builder row_alert;
+  private AlertDialog.Builder loop_alert;
   BeeCountApplication beeCount;
   SharedPreferences prefs;
   long project_id;
@@ -346,6 +347,8 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
    * by tagging the buttons with the relevant count ID is a bit crap. Suggestions welcome if so.
    * The countUp and countDown methods are overloaded so they can be called by a view tagged with
    * the id of the count to count, or by supplying that ID directly.
+   * N.B. Users may link counts to each other to produce infinite incrementing, so this error
+   * must be caught here and an error displayed.
    */
   public void countUp(long count_id)
   {
@@ -354,10 +357,11 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     {
       widget.countUp();
     }
-    checkAlert(widget.count.id,widget.count.count);
+    checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, true);
     if (widget.count.auto_reset > 0)
       checkReset(widget.count);
+
   }
 
   public void countDown(long count_id)
@@ -367,8 +371,8 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     {
       widget.countDown();
     }
-    checkAlert(widget.count.id,widget.count.count);
-    checkLink(widget.count.id,widget.count.count,false);
+    checkAlert(widget.count.id, widget.count.count);
+    checkLink(widget.count.id, widget.count.count, false);
     if (widget.count.auto_reset > 0)
       checkReset(widget.count);
   }
@@ -383,10 +387,12 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     {
       widget.countUp();
     }
-    checkAlert(widget.count.id,widget.count.count);
+    checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, true);
     if (widget.count.auto_reset > 0)
       checkReset(widget.count);
+
+
   }
 
   public void countDown(View view)
@@ -399,10 +405,12 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     {
       widget.countDown();
     }
-    checkAlert(widget.count.id,widget.count.count);
-    checkLink(widget.count.id,widget.count.count,false);
+    checkAlert(widget.count.id, widget.count.count);
+    checkLink(widget.count.id, widget.count.count, false);
     if (widget.count.auto_reset > 0)
       checkReset(widget.count);
+
+
   }
 
   public void resetCount(long count_id)
@@ -465,6 +473,24 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   }
 
   /*
+   * If the user has created a link loop then this should alert them.
+   */
+  public void linkLoopAlert()
+  {
+    loop_alert = new AlertDialog.Builder(this);
+    loop_alert.setTitle(getString(R.string.alertTitle));
+    loop_alert.setMessage(R.string.linkLoop);
+    loop_alert.setNegativeButton("OK", new DialogInterface.OnClickListener()
+    {
+      public void onClick(DialogInterface dialog, int whichButton)
+      {
+        // Cancelled.
+      }
+    });
+    loop_alert.show();
+  }
+
+  /*
    * If the user has set the preference for an audible alert, then sound it here.
    */
   public void soundAlert()
@@ -494,8 +520,21 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
 
   public void checkLink(long count_id, int count_value, boolean up)
   {
+    Log.i(TAG, "STARTING checkLink");
     for (Link l : links)
     {
+      Log.i(TAG, "LINKS: " + String.valueOf(l.id));
+      if (l.slave_id == count_id)
+      {
+        // You have been naughty!
+        Log.i(TAG, "DODGY: " + String.valueOf(l.id));
+        linkLoopAlert();
+        return;
+      }
+    }
+    for (Link l : links)
+    {
+      Log.i(TAG, "In the good bit.");
       if (l.master_id == count_id && (count_value % l.increment == 0) && up)
       {
         if (l.type == 0) // reset
