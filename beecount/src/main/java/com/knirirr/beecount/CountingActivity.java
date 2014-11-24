@@ -50,6 +50,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   long project_id;
   LinearLayout count_area;
   LinearLayout notes_area;
+  long last_count;
 
   // preferences
   private boolean toastPref;
@@ -100,6 +101,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
 
     count_area = (LinearLayout) findViewById(R.id.countCountLayout);
     notes_area = (LinearLayout) findViewById(R.id.countNotesLayout);
+    last_count = 0;
 
     if (awakePref == true)
     {
@@ -520,26 +522,26 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
 
   public void checkLink(long count_id, int count_value, boolean up)
   {
-    Log.i(TAG, "STARTING checkLink: " + String.valueOf(count_id));
+    //Log.i(TAG, "STARTING checkLink: " + String.valueOf(count_id));
     for (Link l : links)
     {
-      if (l.id == count_id)
-      {
-        Log.i(TAG, "Got self: " + String.valueOf(count_id));
-        continue;
-      }
-      Log.i(TAG, "LINKS: " + String.valueOf(l.id));
-      if (l.slave_id == count_id)
+      //Log.i(TAG, "LINK: " + String.valueOf(l.id));
+      //Log.i(TAG, "MASTER: " + String.valueOf(l.master_id));
+      //Log.i(TAG, "SLAVE: " + String.valueOf(l.slave_id));
+      /*
+       * last_count is an attempt to check whether a link loop has been created.
+       */
+      if (l.slave_id == last_count)
       {
         // You have been naughty!
-        Log.i(TAG, "DODGY: " + String.valueOf(l.id));
+        //Log.i(TAG, "DODGY: " + String.valueOf(l.id));
         linkLoopAlert();
         return;
       }
     }
     for (Link l : links)
     {
-      Log.i(TAG, "In the good bit.");
+      //Log.i(TAG, "In the good bit.");
       if (l.master_id == count_id && (count_value % l.increment == 0) && up)
       {
         if (l.type == 0) // reset
@@ -577,6 +579,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
         }
       }
     }
+    last_count = count_id;
   }
 
   // resetting might as well call the
