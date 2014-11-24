@@ -379,6 +379,15 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
       checkReset(widget.count);
   }
 
+  /*
+   * The functions below are triggered by the buttons; the two above by being triggered during
+   * a pass through the checkLink function. Therefore, last_count should be reset to 0 when a
+   * button is pressed ready for the next run through the cascade of links.
+   * N.B. last_count isn't foolproof, and a user may still manage to set up some interlinked counts
+   * such that the application can be crashed by recursive linking. A better fix is therefore
+   * required.
+   */
+
   public void countUp(View view)
   {
     //Log.i(TAG, "View clicked: " + view.toString());
@@ -387,6 +396,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     CountingWidget widget = getCountFromId(count_id);
     if (widget != null)
     {
+      last_count = 0;
       widget.countUp();
     }
     checkAlert(widget.count.id, widget.count.count);
@@ -405,6 +415,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     CountingWidget widget = getCountFromId(count_id);
     if (widget != null)
     {
+      last_count = 0;
       widget.countDown();
     }
     checkAlert(widget.count.id, widget.count.count);
