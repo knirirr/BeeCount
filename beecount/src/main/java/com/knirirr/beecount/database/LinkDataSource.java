@@ -103,4 +103,15 @@ public class LinkDataSource
     return links;
   }
 
+  public Link getLinkByMasterId(long master_id)
+  {
+    Cursor cursor = database.query(DbHelper.LINK_TABLE, allColumns,
+        DbHelper.L_MASTER_ID + " = " + master_id, null, null, null, null);
+
+    cursor.moveToFirst();
+    Link link = cursorToLink(cursor);
+    cursor.close();
+    return link;
+  }
+
 }

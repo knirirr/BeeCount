@@ -88,6 +88,9 @@ public class LinkEditWidget extends LinearLayout implements Serializable
 
   private void setSpinnerAdapter(String spinner, ArrayList<String> array)
   {
+    int master_position = masterSpinner.getSelectedItemPosition();
+    int slave_position = slaveSpinner.getSelectedItemPosition();
+    int choice_position = choiceSpinner.getSelectedItemPosition();
     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.custom_spinner, array)
     {
       public View getView(int position, View convertView, ViewGroup parent)
@@ -104,15 +107,28 @@ public class LinkEditWidget extends LinearLayout implements Serializable
         return v;
       }
     };
+    int maxlen = adapter.getCount();
     if (spinner.equals("master"))
     {
       masterSpinner.setAdapter(adapter);
+      if (master_position < maxlen)
+      {
+        masterSpinner.setSelection(master_position);
+      }
     } else if (spinner.equals("slave"))
     {
       slaveSpinner.setAdapter(adapter);
+      if (slave_position < maxlen)
+      {
+        slaveSpinner.setSelection(slave_position);
+      }
     } else if (spinner.equals("choice"))
     {
       choiceSpinner.setAdapter(adapter);
+      if (choice_position < maxlen)
+      {
+        choiceSpinner.setSelection(choice_position);
+      }
     }
 
   }

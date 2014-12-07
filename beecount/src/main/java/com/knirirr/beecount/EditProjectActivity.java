@@ -65,6 +65,7 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
   private View markedForDelete;
   private long idToDelete;
   private AlertDialog.Builder are_you_sure;
+  private int too_many;
   public ArrayList<String> countNames;
   public ArrayList<Long> countIds;
   public ArrayList<LinkEditWidget> savedLinks;
@@ -85,6 +86,8 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
     counts_area = (LinearLayout) findViewById(R.id.editingCountsLayout);
     links_area = (LinearLayout) findViewById(R.id.editingLinksLayout);
     existing_links_area = (LinearLayout) findViewById(R.id.existingLinksLayout);
+
+    too_many = 10; // used for catching link loops
 
     Bundle extras = getIntent().getExtras();
     if(extras !=null)
@@ -305,6 +308,17 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
         stop = true;
         message = getString(R.string.zero);
       }
+      /*
+       * This fails to work and so has been hidden for now, in case it can be brought out later.
+       */
+      /*
+      if (link_loop())
+      {
+        // add a message here
+        message = "FRC, your links are broken!";
+        stop = true;
+      }
+      */
     }
     if (stop)
     {
@@ -501,6 +515,50 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
     getCountNames();
 
   }
+
+  /*
+   * The purpose of this function is to flip out and loop through all the linked counts, returning
+   * false if it looks like there are too many nested links.
+   */
+  /*
+  private boolean link_loop()
+  {
+    too_many = 0;
+    counts = countDataSource.getAllCountsForProject(project_id);
+    for (Count count : counts)
+    {
+      if (check_count(count) == false)
+      {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private boolean check_count(Count count)
+  {
+    Log.i(TAG, "COUNT: " + String.valueOf(count.id) + ", " + count.name);
+    Link link = linkDataSource.getLinkByMasterId(count.id);
+    if (link != null)
+    {
+      Log.i(TAG, "LINK: " + String.valueOf(link.master_id) + ", " + String.valueOf(link.slave_id));
+      Count new_count = countDataSource.getCountById(link.slave_id);
+      if (new_count != null)
+      {
+        Log.i(TAG, "NEW COUNT: " + String.valueOf(new_count.id) + ", " + new_count.name);
+        too_many = too_many + 1;
+        Log.i(TAG,"TOO MANY: " + String.valueOf(too_many));
+        if (too_many > 5)
+        {
+          return false;
+        }
+        check_count(new_count);
+      }
+      return true;
+    }
+    return true;
+  }
+  */
 
 
   @Override
