@@ -19,6 +19,11 @@
     </style>
   </head>
   <body>
+$ 2.3.3
+  % Version 2.3.3
+   _ 2014-12-07
+    * A bug where alerts at 0 did not trigger on reset has been fixed.
+    * Some other code has been removed pending further work.
 $ 2.3.2
   % Version 2.3.2
    _ 2014-12-07

@@ -430,6 +430,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   {
     CountingWidget widget = getCountFromId(count_id);
     widget.resetZero();
+    checkAlert(widget.count.id, widget.count.count);
   }
 
   public void edit(View view)
@@ -542,6 +543,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
       /*
        * last_count is an attempt to check whether a link loop has been created.
        */
+      /*
       if (l.slave_id == last_count)
       {
         // You have been naughty!
@@ -549,6 +551,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
         linkLoopAlert();
         return;
       }
+      */
     }
     for (Link l : links)
     {
@@ -590,7 +593,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
         }
       }
     }
-    last_count = count_id;
+    //last_count = count_id;
   }
 
   // resetting might as well call the
