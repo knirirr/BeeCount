@@ -235,7 +235,12 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
 
     // Huzzah!
     Toast.makeText(this,getString(R.string.projectSaved),Toast.LENGTH_SHORT).show();
-    super.finish();
+
+    // Instead of returning to the welcome screen, show the new project.
+    //super.finish();
+    Intent intent = new Intent(NewProjectActivity.this, EditProjectActivity.class);
+    intent.putExtra("project_id",newProject.id);
+    startActivity(intent);
   }
 
   // check for duplicates of counts

@@ -19,6 +19,11 @@
     </style>
   </head>
   <body>
+$ 2.3.4
+  % Version 2.3.4
+   _ 2015-01-07
+    * Alerts will now trigger for a count which is set to zero (bugfix).
+    * Some spurious link warnings should no longer appear.
 $ 2.3.3
   % Version 2.3.3
    _ 2014-12-21
