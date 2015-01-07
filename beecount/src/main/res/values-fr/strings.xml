@@ -68,6 +68,8 @@
     <string name="willAlert">- %1$s montrera une alerte à %2$d.</string>
     <string name="deleteButton">Delete</string>
     <string name="cancelButton">Cancel</string>
+    <string name="action_share">Partager</string>
+    <string name="send_to">Partager notes</string>
 
     <!-- EditprojActivity -->
     <string name="titleEdit">Nom de Projet</string>

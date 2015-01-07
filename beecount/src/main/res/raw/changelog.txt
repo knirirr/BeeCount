@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.3.3
+  % Version 2.3.3
+   _ 2014-12-21
+    * Project notes can now be shared, allowing them to be exported.
 $ 2.3.2
   % Version 2.3.2
    _ 2014-12-07

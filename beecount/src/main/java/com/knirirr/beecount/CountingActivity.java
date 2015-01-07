@@ -684,6 +684,18 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
       super.finish();
       return true;
     }
+    else if (id == R.id.action_share)
+    {
+      String project_notes = project.notes;
+      String project_name = project.name;
+      Intent sendIntent = new Intent();
+      sendIntent.setAction(Intent.ACTION_SEND);
+      sendIntent.putExtra(Intent.EXTRA_TEXT, project.notes);
+      sendIntent.putExtra(Intent.EXTRA_SUBJECT, project.name);
+      sendIntent.setType("text/plain");
+      startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+      return true;
+    }
     return super.onOptionsItemSelected(item);
   }
 
