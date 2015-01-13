@@ -22,7 +22,7 @@
 $ 2.3.5
   % Version 2.3.5
    _ 2015-01-13
-    * Small bugfix.
+    * Redirect to project list after project creation.
 $ 2.3.4
   % Version 2.3.4
    _ 2015-01-07
