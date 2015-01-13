@@ -238,8 +238,8 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
 
     // Instead of returning to the welcome screen, show the new project.
     //super.finish();
-    Intent intent = new Intent(NewProjectActivity.this, EditProjectActivity.class);
-    intent.putExtra("project_id",newProject.id);
+    Intent intent = new Intent(NewProjectActivity.this, ListProjectActivity.class);
+    //intent.putExtra("project_id",newProject.id);
     startActivity(intent);
   }
 
