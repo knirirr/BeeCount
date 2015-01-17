@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.knirirr.beecount"
     android:largeHeap="true"
-    android:versionName="2.3.4">
+    android:versionName="2.3.5">
 
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -27,6 +27,7 @@
         </activity>
         <activity
             android:name="com.knirirr.beecount.NewProjectActivity"
+            android:noHistory="true"
             android:label="@string/title_activity_new_project"
             android:parentActivityName="com.knirirr.beecount.WelcomeActivity" >
             <meta-data
