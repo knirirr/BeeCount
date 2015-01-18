@@ -21,6 +21,15 @@ public class Count
 
   public int decrease()
   {
+    //if (count > 0)
+    //{
+      count = count - 1;
+    //}
+    return count;
+  }
+
+  public int safe_decrease()
+  {
     if (count > 0)
     {
       count = count - 1;

@@ -31,6 +31,11 @@
      <PreferenceCategory
         android:title="@string/prefs_counting">
         android:key="key_prefs_counting">
+     <CheckBoxPreference
+        android:key="pref_negative"
+        android:title="@string/pref_negative"
+        android:summary="@string/pref_negative_summ"
+        android:defaultValue="false" />
     <CheckBoxPreference
         android:key="pref_awake"
         android:title="@string/pref_awake"

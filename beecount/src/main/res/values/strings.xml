@@ -116,6 +116,8 @@
     <string name="pref_sound_summary">Sound an audible alert when a row alert is triggered.</string>
     <string name="choose_alert">Notification sound</string>
     <string name="explain_alert">Choose a notification tone for alerts.</string>
+    <string name="pref_negative">Allow negative counts</string>
+    <string name="pref_negative_summ">If this option is selected then counts can drop below 0 when counting down.</string>
 
 
     <!-- CountOptionsActivity -->

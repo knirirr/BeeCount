@@ -57,6 +57,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   private boolean awakePref;
   private boolean fontPref;
   private boolean soundPref;
+  private boolean negPref;
   private String alertSound;
   private PowerManager.WakeLock wl;
 
@@ -120,6 +121,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     awakePref = prefs.getBoolean("pref_awake", true);
     fontPref = prefs.getBoolean("pref_note_font", false);
     soundPref = prefs.getBoolean("pref_sound",false);
+    negPref = prefs.getBoolean("pref_negative",false);
     alertSound = prefs.getString("alertSound",null);
   }
 
@@ -708,5 +710,10 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     counting_screen.setBackgroundDrawable(null);
     counting_screen.setBackgroundDrawable(beeCount.setBackground());
     getPrefs();
+  }
+
+  public boolean getNegPref()
+  {
+    return negPref;
   }
 }

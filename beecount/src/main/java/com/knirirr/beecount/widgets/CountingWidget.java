@@ -1,5 +1,6 @@
 package com.knirirr.beecount.widgets;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.knirirr.beecount.CountingActivity;
 import com.knirirr.beecount.R;
 import com.knirirr.beecount.database.Count;
 
@@ -22,11 +24,6 @@ public class CountingWidget extends RelativeLayout
   private TextView countCount;
 
   public Count count;
-  // are these needed?
-  /*
-  public List<Alert> alerts;
-  public List<Link> links;
-  */
 
   public CountingWidget(Context context, AttributeSet attrs)
   {
@@ -62,7 +59,14 @@ public class CountingWidget extends RelativeLayout
 
   public void countDown()
   {
-    count.decrease();
+    if (((CountingActivity) getContext()).getNegPref())
+    {
+      count.decrease();
+    }
+    else
+    {
+      count.safe_decrease();
+    }
     countCount.setText(String.valueOf(count.count));
     setFont();
   }
