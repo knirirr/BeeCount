@@ -354,10 +354,21 @@ public class EditProjectActivity extends ActionBarActivity implements SharedPref
       saveproject = true;
     }
     String newnotes = enw.getProjectName();
+    // Always add notes if the user has written some...
     if (StringUtils.isNotEmpty(newnotes))
     {
       project.notes = newnotes;
       saveproject = true;
+    }
+    //...if they haven't, only save if the current notes have a value (i.e.
+    // they are trying to delete what's there.
+    else
+    {
+      if (StringUtils.isNotEmpty(project.notes))
+      {
+        project.notes = newnotes;
+        saveproject = true;
+      }
     }
     if (saveproject)
     {
