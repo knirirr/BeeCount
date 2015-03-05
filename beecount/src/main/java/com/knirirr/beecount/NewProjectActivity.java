@@ -33,6 +33,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
   BeeCountApplication beeCount;
   SharedPreferences prefs;
   int newBox;
+  private boolean dupPref;
   ViewGroup layout;
   private ArrayList<NewCount> myTexts;
   private ArrayList<String> countNames;
@@ -50,6 +51,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
     beeCount = (BeeCountApplication) getApplication();
     prefs = BeeCountApplication.getPrefs();
     prefs.registerOnSharedPreferenceChangeListener(this);
+    dupPref = prefs.getBoolean("duplicate_counts", true);
 
     LinearLayout baseLayout = (LinearLayout) findViewById(R.id.newprojScreen);
     baseLayout.setBackgroundDrawable(beeCount.getBackground());
@@ -208,18 +210,21 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
     }
 
     // check for unique names
-    countNames.clear();
-    for (NewCount c : myTexts)
+    if (dupPref)
     {
-      count_name = c.getText().toString();
-      if (countNames.contains(count_name))
+      countNames.clear();
+      for (NewCount c : myTexts)
       {
-        Toast.makeText(this,getString(R.string.duplicate),Toast.LENGTH_SHORT).show();
-        return;
-      }
-      else
-      {
-        countNames.add(count_name);
+        count_name = c.getText().toString();
+        if (countNames.contains(count_name))
+        {
+          Toast.makeText(this, getString(R.string.duplicate), Toast.LENGTH_SHORT).show();
+          return;
+        }
+        else
+        {
+          countNames.add(count_name);
+        }
       }
     }
 
