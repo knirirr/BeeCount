@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="dropbox-sync-sdk-android">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/beecount/libs/dropbox-sync-sdk-android.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

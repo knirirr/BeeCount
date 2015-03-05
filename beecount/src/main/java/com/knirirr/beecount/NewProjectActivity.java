@@ -158,6 +158,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
     c.setTextSize(24);
 
     layout.addView(c, params);
+    c.requestFocus();
     myTexts.add(c);
     newBox++;
   }
