@@ -118,6 +118,9 @@
     <string name="explain_alert">Choisissez une sonnerie pour l\'alerte.</string>
     <string name="pref_negative">Permettre comptes négatifs</string>
     <string name="pref_negative_summ">Si l\'on chossisse cette option les comptes peuvent être moins que zéro.</string>
+    <string name="pref_duplicate">Empêcher comptes doubles</string>
+    <string name="pref_duplicate_summary">Quand cette option est choisi, les noms de comptes pour un projet doivent être uniques.</string>
+
 
     <!-- CountOptionsActivity -->
     <string name="setResetValue">Réglez la valeur à laquelle un compte se remettra. Le compte deviendra 0 à moins que que le niveau de remettre (voir ci-dessous) soit aussi changé. Mettez à 0 pour désactiver.</string>

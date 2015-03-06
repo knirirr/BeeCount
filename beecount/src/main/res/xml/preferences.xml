@@ -26,6 +26,15 @@
             android:title="@string/pref_note_font"
             android:summary="@string/pref_note_font_summ"
             android:defaultValue="false" />
+    <CheckBoxPreference
+        android:key="pref_sound"
+        android:title="@string/pref_sound"
+        android:summary="@string/pref_sound_summary"
+        android:defaultValue="false"/>
+    <Preference
+            android:title="@string/choose_alert"
+            android:key="sound_button"
+            android:summary="@string/explain_alert"/>
     </PreferenceCategory>
 
      <PreferenceCategory
@@ -47,13 +56,10 @@
         android:summary="@string/toast_away_summ"
         android:defaultValue="false" />
     <CheckBoxPreference
-        android:key="pref_sound"
-        android:title="@string/pref_sound"
-        android:summary="@string/pref_sound_summary"
-        android:defaultValue="false"/>
+        android:key="pref_duplicate"
+        android:title="@string/pref_duplicate"
+        android:summary="@string/pref_duplicate_summary"
+        android:defaultValue="true"/>
+
     </PreferenceCategory>
-    <Preference
-            android:title="@string/choose_alert"
-            android:key="sound_button"
-            android:summary="@string/explain_alert"/>
 </PreferenceScreen>

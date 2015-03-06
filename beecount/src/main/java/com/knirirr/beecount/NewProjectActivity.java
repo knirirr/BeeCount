@@ -51,7 +51,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
     beeCount = (BeeCountApplication) getApplication();
     prefs = BeeCountApplication.getPrefs();
     prefs.registerOnSharedPreferenceChangeListener(this);
-    dupPref = prefs.getBoolean("duplicate_counts", true);
+    dupPref = prefs.getBoolean("pref_duplicate", true);
 
     LinearLayout baseLayout = (LinearLayout) findViewById(R.id.newprojScreen);
     baseLayout.setBackgroundDrawable(beeCount.getBackground());
@@ -265,6 +265,7 @@ public class NewProjectActivity extends Activity implements SharedPreferences.On
     LinearLayout baseLayout = (LinearLayout) findViewById(R.id.newprojScreen);
     baseLayout.setBackgroundDrawable(null);
     baseLayout.setBackgroundDrawable(beeCount.setBackground());
+    dupPref = prefs.getBoolean("duplicate_counts", true);
   }
 
 }

@@ -19,6 +19,11 @@
     </style>
   </head>
   <body>
+$ 2.3.6
+  % Version 2.3.6
+   _ 2015-03-06
+    * Switch focus to text box when adding a count to a new project.
+    * Added a settings option to disable the requirement for unique count names in a project.
 $ 2.3.5
   % Version 2.3.5
    _ 2015-01-13

@@ -118,6 +118,8 @@
     <string name="explain_alert">Choose a notification tone for alerts.</string>
     <string name="pref_negative">Allow negative counts</string>
     <string name="pref_negative_summ">If this option is selected then counts can drop below 0 when counting down.</string>
+    <string name="pref_duplicate">Prevent duplicate counts</string>
+    <string name="pref_duplicate_summary">When selected, the count names in each project must be unique.</string>
 
 
     <!-- CountOptionsActivity -->
