@@ -39,7 +39,7 @@ public class CountingWidget extends RelativeLayout
   public void setCount(Count newcount)
   {
     count = newcount;
-    countCount.setText(String.valueOf(count.count));
+    countCount.setText(String.valueOf(count.count * count.multiplier));
     setFont();
     countName.setText(count.name);
     ImageButton countUpButton = (ImageButton) findViewById(R.id.buttonUp);
@@ -53,7 +53,7 @@ public class CountingWidget extends RelativeLayout
   public void countUp()
   {
     count.increase();
-    countCount.setText(String.valueOf(count.count));
+    countCount.setText(String.valueOf(count.count * count.multiplier));
     setFont();
   }
 
@@ -67,7 +67,7 @@ public class CountingWidget extends RelativeLayout
     {
       count.safe_decrease();
     }
-    countCount.setText(String.valueOf(count.count));
+    countCount.setText(String.valueOf(count.count * count.multiplier));
     setFont();
   }
 
@@ -75,7 +75,7 @@ public class CountingWidget extends RelativeLayout
   public void resetZero()
   {
     count.count = count.reset_level;
-    countCount.setText(String.valueOf(count.count));
+    countCount.setText(String.valueOf(count.count * count.multiplier));
     setFont();
   }
 

@@ -557,7 +557,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     }
     for (Link l : links)
     {
-      //Log.i(TAG, "In the good bit.");
+      //Log.i(TAG, "In the good bit: " + String.valueOf(count_value % l.increment));
       if (l.master_id == count_id && (count_value % l.increment == 0) && up)
       {
         if (l.type == 0) // reset

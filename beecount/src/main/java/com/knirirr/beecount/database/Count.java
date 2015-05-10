@@ -12,6 +12,7 @@ public class Count
   public int auto_reset;
   public int reset_level;
   public String notes;
+  public int multiplier;
 
   public int increase()
   {

@@ -133,6 +133,7 @@
     <string name="reallyDeleteAlert">Are you sure you\'d like to do this? The alert will be deleted immediately.</string>
     <string name="yesDeleteIt">Delete</string>
     <string name="noCancel">Cancel</string>
+    <string name="countMult">The value displayed will be multiplied by whatever value you put in here.</string>
 
     <!-- other stuff -->
     <string name="charZero">0</string>

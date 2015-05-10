@@ -2,6 +2,7 @@ package com.knirirr.beecount.widgets;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import com.knirirr.beecount.R;
  */
 public class NotesWidget extends LinearLayout
 {
+  public static String TAG = "Beecount NotesWidget";
   public String project_notes;
   private TextView textView;
 
@@ -35,12 +37,15 @@ public class NotesWidget extends LinearLayout
   {
     if (large)
     {
-      textView.setTextSize(20);
+      Log.i(TAG, "Setting LARGE text size.");
+      textView.setTextSize(22);
     }
     else
     {
-      textView.setTextSize(12);
+      Log.i(TAG, "Setting small text size.");
+      textView.setTextSize(14);
     }
   }
 
 }
+

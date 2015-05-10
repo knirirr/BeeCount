@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.3.7-beta
+  % Version 2.3.7-beta
+   _ 2015-05-10
+    * Count multiplier option added.
 $ 2.3.6
   % Version 2.3.6
    _ 2015-03-06

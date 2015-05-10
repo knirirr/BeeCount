@@ -23,7 +23,7 @@ public class DbHelper extends SQLiteOpenHelper
 {
   static final String TAG = "BeeCount DB";
   static final String DATABASE = "beecount.db";
-  static final int VERSION = 10;
+  static final int VERSION = 11;
   static final String PROJ_TABLE = "projects";
   static final String COUNT_TABLE = "counts";
   static final String LINK_TABLE = "links";
@@ -41,6 +41,7 @@ public class DbHelper extends SQLiteOpenHelper
   public static final String C_ALERT = "alert";
   public static final String C_ALERT_TEXT = "alert_text";
   public static final String C_NOTES = "notes";
+  public static final String C_MULTIPLIER = "multiplier";
   public static final String L_ID = "_id";
   public static final String L_PROJECT_ID = "project_id";
   public static final String L_MASTER_ID = "master_id";
@@ -73,7 +74,7 @@ public class DbHelper extends SQLiteOpenHelper
     db.execSQL(sql);
     sql = "create table " + COUNT_TABLE + " (" + C_ID + " integer primary key, " + C_PROJECT_ID +
         " int, " + C_COUNT + " int, " + C_NAME + " text, " + C_AUTO_RESET + " int, " +
-        C_RESET_LEVEL + " int default 0, " + C_NOTES + " text default NULL)";
+        C_RESET_LEVEL + " int default 0, " + C_NOTES + " text default NULL, " + C_MULTIPLIER + " int default 1)";
     db.execSQL(sql);
     sql = "create table " + LINK_TABLE + " (" + L_ID + " integer primary key, " + L_PROJECT_ID +
         " int, " + L_MASTER_ID + " int, " + L_SLAVE_ID + " int, " + L_INCREMENT + " int, " +
@@ -90,6 +91,10 @@ public class DbHelper extends SQLiteOpenHelper
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
   {
 
+    if (oldVersion == 10)
+    {
+      version_11(db,oldVersion,newVersion);
+    }
     if (oldVersion == 9)
     {
       version_10(db,oldVersion,newVersion);
@@ -371,5 +376,13 @@ public class DbHelper extends SQLiteOpenHelper
     db.execSQL(sql);
     Log.i(TAG, "Upgraded database to version 10!");
   }
+
+  public void version_11(SQLiteDatabase db, int oldVersion, int newVersion)
+  {
+    String sql = "alter table " + COUNT_TABLE + " add column " + C_MULTIPLIER + " int default 1";
+    db.execSQL(sql);
+    Log.i(TAG, "Upgraded database to version 11!");
+  }
+
 
 }
