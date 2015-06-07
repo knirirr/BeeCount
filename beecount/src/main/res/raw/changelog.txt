@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.3.7-r1
+  % Version 2.3.7-r1
+   _ 2015-06-07
+    * Fix for small bug on Android 4.0.4 and below.
 $ 2.3.7
   % Version 2.3.7
    _ 2015-06-07

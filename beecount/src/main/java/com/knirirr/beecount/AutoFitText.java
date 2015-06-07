@@ -14,6 +14,7 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Paint;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -92,7 +93,14 @@ public class AutoFitText extends TextView {
         // make an initial call to onSizeChanged to make sure that refitText is triggered
         onSizeChanged(AutoFitText.this.getWidth(), AutoFitText.this.getHeight(), 0, 0);
         // Remove the LayoutListener immediately so we don't run into an infinite loop
-        AutoFitText.this.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
+        {
+          AutoFitText.this.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        }
+        else
+        {
+          AutoFitText.this.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        }
       }
     });
   }
