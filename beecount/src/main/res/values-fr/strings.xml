@@ -120,6 +120,8 @@
     <string name="pref_negative_summ">Si l\'on chossisse cette option les comptes peuvent être moins que zéro.</string>
     <string name="pref_duplicate">Empêcher comptes doubles</string>
     <string name="pref_duplicate_summary">Quand cette option est choisi, les noms de comptes pour un projet doivent être uniques.</string>
+    <string name="pref_count_multiplier">Compte multiplicateur</string>
+    <string name="pref_count_multiplier_summary">Activer option pour multiplier un compte. </string>
 
 
     <!-- CountOptionsActivity -->

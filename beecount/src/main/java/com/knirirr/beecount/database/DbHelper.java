@@ -98,17 +98,20 @@ public class DbHelper extends SQLiteOpenHelper
     if (oldVersion == 9)
     {
       version_10(db,oldVersion,newVersion);
+      version_11(db,oldVersion,newVersion);
     }
     if (oldVersion == 8)
     {
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
+      version_11(db,oldVersion,newVersion);
     }
     if (oldVersion == 7)
     {
       version_8(db,oldVersion,newVersion);
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
+      version_11(db,oldVersion,newVersion);
     }
     if (oldVersion == 6)
     {
@@ -116,6 +119,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_8(db,oldVersion,newVersion);
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
+      version_11(db,oldVersion,newVersion);
     }
     if (oldVersion == 5)
     {
@@ -124,6 +128,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_8(db,oldVersion,newVersion);
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
+      version_11(db,oldVersion,newVersion);
     }
     if (oldVersion == 4)
     {
@@ -133,6 +138,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_8(db,oldVersion,newVersion);
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
+      version_11(db,oldVersion,newVersion);
     }
     else if (oldVersion == 3)
     {
@@ -143,6 +149,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_8(db,oldVersion,newVersion);
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
+      version_11(db,oldVersion,newVersion);
     }
     else if (oldVersion == 2)
     {
@@ -154,6 +161,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_8(db,oldVersion,newVersion);
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
+      version_11(db,oldVersion,newVersion);
     }
     else if (oldVersion == 1)
     {
@@ -166,6 +174,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_8(db,oldVersion,newVersion);
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
+      version_11(db,oldVersion,newVersion);
     }
   }
 

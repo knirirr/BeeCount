@@ -48,6 +48,7 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
   private View markedForDelete;
   private long deleteAnAlert;
   private long project_id;
+  private boolean pref_multiplier;
 
   LinearLayout static_widget_area;
   LinearLayout dynamic_widget_area;
@@ -69,6 +70,7 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
     beeCountApplication = (BeeCountApplication) getApplication();
     prefs = BeeCountApplication.getPrefs();
     prefs.registerOnSharedPreferenceChangeListener(this);
+    pref_multiplier = prefs.getBoolean("pref_multiplier",false);
 
     ScrollView counting_screen = (ScrollView) findViewById(R.id.count_options);
     counting_screen.setBackgroundDrawable(beeCountApplication.getBackground());
@@ -135,10 +137,13 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
     curr_val_widget.setParameterValue(count.count);
     static_widget_area.addView(curr_val_widget);
 
-    count_mult_widget = new OptionsWidget(this,null);
-    count_mult_widget.setInstructions(getString(R.string.countMult));
-    count_mult_widget.setParameterValue(count.multiplier);
-    static_widget_area.addView(count_mult_widget);
+    if (pref_multiplier)
+    {
+      count_mult_widget = new OptionsWidget(this, null);
+      count_mult_widget.setInstructions(getString(R.string.countMult));
+      count_mult_widget.setParameterValue(count.multiplier);
+      static_widget_area.addView(count_mult_widget);
+    }
 
     enw = new EditTitleWidget(this,null);
     enw.setProjectName(count.notes);
@@ -211,7 +216,14 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
     count.reset_level = ar_level_widget.getParameterValue();
     count.count = curr_val_widget.getParameterValue();
     count.notes = enw.getProjectName();
-    count.multiplier = count_mult_widget.getParameterValue();
+    if (pref_multiplier)
+    {
+      count.multiplier = count_mult_widget.getParameterValue();
+    }
+    else
+    {
+      count.multiplier = 1;
+    }
 
     countDataSource.saveCount(count);
 
@@ -333,6 +345,7 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
     ScrollView counting_screen = (ScrollView) findViewById(R.id.count_options);
     counting_screen.setBackgroundDrawable(null);
     counting_screen.setBackgroundDrawable(beeCountApplication.setBackground());
+    pref_multiplier = prefs.getBoolean("pref_multiplier",false);
   }
 
 }

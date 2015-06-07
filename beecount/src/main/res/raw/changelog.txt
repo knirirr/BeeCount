@@ -19,10 +19,12 @@
     </style>
   </head>
   <body>
-$ 2.3.7-beta
-  % Version 2.3.7-beta
-   _ 2015-05-10
-    * Count multiplier option added.
+$ 2.3.7
+  % Version 2.3.7
+   _ 2015-06-07
+    * Optional count multiplier option added (off by default).
+    * Fiddled with count sizes to try to prevent line wrapping.
+    * Fixed database upgrade bug.
 $ 2.3.6
   % Version 2.3.6
    _ 2015-03-06

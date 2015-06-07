@@ -2,6 +2,7 @@ package com.knirirr.beecount.widgets;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.knirirr.beecount.AutoFitText;
 import com.knirirr.beecount.CountingActivity;
 import com.knirirr.beecount.R;
 import com.knirirr.beecount.database.Count;
@@ -21,7 +23,7 @@ public class CountingWidget extends RelativeLayout
   public static String TAG = "BeeCountCountingWidget";
 
   private TextView countName;
-  private TextView countCount;
+  private AutoFitText countCount;
 
   public Count count;
 
@@ -31,7 +33,7 @@ public class CountingWidget extends RelativeLayout
 
     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     inflater.inflate(R.layout.widget_counting, this, true);
-    countCount = (TextView) findViewById(R.id.countCount);
+    countCount = (AutoFitText) findViewById(R.id.countCount);
     countName = (TextView) findViewById(R.id.countName);
 
   }
@@ -40,7 +42,7 @@ public class CountingWidget extends RelativeLayout
   {
     count = newcount;
     countCount.setText(String.valueOf(count.count * count.multiplier));
-    setFont();
+    //setFont();
     countName.setText(count.name);
     ImageButton countUpButton = (ImageButton) findViewById(R.id.buttonUp);
     countUpButton.setTag(count.id);
@@ -54,7 +56,7 @@ public class CountingWidget extends RelativeLayout
   {
     count.increase();
     countCount.setText(String.valueOf(count.count * count.multiplier));
-    setFont();
+    //setFont();
   }
 
   public void countDown()
@@ -68,7 +70,7 @@ public class CountingWidget extends RelativeLayout
       count.safe_decrease();
     }
     countCount.setText(String.valueOf(count.count * count.multiplier));
-    setFont();
+    //setFont();
   }
 
   // sets to the reset level
@@ -76,7 +78,7 @@ public class CountingWidget extends RelativeLayout
   {
     count.count = count.reset_level;
     countCount.setText(String.valueOf(count.count * count.multiplier));
-    setFont();
+    //setFont();
   }
 
   /*
@@ -92,11 +94,11 @@ public class CountingWidget extends RelativeLayout
     }
     else if (currCount.length() == 3)
     {
-      countCount.setTextSize(30);
+      countCount.setTextSize(28);
     }
     else if (currCount.length() >= 4)
     {
-      countCount.setTextSize(22);
+      countCount.setTextSize(12);
     }
   }
 

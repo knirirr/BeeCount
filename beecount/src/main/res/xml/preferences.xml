@@ -60,6 +60,11 @@
         android:title="@string/pref_duplicate"
         android:summary="@string/pref_duplicate_summary"
         android:defaultValue="true"/>
+    <CheckBoxPreference
+        android:key="pref_multiplier"
+        android:title="@string/pref_count_multiplier"
+        android:summary="@string/pref_count_multiplier_summary"
+        android:defaultValue="false"/>
 
     </PreferenceCategory>
 </PreferenceScreen>
