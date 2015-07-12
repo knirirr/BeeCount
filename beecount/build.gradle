@@ -11,12 +11,12 @@ buildscript {
 
 android {
     compileSdkVersion 20
-    buildToolsVersion "20.0.0"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 20
-        versionCode 104
+        versionCode 105
     }
     /*
     buildTypes {

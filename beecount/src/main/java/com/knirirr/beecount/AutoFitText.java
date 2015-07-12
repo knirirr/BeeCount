@@ -81,11 +81,15 @@ public class AutoFitText extends TextView {
     super(context, attrs);
 
     mScaledDensityFactor = context.getResources().getDisplayMetrics().scaledDensity;
+    //Log.i("BeeCount","DENSITY: " + String.valueOf(mScaledDensityFactor));
+
+
     mTestView = new TextView(context);
 
     mTestPaint = new Paint();
     mTestPaint.set(this.getPaint());
 
+    //Log.i("BeeCount","--------");
     this.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
 
       @Override
@@ -93,12 +97,15 @@ public class AutoFitText extends TextView {
         // make an initial call to onSizeChanged to make sure that refitText is triggered
         onSizeChanged(AutoFitText.this.getWidth(), AutoFitText.this.getHeight(), 0, 0);
         // Remove the LayoutListener immediately so we don't run into an infinite loop
+        //Log.i("BeeCount","VERSION: " + String.valueOf(Build.VERSION.SDK_INT));
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
         {
+          //Log.i("BeeCount","ICS or worse");
           AutoFitText.this.getViewTreeObserver().removeGlobalOnLayoutListener(this);
         }
         else
         {
+          //Log.i("BeeCount","JB or better");
           AutoFitText.this.getViewTreeObserver().removeOnGlobalLayoutListener(this);
         }
       }
@@ -120,6 +127,7 @@ public class AutoFitText extends TextView {
 
     // Variables need to be visible outside the loops for later use. Remember size is in pixels
     float lowerTextSize = MIN_TEXT_SIZE;
+    //Log.i("BeeCount","LTS(1): " + String.valueOf(lowerTextSize));
     float upperTextSize = MAX_TEXT_SIZE;
 
     // Force the text to wrap. In principle this is not necessary since the dummy TextView
@@ -160,6 +168,7 @@ public class AutoFitText extends TextView {
       else
       {
         lowerTextSize = testSize; // Font is too small, increase lowerSize
+        //Log.i("BeeCount","LTS(2): " + String.valueOf(lowerTextSize));
       }
     }
     /**************************************************************************************/
@@ -170,7 +179,10 @@ public class AutoFitText extends TextView {
     if (mTestView.getMeasuredHeight() > targetFieldHeight)
     {
       upperTextSize = lowerTextSize;
-      lowerTextSize = MIN_TEXT_SIZE;
+      //Log.i("BeeCount","LTS(3): " + String.valueOf(lowerTextSize));
+      //lowerTextSize = MIN_TEXT_SIZE;
+      lowerTextSize =  lowerTextSize * 0.8f;
+      //Log.i("BeeCount","LTS(3.1): " + String.valueOf(lowerTextSize));
 
       /*************************** Converging algorithm 1.5 *****************************/
       for (float testSize; (upperTextSize - lowerTextSize) > mThreshold; )
@@ -190,10 +202,14 @@ public class AutoFitText extends TextView {
         else
         {
           lowerTextSize = testSize; // Font is too small, increase lowerSize
+          //Log.i("BeeCount","LTS(4): " + String.valueOf(lowerTextSize));
         }
       }
       /**********************************************************************************/
     }
+    //Log.i("BeeCount","FONT SIZE: " + String.valueOf(lowerTextSize / mScaledDensityFactor));
+    //Log.i("BeeCount","LTS(5): " + String.valueOf(lowerTextSize));
+    //Log.i("BeeCount","--------");
     this.setTextSize(TypedValue.COMPLEX_UNIT_SP, lowerTextSize / mScaledDensityFactor);
     return;
   }
