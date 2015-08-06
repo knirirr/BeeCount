@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.3.8
+  % version 2.3.8-beta1
+   _ 2015-08-06
+    * Bugfix for saving alert sound.
 $ 2.3.7-r2
   % version 2.3.7-r2
    _ 2015-07-12
