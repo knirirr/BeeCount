@@ -122,7 +122,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     fontPref = prefs.getBoolean("pref_note_font", false);
     soundPref = prefs.getBoolean("pref_sound",false);
     negPref = prefs.getBoolean("pref_negative",false);
-    alertSound = prefs.getString("alertSound",null);
+    alertSound = prefs.getString("alert_sound",null);
   }
 
   @Override

@@ -33,7 +33,7 @@
         android:defaultValue="false"/>
     <Preference
             android:title="@string/choose_alert"
-            android:key="sound_button"
+            android:key="alert_sound"
             android:summary="@string/explain_alert"/>
     </PreferenceCategory>
 
