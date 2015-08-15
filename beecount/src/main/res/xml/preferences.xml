@@ -35,6 +35,15 @@
             android:title="@string/choose_alert"
             android:key="alert_sound"
             android:summary="@string/explain_alert"/>
+    <CheckBoxPreference
+        android:key="pref_button_sound"
+        android:title="@string/pref_button_sound"
+        android:summary="@string/pref_button_sound_summary"
+        android:defaultValue="false"/>
+    <Preference
+            android:title="@string/choose_button_alert"
+            android:key="alert_button_sound"
+            android:summary="@string/explain_button_alert"/>
     </PreferenceCategory>
 
      <PreferenceCategory

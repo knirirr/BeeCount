@@ -122,6 +122,10 @@
     <string name="pref_duplicate_summary">Quand cette option est choisi, les noms de comptes pour un projet doivent être uniques.</string>
     <string name="pref_count_multiplier">Compte multiplicateur</string>
     <string name="pref_count_multiplier_summary">Activer option pour multiplier un compte. </string>
+    <string name="pref_button_sound">Sonnerie Bouton</string>
+    <string name="pref_button_sound_summary">Faire sonner un son pendant qu\'on tapote sur les boutons \'+\' ou \'-\'.</string>
+    <string name="choose_button_alert">Son de bouton</string>
+    <string name="explain_button_alert">Choisissez une sonnerie pour les boutons \'+\' ou \'-\'.</string>
 
 
     <!-- CountOptionsActivity -->

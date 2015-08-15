@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.3.9
+  % version 2.3.9
+   _ 2015-08-15
+    * Optional sound on + or - button press.
 $ 2.3.8
   % version 2.3.8
    _ 2015-08-12

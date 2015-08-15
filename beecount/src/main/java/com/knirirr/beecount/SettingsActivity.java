@@ -25,6 +25,7 @@ public class SettingsActivity extends PreferenceActivity
   SharedPreferences prefs;
   SharedPreferences.Editor editor;
   Uri alert_uri;
+  Uri alert_button_uri;
 
   @Override
   @SuppressLint("CommitPrefEdits")
@@ -47,9 +48,10 @@ public class SettingsActivity extends PreferenceActivity
 
     prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
+    // Sound for alerts
     String strRingtonePreference = prefs.getString("alert_sound", "DEFAULT_SOUND");
     alert_uri = Uri.parse(strRingtonePreference);
-    Log.i(TAG,"ALERT_URI: " + String.valueOf(alert_uri));
+    //Log.i(TAG,"ALERT_URI: " + String.valueOf(alert_uri));
 
     Preference alert_sound = (Preference) findPreference("alert_sound");
     alert_sound.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
@@ -57,7 +59,22 @@ public class SettingsActivity extends PreferenceActivity
       @Override
       public boolean onPreferenceClick(Preference arg0)
       {
-        getSound(alert_uri);
+        getSound(alert_uri,5);
+        return true;
+      }
+    });
+
+    // Sound for keypresses
+    String strButtonSoundPreference = prefs.getString("alert_button_sound", "DEFAULT_SOUND");
+    alert_button_uri = Uri.parse(strButtonSoundPreference);
+
+    Preference alert_button_sound = (Preference) findPreference("alert_button_sound");
+    alert_button_sound.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+    {
+      @Override
+      public boolean onPreferenceClick(Preference arg0)
+      {
+        getSound(alert_button_uri,10);
         return true;
       }
     });
@@ -89,13 +106,13 @@ public class SettingsActivity extends PreferenceActivity
     startActivityForResult(pickIntent, SELECT_PICTURE);
   }
 
-  public void getSound(Uri alert_uri)
+  public void getSound(Uri tmp_alert_uri, int requestCode)
   {
     Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
     intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
     intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, getString(R.string.pref_sound));
-    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, (Uri) alert_uri);
-    this.startActivityForResult(intent, 5);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, (Uri) tmp_alert_uri);
+    this.startActivityForResult(intent, requestCode);
   }
 
 
@@ -144,16 +161,22 @@ public class SettingsActivity extends PreferenceActivity
         }
       }
     }
-    else if (resultCode == Activity.RESULT_OK && requestCode == 5)
+    else if (resultCode == Activity.RESULT_OK)
     {
       Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
       String ringtone = null;
       if (uri != null)
       {
         ringtone = uri.toString();
-        editor.putString("alert_sound",ringtone);
+        if (requestCode == 5)
+        {
+          editor.putString("alert_sound", ringtone);
+        }
+        else if (requestCode == 10)
+        {
+          editor.putString("alert_button_sound", ringtone);
+        }
       }
-      //Log.i(TAG, "RINGTONE: " + ringtone);
     }
 
 

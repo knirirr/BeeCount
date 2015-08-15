@@ -57,8 +57,10 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   private boolean awakePref;
   private boolean fontPref;
   private boolean soundPref;
+  private boolean buttonSoundPref;
   private boolean negPref;
   private String alertSound;
+  private String buttonAlertSound;
   private PowerManager.WakeLock wl;
 
   // the actual data
@@ -123,6 +125,8 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     soundPref = prefs.getBoolean("pref_sound",false);
     negPref = prefs.getBoolean("pref_negative",false);
     alertSound = prefs.getString("alert_sound",null);
+    buttonSoundPref = prefs.getBoolean("pref_button_sound",false);
+    buttonAlertSound = prefs.getString("alert_button_sound",null);
   }
 
   @Override
@@ -394,6 +398,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   {
     //Log.i(TAG, "View clicked: " + view.toString());
     //Log.i(TAG, "View tag: " + view.getTag().toString());
+    buttonSound();
     long count_id = Long.valueOf(view.getTag().toString());
     CountingWidget widget = getCountFromId(count_id);
     if (widget != null)
@@ -413,6 +418,7 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   {
     //Log.i(TAG, "View clicked: " + view.toString());
     //Log.i(TAG, "View tag: " + view.getTag().toString());
+    buttonSound();
     long count_id = Long.valueOf(view.getTag().toString());
     CountingWidget widget = getCountFromId(count_id);
     if (widget != null)
@@ -519,6 +525,31 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
         if (StringUtils.isNotBlank(alertSound) && alertSound != null)
         {
           notification = Uri.parse(alertSound);
+        }
+        else
+        {
+          notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        }
+        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        r.play();
+      }
+      catch (Exception e)
+      {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  public void buttonSound()
+  {
+    if (buttonSoundPref)
+    {
+      try
+      {
+        Uri notification;
+        if (StringUtils.isNotBlank(buttonAlertSound) && buttonAlertSound != null)
+        {
+          notification = Uri.parse(buttonAlertSound);
         }
         else
         {
