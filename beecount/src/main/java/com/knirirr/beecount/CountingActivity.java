@@ -279,7 +279,14 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
     // finally, check to see if the screen should be kept on whilst counting
     if (awakePref == true)
     {
-      wl.acquire();
+      try
+      {
+        wl.acquire();
+      }
+      catch (Exception e)
+      {
+        Log.e(TAG, "Couldn't acquire wakelock: " + e.toString());
+      }
     }
 
   }
