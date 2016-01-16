@@ -56,6 +56,9 @@
     <string name="willLinkReset">- %1$s remettra %2$s à %3$d.</string>
     <string name="willLinkIncrease">- %1$s augmentera %2$s chaque %3$d.</string>
     <string name="willLinkDecrease">- %1$s diminuera %2$s chaque %3$d.</string>
+    <string name="cloneButton">Faire une copie</string>
+    <string name="newName">Il faut choisir un nom pour le copie de ce projet!</string>
+    <string name="newCopyCreated">Une nouvelle copie à été crée!</string>
 
 
     <!-- CountingActivity Menu -->

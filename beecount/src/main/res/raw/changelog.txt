@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.4.0-beta
+  % version 2.4.0-beta
+   _ 2016-01-16
+    * Projects can now be cloned.
 $ 2.3.9
   % version 2.3.9
    _ 2015-08-15

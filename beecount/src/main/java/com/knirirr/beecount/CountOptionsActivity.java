@@ -290,8 +290,15 @@ public class CountOptionsActivity extends ActionBarActivity implements SharedPre
         public void onClick(DialogInterface dialog, int whichButton)
         {
           // go ahead for the delete
-          alertDataSource.deleteAlertById(deleteAnAlert);
-          dynamic_widget_area.removeView((AlertCreateWidget) markedForDelete.getParent().getParent());
+          try
+          {
+            alertDataSource.deleteAlertById(deleteAnAlert);
+            dynamic_widget_area.removeView((AlertCreateWidget) markedForDelete.getParent().getParent());
+          }
+          catch (Exception e)
+          {
+            Log.i(TAG, "Failed to delete a widget: " + e.toString());
+          }
         }
       });
       are_you_sure.setNegativeButton(R.string.noCancel, new DialogInterface.OnClickListener()

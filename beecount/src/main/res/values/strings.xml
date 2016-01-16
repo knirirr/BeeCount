@@ -33,7 +33,6 @@
     <string name="boxFill">Item no. </string>
     <string name="projectSaved">Project saved!</string>
 
-
     <!-- ListprojActivity -->
     <string name="noCard">Your sdcard could not be accessed!</string>
     <string name="saveFail">Your database could not be exported!</string>
@@ -56,6 +55,9 @@
     <string name="willLinkReset">- %1$s will reset %2$s at %3$d.</string>
     <string name="willLinkIncrease">- %1$s will increase %2$s every %3$d.</string>
     <string name="willLinkDecrease">- %1$s will decrease %2$s every %3$d.</string>
+    <string name="cloneButton">Duplicate project</string>
+    <string name="newName">You must select a name for the new copy of this project.</string>
+    <string name="newCopyCreated">A new copy has been created!</string>
 
 
     <!-- CountingActivity Menu -->

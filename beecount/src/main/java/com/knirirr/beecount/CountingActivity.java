@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.v7.app.ActionBarActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +22,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
+import android.widget.EditText;
 
 import com.knirirr.beecount.database.Alert;
 import com.knirirr.beecount.database.AlertDataSource;
@@ -37,6 +39,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -721,6 +724,11 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
       startActivity(intent);
       return true;
     }
+    else if (id == R.id.menuClone)
+    {
+      cloneProject();
+      return true;
+    }
     else if (id == R.id.menuSaveExit)
     {
       saveData();
@@ -754,4 +762,83 @@ public class CountingActivity extends ActionBarActivity implements SharedPrefere
   {
     return negPref;
   }
+
+  public void cloneProject()
+  {
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    builder.setTitle("Title");
+
+    // Set up the input
+    final EditText input = new EditText(this);
+    // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+    input.setInputType(InputType.TYPE_CLASS_TEXT);
+    builder.setView(input);
+
+    // Set up the buttons
+    builder.setPositiveButton("OK", new DialogInterface.OnClickListener()
+    {
+      @Override
+      public void onClick(DialogInterface dialog, int which)
+      {
+        String m_Text = input.getText().toString();
+        Toast.makeText(CountingActivity.this, "Got text: " + m_Text, Toast.LENGTH_SHORT).show();
+        /*
+         * Now having to a title for the project it needs to be determined if this is a duplicate
+         * of the existing name. If not, then the project can be created.
+         */
+        if (m_Text.isEmpty())
+        {
+          Toast.makeText(CountingActivity.this, getString(R.string.newName), Toast.LENGTH_SHORT).show();
+          return;
+        }
+        // These are needed to link old and new counts and alerts
+        HashMap<Long, Long> countMap = new HashMap<Long, Long>();
+
+        // Creating the new project
+        Project newProject = projectDataSource.createProject(m_Text); // might need to escape the name
+        newProject.notes = project.notes;
+        projectDataSource.saveProject(newProject);
+        for (Count c : countDataSource.getAllCountsForProject(project_id))
+        {
+          Count newCount = countDataSource.createCount(newProject.id,c.name);
+          newCount.notes = c.notes;
+          newCount.auto_reset = c.auto_reset;
+          newCount.reset_level = c.reset_level;
+          newCount.multiplier = c.multiplier;
+          countDataSource.saveCount(newCount);
+
+          // prepare alerts
+          for (Alert a : alertDataSource.getAllAlertsForCount(c.id))
+          {
+            Alert newAlert = alertDataSource.createAlert(newCount.id,a.alert,a.alert_text);
+          }
+
+          // save relationship between old and new counts
+          countMap.put(c.id,newCount.id); //old, new
+
+        }
+        for (Link l : linkDataSource.getAllLinksForProject(project_id))
+        {
+          Long master_id = countMap.get(l.master_id);
+          Long slave_id = countMap.get(l.slave_id);
+          Link newLink = linkDataSource.createLink(newProject.id,master_id,slave_id,l.increment,l.type);
+        }
+
+        // Exit this and go to the list of new projects
+        Toast.makeText(CountingActivity.this, getString(R.string.newCopyCreated), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(CountingActivity.this, ListProjectActivity.class);
+        startActivity(intent);
+
+      }
+    });
+    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+    {
+      @Override
+      public void onClick(DialogInterface dialog, int which) {
+        dialog.cancel();
+      }
+    });
+    builder.show();
+  }
+
 }
