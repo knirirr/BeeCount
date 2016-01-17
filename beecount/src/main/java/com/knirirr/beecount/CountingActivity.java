@@ -13,7 +13,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
@@ -43,7 +43,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class CountingActivity extends ActionBarActivity implements SharedPreferences.OnSharedPreferenceChangeListener
+public class CountingActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
   private static String TAG = "BeeCountCountingActivity";
   private AlertDialog.Builder row_alert;

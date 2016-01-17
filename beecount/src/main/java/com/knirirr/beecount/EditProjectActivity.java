@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EditProjectActivity extends ActionBarActivity implements SharedPreferences.OnSharedPreferenceChangeListener
+public class EditProjectActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
   BeeCountApplication beeCount;
   SharedPreferences prefs;

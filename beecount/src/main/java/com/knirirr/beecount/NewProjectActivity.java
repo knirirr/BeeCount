@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,7 +28,7 @@ import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 
 
-public class NewProjectActivity extends Activity implements SharedPreferences.OnSharedPreferenceChangeListener
+public class NewProjectActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
   private static String TAG = "BeeCountNewProjectActivity";
   BeeCountApplication beeCount;

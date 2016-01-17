@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +26,7 @@ import java.io.IOException;
 import sheetrock.panda.changelog.ChangeLog;
 
 
-public class WelcomeActivity extends ActionBarActivity implements SharedPreferences.OnSharedPreferenceChangeListener
+public class WelcomeActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
 
   private static String TAG = "BeeCountWelcomeActivity";

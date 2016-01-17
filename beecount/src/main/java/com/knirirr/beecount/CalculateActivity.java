@@ -3,7 +3,7 @@ package com.knirirr.beecount;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -23,7 +23,7 @@ import java.util.Locale;
 /**
  * Created by milo on 25/08/2014.
  */
-public class CalculateActivity extends ActionBarActivity implements SharedPreferences.OnSharedPreferenceChangeListener
+public class CalculateActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
   public static String TAG = "BeeCountCalculateActivity";
   ProjectDataSource projectDataSource;
