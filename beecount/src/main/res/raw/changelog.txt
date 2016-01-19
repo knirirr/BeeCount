@@ -19,9 +19,9 @@
     </style>
   </head>
   <body>
-$ 2.4.0-beta
-  % version 2.4.0-beta
-   _ 2016-01-16
+$ 2.4.0
+  % version 2.4.0
+   _ 2016-01-19
     * Projects can now be cloned.
 $ 2.3.9
   % version 2.3.9
