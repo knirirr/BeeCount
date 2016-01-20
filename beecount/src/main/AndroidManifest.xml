@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.knirirr.beecount"
     android:largeHeap="true"
-    android:versionName="2.4.0">
-
+    android:versionName="2.4.1">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -45,6 +44,7 @@
         <activity
             android:name="com.knirirr.beecount.ListProjectActivity"
             android:label="@string/title_activity_list_project"
+            android:theme="@android:style/Theme.Holo"
             android:parentActivityName="com.knirirr.beecount.WelcomeActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

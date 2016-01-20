@@ -3,6 +3,7 @@ package com.knirirr.beecount;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -66,6 +67,8 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
     layout = (ViewGroup) findViewById(R.id.newCountLayout);
     myTexts = new ArrayList<NewCount>();
     newprojName = (EditText) findViewById(R.id.newprojName);
+    newprojName.setTextColor(Color.WHITE);
+    newprojName.setHintTextColor(Color.WHITE);
     countNames = new ArrayList<String>();
 
     if (savedInstanceState != null)
@@ -83,6 +86,8 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
           c.setBackgroundResource(R.drawable.rounded_corner);
           c.setPadding(5,5,5,5);
           c.setTextSize(24);
+          c.setTextColor(Color.WHITE);
+          c.setHintTextColor(Color.WHITE);
           layout.addView(c, params);
           newBox++;
         }
@@ -159,6 +164,8 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
     c.setBackgroundResource(R.drawable.rounded_corner);
     c.setPadding(5,5,5,5);
     c.setTextSize(24);
+    c.setTextColor(Color.WHITE);
+    c.setHintTextColor(Color.WHITE);
 
     layout.addView(c, params);
     c.requestFocus();
