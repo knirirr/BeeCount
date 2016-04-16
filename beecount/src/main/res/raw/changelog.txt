@@ -19,6 +19,12 @@
     </style>
   </head>
   <body>
+$ 2.4.2
+  % version 2.4.2
+   _ 2016-04-16
+    * Request storage permission for Android 6.0.
+    * Allow moving to SD card.
+    * Included German translation.
 $ 2.4.1
   % version 2.4.1
    _ 2016-01-20

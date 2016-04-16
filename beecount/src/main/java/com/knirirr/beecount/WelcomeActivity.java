@@ -1,11 +1,13 @@
 package com.knirirr.beecount;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -33,6 +35,7 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
   BeeCountApplication beeCount;
   SharedPreferences prefs;
   ChangeLog cl;
+  final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
   // import/export stuff
   File infile;
@@ -142,6 +145,12 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
   @SuppressLint("SdCardPath")
   public void exportDb()
   {
+
+    int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED)
+    {
+      requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+    }
     boolean mExternalStorageAvailable = false;
     boolean mExternalStorageWriteable = false;
     String state = Environment.getExternalStorageState();
@@ -193,7 +202,7 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
       }
       catch (IOException e)
       {
-        Log.e(TAG,"Failed to copy database");
+        Log.e(TAG,"Failed to copy database: " + e.toString());
         Toast.makeText(this,getString(R.string.saveFail),Toast.LENGTH_SHORT).show();
         return;
       }
