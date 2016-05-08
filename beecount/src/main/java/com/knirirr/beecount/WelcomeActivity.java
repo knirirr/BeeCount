@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -146,10 +147,15 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
   public void exportDb()
   {
 
-    int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-    if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED)
+
+    // if API level > 23
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
     {
-      requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+      int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+      if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED)
+      {
+        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+      }
     }
     boolean mExternalStorageAvailable = false;
     boolean mExternalStorageWriteable = false;
