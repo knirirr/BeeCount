@@ -128,6 +128,7 @@
     <string name="pref_button_sound_summary">Erzeuge einen Sound wenn ein Zähl-Button (\" + \" oder \" - \") getippt wird.</string>
     <string name="choose_button_alert">Button Sound</string>
     <string name="explain_button_alert">Wähle einen Button-Sound aus.</string>
+    <string name="permission_please">BeeCount braucht die Erlaubnis, Ihre Gerätespeicher zu lesen, um einen benutzerdefinierten Hintergrund zu verwenden.</string>
 
 
     <!-- CountOptionsActivity -->

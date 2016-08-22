@@ -1,9 +1,12 @@
 package com.knirirr.beecount;
 
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.media.RingtoneManager;
+import android.os.Build;
 import android.util.Log;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -19,13 +22,14 @@ import android.widget.Toast;
 
 public class SettingsActivity extends PreferenceActivity
 {
-  private static String TAG = "BeeCountPreferenceActivity";
+  private static String TAG = "BeeCountPreference";
   private static final int SELECT_PICTURE = 1;
   String imageFilePath;
   SharedPreferences prefs;
   SharedPreferences.Editor editor;
   Uri alert_uri;
   Uri alert_button_uri;
+  final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
   @Override
   @SuppressLint("CommitPrefEdits")
@@ -81,6 +85,16 @@ public class SettingsActivity extends PreferenceActivity
 
     editor = prefs.edit(); // will be committed on pause
 
+    // permission to read db
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+    {
+      int hasReadStoragePermission = checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
+      if (hasReadStoragePermission != PackageManager.PERMISSION_GRANTED)
+      {
+        requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+      }
+    }
+
   }
 
   @Override
@@ -131,7 +145,16 @@ public class SettingsActivity extends PreferenceActivity
          * The try is here because this action fails if the user uses a file manager; the gallery
          * seems to work nicely, though.
          */
-        Cursor cursor = getContentResolver().query(_uri, new String[] { android.provider.MediaStore.Images.ImageColumns.DATA }, null, null, null);
+        Cursor cursor = null;
+        try
+        {
+          cursor = getContentResolver().query(_uri, new String[]{android.provider.MediaStore.Images.ImageColumns.DATA}, null, null, null);
+        }
+        catch (java.lang.SecurityException e)
+        {
+          Toast.makeText(this, getString(R.string.permission_please), Toast.LENGTH_SHORT).show();
+          return;
+        }
         try
         {
           cursor.moveToFirst(); // blows up here if file manager used

@@ -19,38 +19,42 @@
     </style>
   </head>
   <body>
+$ 2.4.4
+  % Version 2.4.4
+   _ 2016-08-22
+    * Added permissions request for setting background images.
 $ 2.4.3
-  % version 2.4.3
+  % Version 2.4.3
    _ 2016-05-08
     * Bugfix for database exporting.
 $ 2.4.2
-  % version 2.4.2
+  % Version 2.4.2
    _ 2016-04-16
     * Request storage permission for Android 6.0.
     * Allow moving to SD card.
     * Included German translation.
 $ 2.4.1
-  % version 2.4.1
+  % Version 2.4.1
    _ 2016-01-20
     * Bugfixes.
 $ 2.4.0
-  % version 2.4.0
+  % Version 2.4.0
    _ 2016-01-19
     * Projects can now be cloned.
 $ 2.3.9
-  % version 2.3.9
+  % Version 2.3.9
    _ 2015-08-15
     * Optional sound on + or - button press.
 $ 2.3.8
-  % version 2.3.8
+  % Version 2.3.8
    _ 2015-08-12
     * Bugfix for saving alert sound.
 $ 2.3.7-r2
-  % version 2.3.7-r2
+  % Version 2.3.7-r2
    _ 2015-07-12
     * Another fix for a bug on android 4.0.4 and below.
 $ 2.3.7-r1
-  % version 2.3.7-r1
+  % Version 2.3.7-r1
    _ 2015-06-07
     * Fix for small bug on android 4.0.4 and below.
 $ 2.3.7

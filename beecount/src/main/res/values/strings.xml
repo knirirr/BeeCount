@@ -128,6 +128,7 @@
     <string name="pref_button_sound_summary">Make a sound upon pressing the count up or count down buttons.</string>
     <string name="choose_button_alert">Button sound</string>
     <string name="explain_button_alert">Choose a sound for buttons.</string>
+    <string name="permission_please">BeeCount needs permission to read your device storage in order to use a custom background.</string>
 
 
     <!-- CountOptionsActivity -->

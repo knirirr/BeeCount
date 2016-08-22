@@ -45,7 +45,7 @@ import java.util.List;
 
 public class CountingActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  private static String TAG = "BeeCountCountingActivity";
+  private static String TAG = "BeeCountCounting";
   private AlertDialog.Builder row_alert;
   private AlertDialog.Builder loop_alert;
   BeeCountApplication beeCount;

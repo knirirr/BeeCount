@@ -67,6 +67,8 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     if (cl.firstRun())
       cl.getLogDialog().show();
 
+
+
   }
 
 
@@ -87,6 +89,7 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     int id = item.getItemId();
     if (id == R.id.action_settings)
     {
+
       startActivity(new Intent(this, SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
       return true;
     }
@@ -149,10 +152,11 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
 
 
     // if API level > 23
+    // Need to do this to write the database file.
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
     {
-      int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-      if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED)
+      int hasWriteStoragePermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+      if (hasWriteStoragePermission != PackageManager.PERMISSION_GRANTED)
       {
         requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
       }
@@ -219,6 +223,15 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
   @SuppressLint("SdCardPath")
   public void importDb()
   {
+    // permission to read db
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+    {
+      int hasReadStoragePermission = checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
+      if (hasReadStoragePermission != PackageManager.PERMISSION_GRANTED)
+      {
+        requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+      }
+    }
     infile = new File(Environment.getExternalStorageDirectory() + "/beecount.db");
     //outfile = new File("/data/data/com.knirirr.beecount/databases/beecount.db");
     String destPath = "/data/data/com.knirirr.beecount/files";
