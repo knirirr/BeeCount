@@ -129,6 +129,8 @@
     <string name="choose_button_alert">Button sound</string>
     <string name="explain_button_alert">Choose a sound for buttons.</string>
     <string name="permission_please">BeeCount needs permission to read your device storage in order to use a custom background.</string>
+    <string name="pref_loopstop">Stop count link loops</string>
+    <string name="pref_loopstop_summary">If you uncheck this box the application could crash...</string>
 
 
     <!-- CountOptionsActivity -->
@@ -152,7 +154,7 @@
     <string name="hintInstructions">Instructions.</string>
     <string name="upgradeFail">Some of your links could not be upgraded to the new data format. Please check your projects to see which ones, and re-add them manually. Sorry for the inconvenience.</string>
     <string name="getHelp">Sorry, there was a problem with your database. Please email if you need assistance, attaching your exported beecount.db.</string>
-    <string name="linkLoop">Please check your links - there seems to be a problem!</string>
+    <string name="linkLoop">Your links loop around upon each other - you may want to fix this.</string>
     <string name="linkLoopError">Oh no!</string>
 
     <!-- calculations -->

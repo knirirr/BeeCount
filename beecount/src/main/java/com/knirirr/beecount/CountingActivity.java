@@ -35,6 +35,7 @@ import com.knirirr.beecount.database.ProjectDataSource;
 import com.knirirr.beecount.widgets.CountingWidget;
 import com.knirirr.beecount.widgets.NotesWidget;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.net.URI;
@@ -53,7 +54,6 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
   long project_id;
   LinearLayout count_area;
   LinearLayout notes_area;
-  long last_count;
 
   // preferences
   private boolean toastPref;
@@ -62,6 +62,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
   private boolean soundPref;
   private boolean buttonSoundPref;
   private boolean negPref;
+  private boolean loopStop;
   private String alertSound;
   private String buttonAlertSound;
   private PowerManager.WakeLock wl;
@@ -71,6 +72,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
   List<Count> counts;
   List<Alert> alerts;
   List<Link> links;
+  List<Long> already_counted;
 
   List<CountingWidget> countingWidgets;
 
@@ -95,6 +97,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     countDataSource = new CountDataSource(this);
     alertDataSource = new AlertDataSource(this);
     linkDataSource = new LinkDataSource(this);
+    already_counted = new ArrayList<Long>();
 
     beeCount = (BeeCountApplication) getApplication();
     //project_id = beeCount.project_id;
@@ -107,7 +110,6 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
 
     count_area = (LinearLayout) findViewById(R.id.countCountLayout);
     notes_area = (LinearLayout) findViewById(R.id.countNotesLayout);
-    last_count = 0;
 
     if (awakePref == true)
     {
@@ -130,6 +132,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     alertSound = prefs.getString("alert_sound",null);
     buttonSoundPref = prefs.getBoolean("pref_button_sound",false);
     buttonAlertSound = prefs.getString("alert_button_sound",null);
+    loopStop = prefs.getBoolean("pref_loopstop",true);
   }
 
   @Override
@@ -397,11 +400,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
 
   /*
    * The functions below are triggered by the buttons; the two above by being triggered during
-   * a pass through the checkLink function. Therefore, last_count should be reset to 0 when a
-   * button is pressed ready for the next run through the cascade of links.
-   * N.B. last_count isn't foolproof, and a user may still manage to set up some interlinked counts
-   * such that the application can be crashed by recursive linking. A better fix is therefore
-   * required.
+   * a pass through the checkLink function. already_counted is reset when a button is pressed such
+   * that a track of what links are triggered for each press is kept each time.
    */
 
   public void countUp(View view)
@@ -409,11 +409,12 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     //Log.i(TAG, "View clicked: " + view.toString());
     //Log.i(TAG, "View tag: " + view.getTag().toString());
     buttonSound();
+    if (loopStop)
+      already_counted.clear();
     long count_id = Long.valueOf(view.getTag().toString());
     CountingWidget widget = getCountFromId(count_id);
     if (widget != null)
     {
-      last_count = 0;
       widget.countUp();
     }
     checkAlert(widget.count.id, widget.count.count);
@@ -429,19 +430,18 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     //Log.i(TAG, "View clicked: " + view.toString());
     //Log.i(TAG, "View tag: " + view.getTag().toString());
     buttonSound();
+    if (loopStop)
+      already_counted.clear();
     long count_id = Long.valueOf(view.getTag().toString());
     CountingWidget widget = getCountFromId(count_id);
     if (widget != null)
     {
-      last_count = 0;
       widget.countDown();
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, false);
     if (widget.count.auto_reset > 0)
       checkReset(widget.count);
-
-
   }
 
   public void resetCount(long count_id)
@@ -577,30 +577,22 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
 
   public void checkLink(long count_id, int count_value, boolean up)
   {
-    //Log.i(TAG, "STARTING checkLink: " + String.valueOf(count_id));
-    for (Link l : links)
-    {
-      //Log.i(TAG, "LINK: " + String.valueOf(l.id));
-      //Log.i(TAG, "MASTER: " + String.valueOf(l.master_id));
-      //Log.i(TAG, "SLAVE: " + String.valueOf(l.slave_id));
-      /*
-       * last_count is an attempt to check whether a link loop has been created.
-       */
-      /*
-      if (l.slave_id == last_count)
-      {
-        // You have been naughty!
-        //Log.i(TAG, "DODGY: " + String.valueOf(l.id));
-        linkLoopAlert();
-        return;
-      }
-      */
-    }
     for (Link l : links)
     {
       //Log.i(TAG, "In the good bit: " + String.valueOf(count_value % l.increment));
       if (l.master_id == count_id && (count_value % l.increment == 0) && up)
       {
+        /*
+         * If the slave has already been seen then this counting cycle should come to an end.
+         */
+        if (loopStop) {
+          if (already_counted.contains(l.slave_id)) {
+            linkLoopAlert();
+            return;
+          }
+        }
+        already_counted.add(l.slave_id);
+
         if (l.type == 0) // reset
         {
           resetCount(l.slave_id);
@@ -636,7 +628,6 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
         }
       }
     }
-    //last_count = count_id;
   }
 
   // resetting might as well call the

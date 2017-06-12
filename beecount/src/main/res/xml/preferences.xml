@@ -74,6 +74,11 @@
         android:title="@string/pref_count_multiplier"
         android:summary="@string/pref_count_multiplier_summary"
         android:defaultValue="false"/>
+    <CheckBoxPreference
+        android:key="pref_loopstop"
+        android:title="@string/pref_loopstop"
+        android:summary="@string/pref_loopstop_summary"
+        android:defaultValue="true"/>
 
     </PreferenceCategory>
 </PreferenceScreen>
