@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.4.5
+  % Version 2.4.5
+   _ 2017-08-12
+    * Fixed a potential crashing bug.
 $ 2.4.4
   % Version 2.4.4
    _ 2016-08-22

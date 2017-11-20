@@ -129,6 +129,8 @@
     <string name="choose_button_alert">Button Sound</string>
     <string name="explain_button_alert">Wähle einen Button-Sound aus.</string>
     <string name="permission_please">BeeCount braucht die Erlaubnis, Ihre Gerätespeicher zu lesen, um einen benutzerdefinierten Hintergrund zu verwenden.</string>
+    <string name="pref_loopstop">Link-Zähler Schleifen anhalten</string>
+    <string name="pref_loopstop_summary">Das Programm könnte beim deaktivieren dieses Kontrollkästchens abstürzen...</string>
 
 
     <!-- CountOptionsActivity -->
