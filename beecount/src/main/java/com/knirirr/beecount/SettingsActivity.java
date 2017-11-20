@@ -101,8 +101,8 @@ public class SettingsActivity extends PreferenceActivity
   protected void onResume()
   {
     super.onResume();
-    String strRingtonePreference = prefs.getString("alert_sound", "DEFAULT_SOUND");
-    alert_uri = Uri.parse(strRingtonePreference);
+    //String strRingtonePreference = prefs.getString("alert_sound", "DEFAULT_SOUND");
+    //alert_uri = Uri.parse(strRingtonePreference);
   }
 
   @Override

@@ -79,6 +79,12 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
   private AlertDataSource alertDataSource;
   private LinkDataSource linkDataSource;
 
+  private Ringtone countUpAlert;
+  private Ringtone countDownAlert;
+  private Ringtone alertAlert;
+
+
+
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
@@ -531,20 +537,11 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     {
       try
       {
-        Uri notification;
-        if (StringUtils.isNotBlank(alertSound) && alertSound != null)
-        {
-          notification = Uri.parse(alertSound);
-        }
-        else
-        {
-          notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        }
-        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-        r.play();
+        countUpAlert.play();
       }
       catch (Exception e)
       {
+        Log.i(TAG,"Error playing countUpAlert: " + e.toString());
         e.printStackTrace();
       }
     }
@@ -556,20 +553,11 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     {
       try
       {
-        Uri notification;
-        if (StringUtils.isNotBlank(buttonAlertSound) && buttonAlertSound != null)
-        {
-          notification = Uri.parse(buttonAlertSound);
-        }
-        else
-        {
-          notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        }
-        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-        r.play();
+        alertAlert.play();
       }
       catch (Exception e)
       {
+        Log.i(TAG,"Error playing buttonAlertSound: " + e.toString());
         e.printStackTrace();
       }
     }
@@ -756,6 +744,32 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     counting_screen.setBackgroundDrawable(null);
     counting_screen.setBackgroundDrawable(beeCount.setBackground());
     getPrefs();
+    countUpAlert = prepareSound(alertSound);
+    alertAlert = prepareSound(buttonAlertSound);
+  }
+
+  public Ringtone prepareSound(String name) {
+    try
+    {
+      Uri notification;
+      if (StringUtils.isNotBlank(name) && name != null)
+      {
+        notification = Uri.parse(name);
+      }
+      else
+      {
+        notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+      }
+      Ringtone tone =  RingtoneManager.getRingtone(getApplicationContext(), notification);
+      return tone;
+    }
+    catch (Exception e)
+    {
+      Log.i(TAG,"Could not set ringtone: " + e.toString());
+      e.printStackTrace();
+      return null;
+    }
+
   }
 
   public boolean getNegPref()

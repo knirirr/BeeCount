@@ -67,6 +67,8 @@ public class BeeCountApplication extends Application
     String backgroundPref = prefs.getString("pref_back", "default");
     String pictPref = prefs.getString("imagePath", "");
 
+    Log.e(TAG, "PICTURE: " + pictPref);
+
     WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
     Display display = wm.getDefaultDisplay();
     Point size = new Point();
