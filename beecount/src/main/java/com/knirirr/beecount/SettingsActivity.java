@@ -29,6 +29,7 @@ public class SettingsActivity extends PreferenceActivity
   SharedPreferences.Editor editor;
   Uri alert_uri;
   Uri alert_button_uri;
+  Uri alert_button_down_uri;
   final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
   @Override
@@ -83,6 +84,20 @@ public class SettingsActivity extends PreferenceActivity
       }
     });
 
+    String strButtonSoundDownPreference = prefs.getString("alert_button_down_sound", "DEFAULT_SOUND");
+    alert_button_down_uri = Uri.parse(strButtonSoundDownPreference);
+
+    Preference alert_button_down_sound = (Preference) findPreference("alert_button_down_sound");
+    alert_button_down_sound.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+    {
+      @Override
+      public boolean onPreferenceClick(Preference arg0)
+      {
+        getSound(alert_button_down_uri,15);
+        return true;
+      }
+    });
+
     editor = prefs.edit(); // will be committed on pause
 
     // permission to read db
@@ -101,8 +116,8 @@ public class SettingsActivity extends PreferenceActivity
   protected void onResume()
   {
     super.onResume();
-    //String strRingtonePreference = prefs.getString("alert_sound", "DEFAULT_SOUND");
-    //alert_uri = Uri.parse(strRingtonePreference);
+    String strRingtonePreference = prefs.getString("alert_sound", "DEFAULT_SOUND");
+    alert_uri = Uri.parse(strRingtonePreference);
   }
 
   @Override
@@ -198,6 +213,10 @@ public class SettingsActivity extends PreferenceActivity
         else if (requestCode == 10)
         {
           editor.putString("alert_button_sound", ringtone);
+        }
+        else if (requestCode == 15)
+        {
+          editor.putString("alert_button_down_sound", ringtone);
         }
       }
     }

@@ -65,6 +65,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
   private boolean loopStop;
   private String alertSound;
   private String buttonAlertSound;
+  private String buttonAlertDownSound;
   private PowerManager.WakeLock wl;
 
   // the actual data
@@ -111,6 +112,10 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     prefs.registerOnSharedPreferenceChangeListener(this);
     getPrefs();
 
+    alertAlert = prepareSound(alertSound);
+    countDownAlert = prepareSound(buttonAlertDownSound);
+    countUpAlert = prepareSound(buttonAlertSound);
+
     ScrollView counting_screen = (ScrollView) findViewById(R.id.countingScreen);
     counting_screen.setBackgroundDrawable(beeCount.getBackground());
 
@@ -138,6 +143,10 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     alertSound = prefs.getString("alert_sound",null);
     buttonSoundPref = prefs.getBoolean("pref_button_sound",false);
     buttonAlertSound = prefs.getString("alert_button_sound",null);
+    buttonAlertDownSound = prefs.getString("alert_button_down_sound",null);
+    if (buttonAlertDownSound == null) {
+      buttonAlertDownSound = buttonAlertSound;
+    }
     loopStop = prefs.getBoolean("pref_loopstop",true);
   }
 
@@ -435,7 +444,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
   {
     //Log.i(TAG, "View clicked: " + view.toString());
     //Log.i(TAG, "View tag: " + view.getTag().toString());
-    buttonSound();
+    buttonDownSound();
     if (loopStop)
       already_counted.clear();
     long count_id = Long.valueOf(view.getTag().toString());
@@ -537,11 +546,11 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     {
       try
       {
-        countUpAlert.play();
+        alertAlert.play();
       }
       catch (Exception e)
       {
-        Log.i(TAG,"Error playing countUpAlert: " + e.toString());
+        Log.i(TAG,"Error playing alert sound: " + e.toString());
         e.printStackTrace();
       }
     }
@@ -553,11 +562,27 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     {
       try
       {
-        alertAlert.play();
+        countUpAlert.play();
       }
       catch (Exception e)
       {
-        Log.i(TAG,"Error playing buttonAlertSound: " + e.toString());
+        Log.i(TAG,"Error playing count up sound: " + e.toString());
+        e.printStackTrace();
+      }
+    }
+  }
+
+  public void buttonDownSound()
+  {
+    if (soundPref)
+    {
+      try
+      {
+        countDownAlert.play();
+      }
+      catch (Exception e)
+      {
+        Log.i(TAG,"Error playing count down sound: " + e.toString());
         e.printStackTrace();
       }
     }
@@ -735,8 +760,9 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     counting_screen.setBackgroundDrawable(null);
     counting_screen.setBackgroundDrawable(beeCount.setBackground());
     getPrefs();
-    countUpAlert = prepareSound(alertSound);
-    alertAlert = prepareSound(buttonAlertSound);
+    alertAlert = prepareSound(alertSound);
+    countDownAlert = prepareSound(buttonAlertDownSound);
+    countUpAlert = prepareSound(buttonAlertSound);
   }
 
   public Ringtone prepareSound(String name) {

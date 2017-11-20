@@ -44,6 +44,10 @@
             android:title="@string/choose_button_alert"
             android:key="alert_button_sound"
             android:summary="@string/explain_button_alert"/>
+    <Preference
+            android:title="@string/choose_button_down_alert"
+            android:key="alert_button_down_sound"
+            android:summary="@string/explain_button_down_alert"/>
     </PreferenceCategory>
 
      <PreferenceCategory

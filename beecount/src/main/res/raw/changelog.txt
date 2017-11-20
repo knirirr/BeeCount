@@ -19,6 +19,11 @@
     </style>
   </head>
   <body>
+$ 2.4.6
+  % Version 2.4.6
+   _ 2017-11-20
+    * Might have fixed sound stopping issue.
+    * Data should never be lost; if you find this happens then please email to assist in debugging.
 $ 2.4.5
   % Version 2.4.5
    _ 2017-08-12

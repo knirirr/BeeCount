@@ -126,8 +126,10 @@
     <string name="pref_count_multiplier_summary">Show option to multiply a count by a set value. </string>
     <string name="pref_button_sound">Count button sounds</string>
     <string name="pref_button_sound_summary">Make a sound upon pressing the count up or count down buttons.</string>
-    <string name="choose_button_alert">Button sound</string>
-    <string name="explain_button_alert">Choose a sound for buttons.</string>
+    <string name="choose_button_alert">Button sound (count up)</string>
+    <string name="choose_button_down_alert">Button sound (count down)</string>
+    <string name="explain_button_alert">Choose a sound for counting up.</string>
+    <string name="explain_button_down_alert">Choose a sound for counting down.</string>
     <string name="permission_please">BeeCount needs permission to read your device storage in order to use a custom background.</string>
     <string name="pref_loopstop">Stop count link loops</string>
     <string name="pref_loopstop_summary">If you uncheck this box the application could crash...</string>

@@ -115,7 +115,14 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
     super.onSaveInstanceState(outState);
     for (NewCount c : myTexts)
     {
-      ((ViewGroup) c.getParent()).removeView(c);
+      try
+      {
+        ((ViewGroup) c.getParent()).removeView(c);
+      }
+      catch (java.lang.NullPointerException e)
+      {
+        Log.e(TAG, "Empty text box.");
+      }
     }
     outState.putSerializable("savedTexts", myTexts);
   }

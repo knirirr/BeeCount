@@ -134,7 +134,13 @@ public class EditProjectActivity extends AppCompatActivity implements SharedPref
     outState.putSerializable("savedLinks", savedLinks);
     for (CountEditWidget cew : savedCounts)
     {
-      ((ViewGroup)cew.getParent()).removeView(cew);
+      try
+      {
+        ((ViewGroup) cew.getParent()).removeView(cew);
+      }
+      catch (java.lang.NullPointerException e) {
+        Log.e(TAG, "Empty text box.");
+      }
     }
     outState.putSerializable("savedCounts", savedCounts);
   }
