@@ -126,8 +126,10 @@
     <string name="pref_count_multiplier_summary">Zeige eine Option um Zähler mit einem vorzugebenden Wert zu multiplizieren.</string>
     <string name="pref_button_sound">Zähler-Button Sound</string>
     <string name="pref_button_sound_summary">Erzeuge einen Sound wenn ein Zähl-Button (\" + \" oder \" - \") getippt wird.</string>
-    <string name="choose_button_alert">Button Sound</string>
+    <string name="choose_button_alert">Button Sound \'+\'</string>
+    <string name="choose_button_down_alert">Button Sound \'-\'</string>
     <string name="explain_button_alert">Wähle einen Button-Sound aus.</string>
+    <string name="explain_button_down_alert">Wähle einen Button-Sound aus.</string>
     <string name="permission_please">BeeCount braucht die Erlaubnis, Ihre Gerätespeicher zu lesen, um einen benutzerdefinierten Hintergrund zu verwenden.</string>
     <string name="pref_loopstop">Link-Zähler Schleifen anhalten</string>
     <string name="pref_loopstop_summary">Das Programm könnte beim deaktivieren dieses Kontrollkästchens abstürzen...</string>
