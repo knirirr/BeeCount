@@ -16,7 +16,7 @@
     <string name="customTooBig">Leider wurde beim Versuch, das gewählte Hintergrundbild zu übernehmen, ein Speicherfehler verursacht.</string>
 
     <!-- WelcomeActivity -->
-    <string name="hello">Willkommen bei BeeCount! Der Zweck dieser App ist es, Zähler-Werte für verschiedene Strick- oder Häkel-Projekte separat zu speichern. Jedes Projekt kann aus vielen \"Zählungen\" bestehen, von denen jede so etwas wie eine Musterwiederholung oder eine Reihe, die Du überwachen willst, repräsentieren kann. Mit den \"Buttons\" unten erzeugst Du ein neues oder verwendest bzw. verwaltest ein bestehendes Projekt.\n\n Im Projekt-Editor lassen sich in einem bestehenden Projekt auch Zähler miteinander verbinden, so dass ein Zähler einen anderen mit hoch- oder runterzählt.\n\n Die Einstellungen können in den Einstellungsmenüs geändert werden (Menü-Button oder 3-Punkt-Icon).\n\n Solltest Du eine Frage haben, kannst Du die Ravelry Gruppe unter http://www.ravelry.com/groups/beecount aufsuchen, oder zwecks Bug-Report eine E-Mail an knirirr@gmail.com senden.\n</string>
+    <string name="hello">Willkommen bei BeeCount! Der Zweck dieser App ist es, Zähler-Werte für verschiedene Strick- oder Häkel-Projekte separat zu speichern. Jedes Projekt kann aus vielen \"Zählungen\" bestehen, von denen jede so etwas wie eine Musterwiederholung oder eine Reihe, die Du überwachen willst, repräsentieren kann. Mit den Buttons unten erzeugst Du ein neues Projekt oder verwendest bzw. verwaltest ein bestehendes.\n\n Im Projekt-Editor lassen sich in einem bestehenden Projekt auch Zähler miteinander verbinden, so dass ein Zähler einen anderen mit hoch- oder runterzählt.\n\n Die Einstellungen können in den Einstellungsmenüs geändert werden (Menü-Button oder 3-Punkt-Icon).\n\n Solltest Du eine Frage haben, kannst Du die Ravelry Gruppe unter http://www.ravelry.com/groups/beecount aufsuchen, oder zwecks Bug-Report eine E-Mail an knirirr@gmail.com senden.\n</string>
     <string name="newProjectButton">Neues Projekt</string>
     <string name="viewProjectButton">Projekte ansehen</string>
     <string name="newProjTitle">Neues Projekt erstellen</string>
@@ -25,7 +25,7 @@
     <!-- NewprojActivity -->
     <string name="labelNewprojSaveButton">Speichern</string>
     <string name="labelNewproj">Projektname</string>
-    <string name="labelNewCountButton">Zähler hinzu</string>
+    <string name="labelNewCountButton">Zähler hinzu.</string>
     <string name="clearCountButton">Zähler entf.</string>
     <string name="emptyBox">Bitte die leeren Felder ausfüllen!</string>
     <string name="noCounts">Es muss mindestens ein Eintrag vorhanden sein!</string>
@@ -34,13 +34,13 @@
     <string name="projectSaved">Projekt gespeichert!</string>
 
     <!-- ListprojActivity -->
-    <string name="noCard">Die Sdcard kann nicht verwendet werden!</string>
+    <string name="noCard">Die SD-Karte kann nicht verwendet werden!</string>
     <string name="saveFail">Die Datenbank konnte nicht exportiert werden!</string>
-    <string name="saveWin">Die Datenbank wurde auf die Sdcard exportiert.</string>
+    <string name="saveWin">Die Datenbank wurde auf die SD-Karte exportiert.</string>
     <string name="exportMenu">Export</string>
     <string name="importMenu">Import</string>
     <string name="importFail">Die Datenbank konnte nicht importiert werden!</string>
-    <string name="importWin">Die Datenbank wurde von der SDcard importiert.</string>
+    <string name="importWin">Die Datenbank wurde von der SD-Karte importiert.</string>
     <string name="noDb">Bitte lege die \"beecount.db\" auf die /sdcard Partition.</string>
     <string name="importButton">Import</string>
     <string name="importCancelButton">Abbrechen</string>
@@ -48,7 +48,7 @@
 
 
     <!-- CountingActivity -->
-    <string name="saveCountsButton">Sichern &amp; Exit</string>
+    <string name="saveCountsButton">Sichern &amp; Beenden</string>
     <string name="projSaving">Speichern </string>
     <string name="hasAutoReset">%1$s hat Auto-Reset!</string>
     <string name="alertTitle">Buzzzz!</string>
@@ -61,13 +61,13 @@
 
 
     <!-- CountingActivity Menu -->
-    <string name="editProjTitle">Project bearbeiten</string>
+    <string name="editProjTitle">Projekt bearbeiten</string>
     <string name="confirmDelete">Soll das Projekt wirklich gelöscht werden?</string>
     <string name="postIncr">%1$s hat %2$s erhöht!</string>
     <string name="postReset">%1$s hat %2$s zurückgesetzt!</string>
     <string name="postDecr">%1$s hat %2$s verringert!</string>
     <string name="willReset">- %1$s wird automatisch auf %2$d um %3$d zurückgesetzt.</string>
-    <string name="willAlert">- %1$s wird um %2$d ein Signal geben.</string>
+    <string name="willAlert">- %1$s wird bei %2$d ein Signal geben.</string>
     <string name="deleteButton">Löschen</string>
     <string name="cancelButton">Abbrechen</string>
     <string name="action_share">Mitteilen</string>
@@ -80,17 +80,17 @@
     <string name="mismatch">Bitte prüfen Sie, welche Zählliste Sie verlinkt haben.</string>
     <string name="zero">Der Link-Inkrementwert kann nicht Null sein, Speichern schlug fehl!</string>
     <string name="every">alle</string>
-    <string name="incr_up"> werden erhöht </string>
-    <string name="incr_down"> werden vermindert </string>
-    <string name="incr_reset"> werden zurückgesetzt </string>
+    <string name="incr_up"> erhöhen </string>
+    <string name="incr_down"> vermindern </string>
+    <string name="incr_reset"> zurücksetzen </string>
     <string name="notesHere">Bemerkung</string>
     <string name="notesHint">Bemerkung zur Liste einfügen&#8230;</string>
     <string name="deleteCount">Zähler löschen</string>
     <string name="reallyDeleteCount">Sind Sie sicher? Der Zähler wird sofort gelöscht.</string>
     <string name="deleteLink">Link löschen</string>
     <string name="reallyDeleteLink">Sind Sie sicher? Der Link wird sofort gelöscht.</string>
-    <string name="xWillYZ">%1$s wird %2$s alle %4$d %3$s.</string>
-    <string name="linkPlaceholder">Link Information geht hierhin</string>
+    <string name="xWillYZ">%1$s wird %3$s alle %4$d %2$s.</string>
+    <string name="linkPlaceholder">Link Information kommt hierhin</string>
 
     <!-- ChangeLog -->
     <string name="changelog_full_title">Änderungsinfo</string>
@@ -160,14 +160,14 @@
     <string name="linkLoopError">Oh, nein!</string>
 
     <!-- calculations -->
-    <string name="calcButton">Berechung</string>
+    <string name="calcButton">Berechnung</string>
     <string name="aboutCalc">Diese Seite erlaubt die Berechnung von Zu- und Abnahmen unter Verwendung der \"Magischen Formel\", wie von Ann Budd, aus dem Original von Cheryl Brunette (publiziert in \"Sweater 101\"), beschrieben. Siehe auch die PDF-Datei unter http://www.annbuddknits.com/Magic_Increase_Decrease_Formula.pdf für mehr Details.</string>
     <string name="stitchTotal">Gesamtzahl der Maschen/Stiche</string>
     <string name="toIncrease">Anzahl der zu erhöhenden oder zu verringernden Maschen</string>
     <string name="increaseOutput">Erhöhe/vermindere jede %1$s Masche %2$d mal und jede %3$s Masche %4$d mal.</string>
     <string name="calcTitle">Berechnungsergebnis</string>
     <string name="calcError">Berechnungsfehler!</string>
-    <string name="updating_with_calc">Update der Projekt Notizen!</string>
-    <string name="dont_set_zero">Bitte all Eingabewerte größer als Null setzen!</string>
+    <string name="updating_with_calc">Update der Projektnotizen!</string>
+    <string name="dont_set_zero">Bitte alle Eingabewerte größer als Null setzen!</string>
 
 </resources>

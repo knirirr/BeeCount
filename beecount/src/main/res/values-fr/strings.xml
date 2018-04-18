@@ -16,7 +16,7 @@
     <string name="customTooBig">Desolé, en essayant de régler le fond d\'écran on a rencontré une erreur de mémoire.</string>
 
     <!-- WelcomeActivity -->
-    <string name="hello">Bienvenue à BeeCount! Cette app existe pour vous sauvegarder les détails de plusieurs projets de tricot ou crochet, tout en vous laissant  compter chacun séparément. Chaque projet peut avoir plusieurs « comptes », chacun étant une rangée ou reprise de motif que vous voulez suivre. Utilisez les boutons ci-dessous pour créer de nouveaux projets ou pour régler les projets actuels.\n\n En éditant un projet après l\'avoir créé on peut lier les comptes afin afin de changer l\'autre.\n\nOn peut changer les paramètres de l\'app en utilisant le bouton de menu ou le bouton 3-point ci-dessus.\n\n Si vous avez des questions, veuillez visiter le groupe Ravelry à http://www.ravelry.com/groups/beecount, ou signalez les bugs à knirirr@gmail.com.\n</string>
+    <string name="hello">Bienvenue à BeeCount! Cette app existe pour vous sauvegarder les détails de plusieurs projets de tricot ou crochet, tout en vous laissant compter chacun séparément. Chaque projet peut avoir plusieurs «\u00A0comptes\u00A0», chacun étant une rangée ou reprise de motif que vous voulez suivre. Utilisez les boutons ci-dessous pour créer des nouveaux projets ou pour régler les projets actuels.\n\n En éditant un projet après l\'avoir créé on peut lier des comptes afin de changer l\'autre.\n\nOn peut changer les paramètres de l\'app en utilisant le bouton de menu ou le bouton 3-point ci-dessus.\n\n Si vous avez des questions, veuillez visiter le groupe Ravelry à http://www.ravelry.com/groups/beecount, ou signalez les bugs à knirirr@gmail.com.\n</string>
     <string name="newProjectButton">Nouveau Projet</string>
     <string name="viewProjectButton">Voir Projets</string>
     <string name="newProjTitle">Créer un nouveau projet</string>
@@ -35,7 +35,7 @@
 
 
     <!-- ListprojActivity -->
-    <string name="noCard">On n\'a pas pu accéder à votre carde SD!</string>
+    <string name="noCard">On n\'a pas pu accéder à votre carte SD!</string>
     <string name="saveFail">On n\'a pas pu exporter votre base de données!</string>
     <string name="saveWin">Votre base de données a été exporté à la carte SD.</string>
     <string name="exportMenu">Exporter</string>
@@ -49,7 +49,7 @@
 
 
     <!-- CountingActivity -->
-    <string name="saveCountsButton">Sauvegarder &amp; exit</string>
+    <string name="saveCountsButton">Sauvegarder &amp; Fermer</string>
     <string name="projSaving">Sauvegardant </string>
     <string name="hasAutoReset">%1$s s\'est remis automatiquement!</string>
     <string name="alertTitle">Buzzzz!</string>
@@ -57,7 +57,7 @@
     <string name="willLinkIncrease">- %1$s augmentera %2$s chaque %3$d.</string>
     <string name="willLinkDecrease">- %1$s diminuera %2$s chaque %3$d.</string>
     <string name="cloneButton">Faire une copie</string>
-    <string name="newName">Il faut choisir un nom pour le copie de ce projet!</string>
+    <string name="newName">Il faut choisir un nom pour la copie de ce projet!</string>
     <string name="newCopyCreated">Une nouvelle copie à été crée!</string>
 
 
@@ -69,8 +69,8 @@
     <string name="postDecr">%1$s a diminué %2$s!</string>
     <string name="willReset">- %1$s remettra à %2$d à %3$d.</string>
     <string name="willAlert">- %1$s montrera une alerte à %2$d.</string>
-    <string name="deleteButton">Delete</string>
-    <string name="cancelButton">Cancel</string>
+    <string name="deleteButton">Supprimer</string>
+    <string name="cancelButton">Annuler</string>
     <string name="action_share">Partager</string>
     <string name="send_to">Partager notes</string>
 
@@ -91,7 +91,7 @@
     <string name="deleteLink">Supprimer Lien</string>
     <string name="reallyDeleteLink">Vous êtes sûr que vous voudriez faire ça? Ce lien sera supprimé immediatement.</string>
     <string name="xWillYZ">%1$s %2$s %3$s chaque %4$d.</string>
-    <string name="linkPlaceholder">Informations pour un lien sera ici</string>
+    <string name="linkPlaceholder">Les informations pour un lien seront ici</string>
 
     <!-- ChangeLog -->
     <string name="changelog_full_title">Feuille de Contrôle</string>
@@ -101,18 +101,18 @@
 
     <!-- Preferences -->
     <string name="pref_bg">Fond d\'écran</string>
-    <string name="pref_bg_summ">Choisissez le défaut, customisé, ou rien.</string>
+    <string name="pref_bg_summ">Choisissez le défaut, personnalisé, ou rien.</string>
     <string name="pref_awake">Écran Allumé</string>
     <string name="pref_awake_summ">Empecher l\'écran de s\'éteindre pendant qu\'on compte.</string>
     <string name="chooseImg">Image</string>
-    <string name="explainImg">Choisissez votre fond d\'écran customisé.</string>
-    <string name="toast_away">Désactivé « toasts »</string>
+    <string name="explainImg">Choisissez votre fond d\'écran personnalisé.</string>
+    <string name="toast_away">Désactiver « toasts »</string>
     <string name="toast_away_summ">Cette option supprime les messages de « x a augmenté y » qui sont normalement visibles pendant qu\'on compte.</string>
-    <string name="prefs_appearance">Apparance</string>
+    <string name="prefs_appearance">Apparence</string>
     <string name="prefs_counting">Compter</string>
-    <string name="image_error">Erreur avec l\'image customisé! Veuillez utiliser la galerie de photos plutôt qu\'un gestionnaire de fichiers.</string>
-    <string name="pref_note_font">Fonte pour notes</string>
-    <string name="pref_note_font_summ">Choisissez cette option pour aggrandir les fontes sur l\'ecran des comptes.</string>
+    <string name="image_error">Erreur avec l\'image personnalisé! Veuillez utiliser la galerie de photos plutôt qu\'un gestionnaire de fichiers.</string>
+    <string name="pref_note_font">Police pour notes</string>
+    <string name="pref_note_font_summ">Choisissez cette option pour aggrandir les polices sur l\'ecran de comptage.</string>
     <string name="pref_sort_order">Tri</string>
     <string name="pref_sort_order_summ">Ordre de tri pour la liste des projets.</string>
     <string name="pref_sound">Alertes audibles</string>
@@ -126,19 +126,19 @@
     <string name="pref_count_multiplier">Compte multiplicateur</string>
     <string name="pref_count_multiplier_summary">Activer option pour multiplier un compte. </string>
     <string name="pref_button_sound">Sonnerie Bouton</string>
-    <string name="pref_button_sound_summary">Faire sonner un son pendant qu\'on tapote sur les boutons \'+\' ou \'-\'.</string>
+    <string name="pref_button_sound_summary">Faire sonner un son pendant qu\'on tape sur les boutons \'+\' ou \'-\'.</string>
     <string name="choose_button_alert">Son de bouton \'+\'</string>
     <string name="choose_button_down_alert">Son de bouton \'-\'</string>
-    <string name="explain_button_alert">Choisissez une sonnerie pour le boutons \'+\'.</string>
-    <string name="explain_button_down_alert">Choisissez une sonnerie pour le boutons \'-\'.</string>
+    <string name="explain_button_alert">Choisissez une sonnerie pour le bouton \'+\'.</string>
+    <string name="explain_button_down_alert">Choisissez une sonnerie pour le bouton \'-\'.</string>
     <string name="permission_please">BeeCount n\'a pas les droits d\'accès aux photos.</string>
     <string name="pref_loopstop">Liens: Supprimer les boucles</string>
-    <string name="pref_loopstop_summary">Si vous decochez cet choix l\'app pourrait planter...</string>
+    <string name="pref_loopstop_summary">Si vous decochez ce choix l\'app pourrait planter...</string>
 
 
     <!-- CountOptionsActivity -->
-    <string name="setResetValue">Réglez la valeur à laquelle un compte se remettra. Le compte deviendra 0 à moins que que le niveau de remettre (voir ci-dessous) soit aussi changé. Mettez à 0 pour désactiver.</string>
-    <string name="setResetLevel">Quand %1$s se remettra elle deviendra la valeur ici. Pour utiliser, il faut que la valeur de remettra (voir ce-dessus) soit plus que 0.</string>
+    <string name="setResetValue">Réglez la valeur à laquelle un compte se remettra. Le compte deviendra 0 à moins que que le niveau de réinitialisation (voir ci-dessous) soit aussi changé. Mettez à 0 pour désactiver.</string>
+    <string name="setResetLevel">Quand %1$s se remettra elle deviendra la valeur ici. Pour utiliser, il faut que la valeur de réinitialisation (voir ce-dessus) soit plus que 0.</string>
     <string name="editCountValue">On peut changer la valeur de %1$s de sa valeur actuel de %2$d en la changeant ici. </string>
     <string name="addSomeAlerts">Chaque compte peut avoir quelques alertes qui seront declenchées quand le compte arrive à ce niveau. Utiliser le bouton à droite pour en ajouter une, et les boutons sur chaque alerte pour les supprimer.</string>
     <string name="alertName">Nouvelle Alerte</string>
@@ -156,7 +156,7 @@
     <string name="hintProjectNotes">Notes de projet.</string>
     <string name="hintInstructions">Instructions.</string>
     <string name="upgradeFail">On n\'a pas pu mettre à jour quelques liens dans vos projets. Il faut examiner vos projets pour trouver les liens manquants et les remplacer. Veuillez accepter nos excuses pour cette erreur.</string>
-    <string name="getHelp">Désolé, il y a un problème avec votre base de données. Veuillez envoyer un email pour obtenir l\'aide, si vous en avez besoin, en joignant le beecount.db que vous avez exporté.</string>
+    <string name="getHelp">Désolé, il y a un problème avec votre base de données. Veuillez envoyer un email pour obtenirde l\'aide, si vous en avez besoin, en joignant le beecount.db que vous avez exporté.</string>
     <string name="linkLoop">Vos liens font une boucle - veuillez les verifier.</string>
     <string name="linkLoopError">Oh non!</string>
 
