@@ -89,7 +89,7 @@
     <string name="reallyDeleteCount">Are you sure you\'d like to do this? This count will be deleted immediately.</string>
     <string name="deleteLink">Delete Link</string>
     <string name="reallyDeleteLink">Are you sure you\'d like to do this? This link will be deleted immediately.</string>
-    <string name="xWillYZ">%1$s will %2$s %3$s every %4$d.</string>
+    <string name="xWillYZ">%1$s %2$s %3$s every %4$d.</string>
     <string name="linkPlaceholder">Link information will go here</string>
 
     <!-- ChangeLog -->
