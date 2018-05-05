@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.4.7
+  % Version 2.4.7
+   _ 2018-05-05
+    * Some improvements to the language files (typos etc).
 $ 2.4.6
   % Version 2.4.6
    _ 2017-11-20
