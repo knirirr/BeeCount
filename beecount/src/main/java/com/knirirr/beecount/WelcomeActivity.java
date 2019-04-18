@@ -2,29 +2,31 @@ package com.knirirr.beecount;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
+import android.support.v4.provider.DocumentFile;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import sheetrock.panda.changelog.ChangeLog;
 
@@ -36,7 +38,10 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
   BeeCountApplication beeCount;
   SharedPreferences prefs;
   ChangeLog cl;
-  final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
+  final private static int REQUEST_CODE_ASK_PERMISSIONS = 123;
+  final private static int READ_REQUEST_CODE = 42;
+
+
 
   // import/export stuff
   File infile;
@@ -150,7 +155,6 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
   public void exportDb()
   {
 
-
     // if API level > 23
     // Need to do this to write the database file.
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -220,7 +224,6 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     }
   }
 
-  @SuppressLint("SdCardPath")
   public void importDb()
   {
     // permission to read db
@@ -232,7 +235,31 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
         requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
       }
     }
-    infile = new File(Environment.getExternalStorageDirectory() + "/beecount.db");
+    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+    //intent.setType("application/vnd.sqlite3");
+    intent.setType("*/*");
+    startActivityForResult(intent, READ_REQUEST_CODE);
+  }
+
+  // Handle file selection here.
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data)
+  {
+    super.onActivityResult(requestCode, resultCode, data);
+    InputStream inputStream = null;
+    if (requestCode == READ_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+      Uri uri = data.getData();
+      Toast.makeText(this, "Path: " + uri.getPath(), Toast.LENGTH_LONG).show();
+      replaceDatabase(uri);
+    }
+  }
+
+
+  @SuppressLint("SdCardPath")
+  public void replaceDatabase(Uri uri)
+  {
+    infile = new File(uri.getPath());
+    //infile = new File(Environment.getExternalStorageDirectory() + "/beecount.db");
     //outfile = new File("/data/data/com.knirirr.beecount/databases/beecount.db");
     String destPath = "/data/data/com.knirirr.beecount/files";
     try
@@ -249,10 +276,10 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     outfile = new File(destPath + "/beecount.db");
     if(!(infile.exists()))
     {
+      Log.e(TAG,"Infile does not exist: " + infile);
       Toast.makeText(this,getString(R.string.noDb),Toast.LENGTH_SHORT).show();
       return;
     }
-
     // a confirm dialogue before anything else takes place
     // http://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog
     // could make the dialog central in the popup - to do later
@@ -312,6 +339,8 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     alert = builder.create();
     alert.show();
   }
+
+
 
   // http://stackoverflow.com/questions/9292954/how-to-make-a-copy-of-a-file-in-android
   public void copy(File src, File dst) throws IOException

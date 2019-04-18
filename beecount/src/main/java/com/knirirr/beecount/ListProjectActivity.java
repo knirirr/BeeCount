@@ -3,9 +3,12 @@ package com.knirirr.beecount;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -83,6 +86,12 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
   {
     // Inflate the menu; this adds items to the action bar if it is present.
     getMenuInflater().inflate(R.menu.list_project, menu);
+    for(int i = 0; i < menu.size(); i++) {
+      MenuItem item = menu.getItem(i);
+      SpannableString spanString = new SpannableString(menu.getItem(i).getTitle().toString());
+      spanString.setSpan(new ForegroundColorSpan(Color.WHITE),0,spanString.length(), 0); //fix the color to white
+      item.setTitle(spanString);
+    }
     return true;
   }
 
