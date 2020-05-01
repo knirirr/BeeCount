@@ -1,9 +1,8 @@
 package com.knirirr.beecount;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -17,7 +16,6 @@ import com.knirirr.beecount.widgets.OptionsWidget;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.lang.Math;
 import java.util.Locale;
 
 /**
