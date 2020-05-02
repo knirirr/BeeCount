@@ -21,7 +21,7 @@ repositories {
 
 dependencies {
     //compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'org.apache.commons:commons-lang3:3.7'
-    compile 'androidx.appcompat:appcompat:1.0.0'
-    compile 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation('org.apache.commons:commons-lang3:3.7')
+    implementation('androidx.appcompat:appcompat:1.1.0')
+    implementation('androidx.legacy:legacy-support-v4:1.0.0')
 }

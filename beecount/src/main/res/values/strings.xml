@@ -56,6 +56,7 @@
     <string name="willLinkIncrease">- %1$s will increase %2$s every %3$d.</string>
     <string name="willLinkDecrease">- %1$s will decrease %2$s every %3$d.</string>
     <string name="cloneButton">Duplicate project</string>
+    <string name="countLogButton">Count Log</string>
     <string name="newName">You must select a name for the new copy of this project.</string>
     <string name="newCopyCreated">A new copy has been created!</string>
 

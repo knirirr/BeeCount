@@ -171,8 +171,7 @@
     <string name="toIncrease">Nombre de mailles à augmenter/diminuer</string>
     <string name="increaseOutput">Augmenter/diminuer %2$d fois toutes les %1$s mailles, et %4$d fois toutes les %3$s mailles.</string>
     <string name="dont_set_zero">Veuillez mettre toutes les valeurs à plus que zéro.</string>
-
-
+  <string name="countLogButton">Journal d\'Activité</string>
 
 
 </resources>
