@@ -730,6 +730,13 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
       cloneProject();
       return true;
     }
+    else if (id == R.id.menuLog)
+    {
+      Intent intent = new Intent(CountingActivity.this, CountLog.class);
+      intent.putExtra("project_id",project_id);
+      startActivity(intent);
+      return true;
+    }
     else if (id == R.id.menuSaveExit)
     {
       saveData();

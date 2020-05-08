@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/countLogLayout"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="5dp"
+  android:orientation="vertical">
+
+  <TextView
+    android:id="@+id/countLogTextView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5px"
+    android:background="@drawable/rounded_corner"
+    android:text="@string/countLogTextView"
+    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+    android:textColor="#FFFFFF"/>
+</LinearLayout>
