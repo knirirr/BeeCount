@@ -1,12 +1,13 @@
 package com.knirirr.beecount;
 
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CountLog extends AppCompatActivity {
+public class CountLogActivity extends AppCompatActivity {
 
-  long project_id;
+  String projectLogs;
   BeeCountApplication beeCount;
 
   @Override
@@ -16,10 +17,17 @@ public class CountLog extends AppCompatActivity {
 
     Bundle extras = getIntent().getExtras();
     if (extras != null) {
-      project_id = extras.getLong("project_id");
+      projectLogs = extras.getString("project_logs");
+    }
+
+    if (projectLogs == null) {
+      projectLogs = "";
     }
     beeCount = (BeeCountApplication) getApplication();
-    LinearLayout layout=(LinearLayout)findViewById(R.id.countLogLayout);
+    ScrollView layout=(ScrollView) findViewById(R.id.countLogLayout);
     layout.setBackground(beeCount.getBackground());
+
+    TextView countLogTextView = (TextView)findViewById(R.id.countLogTextView);
+    countLogTextView.setText(projectLogs);
   }
 }

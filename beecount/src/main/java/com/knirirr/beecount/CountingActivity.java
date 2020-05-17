@@ -34,6 +34,8 @@ import com.knirirr.beecount.database.ProjectDataSource;
 import com.knirirr.beecount.widgets.CountingWidget;
 import com.knirirr.beecount.widgets.NotesWidget;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -82,8 +84,6 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
   private Ringtone countUpAlert;
   private Ringtone countDownAlert;
   private Ringtone alertAlert;
-
-
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -354,6 +354,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     {
       countDataSource.saveCount(count);
     }
+    projectDataSource.saveProject(project);
   }
 
   public void saveAndExit(View view)
@@ -389,6 +390,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (widget != null)
     {
       widget.countUp();
+      String action = widget.count.name + " was increased by link to " + widget.count.count + ".";
+      project.logs = addLog(project.logs, LocalDateTime.now(), action);
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, true);
@@ -403,6 +406,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (widget != null)
     {
       widget.countDown();
+      String action = widget.count.name + " was decreased by link to " + widget.count.count + ".";
+      project.logs = addLog(project.logs, LocalDateTime.now(), action);
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, false);
@@ -428,6 +433,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (widget != null)
     {
       widget.countUp();
+      String action = widget.count.name + " was increased to " + widget.count.count + ".";
+      project.logs = addLog(project.logs, LocalDateTime.now(), action);
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, true);
@@ -449,6 +456,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (widget != null)
     {
       widget.countDown();
+      String action = widget.count.name + " was decreased to " + widget.count.count + ".";
+      project.logs = addLog(project.logs, LocalDateTime.now(), action);
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, false);
@@ -732,8 +741,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     }
     else if (id == R.id.menuLog)
     {
-      Intent intent = new Intent(CountingActivity.this, CountLog.class);
-      intent.putExtra("project_id",project_id);
+      Intent intent = new Intent(CountingActivity.this, CountLogActivity.class);
+      intent.putExtra("project_logs", project.logs);
       startActivity(intent);
       return true;
     }
@@ -876,4 +885,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     builder.show();
   }
 
+
+  public String addLog(String oldLog, LocalDateTime timestamp, String action) {
+    return "[" + timestamp.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "]: " + action + "\n" + oldLog;
+  }
 }
