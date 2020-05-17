@@ -36,6 +36,7 @@ import com.knirirr.beecount.widgets.NotesWidget;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -390,7 +391,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (widget != null)
     {
       widget.countUp();
-      String action = widget.count.name + " was increased by link to " + widget.count.count + ".";
+      String action = widget.count.name + " " + getString(R.string.logLinkIncrease) + " " + widget.count.count + ".";
       project.logs = addLog(project.logs, LocalDateTime.now(), action);
     }
     checkAlert(widget.count.id, widget.count.count);
@@ -406,7 +407,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (widget != null)
     {
       widget.countDown();
-      String action = widget.count.name + " was decreased by link to " + widget.count.count + ".";
+      String action = widget.count.name + " " + getString(R.string.logLinkDecrease) + " " + widget.count.count + ".";
       project.logs = addLog(project.logs, LocalDateTime.now(), action);
     }
     checkAlert(widget.count.id, widget.count.count);
@@ -433,7 +434,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (widget != null)
     {
       widget.countUp();
-      String action = widget.count.name + " was increased to " + widget.count.count + ".";
+      String action = widget.count.name + " " + getString(R.string.logIncrease) + " " + widget.count.count + ".";
       project.logs = addLog(project.logs, LocalDateTime.now(), action);
     }
     checkAlert(widget.count.id, widget.count.count);
@@ -456,7 +457,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (widget != null)
     {
       widget.countDown();
-      String action = widget.count.name + " was decreased to " + widget.count.count + ".";
+      String action = widget.count.name + " " + getString(R.string.logDecrease) + " " + widget.count.count + ".";
       project.logs = addLog(project.logs, LocalDateTime.now(), action);
     }
     checkAlert(widget.count.id, widget.count.count);
@@ -887,6 +888,11 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
 
 
   public String addLog(String oldLog, LocalDateTime timestamp, String action) {
-    return "[" + timestamp.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "]: " + action + "\n" + oldLog;
+    String timestampString = timestamp.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
+    if (oldLog == null) {
+      return "[" + timestampString + "]: " + action;
+    } else {
+      return "[" + timestampString + "]: " + action + "\n" + oldLog;
+    }
   }
 }

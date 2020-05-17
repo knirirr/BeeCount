@@ -59,6 +59,10 @@
     <string name="countLogButton">Count Log</string>
     <string name="newName">You must select a name for the new copy of this project.</string>
     <string name="newCopyCreated">A new copy has been created!</string>
+    <string name="logLinkIncrease">was increased by link to</string>
+    <string name="logLinkDecrease">was decreased by link to</string>
+    <string name="logIncrease">was increased to</string>
+    <string name="logDecrease">was decreased to</string>
 
 
     <!-- CountingActivity Menu -->

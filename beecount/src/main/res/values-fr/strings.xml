@@ -173,6 +173,10 @@
     <string name="dont_set_zero">Veuillez mettre toutes les valeurs à plus que zéro.</string>
   <string name="countLogButton">Journal d\'Activité</string>
   <string name="countLogTextView">TextView</string>
+  <string name="logLinkIncrease">a été augmenté par liaison a</string>
+    <string name="logLinkDecrease">a été diminué par liaison a</string>
+    <string name="logDecrease">a été diminué a</string>
+    <string name="logIncrease">a été augmenté a</string>
 
 
 </resources>

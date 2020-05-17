@@ -19,10 +19,6 @@ public class CountLogActivity extends AppCompatActivity {
     if (extras != null) {
       projectLogs = extras.getString("project_logs");
     }
-
-    if (projectLogs == null) {
-      projectLogs = "";
-    }
     beeCount = (BeeCountApplication) getApplication();
     ScrollView layout=(ScrollView) findViewById(R.id.countLogLayout);
     layout.setBackground(beeCount.getBackground());
