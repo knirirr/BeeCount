@@ -78,9 +78,6 @@
     <string name="action_share">Share</string>
     <string name="send_to">Share notes</string>
 
-    <!-- Counting Log -->
-    <string name="countLogTextView">This should be the log.</string>
-
     <!-- EditprojActivity -->
     <string name="titleEdit">Project Name</string>
     <string name="addLinkButton">Link Counts</string>

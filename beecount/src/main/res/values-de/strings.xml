@@ -170,7 +170,6 @@
     <string name="updating_with_calc">Update der Projektnotizen!</string>
     <string name="dont_set_zero">Bitte alle Eingabewerte größer als Null setzen!</string>
     <string name="countLogButton">Log</string>
-  <string name="countLogTextView">TextView</string>
     <string name="logLinkIncrease">wurde durch Link erhöht auf</string>
     <string name="logLinkDecrease">wurde durch Link verringert auf</string>
     <string name="logDecrease">wurde verringert auf</string>

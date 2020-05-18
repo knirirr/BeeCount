@@ -886,7 +886,13 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     builder.show();
   }
 
-
+  /**
+   * This method serves to form the string to be used in the counting logs.
+   * @param oldLog {@link String} The log so far to be appended to the newest log entry.
+   * @param timestamp {@link LocalDateTime} The timestamp of the moment to be logged.
+   * @param action {@link String} The action to be logged.
+   * @return {@link String} The whole composed log.
+   */
   public String addLog(String oldLog, LocalDateTime timestamp, String action) {
     String timestampString = timestamp.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
     if (oldLog == null) {

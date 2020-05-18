@@ -5,6 +5,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * This activity serves to show the actions performed while counting. Mostly, this was to mitigate possible erroneous
+ * double-clicks and check the last counts done.
+ */
 public class CountLogActivity extends AppCompatActivity {
 
   String projectLogs;
