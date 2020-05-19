@@ -19,6 +19,11 @@
     </style>
   </head>
   <body>
+$ 2.5.0
+  % Version 2.5.0
+   _ 2020-05-19
+    * Added count log contributed by Valle-R.
+    * Targeting API v. 29.
 $ 2.4.7
   % Version 2.4.7
    _ 2018-05-05
