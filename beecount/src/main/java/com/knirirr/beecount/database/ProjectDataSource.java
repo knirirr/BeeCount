@@ -23,6 +23,7 @@ public class ProjectDataSource
   private String[] allColumns = {
       DbHelper.P_ID,
       DbHelper.P_CREATED_AT,
+      DbHelper.P_LOGS,
       DbHelper.P_NAME,
       DbHelper.P_NOTES
   };
@@ -67,6 +68,7 @@ public class ProjectDataSource
     project.created_at = cursor.getLong(cursor.getColumnIndex(DbHelper.P_CREATED_AT));
     project.name = cursor.getString(cursor.getColumnIndex(DbHelper.P_NAME));
     project.notes = cursor.getString(cursor.getColumnIndex(DbHelper.P_NOTES));
+    project.logs = cursor.getString(cursor.getColumnIndex(DbHelper.P_LOGS));
     return project;
   }
 
@@ -95,6 +97,7 @@ public class ProjectDataSource
     ContentValues dataToInsert = new ContentValues();
     dataToInsert.put(DbHelper.P_NAME, project.name);
     dataToInsert.put(DbHelper.P_NOTES, project.notes);
+    dataToInsert.put(DbHelper.P_LOGS, project.logs);
     String where = DbHelper.P_ID + " = ?";
     String[] whereArgs = {String.valueOf(project.id)};
     database.update(DbHelper.PROJ_TABLE, dataToInsert, where, whereArgs);

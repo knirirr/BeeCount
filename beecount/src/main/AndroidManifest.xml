@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.knirirr.beecount"
     android:largeHeap="true"
-    android:versionName="2.4.7"
+    android:versionName="2.5.0"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -85,8 +85,9 @@
             android:theme="@style/Theme.AppCompat"
             android:configChanges="locale">
         </activity>
+      <activity android:name=".CountLogActivity"/>
 
-        <uses-library android:required="false" android:name="com.sec.android.app.multiwindow" />
+      <uses-library android:required="false" android:name="com.sec.android.app.multiwindow" />
         <meta-data android:name="com.sec.android.support.multiwindow" android:value="true" />
         <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W" android:resource="@dimen/app_defaultsize_w" />
         <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:resource="@dimen/app_defaultsize_h" />

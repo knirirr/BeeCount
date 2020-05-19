@@ -1,13 +1,12 @@
 package com.knirirr.beecount;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import com.knirirr.beecount.database.Alert;
 import com.knirirr.beecount.database.AlertDataSource;
 import com.knirirr.beecount.database.Count;
 import com.knirirr.beecount.database.CountDataSource;
@@ -25,13 +23,10 @@ import com.knirirr.beecount.database.Link;
 import com.knirirr.beecount.database.LinkDataSource;
 import com.knirirr.beecount.database.Project;
 import com.knirirr.beecount.database.ProjectDataSource;
-import com.knirirr.beecount.widgets.AlertCreateWidget;
 import com.knirirr.beecount.widgets.CountEditWidget;
-import com.knirirr.beecount.widgets.CountingWidget;
 import com.knirirr.beecount.widgets.EditTitleWidget;
 import com.knirirr.beecount.widgets.ExistingLinkWidget;
 import com.knirirr.beecount.widgets.LinkEditWidget;
-import com.knirirr.beecount.widgets.NotesWidget;
 
 import org.apache.commons.lang3.StringUtils;
 

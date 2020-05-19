@@ -23,7 +23,7 @@ public class DbHelper extends SQLiteOpenHelper
 {
   static final String TAG = "BeeCount DB";
   static final String DATABASE = "beecount.db";
-  static final int VERSION = 11;
+  static final int VERSION = 12;
   static final String PROJ_TABLE = "projects";
   static final String COUNT_TABLE = "counts";
   static final String LINK_TABLE = "links";
@@ -32,6 +32,7 @@ public class DbHelper extends SQLiteOpenHelper
   public static final String P_CREATED_AT = "created_at";
   public static final String P_NAME = "name";
   public static final String P_NOTES = "notes";
+  public static final String P_LOGS = "logs";
   public static final String C_ID = "_id";
   public static final String C_PROJECT_ID = "project_id";
   public static final String C_COUNT = "count";
@@ -70,7 +71,7 @@ public class DbHelper extends SQLiteOpenHelper
   {
     Log.i(TAG, "Creating database: " + DATABASE);
     String sql = "create table " + PROJ_TABLE + " (" + P_ID + " integer primary key, " +
-        P_CREATED_AT + " int, " + P_NAME + " text, " + P_NOTES + " text)";
+        P_CREATED_AT + " int, " + P_NAME + " text, " + P_NOTES + " text, " + P_LOGS + " text)";
     db.execSQL(sql);
     sql = "create table " + COUNT_TABLE + " (" + C_ID + " integer primary key, " + C_PROJECT_ID +
         " int, " + C_COUNT + " int, " + C_NAME + " text, " + C_AUTO_RESET + " int, " +
@@ -90,21 +91,28 @@ public class DbHelper extends SQLiteOpenHelper
   @Override
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
   {
-
+    Log.i("DB", oldVersion + ", " + newVersion);
+    if (oldVersion == 11)
+    {
+      version_12(db);
+    }
     if (oldVersion == 10)
     {
       version_11(db,oldVersion,newVersion);
+      version_12(db);
     }
     if (oldVersion == 9)
     {
       version_10(db,oldVersion,newVersion);
       version_11(db,oldVersion,newVersion);
+      version_12(db);
     }
     if (oldVersion == 8)
     {
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
       version_11(db,oldVersion,newVersion);
+      version_12(db);
     }
     if (oldVersion == 7)
     {
@@ -112,6 +120,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
       version_11(db,oldVersion,newVersion);
+      version_12(db);
     }
     if (oldVersion == 6)
     {
@@ -120,6 +129,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
       version_11(db,oldVersion,newVersion);
+      version_12(db);
     }
     if (oldVersion == 5)
     {
@@ -129,6 +139,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
       version_11(db,oldVersion,newVersion);
+      version_12(db);
     }
     if (oldVersion == 4)
     {
@@ -139,6 +150,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
       version_11(db,oldVersion,newVersion);
+      version_12(db);
     }
     else if (oldVersion == 3)
     {
@@ -150,6 +162,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
       version_11(db,oldVersion,newVersion);
+      version_12(db);
     }
     else if (oldVersion == 2)
     {
@@ -162,6 +175,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
       version_11(db,oldVersion,newVersion);
+      version_12(db);
     }
     else if (oldVersion == 1)
     {
@@ -175,6 +189,7 @@ public class DbHelper extends SQLiteOpenHelper
       version_9(db,oldVersion,newVersion);
       version_10(db,oldVersion,newVersion);
       version_11(db,oldVersion,newVersion);
+      version_12(db);
     }
   }
 
@@ -393,5 +408,10 @@ public class DbHelper extends SQLiteOpenHelper
     Log.i(TAG, "Upgraded database to version 11!");
   }
 
-
+  public void version_12(SQLiteDatabase db)
+  {
+    String sql = "alter table " + PROJ_TABLE + " add column " + P_LOGS + " text";
+    db.execSQL(sql);
+    Log.i(TAG, "Upgraded database to version 12!");
+  }
 }

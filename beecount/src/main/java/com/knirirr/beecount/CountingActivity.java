@@ -1,6 +1,5 @@
 package com.knirirr.beecount;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,7 +12,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
@@ -35,10 +34,11 @@ import com.knirirr.beecount.database.ProjectDataSource;
 import com.knirirr.beecount.widgets.CountingWidget;
 import com.knirirr.beecount.widgets.NotesWidget;
 
-import org.apache.commons.lang3.ArrayUtils;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import org.apache.commons.lang3.StringUtils;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -85,8 +85,6 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
   private Ringtone countUpAlert;
   private Ringtone countDownAlert;
   private Ringtone alertAlert;
-
-
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -357,6 +355,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     {
       countDataSource.saveCount(count);
     }
+    projectDataSource.saveProject(project);
   }
 
   public void saveAndExit(View view)
@@ -392,6 +391,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (widget != null)
     {
       widget.countUp();
+      String action = widget.count.name + " " + getString(R.string.logLinkIncrease) + " " + widget.count.count + ".";
+      project.logs = addLog(project.logs, LocalDateTime.now(), action);
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, true);
@@ -406,6 +407,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (widget != null)
     {
       widget.countDown();
+      String action = widget.count.name + " " + getString(R.string.logLinkDecrease) + " " + widget.count.count + ".";
+      project.logs = addLog(project.logs, LocalDateTime.now(), action);
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, false);
@@ -431,6 +434,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (widget != null)
     {
       widget.countUp();
+      String action = widget.count.name + " " + getString(R.string.logIncrease) + " " + widget.count.count + ".";
+      project.logs = addLog(project.logs, LocalDateTime.now(), action);
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, true);
@@ -452,6 +457,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (widget != null)
     {
       widget.countDown();
+      String action = widget.count.name + " " + getString(R.string.logDecrease) + " " + widget.count.count + ".";
+      project.logs = addLog(project.logs, LocalDateTime.now(), action);
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, false);
@@ -733,6 +740,13 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
       cloneProject();
       return true;
     }
+    else if (id == R.id.menuLog)
+    {
+      Intent intent = new Intent(CountingActivity.this, CountLogActivity.class);
+      intent.putExtra("project_logs", project.logs);
+      startActivity(intent);
+      return true;
+    }
     else if (id == R.id.menuSaveExit)
     {
       saveData();
@@ -872,4 +886,19 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     builder.show();
   }
 
+  /**
+   * This method serves to form the string to be used in the counting logs.
+   * @param oldLog {@link String} The log so far to be appended to the newest log entry.
+   * @param timestamp {@link LocalDateTime} The timestamp of the moment to be logged.
+   * @param action {@link String} The action to be logged.
+   * @return {@link String} The whole composed log.
+   */
+  public String addLog(String oldLog, LocalDateTime timestamp, String action) {
+    String timestampString = timestamp.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
+    if (oldLog == null) {
+      return "[" + timestampString + "]: " + action;
+    } else {
+      return "[" + timestampString + "]: " + action + "\n" + oldLog;
+    }
+  }
 }

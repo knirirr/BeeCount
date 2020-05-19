@@ -13,6 +13,7 @@ public class Project
   public long created_at;
   public String name;
   public String notes;
+  public String logs;
 
   public String getDate()
   {

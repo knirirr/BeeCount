@@ -18,6 +18,10 @@
           android:title="@string/cloneButton"
           android:icon="@android:drawable/ic_dialog_dialer"
           app:showAsAction="never"/>
+    <item android:id="@+id/menuLog"
+      android:title="@string/countLogButton"
+      android:icon="@android:drawable/ic_dialog_dialer"
+      app:showAsAction="never"/>
     <item android:id="@+id/action_settings"
           android:title="@string/action_settings"
           android:orderInCategory="100"
