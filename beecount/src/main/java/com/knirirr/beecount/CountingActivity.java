@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteException;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -123,7 +124,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     if (awakePref == true)
     {
       PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-      wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");
+      wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "BeeCount:DoNotDimScreen");
     }
 
   }
@@ -392,7 +393,9 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     {
       widget.countUp();
       String action = widget.count.name + " " + getString(R.string.logLinkIncrease) + " " + widget.count.count + ".";
-      project.logs = addLog(project.logs, LocalDateTime.now(), action);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        project.logs = addLog(project.logs, LocalDateTime.now(), action);
+      }
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, true);
@@ -408,7 +411,9 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     {
       widget.countDown();
       String action = widget.count.name + " " + getString(R.string.logLinkDecrease) + " " + widget.count.count + ".";
-      project.logs = addLog(project.logs, LocalDateTime.now(), action);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        project.logs = addLog(project.logs, LocalDateTime.now(), action);
+      }
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, false);
@@ -435,7 +440,9 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     {
       widget.countUp();
       String action = widget.count.name + " " + getString(R.string.logIncrease) + " " + widget.count.count + ".";
-      project.logs = addLog(project.logs, LocalDateTime.now(), action);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        project.logs = addLog(project.logs, LocalDateTime.now(), action);
+      }
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, true);
@@ -458,7 +465,9 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     {
       widget.countDown();
       String action = widget.count.name + " " + getString(R.string.logDecrease) + " " + widget.count.count + ".";
-      project.logs = addLog(project.logs, LocalDateTime.now(), action);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        project.logs = addLog(project.logs, LocalDateTime.now(), action);
+      }
     }
     checkAlert(widget.count.id, widget.count.count);
     checkLink(widget.count.id, widget.count.count, false);
@@ -894,7 +903,10 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
    * @return {@link String} The whole composed log.
    */
   public String addLog(String oldLog, LocalDateTime timestamp, String action) {
-    String timestampString = timestamp.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
+    String timestampString = null;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+      timestampString = timestamp.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
+    }
     if (oldLog == null) {
       return "[" + timestampString + "]: " + action;
     } else {
