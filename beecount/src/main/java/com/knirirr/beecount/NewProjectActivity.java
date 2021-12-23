@@ -95,6 +95,10 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
 
   }
 
+  private SharedPreferences spGen;
+
+  private boolean isSubmit;
+
   // the required pause and resume stuff
   @Override
   protected void onResume()
@@ -102,6 +106,9 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
     projectDataSource.open();
     countDataSource.open();
     super.onResume();
+    isSubmit = false;
+    spGen = getSharedPreferences("NewProjectActivity", MODE_PRIVATE);
+    newprojName.setText(spGen.getString("editName", ""));
   }
 
   @Override
@@ -128,6 +135,13 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
 
   @Override
   protected void onPause() {
+    SharedPreferences.Editor  spEditor = spGen.edit();
+    if(isSubmit){
+      spEditor.putString("editName", "");
+    }else{
+      spEditor.putString("editName", newprojName.getText().toString());
+    }
+    spEditor.commit();
     projectDataSource.close();
     countDataSource.close();
     super.onPause();
@@ -255,7 +269,7 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
 
     // Huzzah!
     Toast.makeText(this,getString(R.string.projectSaved),Toast.LENGTH_SHORT).show();
-
+    isSubmit = true;
     // Instead of returning to the welcome screen, show the new project.
     //super.finish();
     Intent intent = new Intent(NewProjectActivity.this, ListProjectActivity.class);
