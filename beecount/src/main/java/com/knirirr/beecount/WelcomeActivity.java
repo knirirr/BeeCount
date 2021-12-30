@@ -147,7 +147,6 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
   public void exportDb()
   {
 
-
     // if API level > 23
     // Need to do this to write the database file.
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -170,6 +169,7 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     catch (Exception e)
     {
       Log.e(TAG,"destPath error: " + e.toString());
+      Toast.makeText(this, "Couldn't access database: " + e.toString(), Toast.LENGTH_SHORT).show();
     }
     destPath = destPath.substring(0, destPath.lastIndexOf("/")) + "/databases";
     File infile = new File(destPath + "/beecount.db");
@@ -204,13 +204,13 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
       try
       {
         copy(infile, outfile);
-        Toast.makeText(this,getString(R.string.saveWin),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,getString(R.string.saveWin),Toast.LENGTH_LONG).show();
         return;
       }
       catch (IOException e)
       {
         Log.e(TAG,"Failed to copy database: " + e.toString());
-        Toast.makeText(this,getString(R.string.saveFail),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,getString(R.string.saveFail) + " " + e.toString(),Toast.LENGTH_SHORT).show();
         return;
       }
 
@@ -230,7 +230,6 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
       }
     }
     infile = new File(Environment.getExternalStorageDirectory() + "/beecount.db");
-    //outfile = new File("/data/data/com.knirirr.beecount/databases/beecount.db");
     String destPath = "/data/data/com.knirirr.beecount/files";
     try
     {
@@ -241,12 +240,11 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
       Log.e(TAG,"destPath error: " + e.toString());
     }
     destPath = destPath.substring(0, destPath.lastIndexOf("/")) + "/databases";
-    //File infile = new File(destPath + "/beecount.db");
-    //outfile = new File(this.getFilesDir().getPath() + "/data/com.knirirr.beecount/databases/beecount.db");
     outfile = new File(destPath + "/beecount.db");
+    String extStorage = Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
     if(!(infile.exists()))
     {
-      Toast.makeText(this,getString(R.string.noDb),Toast.LENGTH_SHORT).show();
+      Toast.makeText(this,getString(R.string.noDb) + extStorage, Toast.LENGTH_LONG).show();
       return;
     }
 

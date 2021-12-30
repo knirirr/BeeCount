@@ -42,7 +42,7 @@
     <string name="importMenu">Import</string>
     <string name="importFail">Die Datenbank konnte nicht importiert werden!</string>
     <string name="importWin">Die Datenbank wurde von der SD-Karte importiert.</string>
-    <string name="noDb">Bitte lege die \"beecount.db\" auf die /sdcard Partition.</string>
+    <string name="noDb">Bitte lege die \"beecount.db\" hier: </string>
     <string name="importButton">Import</string>
     <string name="importCancelButton">Abbrechen</string>
     <string name="confirmImport">Wollen Sie wirklich die gespeicherte \"beecount.db\" importieren? Ihre aktuellen Zähldaten werden überschrieben!</string>

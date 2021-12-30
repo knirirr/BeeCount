@@ -43,7 +43,7 @@
     <string name="importMenu">Importer</string>
     <string name="importFail">On n\'a pas pu importer votre base de données!</string>
     <string name="importWin">Votre base de données a été importé de la carte SD.</string>
-    <string name="noDb">Veuillez mettre \'beecount.db\' sur votre partition /sdcard.</string>
+    <string name="noDb">Veuillez mettre \'beecount.db\' ici: </string>
     <string name="importButton">Importer</string>
     <string name="importCancelButton">Annuler</string>
     <string name="confirmImport">Vous êtes sûr que vous voudriez importer un beecount.db que vous avez déjà sauvegardé? Vos projets actuels seront écrasés!</string>
