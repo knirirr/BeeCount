@@ -138,8 +138,7 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
     SharedPreferences.Editor  spEditor = spGen.edit();
     if(isSubmit){
       spEditor.putString("editName", "");
-    }
-    else {
+    }else{
       spEditor.putString("editName", newprojName.getText().toString());
     }
     spEditor.commit();
