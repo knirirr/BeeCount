@@ -160,19 +160,9 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     boolean mExternalStorageAvailable = false;
     boolean mExternalStorageWriteable = false;
     String state = Environment.getExternalStorageState();
-    File outfile = new File(Environment.getExternalStorageDirectory() + "/beecount.db");
-    String destPath = "/data/data/com.knirirr.beecount/files";
-    try
-    {
-      destPath = getFilesDir().getPath();
-    }
-    catch (Exception e)
-    {
-      Log.e(TAG,"destPath error: " + e.toString());
-      Toast.makeText(this, "Couldn't access database: " + e.toString(), Toast.LENGTH_SHORT).show();
-    }
-    destPath = destPath.substring(0, destPath.lastIndexOf("/")) + "/databases";
-    File infile = new File(destPath + "/beecount.db");
+    File outfile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),"beecount.db");
+    //String destPath = "/data/data/com.knirirr.beecount/files";
+    File infile = getApplicationContext().getDatabasePath("beecount.db");
 
     if (Environment.MEDIA_MOUNTED.equals(state))
     {
@@ -229,19 +219,9 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
         requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
       }
     }
-    infile = new File(Environment.getExternalStorageDirectory() + "/beecount.db");
-    String destPath = "/data/data/com.knirirr.beecount/files";
-    try
-    {
-      destPath = getFilesDir().getPath();
-    }
-    catch (Exception e)
-    {
-      Log.e(TAG,"destPath error: " + e.toString());
-    }
-    destPath = destPath.substring(0, destPath.lastIndexOf("/")) + "/databases";
-    outfile = new File(destPath + "/beecount.db");
-    String extStorage = Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
+    infile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/beecount.db");
+    File outfile = getApplicationContext().getDatabasePath("beecount.db");
+    String extStorage = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/";
     if(!(infile.exists()))
     {
       Toast.makeText(this,getString(R.string.noDb) + extStorage, Toast.LENGTH_LONG).show();

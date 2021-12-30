@@ -19,6 +19,12 @@
     </style>
   </head>
   <body>
+$ 2.5.2
+  % Version 2.5.2
+   _ 2021-12-30
+    * Back up to and import from Downloads folder.
+    * Better (well, slightly) error messages if import fails.
+    * Reminder on welcome screen to back up before getting a new phone.
 $ 2.5.1
   % Version 2.5.1
    _ 2020-05-21

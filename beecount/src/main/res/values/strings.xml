@@ -16,7 +16,7 @@
     <string name="customTooBig">Sorry, trying to set the background image has caused an out of memory error.</string>
 
     <!-- WelcomeActivity -->
-    <string name="hello">Welcome to BeeCount! The purpose of this app is to store count details for several knitting or crochet projects and allow you to count each separately. Each project may have multiple \'counts\', each being something such as a pattern repeat or a row which you wish to track. Use the buttons below to create new projects or manage existing ones.\n\n By editing a project after creating it you can also link counts together so that one increments another.\n\nSettings can be changed by accessing the menu on this screen (menu button or 3-dot overflow menu above).\n\n <b>Before replacing your phone please ensure to back up your data (see the menu above) and/or turn on backups in your Google account.</b>\n\nShould you have any questions you may visit the Ravelry group at http://www.ravelry.com/groups/beecount, or email bug reports to knirirr@gmail.com.\n</string>
+    <string name="hello">Welcome to BeeCount! The purpose of this app is to store count details for several knitting or crochet projects and allow you to count each separately. Each project may have multiple \'counts\', each being something such as a pattern repeat or a row which you wish to track. Use the buttons below to create new projects or manage existing ones.\n\n By editing a project after creating it you can also link counts together so that one increments another.\n\nSettings can be changed by accessing the menu on this screen (menu button or 3-dot overflow menu above).\n\n <b>Before replacing your phone please ensure to back up your data (see the menu above), then copy the beecount.db file from your downloads folder to the same place on your new phone, and/or turn on backups in your Google account.</b>\n\nShould you have any questions you may visit the Ravelry group at http://www.ravelry.com/groups/beecount, or email bug reports to knirirr@gmail.com.\n</string>
     <string name="newProjectButton">New Project</string>
     <string name="viewProjectButton">View Projects</string>
     <string name="newProjTitle">Create new project</string>
@@ -38,12 +38,12 @@
     <!-- ListprojActivity -->
     <string name="noCard">Your sdcard could not be accessed!</string>
     <string name="saveFail">Your database could not be exported!</string>
-    <string name="saveWin">Your database has been exported to the sdcard.</string>
+    <string name="saveWin">Your database has been exported to the Downloads folder.</string>
     <string name="exportMenu">Export</string>
     <string name="importMenu">Import</string>
     <string name="importFail">Your database could not be imported!</string>
-    <string name="importWin">Your database has been imported from the sdcard.</string>
-    <string name="noDb">Please put \'beecount.db\' here: </string>
+    <string name="importWin">Your database has been imported from the Downloads folder.</string>
+    <string name="noDb">Please put \'beecount.db\' here (Downloads folder): </string>
     <string name="importButton">Import</string>
     <string name="importCancelButton">Cancel</string>
     <string name="confirmImport">Are you sure you want to import a backed-up beecount.db? Your current projects will be overwritten!</string>
