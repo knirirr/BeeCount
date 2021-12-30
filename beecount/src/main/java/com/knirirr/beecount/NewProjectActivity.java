@@ -67,7 +67,6 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
     myTexts = new ArrayList<NewCount>();
     newprojName = (EditText) findViewById(R.id.newprojName);
     newprojName.setTextColor(Color.WHITE);
-    newprojName.setHintTextColor(Color.WHITE);
     countNames = new ArrayList<String>();
 
     if (savedInstanceState != null)
@@ -81,12 +80,10 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
               LinearLayout.LayoutParams.WRAP_CONTENT);
           params.setMargins(5, 5, 5, 5);
           c.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-          c.setHint(this.getString(R.string.boxFill) + " " + newBox);
           c.setBackgroundResource(R.drawable.rounded_corner);
           c.setPadding(5,5,5,5);
           c.setTextSize(24);
           c.setTextColor(Color.WHITE);
-          c.setHintTextColor(Color.WHITE);
           layout.addView(c, params);
           newBox++;
         }
@@ -180,12 +177,10 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
     params.setMargins(5, 5, 5, 5);
     NewCount c = new NewCount(this);
     c.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-    c.setHint(this.getString(R.string.boxFill) + " " + newBox);
     c.setBackgroundResource(R.drawable.rounded_corner);
     c.setPadding(5,5,5,5);
     c.setTextSize(24);
     c.setTextColor(Color.WHITE);
-    c.setHintTextColor(Color.WHITE);
 
     layout.addView(c, params);
     c.requestFocus();

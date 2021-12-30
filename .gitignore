@@ -1,0 +1,16 @@
+.gradle
+local.properties
+.idea/*
+.DS_Store
+beecount/build
+build
+beecount.db
+gradlew.bat
+tmp*
+beecount/libs/
+beecount/manifest-merger-release-report.txt
+beecount/release/
+beecount_orig.db
+gradlew.bat
+out
+projectFilesBackup/

@@ -32,6 +32,7 @@
     <string name="duplicate">Chaque nom de compte doit être unique!</string>
     <string name="boxFill">Objet </string>
     <string name="projectSaved">Projet enregistré!</string>
+    <string name="newProjectInstructions">Veuillez donner un nom à votre project dans le boîte de dessus, et aux comptes dans les boîtes de dessus.</string>
 
 
     <!-- ListprojActivity -->

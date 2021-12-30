@@ -32,6 +32,8 @@
     <string name="duplicate">Each count name must be unique!</string>
     <string name="boxFill">Item no. </string>
     <string name="projectSaved">Project saved!</string>
+    <string name="newProjectInstructions">Please supply a name for your project in the top box, and
+    a name for each count you add in the boxes below.</string>
 
     <!-- ListprojActivity -->
     <string name="noCard">Your sdcard could not be accessed!</string>

@@ -32,6 +32,7 @@
     <string name="duplicate">Alle Zählernamen müssen verschieden sein!</string>
     <string name="boxFill">Bezeichnung </string>
     <string name="projectSaved">Projekt gespeichert!</string>
+    <string name="newProjectInstructions">[Translation needed] Please supply a name for your project in the top box, and a name for each count you add in the boxes below.</string>
 
     <!-- ListprojActivity -->
     <string name="noCard">Die SD-Karte kann nicht verwendet werden!</string>
