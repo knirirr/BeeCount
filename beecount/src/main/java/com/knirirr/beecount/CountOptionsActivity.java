@@ -48,6 +48,15 @@ public class CountOptionsActivity extends AppCompatActivity implements SharedPre
   private long project_id;
   private boolean pref_multiplier;
 
+  private boolean setting1Check;
+  private boolean setting2Check;
+  private boolean setting3Check;
+  private boolean settingNotesCheck;
+  private int setting1;
+  private int setting2;
+  private int setting3;
+  private String settingNotes;
+
   LinearLayout static_widget_area;
   LinearLayout dynamic_widget_area;
   OptionsWidget ar_value_widget;
@@ -90,8 +99,23 @@ public class CountOptionsActivity extends AppCompatActivity implements SharedPre
       {
         savedAlerts = (ArrayList<AlertCreateWidget>) savedInstanceState.getSerializable("savedAlerts");
       }
+      setting1 = savedInstanceState.getInt("setting1");
+      setting2 = savedInstanceState.getInt("setting2");
+      setting3 = savedInstanceState.getInt("setting3");
+      settingNotes = savedInstanceState.getString("settingNotes");
+      if(setting1 != 0){
+        setting1Check = true;
+      }
+      if(setting2 != 0){
+        setting2Check = true;
+      }
+      if(setting3 != 0){
+        setting3Check = true;
+      }
+      if(settingNotes != null){
+        settingNotesCheck = true;
+      }
     }
-
 
   }
 
@@ -171,6 +195,19 @@ public class CountOptionsActivity extends AppCompatActivity implements SharedPre
     {
       dynamic_widget_area.addView(acw);
     }
+
+    if(setting1Check){
+      ar_value_widget.setParameterValue(setting1);
+    }
+    if(setting2Check){
+      ar_level_widget.setParameterValue(setting2);
+    }
+    if(setting3Check){
+      curr_val_widget.setParameterValue(setting3);
+    }
+    if(settingNotesCheck){
+      enw.setProjectName(settingNotes);
+    }
   }
 
   @Override
@@ -186,6 +223,10 @@ public class CountOptionsActivity extends AppCompatActivity implements SharedPre
       ((ViewGroup) acw.getParent()).removeView(acw);
     }
     outState.putSerializable("savedAlerts", savedAlerts);
+    outState.putInt("setting1", ar_value_widget.getParameterValue());
+    outState.putInt("setting2", ar_level_widget.getParameterValue());
+    outState.putInt("setting3", curr_val_widget.getParameterValue());
+    outState.putString("settingNotes", enw.getProjectName());
   }
 
   @Override
