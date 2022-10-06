@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+$ 2.6.1
+  % Version 2.6.1
+   _ 2022-10-06
+    * Added permission to manage all files.
 $ 2.6.0
   % Version 2.6.0
    _ 2021-12-30
