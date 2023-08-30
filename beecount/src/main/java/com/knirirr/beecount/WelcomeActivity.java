@@ -1,5 +1,7 @@
 package com.knirirr.beecount;
 
+import static java.security.AccessController.getContext;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -21,8 +23,11 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import sheetrock.panda.changelog.ChangeLog;
 
@@ -152,6 +157,7 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
   {
     // if API level > 23
     // Need to do this to write the database file.
+    /*
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
     {
       int hasWriteStoragePermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -206,7 +212,7 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
         return;
       }
     }
-    /*
+     */
     Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
     intent.addCategory(Intent.CATEGORY_OPENABLE);
     intent.setType("application/octet-stream");
@@ -214,12 +220,47 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
 
     // Optionally, specify a URI for the directory that should be opened in
     // the system file picker when your app creates the document.
-    Uri uri = Uri.parse("file://" + getApplicationContext().getDatabasePath("beecount.db"));
-    Toast.makeText(this, "Trying to export..." + getApplicationContext().getDatabasePath("beecount.db")  ,Toast.LENGTH_LONG).show();
+    Uri uri = Uri.parse("file://" + Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
+    //Toast.makeText(this, "Trying to export..." + getApplicationContext().getDatabasePath("beecount.db")  ,Toast.LENGTH_SHORT).show();
     intent.putExtra(Environment.DIRECTORY_DOWNLOADS, uri);
 
     startActivityForResult(intent, CREATE_FILE);
-     */
+
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (resultCode != RESULT_OK || data == null || data.getData() == null) {
+      Log.e(TAG, "Failed to copy database.");
+      Toast.makeText(this, getString(R.string.saveFail), Toast.LENGTH_SHORT).show();
+    }
+
+    if (requestCode == CREATE_FILE) {
+      // Somehow work out how to get location and destination from the intent
+      Uri uri = data.getData();
+      InputStream inputStream = null;
+      try {
+        inputStream = getContentResolver().openInputStream(uri);
+      } catch (FileNotFoundException e) {
+        throw new RuntimeException(e);
+      }
+      Toast.makeText(this, String.valueOf(uri) ,Toast.LENGTH_LONG).show();
+      Log.e(TAG,"AARS: " + String.valueOf(uri));
+      File infile = new File("/data/data/com.knirirr.beecount/databases/beecount.db");
+      try
+      {
+        copy(infile, inputStream);
+        Toast.makeText(this,getString(R.string.saveWin),Toast.LENGTH_LONG).show();
+      }
+      catch (IOException e)
+      {
+        Log.e(TAG,"Failed to copy database: " + e.toString());
+        Toast.makeText(this,getString(R.string.saveFail) + " " + e.toString(),Toast.LENGTH_LONG).show();
+      }
+
+    }
 
   }
 
@@ -279,16 +320,21 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
           return;
         } else
         {
-          try
-          {
-            copy(infile, outfile);
+          // TODO: Fix all this...
+          //try
+          //{
+
+            //copy(infile, outfile);
             Toast.makeText(getApplicationContext(), getString(R.string.importWin), Toast.LENGTH_SHORT).show();
-          } catch (IOException e)
+          //}
+          /*
+          catch (IOException e)
           {
             Log.e(TAG, "Failed to import database");
             Toast.makeText(getApplicationContext(), getString(R.string.importFail), Toast.LENGTH_SHORT).show();
             return;
           }
+           */
         }
 
         // END
@@ -305,10 +351,10 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
   }
 
   // http://stackoverflow.com/questions/9292954/how-to-make-a-copy-of-a-file-in-android
-  public void copy(File src, File dst) throws IOException
+  public void copy(File src, InputStream dst) throws IOException
   {
     FileInputStream in = new FileInputStream(src);
-    FileOutputStream out = new FileOutputStream(dst);
+    FileOutputStream out = new FileOutputStream(dst.toString());
 
     // Transfer bytes from in to out
     byte[] buf = new byte[1024];
