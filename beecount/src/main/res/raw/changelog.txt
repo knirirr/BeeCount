@@ -19,6 +19,14 @@
     </style>
   </head>
   <body>
+$ 2.6.3
+  % Version 2.6.3
+   _ 2023-08-29
+    * New file saving/opening code for backup and restore.
+$ 2.6.2
+  % Version 2.6.2
+   _ 2023-08-29
+    * targetSdkVersion updated as required by Google.
 $ 2.6.1
   % Version 2.6.1
    _ 2022-10-06

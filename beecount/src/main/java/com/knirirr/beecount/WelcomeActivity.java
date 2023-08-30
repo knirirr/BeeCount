@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -143,10 +144,12 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
    * no database should be open at this point.
    */
 
+
+  private static final int CREATE_FILE = 1;
+
   @SuppressLint("SdCardPath")
   public void exportDb()
   {
-
     // if API level > 23
     // Need to do this to write the database file.
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -161,7 +164,6 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     boolean mExternalStorageWriteable = false;
     String state = Environment.getExternalStorageState();
     File outfile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),"beecount.db");
-    //String destPath = "/data/data/com.knirirr.beecount/files";
     File infile = getApplicationContext().getDatabasePath("beecount.db");
 
     if (Environment.MEDIA_MOUNTED.equals(state))
@@ -203,8 +205,22 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
         Toast.makeText(this,getString(R.string.saveFail) + " " + e.toString(),Toast.LENGTH_SHORT).show();
         return;
       }
-
     }
+    /*
+    Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+    intent.addCategory(Intent.CATEGORY_OPENABLE);
+    intent.setType("application/octet-stream");
+    intent.putExtra(Intent.EXTRA_TITLE, "beecount.db");
+
+    // Optionally, specify a URI for the directory that should be opened in
+    // the system file picker when your app creates the document.
+    Uri uri = Uri.parse("file://" + getApplicationContext().getDatabasePath("beecount.db"));
+    Toast.makeText(this, "Trying to export..." + getApplicationContext().getDatabasePath("beecount.db")  ,Toast.LENGTH_LONG).show();
+    intent.putExtra(Environment.DIRECTORY_DOWNLOADS, uri);
+
+    startActivityForResult(intent, CREATE_FILE);
+     */
+
   }
 
   @SuppressLint("SdCardPath")
