@@ -1,3 +1,17 @@
+## Help Wanted
+
+Currently, I can't build this app for distribution on the Play Store because:
+
+1. It's targeting an old SDK version.
+2. The means of backing up the app's database requires permissions I'm no longer allowed to use.
+
+I can fix (1) but (2) is proving rather difficult, and I'm somewhat short of time. 
+
+If you can assist with some code to copy the internal database to the phone's external storage and 
+to pick a database form there and install it in to the app, then please get in touch. 
+
+## Information
+
 This is the second version of BeeCount. The older, "classic" version can be found in [this repository](https://code.google.com/p/beecount/). This newer version has been considerably re-written so that the underlying data management and UI code is much easier to maintain and extend, and the UI has been updated.
 
 <a href="https://f-droid.org/packages/com.knirirr.beecount/" target="_blank">

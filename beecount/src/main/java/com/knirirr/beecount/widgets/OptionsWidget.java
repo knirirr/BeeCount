@@ -49,13 +49,10 @@ public class OptionsWidget extends LinearLayout
   public int getParameterValue()
   {
     String text = number.getText().toString();
-    if (StringUtils.isEmpty(text))
-    {
-      return Integer.valueOf(0);
-    }
-    else
-    {
+    try {
       return Integer.parseInt(text);
+    } catch (Exception ignore) {
+      return 0;
     }
   }
 
