@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 33
+        minSdkVersion 21
+        compileSdkVersion 35
+        targetSdkVersion 35
         versionCode 128
     }
     compileOptions {
@@ -16,7 +16,6 @@ android {
 
 repositories {
    mavenCentral()
-   jcenter()
     maven {
         url 'https://maven.google.com/'
         name 'Google'
@@ -26,6 +25,11 @@ repositories {
 dependencies {
     //compile fileTree(dir: 'libs', include: ['*.jar'])
     implementation('org.apache.commons:commons-lang3:3.7')
-    implementation('androidx.appcompat:appcompat:1.1.0')
+    implementation('androidx.appcompat:appcompat:1.7.0')
     implementation('androidx.legacy:legacy-support-v4:1.0.0')
+}
+
+configurations.implementation {
+    exclude grouPixel 8 Pro API 35p: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
 }
