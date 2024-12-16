@@ -18,10 +18,10 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        >
         <activity
             android:name="com.knirirr.beecount.WelcomeActivity"
-            android:theme="@style/AppTheme"
             android:exported="true"
             >
             <intent-filter>
@@ -41,8 +41,8 @@
         </activity>
         <activity
             android:name="com.knirirr.beecount.SettingsActivity"
-            android:label="@string/action_settings"
-            android:parentActivityName="com.knirirr.beecount.WelcomeActivity" >
+            android:theme="@android:style/Theme.Holo"
+        android:parentActivityName="com.knirirr.beecount.WelcomeActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="WelcomeActivity" />
@@ -50,7 +50,6 @@
         <activity
             android:name="com.knirirr.beecount.ListProjectActivity"
             android:label="@string/title_activity_list_project"
-            android:theme="@android:style/Theme.Holo"
             android:parentActivityName="com.knirirr.beecount.WelcomeActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -59,7 +58,6 @@
         <activity
             android:name="com.knirirr.beecount.CountingActivity"
             android:label="@string/title_activity_counting"
-            android:theme="@style/Theme.AppCompat"
             android:launchMode="singleTop"
             android:parentActivityName="com.knirirr.beecount.ListProjectActivity" >
             <meta-data
@@ -69,7 +67,6 @@
         <activity
             android:name="com.knirirr.beecount.CountOptionsActivity"
             android:label="@string/title_activity_count_options"
-            android:theme="@style/Theme.AppCompat"
             android:parentActivityName="com.knirirr.beecount.CountingActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -78,7 +75,6 @@
         <activity
             android:name="com.knirirr.beecount.EditProjectActivity"
             android:label="@string/title_activity_edit_project"
-            android:theme="@style/Theme.AppCompat"
             android:parentActivityName="com.knirirr.beecount.CountingActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -87,7 +83,6 @@
         <activity
             android:name="com.knirirr.beecount.CalculateActivity"
             android:label="@string/calcButton"
-            android:theme="@style/Theme.AppCompat"
             android:configChanges="locale">
         </activity>
       <activity android:name=".CountLogActivity"/>

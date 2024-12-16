@@ -3,6 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
         <!-- Customize your theme here. -->
+        <item name="android:colorBackground">#311717</item>
     </style>
 
 </resources>
