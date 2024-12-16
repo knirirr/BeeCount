@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+  android:fitsSystemWindows="true"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   android:orientation="vertical"
@@ -44,6 +45,8 @@
        android:onClick="newCount"
        android:text="@string/labelNewCountButton"
        android:layout_weight="1"
+       android:layout_marginRight="5dp"
+       android:layout_marginLeft="5dp"
        android:maxLines="1">
       </Button>
       <Button
@@ -53,6 +56,8 @@
        android:onClick="clearCount"
        android:text="@string/clearCountButton"
        android:layout_weight="1"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
        android:maxLines="1">
       </Button>
       <Button
@@ -62,6 +67,8 @@
        android:onClick="saveProject"
        android:text="@string/labelNewprojSaveButton"
        android:layout_weight="1"
+       android:layout_marginLeft="5dp"
+       android:layout_marginRight="5dp"
        android:maxLines="1">
       </Button>
   </LinearLayout>

@@ -56,10 +56,11 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
 
     //LinearLayout baseLayout = (LinearLayout) findViewById(R.id.baseLayout);
     ScrollView baseLayout = (ScrollView) findViewById(R.id.baseLayout);
-    baseLayout.setBackgroundDrawable(beeCount.getBackground());
+    // TODO: Properly clear up references to this
+    //baseLayout.setBackgroundDrawable(beeCount.getBackground());
 
     // a title isn't necessary on this welcome screen as it appears below
-    getSupportActionBar().setTitle("");
+    //getSupportActionBar().setTitle("");
 
     cl = new ChangeLog(this);
     if (cl.firstRun())

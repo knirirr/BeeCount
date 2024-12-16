@@ -3,6 +3,7 @@
     <PreferenceCategory
         android:title="@string/prefs_appearance">
         android:key="key_prefs_appearance">
+        <!--
         <ListPreference
             android:key="pref_back"
             android:title="@string/pref_bg"
@@ -10,10 +11,13 @@
             android:entries="@array/pref_bg_entries"
             android:entryValues="@array/pref_bg_values"
             />
+        -->
+        <!--
         <Preference
             android:title="@string/chooseImg"
             android:key="button"
             android:summary="@string/explainImg"/>
+         -->
         <ListPreference
                 android:key="pref_sort"
                 android:title="@string/pref_sort_order"

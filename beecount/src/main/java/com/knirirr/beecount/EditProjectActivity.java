@@ -111,7 +111,7 @@ public class EditProjectActivity extends AppCompatActivity implements SharedPref
     prefs.registerOnSharedPreferenceChangeListener(this);
 
     ScrollView counting_screen = (ScrollView) findViewById(R.id.editingScreen);
-    counting_screen.setBackgroundDrawable(beeCount.getBackground());
+    //counting_screen.setBackgroundDrawable(beeCount.getBackground());
   }
 
   @Override

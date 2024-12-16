@@ -116,7 +116,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     countUpAlert = prepareSound(buttonAlertSound);
 
     ScrollView counting_screen = (ScrollView) findViewById(R.id.countingScreen);
-    counting_screen.setBackgroundDrawable(beeCount.getBackground());
+    //counting_screen.setBackgroundDrawable(beeCount.getBackground());
 
     count_area = (LinearLayout) findViewById(R.id.countCountLayout);
     notes_area = (LinearLayout) findViewById(R.id.countNotesLayout);
@@ -780,8 +780,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
   public void onSharedPreferenceChanged(SharedPreferences prefs, String key)
   {
     ScrollView counting_screen = (ScrollView) findViewById(R.id.countingScreen);
-    counting_screen.setBackgroundDrawable(null);
-    counting_screen.setBackgroundDrawable(beeCount.setBackground());
+    //counting_screen.setBackgroundDrawable(null);
+    //counting_screen.setBackgroundDrawable(beeCount.setBackground());
     getPrefs();
     alertAlert = prepareSound(alertSound);
     countDownAlert = prepareSound(buttonAlertDownSound);
