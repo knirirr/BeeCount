@@ -56,7 +56,7 @@ public class CalculateActivity extends AppCompatActivity implements SharedPrefer
     prefs.registerOnSharedPreferenceChangeListener(this);
 
     ScrollView counting_screen = (ScrollView) findViewById(R.id.calcScreen);
-    counting_screen.setBackgroundDrawable(beeCount.getBackground());
+    //counting_screen.setBackgroundDrawable(beeCount.getBackground());
 
     calc_area = (LinearLayout) findViewById(R.id.calc_area);
 
