@@ -18,7 +18,8 @@
             android:textSize="40sp"
             android:layout_margin="10sp"
             android:id="@+id/welcomeTitle"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
+            android:background="@drawable/rounded_corner"
             android:text="@string/app_name" />
 
 

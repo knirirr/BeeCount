@@ -71,7 +71,7 @@ public class CountOptionsActivity extends AppCompatActivity implements SharedPre
     pref_multiplier = prefs.getBoolean("pref_multiplier",false);
 
     ScrollView counting_screen = (ScrollView) findViewById(R.id.count_options);
-    counting_screen.setBackgroundDrawable(beeCountApplication.getBackground());
+    //counting_screen.setBackgroundDrawable(beeCountApplication.getBackground());
 
     static_widget_area = (LinearLayout) findViewById(R.id.static_widget_area);
     dynamic_widget_area = (LinearLayout) findViewById(R.id.dynamic_widget_area);

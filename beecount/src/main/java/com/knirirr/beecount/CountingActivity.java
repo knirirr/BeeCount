@@ -166,6 +166,16 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
 
     // load the data
     // projects
+    try {
+      prefs = BeeCountApplication.getPrefs();
+      project_id = prefs.getLong("pref_project_id", project_id);
+      Log.i(TAG,"Recovered Project ID: " + String.valueOf(project_id));
+    }
+    catch (Exception e) {
+      Log.e(TAG, "Problem accessing prefs: " + e.toString());
+      Toast.makeText(CountingActivity.this, getString(R.string.getHelp), Toast.LENGTH_LONG).show();
+      finish();
+    }
     Log.i(TAG,"Project ID: " + String.valueOf(project_id));
     try
     {
@@ -179,7 +189,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     }
 
     Log.i(TAG, "Got project: " + project.name);
-    getSupportActionBar().setTitle(project.name);
+    //getActionBar().setTitle(project.name);
+    setTitle(project.name);
     List<String> extras = new ArrayList<String>();
 
     // counts
@@ -321,7 +332,7 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     // save project id in case it is lost on pause
     SharedPreferences.Editor editor = prefs.edit();
     editor.putLong("pref_project_id", project_id);
-    editor.commit();
+    editor.apply();
 
     // close the data sources
     projectDataSource.close();
@@ -368,9 +379,10 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
   public void editProject(View view)
   {
     // some stuff to go here
+    //beeCount = (BeeCountApplication) getApplication();
     //beeCount.project_id = project_id;
     Intent intent = new Intent(CountingActivity.this, EditProjectActivity.class);
-    intent.putExtra("project_id",project_id);
+    intent.putExtra("project_id", project_id);
     startActivity(intent);
   }
 
@@ -486,8 +498,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
   {
     long count_id = Long.valueOf(view.getTag().toString());
     Intent intent = new Intent(CountingActivity.this, CountOptionsActivity.class);
-    intent.putExtra("count_id",count_id);
-    intent.putExtra("project_id",project_id);
+    intent.putExtra("count_id", count_id);
+    intent.putExtra("project_id", project_id);
     startActivity(intent);
   }
 
@@ -733,14 +745,14 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     else if (id == R.id.menuEditProject)
     {
       Intent intent = new Intent(CountingActivity.this, EditProjectActivity.class);
-      intent.putExtra("project_id",project_id);
+      intent.putExtra("project_id", project_id);
       startActivity(intent);
       return true;
     }
     else if (id == R.id.menuCalculate)
     {
       Intent intent = new Intent(CountingActivity.this, CalculateActivity.class);
-      intent.putExtra("project_id",project_id);
+      intent.putExtra("project_id", project_id);
       startActivity(intent);
       return true;
     }

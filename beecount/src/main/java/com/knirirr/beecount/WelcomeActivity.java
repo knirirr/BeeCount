@@ -65,9 +65,6 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     cl = new ChangeLog(this);
     if (cl.firstRun())
       cl.getLogDialog().show();
-
-
-
   }
 
 
