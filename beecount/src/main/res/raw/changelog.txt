@@ -19,6 +19,12 @@
     </style>
   </head>
   <body>
+$ 2.7.0
+  % Version 2.7.0
+   _ 2025-01-01
+    * Removed background images and changed colours (sorry about that, but it needed to be updated).
+    * General upgrades to the structure of the app, allowing installation on newer devices.
+    * May be removed from the Play Store - see https://github.com/knirirr/BeeCount/ for source and new releases.
 $ 2.6.3
   % Version 2.6.3
    _ 2023-08-29

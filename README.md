@@ -1,14 +1,13 @@
 ## Help Wanted
 
-Currently, I can't build this app for distribution on the Play Store because:
+BeeCount has been slightly re-written recently. The main change you'll notice is that the background
+image has disappeared and the colour scheme has changed. This is to make maintenance easier as well
+as to bring the components up-to-date. 
 
-1. It's targeting an old SDK version.
-2. The means of backing up the app's database requires permissions I'm no longer allowed to use.
+It may well be the case that BeeCount will disappear from the Play Store, but if this happens then
+it will still be accessible via this Github repo. Obtanium will allow you to keep it updated:
 
-I can fix (1) but (2) is proving rather difficult, and I'm somewhat short of time. 
-
-If you can assist with some code to copy the internal database to the phone's external storage and 
-to pick a database form there and install it in to the app, then please get in touch. 
+https://obtainium.imranr.dev/
 
 ## Information
 

@@ -17,6 +17,8 @@ import android.net.Uri;
 import android.database.Cursor;
 import android.content.SharedPreferences;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 
@@ -39,8 +41,11 @@ public class SettingsActivity extends PreferenceActivity
   {
     super.onCreate(savedInstanceState);
     addPreferencesFromResource(R.xml.preferences);
+    View view = getListView();
+    view.setFitsSystemWindows(true);
 
-    Preference button = (Preference) findPreference("button");
+    /*
+    Preference button = (Preference) findPreference("pref_sort");
     button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
     {
       @Override
@@ -50,6 +55,7 @@ public class SettingsActivity extends PreferenceActivity
         return true;
       }
     });
+     */
 
     prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -127,6 +133,7 @@ public class SettingsActivity extends PreferenceActivity
     editor.commit();
   }
 
+  /*
   public void getImage()
   {
     Intent pickIntent = new Intent();
@@ -134,6 +141,7 @@ public class SettingsActivity extends PreferenceActivity
     pickIntent.setAction(Intent.ACTION_GET_CONTENT);
     startActivityForResult(pickIntent, SELECT_PICTURE);
   }
+   */
 
   public void getSound(Uri tmp_alert_uri, int requestCode)
   {

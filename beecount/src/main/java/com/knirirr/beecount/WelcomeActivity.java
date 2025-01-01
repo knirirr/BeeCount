@@ -136,8 +136,8 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
   {
     //LinearLayout baseLayout = (LinearLayout) findViewById(R.id.baseLayout);
     ScrollView baseLayout = (ScrollView) findViewById(R.id.baseLayout);
-    baseLayout.setBackgroundDrawable(null);
-    baseLayout.setBackgroundDrawable(beeCount.setBackground());
+    //baseLayout.setBackgroundDrawable(null);
+    //baseLayout.setBackgroundDrawable(beeCount.setBackground());
   }
 
   /*
