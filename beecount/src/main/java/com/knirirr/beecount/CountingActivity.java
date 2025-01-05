@@ -184,7 +184,9 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     catch (CursorIndexOutOfBoundsException e)
     {
       Log.e(TAG, "Problem loading project: " + e.toString());
-      Toast.makeText(CountingActivity.this, getString(R.string.getHelp), Toast.LENGTH_LONG).show();
+      //Toast.makeText(CountingActivity.this, getString(R.string.getHelp), Toast.LENGTH_LONG).show();
+      // Because users are getting this error for no obvious reason.
+      Toast.makeText(CountingActivity.this, e.toString(), Toast.LENGTH_LONG).show();
       finish();
     }
 

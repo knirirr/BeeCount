@@ -46,7 +46,8 @@
     <string name="noDb">Veuillez mettre \'beecount.db\' ici: </string>
     <string name="importButton">Importer</string>
     <string name="importCancelButton">Annuler</string>
-    <string name="confirmImport">Vous êtes sûr que vous voudriez importer un beecount.db que vous avez déjà sauvegardé? Vos projets actuels seront écrasés!</string>
+    <string name="confirmImport">Vous êtes certaine que vous voudriez importer un beecount.db que vous avez déjà sauvegardé? Vos projets actuels seront écrasés!</string>
+    <string name="your_projects">Vos Projets</string>
 
 
     <!-- CountingActivity -->
