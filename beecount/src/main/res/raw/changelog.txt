@@ -25,6 +25,7 @@ $ 2.7.1
     * Fixed a small bug; still investigating others.
     * Fixed action bar on project list screen.
     * Please see the release notes for 2.7.0 as well.
+    * Please email me directly for bug reports.
 $ 2.7.0
   % Version 2.7.0
    _ 2025-01-01

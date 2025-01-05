@@ -99,6 +99,8 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
       project_id = extras.getLong("project_id");
     }
 
+    //Log.i(TAG,"PROJECT ID: " + String.valueOf(project_id));
+
     projectDataSource = new ProjectDataSource(this);
     countDataSource = new CountDataSource(this);
     alertDataSource = new AlertDataSource(this);
@@ -166,17 +168,23 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
 
     // load the data
     // projects
-    try {
-      prefs = BeeCountApplication.getPrefs();
-      project_id = prefs.getLong("pref_project_id", project_id);
-      Log.i(TAG,"Recovered Project ID: " + String.valueOf(project_id));
+    Bundle bundle = getIntent().getExtras();
+    if(bundle !=null)
+    {
+      project_id = bundle.getLong("project_id");
     }
-    catch (Exception e) {
-      Log.e(TAG, "Problem accessing prefs: " + e.toString());
-      Toast.makeText(CountingActivity.this, getString(R.string.getHelp), Toast.LENGTH_LONG).show();
-      finish();
+    else {
+      try {
+        prefs = BeeCountApplication.getPrefs();
+        project_id = prefs.getLong("pref_project_id", project_id);
+        Log.i(TAG, "Recovered Project ID: " + String.valueOf(project_id));
+      } catch (Exception e) {
+        Log.e(TAG, "Problem accessing prefs: " + e.toString());
+        Toast.makeText(CountingActivity.this, getString(R.string.getHelp), Toast.LENGTH_LONG).show();
+        finish();
+      }
     }
-    Log.i(TAG,"Project ID: " + String.valueOf(project_id));
+    //Log.i(TAG,"PROJECT ID AGAIN: " + String.valueOf(project_id));
     try
     {
       project = projectDataSource.getProject(project_id);
