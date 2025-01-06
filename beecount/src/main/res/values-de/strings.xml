@@ -46,6 +46,7 @@
     <string name="importButton">Import</string>
     <string name="importCancelButton">Abbrechen</string>
     <string name="confirmImport">Wollen Sie wirklich die gespeicherte \"beecount.db\" importieren? Ihre aktuellen Zähldaten werden überschrieben!</string>
+    <string name="your_projects">Ihre Projekte</string>
 
 
     <!-- CountingActivity -->

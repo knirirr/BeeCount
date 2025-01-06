@@ -10,6 +10,7 @@
               android:layout_marginTop="5dp"
               android:layout_marginRight="5dp"
               android:background="@drawable/rounded_corner"
+              android:textColor="@android:color/white"
               android:padding="5dp">
 
     <TextView
@@ -18,8 +19,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/notes_text"
             android:gravity="center_vertical|left"
-            android:textColor="#FFFFFF"
             android:textSize="12sp"
+            android:textColor="@android:color/white"
             android:layout_gravity="bottom|left|right|top"
             android:hint="@string/hintProjectNotes"/>
 </LinearLayout>

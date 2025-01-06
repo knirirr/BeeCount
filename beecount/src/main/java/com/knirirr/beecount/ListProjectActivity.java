@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -16,7 +18,7 @@ import com.knirirr.beecount.database.ProjectDataSource;
 import java.util.List;
 
 
-public class ListProjectActivity extends ListActivity implements SharedPreferences.OnSharedPreferenceChangeListener
+public class ListProjectActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener
 {
   private ProjectDataSource projectDataSource;
   private ProjectListAdapter adapter;
@@ -42,9 +44,9 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
     prefs.registerOnSharedPreferenceChangeListener(this);
 
     LinearLayout list_view = (LinearLayout) findViewById(R.id.list_view);
-    list_view.setBackgroundDrawable(beeCount.getBackground());
+    //list_view.setBackgroundDrawable(beeCount.getBackground());
     list = (ListView) findViewById(android.R.id.list);
-
+    getSupportActionBar().setTitle(R.string.your_projects);
   }
 
   public void deleteProject(Project p)
@@ -74,7 +76,9 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
   {
     projects = projectDataSource.getAllProjects(prefs);
     adapter = new ProjectListAdapter(this, R.layout.listview_project_row, projects);
-    setListAdapter(adapter);
+    ListView lv = (ListView) findViewById(R.id.list);
+    lv.setAdapter(adapter);
+    //setListAdapter(adapter);
   }
 
   @Override
@@ -108,8 +112,8 @@ public class ListProjectActivity extends ListActivity implements SharedPreferenc
   public void onSharedPreferenceChanged(SharedPreferences prefs, String key)
   {
     LinearLayout list_view = (LinearLayout) findViewById(R.id.list_view);
-    list_view.setBackgroundDrawable(null);
-    list_view.setBackgroundDrawable(beeCount.setBackground());
+    //list_view.setBackgroundDrawable(null);
+    //list_view.setBackgroundDrawable(beeCount.setBackground());
     prefs = BeeCountApplication.getPrefs();
   }
 }

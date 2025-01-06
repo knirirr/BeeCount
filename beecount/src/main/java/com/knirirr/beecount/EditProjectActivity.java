@@ -111,7 +111,7 @@ public class EditProjectActivity extends AppCompatActivity implements SharedPref
     prefs.registerOnSharedPreferenceChangeListener(this);
 
     ScrollView counting_screen = (ScrollView) findViewById(R.id.editingScreen);
-    counting_screen.setBackgroundDrawable(beeCount.getBackground());
+    //counting_screen.setBackgroundDrawable(beeCount.getBackground());
   }
 
   @Override
@@ -507,10 +507,19 @@ public class EditProjectActivity extends AppCompatActivity implements SharedPref
           for (int i=0; i < childcount; i++)
           {
             ExistingLinkWidget elw = (ExistingLinkWidget) existing_links_area.getChildAt(i);
-            if (elw.masterId == idToDelete || elw.slaveId == idToDelete)
-            {
-              linkDataSource.deleteLinkById(elw.linkId);
-              existing_links_area.removeView(elw);
+            try {
+              if (elw.masterId == idToDelete || elw.slaveId == idToDelete)
+              {
+                linkDataSource.deleteLinkById(elw.linkId);
+                existing_links_area.removeView(elw);
+              }
+            }
+            catch (Exception e) {
+              // For some reason I'm not allowed to show a toast message here.
+              // If any users complain they can't delete a link widget then I will have to ask
+              // for a copy of their db and try it myself.
+              String message = "Failed to delete link widget!";
+              Log.i(TAG, "Failed to delete link widget: " + e.toString());
             }
           }
         }

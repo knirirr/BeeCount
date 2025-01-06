@@ -1,5 +1,6 @@
 <ScrollView
       xmlns:android="http://schemas.android.com/apk/res/android"
+      android:fitsSystemWindows="true"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:id="@+id/baseLayout"
@@ -18,6 +19,7 @@
             android:layout_margin="10sp"
             android:id="@+id/welcomeTitle"
             android:textColor="@android:color/white"
+            android:background="@drawable/rounded_corner"
             android:text="@string/app_name" />
 
 
@@ -41,20 +43,22 @@
               android:orientation="horizontal"
               android:layout_gravity="center">
 
-          <Button android:id="@+id/newProjectButton"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_gravity="center|bottom"
-                  android:onClick="newProject"
-                  android:text="@string/newProjectButton"
-                  />
+          <Button
+              android:id="@+id/newProjectButton"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center|bottom"
+              android:onClick="newProject"
+              android:layout_marginRight="10dp"
+              android:text="@string/newProjectButton" />
 
-          <Button android:id="@+id/viewProjectButton"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:onClick="viewProjects"
-                  android:text="@string/viewProjectButton"
-                  />
+          <Button
+              android:id="@+id/viewProjectButton"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:onClick="viewProjects"
+              android:layout_marginLeft="10dp"
+              android:text="@string/viewProjectButton" />
       </LinearLayout>
 
   </LinearLayout>

@@ -55,14 +55,14 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
     dupPref = prefs.getBoolean("pref_duplicate", true);
 
     LinearLayout baseLayout = (LinearLayout) findViewById(R.id.newprojScreen);
-    baseLayout.setBackgroundDrawable(beeCount.getBackground());
+    //baseLayout.setBackgroundDrawable(beeCount.getBackground());
 
     // data access using CrowTrack method
     projectDataSource = new ProjectDataSource(this);
     countDataSource = new CountDataSource(this);
 
     // setup from previous version
-    newBox = 1;
+    //newBox = baseLayout.setBackgroundDrawable;
     layout = (ViewGroup) findViewById(R.id.newCountLayout);
     myTexts = new ArrayList<NewCount>();
     newprojName = (EditText) findViewById(R.id.newprojName);

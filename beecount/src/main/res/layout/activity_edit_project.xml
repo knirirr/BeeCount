@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="true"
             android:layout_width="match_parent"
             android:id="@+id/editingScreen"
             android:layout_height="match_parent">
@@ -53,6 +54,8 @@
                     android:onClick="newCount"
                     android:layout_weight="1"
                     android:text="@string/labelNewCountButton"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
                     android:maxLines="1">
             </Button>
             <Button
@@ -62,6 +65,8 @@
                     android:onClick="newLink"
                     android:layout_weight="1"
                     android:text="@string/addLinkButton"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
                     android:maxLines="1">
             </Button>
             <Button
@@ -71,6 +76,8 @@
                     android:onClick="saveAndExit"
                     android:layout_weight="1"
                     android:text="@string/labelNewprojSaveButton"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
                     android:maxLines="1">
             </Button>
         </LinearLayout>

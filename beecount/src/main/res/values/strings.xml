@@ -47,6 +47,7 @@
     <string name="importButton">Import</string>
     <string name="importCancelButton">Cancel</string>
     <string name="confirmImport">Are you sure you want to import a backed-up beecount.db? Your current projects will be overwritten!</string>
+    <string name="your_projects">Your Projects</string>
 
 
     <!-- CountingActivity -->

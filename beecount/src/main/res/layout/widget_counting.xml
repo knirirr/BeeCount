@@ -25,6 +25,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="26sp"
             android:id="@+id/countName"
+            android:textColor="@android:color/white"
             android:hint="@string/countNameHint"
             android:layout_marginLeft="5dp"
             android:layout_marginBottom="5dp"
