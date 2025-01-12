@@ -136,6 +136,8 @@
     <string name="permission_please">BeeCount n\'a pas les droits d\'accès aux photos.</string>
     <string name="pref_loopstop">Liens: Supprimer les boucles</string>
     <string name="pref_loopstop_summary">Si vous decochez ce choix l\'app pourrait planter...</string>
+    <string name="pref_dark_theme">Dark Theme</string>
+    <string name="pref_dark_theme_summ">Si vous préférez un fond sombre…</string>
 
 
     <!-- CountOptionsActivity -->

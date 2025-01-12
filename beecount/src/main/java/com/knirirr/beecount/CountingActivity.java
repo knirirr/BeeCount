@@ -14,6 +14,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
@@ -808,6 +810,13 @@ public class CountingActivity extends AppCompatActivity implements SharedPrefere
     alertAlert = prepareSound(alertSound);
     countDownAlert = prepareSound(buttonAlertDownSound);
     countUpAlert = prepareSound(buttonAlertSound);
+    boolean tastePref = prefs.getBoolean("pref_dark_theme", false);
+    if (tastePref) {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    }
+    else {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+    }
   }
 
   public Ringtone prepareSound(String name) {

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.util.Log;
 import android.view.Menu;
@@ -115,5 +116,12 @@ public class ListProjectActivity extends AppCompatActivity implements SharedPref
     //list_view.setBackgroundDrawable(null);
     //list_view.setBackgroundDrawable(beeCount.setBackground());
     prefs = BeeCountApplication.getPrefs();
+    boolean tastePref = prefs.getBoolean("pref_dark_theme", false);
+    if (tastePref) {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    }
+    else {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+    }
   }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     android:largeHeap="true"
-    android:versionName="2.7.1"
+    android:versionName="2.7.2"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -23,6 +23,7 @@
         <activity
             android:name="com.knirirr.beecount.WelcomeActivity"
             android:exported="true"
+            android:configChanges="uiMode"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +35,7 @@
             android:name="com.knirirr.beecount.NewProjectActivity"
             android:noHistory="true"
             android:label="@string/title_activity_new_project"
+            android:configChanges="uiMode"
             android:parentActivityName="com.knirirr.beecount.WelcomeActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -50,6 +52,7 @@
         <activity
             android:name="com.knirirr.beecount.ListProjectActivity"
             android:label="@string/title_activity_list_project"
+            android:configChanges="uiMode"
             android:parentActivityName="com.knirirr.beecount.WelcomeActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -58,6 +61,7 @@
         <activity
             android:name="com.knirirr.beecount.CountingActivity"
             android:label="@string/title_activity_counting"
+            android:configChanges="uiMode"
             android:parentActivityName="com.knirirr.beecount.ListProjectActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -66,6 +70,7 @@
         <activity
             android:name="com.knirirr.beecount.CountOptionsActivity"
             android:label="@string/title_activity_count_options"
+            android:configChanges="uiMode"
             android:parentActivityName="com.knirirr.beecount.CountingActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -74,6 +79,7 @@
         <activity
             android:name="com.knirirr.beecount.EditProjectActivity"
             android:label="@string/title_activity_edit_project"
+            android:configChanges="uiMode"
             android:parentActivityName="com.knirirr.beecount.CountingActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -82,9 +88,12 @@
         <activity
             android:name="com.knirirr.beecount.CalculateActivity"
             android:label="@string/calcButton"
-            android:configChanges="locale">
+            android:configChanges="uiMode">
         </activity>
-      <activity android:name=".CountLogActivity"/>
+      <activity
+          android:name=".CountLogActivity"
+          android:configChanges="uiMode"
+          />
 
       <uses-library android:required="false" android:name="com.sec.android.app.multiwindow" />
         <meta-data android:name="com.sec.android.support.multiwindow" android:value="true" />

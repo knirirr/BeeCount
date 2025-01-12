@@ -3,6 +3,8 @@ package com.knirirr.beecount;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -172,5 +174,12 @@ public class CalculateActivity extends AppCompatActivity implements SharedPrefer
     ScrollView calc_screen = (ScrollView) findViewById(R.id.calcScreen);
     calc_screen.setBackgroundDrawable(null);
     calc_screen.setBackgroundDrawable(beeCount.setBackground());
+    boolean tastePref = prefs.getBoolean("pref_dark_theme", false);
+    if (tastePref) {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    }
+    else {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+    }
   }
 }

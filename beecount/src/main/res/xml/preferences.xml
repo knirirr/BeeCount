@@ -26,6 +26,11 @@
                 android:entryValues="@array/pref_sort_values"
             />
         <CheckBoxPreference
+            android:key="pref_dark_theme"
+            android:title="@string/pref_dark_theme"
+            android:summary="@string/pref_dark_theme_summ"
+            android:defaultValue="false" />
+        <CheckBoxPreference
             android:key="pref_note_font"
             android:title="@string/pref_note_font"
             android:summary="@string/pref_note_font_summ"

@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NavUtils;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
@@ -627,5 +629,12 @@ public class EditProjectActivity extends AppCompatActivity implements SharedPref
     ScrollView counting_screen = (ScrollView) findViewById(R.id.editingScreen);
     counting_screen.setBackgroundDrawable(null);
     counting_screen.setBackgroundDrawable(beeCount.setBackground());
+    boolean tastePref = prefs.getBoolean("pref_dark_theme", false);
+    if (tastePref) {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    }
+    else {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+    }
   }
 }

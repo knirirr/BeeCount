@@ -1,6 +1,10 @@
 package com.knirirr.beecount;
 
+import static android.app.UiModeManager.MODE_NIGHT_NO;
+import static android.app.UiModeManager.MODE_NIGHT_YES;
+
 import android.app.Application;
+import android.app.UiModeManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -8,11 +12,14 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatDelegate;
 
 import java.io.File;
 
@@ -36,6 +43,15 @@ public class BeeCountApplication extends Application
     try
     {
       prefs = PreferenceManager.getDefaultSharedPreferences(this);
+      /*
+      boolean tastePref = prefs.getBoolean("pref_dark_theme", false);
+      if (tastePref) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+      }
+      else {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+      }
+       */
     }
     catch (Exception e)
     {

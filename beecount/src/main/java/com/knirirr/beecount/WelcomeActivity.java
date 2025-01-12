@@ -12,6 +12,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,6 +56,13 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     beeCount = (BeeCountApplication) getApplication();
     prefs = BeeCountApplication.getPrefs();
     prefs.registerOnSharedPreferenceChangeListener(this);
+    boolean tastePref = prefs.getBoolean("pref_dark_theme", false);
+    if (tastePref) {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    }
+    else {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+    }
 
     //LinearLayout baseLayout = (LinearLayout) findViewById(R.id.baseLayout);
     ScrollView baseLayout = (ScrollView) findViewById(R.id.baseLayout);
@@ -135,6 +145,13 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     ScrollView baseLayout = (ScrollView) findViewById(R.id.baseLayout);
     //baseLayout.setBackgroundDrawable(null);
     //baseLayout.setBackgroundDrawable(beeCount.setBackground());
+    boolean tastePref = prefs.getBoolean("pref_dark_theme", false);
+    if (tastePref) {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    }
+    else {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    }
   }
 
   /*
@@ -318,5 +335,7 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     in.close();
     out.close();
   }
+
+
 
 }

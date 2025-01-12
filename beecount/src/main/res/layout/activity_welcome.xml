@@ -19,22 +19,24 @@
             android:layout_margin="10sp"
             android:id="@+id/welcomeTitle"
             android:textColor="@android:color/white"
+            android:theme="@android:style/Theme.Holo"
             android:background="@drawable/rounded_corner"
             android:text="@string/app_name" />
 
 
         <TextView
+            android:id="@+id/welcomeWaffle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:id="@+id/welcomeWaffle"
-            android:textColor="@android:color/white"
+            android:layout_margin="10dp"
             android:autoLink="email|web"
-            android:text="@string/hello"
             android:background="@drawable/rounded_corner"
-            android:textSize="16sp"
+            android:gravity="center"
             android:padding="10dp"
-            android:layout_margin="10dp"/>
+            android:text="@string/hello"
+            android:textColor="@android:color/white"
+            android:textColorLink="#FFFFFF"
+            android:textSize="16sp" />
 
       <LinearLayout
               android:id="@+id/welcomeButtons"

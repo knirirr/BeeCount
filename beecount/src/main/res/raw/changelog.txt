@@ -19,6 +19,12 @@
     </style>
   </head>
   <body>
+$ 2.7.2
+  % Version 2.7.2
+   _ 2025-01-05
+    * Added a setting to force dark mode.
+    * Please see the release notes for 2.7.0 as well.
+    * Please email me directly for bug reports.
 $ 2.7.1
   % Version 2.7.1
    _ 2025-01-05

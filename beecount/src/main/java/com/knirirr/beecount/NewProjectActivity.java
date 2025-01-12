@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -289,6 +291,13 @@ public class NewProjectActivity extends AppCompatActivity implements SharedPrefe
     baseLayout.setBackgroundDrawable(null);
     baseLayout.setBackgroundDrawable(beeCount.setBackground());
     dupPref = prefs.getBoolean("duplicate_counts", true);
+    boolean tastePref = prefs.getBoolean("pref_dark_theme", false);
+    if (tastePref) {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    }
+    else {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+    }
   }
 
 }

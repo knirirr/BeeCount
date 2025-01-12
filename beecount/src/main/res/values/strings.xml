@@ -141,6 +141,8 @@
     <string name="permission_please">BeeCount needs permission to read your device storage in order to use a custom background.</string>
     <string name="pref_loopstop">Stop count link loops</string>
     <string name="pref_loopstop_summary">If you uncheck this box the application could crash...</string>
+    <string name="pref_dark_theme">Dark Theme</string>
+    <string name="pref_dark_theme_summ">Prefer a black background? Select this.</string>
 
 
     <!-- CountOptionsActivity -->
