@@ -25,7 +25,7 @@ public class CountLogActivity extends AppCompatActivity {
     }
     beeCount = (BeeCountApplication) getApplication();
     ScrollView layout=(ScrollView) findViewById(R.id.countLogLayout);
-    layout.setBackground(beeCount.getBackground());
+    //layout.setBackground(beeCount.getBackground());
 
     TextView countLogTextView = (TextView)findViewById(R.id.countLogTextView);
     countLogTextView.setText(projectLogs);
