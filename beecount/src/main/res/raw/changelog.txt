@@ -23,6 +23,7 @@ $ 2.7.2
   % Version 2.7.2
    _ 2025-01-05
     * Added a setting to force dark mode.
+    * Fixed project import/export on Android 10.
     * Please see the release notes for 2.7.0 as well.
     * Please email me directly for bug reports.
 $ 2.7.1

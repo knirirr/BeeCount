@@ -5,10 +5,14 @@
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!--
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="30"
+    />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="30"
+    />
     <uses-permission android:name="android.permission.CREATE_DOCUMENT" />
     <uses-permission android:name="android.permission.OPEN_DOCUMENT" />
     <uses-permission android:name="android.permission.OPEN_DOCUMENT_TREE" />
@@ -19,6 +23,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
+        android:requestLegacyExternalStorage="true"
         >
         <activity
             android:name="com.knirirr.beecount.WelcomeActivity"

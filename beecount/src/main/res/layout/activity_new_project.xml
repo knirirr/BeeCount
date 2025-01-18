@@ -12,6 +12,7 @@
       android:layout_height="wrap_content"
       android:gravity="center"
       android:textSize="20sp"
+      android:padding="5sp"
       android:background="@drawable/rounded_corner"
       android:layout_margin="10sp"
       android:id="@+id/newProjectInstructions"
