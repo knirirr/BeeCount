@@ -196,7 +196,7 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
     {
       // Something else is wrong. It may be one of many other states, but all we need
       //  to know is we can neither read nor write
-      mExternalStorageAvailable = mExternalStorageWriteable = false;
+      mExternalStorageWriteable = false;
     }
 
     if ((mExternalStorageAvailable == false) || ( mExternalStorageWriteable == false))
@@ -217,7 +217,7 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
       catch (IOException e)
       {
         Log.e(TAG,"Failed to copy database: " + e.toString());
-        Toast.makeText(this,getString(R.string.saveFail) + " " + e.toString(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,getString(R.string.saveFail),Toast.LENGTH_SHORT).show();
         return;
       }
     }
