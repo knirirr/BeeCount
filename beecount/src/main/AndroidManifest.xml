@@ -98,7 +98,8 @@
       <activity
           android:name=".CountLogActivity"
           android:configChanges="uiMode"
-          />
+          android:parentActivityName="com.knirirr.beecount.CountingActivity"
+        />
 
       <uses-library android:required="false" android:name="com.sec.android.app.multiwindow" />
         <meta-data android:name="com.sec.android.support.multiwindow" android:value="true" />
