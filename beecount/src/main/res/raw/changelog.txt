@@ -19,6 +19,11 @@
     </style>
   </head>
   <body>
+$ 2.7.3
+  % Version 2.7.3
+   _ 2025-02-18
+    * Fixed count log activity.
+    * Minor formatting fixes.
 $ 2.7.2
   % Version 2.7.2
    _ 2025-01-05
