@@ -1,26 +1,48 @@
+## Information
+
+This is the second version of BeeCount. The older, "classic" version can be found
+in [this repository](https://code.google.com/p/beecount/). This newer version has been
+considerably re-written so that the underlying data management and UI code is much easier to
+maintain and extend, and the UI has been modernised.
+
+More information can be found on the [BeeCount home page](http://knirirr.com/beecount).
+
+## How to get BeeCount
+
+BeeCount will disappear from the Play Store on 13/4/25 due to Google's policies (I won't upload
+my official ID in order to keep distributing FOSS apps). When this happens BeeCount
+will still be accessible via this Github repo. Obtanium will allow you to keep it updated:
+
+https://obtainium.imranr.dev/
+
+Give Obtanium this URL as the source: https://github.com/knirirr/BeeCount
+
+The version available here via Obtanium is signed with the same certificate as the Google Play 
+version, so if you're coming from that then other than the minor inconvenience of setting up 
+Obtanium then there should be no issues. 
+
+Or, you can get BeeCount via Fdroid:
+
+<a href="https://f-droid.org/packages/com.knirirr.beecount/" target="_blank">
+<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
+
+This is signed with Fdroid's certificate so if you switch to this source from Google Play you'll 
+need to back up your database, remove BeeCount and reinstall from Fdroid, then restore your data.
+Some users are reporting issues with restoring data (I can't pin down which devices are affected) 
+so it's safer to use Obtanium. 
+
 ## Help Wanted
 
 BeeCount has been slightly re-written recently. The main change you'll notice is that the background
 image has disappeared and the colour scheme has changed. This is to make maintenance easier as well
-as to bring the components up-to-date. 
+as to bring the components up-to-date.
 
-It may well be the case that BeeCount will disappear from the Play Store, but if this happens then
-it will still be accessible via this Github repo. Obtanium will allow you to keep it updated:
+Assistance is always welcome as I don't usually have much time free to devote to BeeCount work. 
+Anyone who's willing to look into issues with dumping/restoring the database would be most welcome;
+ it works for me but some users report problems and it's not clear which versions of Android are
+affected. 
 
-https://obtainium.imranr.dev/
-
-## Information
-
-This is the second version of BeeCount. The older, "classic" version can be found in [this repository](https://code.google.com/p/beecount/). This newer version has been considerably re-written so that the underlying data management and UI code is much easier to maintain and extend, and the UI has been updated.
-
-<a href="https://f-droid.org/packages/com.knirirr.beecount/" target="_blank">
-<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
-<a href="https://play.google.com/store/apps/details?id=com.knirirr.beecount" target="_blank">
-<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="80"/></a>
-
-More information can be found on the [BeeCount home page](http://knirirr.com/beecount).
-
-Licence stuff:
+## Licence etc.
 
 Copyright 2018 Milo Thurston
 
