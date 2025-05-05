@@ -19,6 +19,14 @@
     </style>
   </head>
   <body>
+$ 2.7.4
+  % Version 2.7.4
+   _ 2025-05-05
+    * Granting permission to manage all files in the permissions explorer should now fix issues with importing beecount.db.
+$ 2.7.3.1
+  % Version 2.7.3.1
+   _ 2025-03-16
+    * Added info. to welcome screen about how to get BeeCount in future.
 $ 2.7.3
   % Version 2.7.3
    _ 2025-02-18

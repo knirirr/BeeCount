@@ -31,6 +31,15 @@ need to back up your database, remove BeeCount and reinstall from Fdroid, then r
 Some users are reporting issues with restoring data (I can't pin down which devices are affected) 
 so it's safer to use Obtanium. 
 
+## Permissions
+
+Permission is requested to manage all files so that you can import beecount.db from your Download
+folder. BeeCount doesn't access any other files.
+
+To enable this, open the Permission Manager in your phone's settings and look for apps which
+are able to manage files (you may need to tap on a link to "see more apps that can access all 
+files"). 
+
 ## Help Wanted
 
 BeeCount has been slightly re-written recently. The main change you'll notice is that the background

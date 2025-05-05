@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:largeHeap="true"
-    android:versionName="2.7.3"
+    android:versionName="2.7.4"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="30"
-    />
+        android:maxSdkVersion="32"
+        tools:ignore="ScopedStorage" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="30"
+        android:maxSdkVersion="32"
     />
     <uses-permission android:name="android.permission.CREATE_DOCUMENT" />
     <uses-permission android:name="android.permission.OPEN_DOCUMENT" />
     <uses-permission android:name="android.permission.OPEN_DOCUMENT_TREE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
 
     <application
         android:name=".BeeCountApplication"
