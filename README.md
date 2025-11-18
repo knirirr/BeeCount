@@ -9,15 +9,16 @@ More information can be found on the [BeeCount home page](http://knirirr.com/bee
 
 ## How to get BeeCount
 
-BeeCount will disappear from the Play Store on 13/4/25 due to Google's policies (I won't upload
-my official ID in order to keep distributing FOSS apps). When this happens BeeCount
-will still be accessible via this Github repo. Obtanium will allow you to keep it updated:
+BeeCount is no longer available from the Play Store due to Google's policies and might not
+be installable in 2027 for the same reason(I won't upload my official ID in order to keep 
+distributing FOSS apps). BeeCountwill remain accessible via this Github repo. Obtanium will 
+allow you to keep it updated:
 
 https://obtainium.imranr.dev/
 
 Give Obtanium this URL as the source: https://github.com/knirirr/BeeCount
 
-The version available here via Obtanium is signed with the same certificate as the Google Play 
+The version available here via Obtanium is signed with the same certificate as the old Google Play 
 version, so if you're coming from that then other than the minor inconvenience of setting up 
 Obtanium then there should be no issues. 
 
