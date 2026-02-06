@@ -20,6 +20,10 @@
   </head>
   <body>
 $ 2.7.4
+  % Version 2.7.5
+   _ 2026-02-06
+    * Added warning about Google's sinister plans.
+$ 2.7.4
   % Version 2.7.4
    _ 2025-05-05
     * Granting permission to manage all files in the permissions explorer should now fix issues with importing beecount.db.

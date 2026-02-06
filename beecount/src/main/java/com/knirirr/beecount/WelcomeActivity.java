@@ -22,6 +22,8 @@ import android.view.View;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import org.woheller69.freeDroidWarn.FreeDroidWarn;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -52,6 +54,8 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
   {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_welcome);
+
+    FreeDroidWarn.showWarningOnUpgrade(this, BuildConfig.VERSION_CODE);
 
     beeCount = (BeeCountApplication) getApplication();
     prefs = BeeCountApplication.getPrefs();

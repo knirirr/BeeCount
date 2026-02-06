@@ -5,7 +5,7 @@ android {
         minSdkVersion 21
         compileSdkVersion 35
         targetSdkVersion 35
-        versionCode 137
+        versionCode 138
     }
     compileOptions {
         sourceCompatibility = 1.8
@@ -20,6 +20,7 @@ repositories {
         url 'https://maven.google.com/'
         name 'Google'
     }
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -28,6 +29,7 @@ dependencies {
     implementation('androidx.appcompat:appcompat:1.7.0')
     implementation('androidx.legacy:legacy-support-v4:1.0.0')
     implementation 'com.google.android.material:material:1.12.0'
+    implementation 'com.github.woheller69:FreeDroidWarn:V1.+'
 }
 
 configurations.implementation {

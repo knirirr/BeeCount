@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:largeHeap="true"
-    android:versionName="2.7.4"
+    android:versionName="2.7.5"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
