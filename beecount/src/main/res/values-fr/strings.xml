@@ -38,11 +38,11 @@
     <!-- ListprojActivity -->
     <string name="noCard">On n\'a pas pu accéder au dossier \'Téléchargements\'!</string>
     <string name="saveFail">On n\'a pas pu exporter votre base de données!</string>
-    <string name="saveWin">Votre base de données a été exporté au dossier \'Téléchargements\'.</string>
+    <string name="saveWin">Votre base de données a été exportée dans le dossier selectionné.</string>
     <string name="exportMenu">Exporter</string>
     <string name="importMenu">Importer</string>
     <string name="importFail">On n\'a pas pu importer votre base de données!</string>
-    <string name="importWin">Votre base de données a été importé du dossier \'Téléchargements\'.</string>
+    <string name="importWin">Votre base de données a été importé du dossier selectionné</string>
     <string name="noDb">Veuillez mettre \'beecount.db\' ici: </string>
     <string name="importButton">Importer</string>
     <string name="importCancelButton">Annuler</string>
