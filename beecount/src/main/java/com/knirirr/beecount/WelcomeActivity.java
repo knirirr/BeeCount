@@ -147,7 +147,7 @@ public class WelcomeActivity extends AppCompatActivity implements SharedPreferen
   }
 
   /*
-   * The three activities below are for exporting and importing the database. They've been put here because
+   * The two activities below are for exporting and importing the database. They've been put here because
    * no database should be open at this point.
    */
   private final ActivityResultLauncher<Intent> exportFileLauncher = registerForActivityResult(
