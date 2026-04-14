@@ -38,7 +38,7 @@
     <!-- ListprojActivity -->
     <string name="noCard">Your sdcard could not be accessed!</string>
     <string name="saveFail">Your database could not be exported! Have you created any projects?</string>
-    <string name="saveWin">Your database has been exported to the Downloads folder.</string>
+    <string name="saveWin">Your database has been exported to your selected folder.</string>
     <string name="exportMenu">Export</string>
     <string name="importMenu">Import</string>
     <string name="importFail">Your database could not be imported!</string>
