@@ -19,7 +19,11 @@
     </style>
   </head>
   <body>
-$ 2.7.4
+$ 2.7.6
+  % Version 2.7.6
+   _ 2026-04-14
+    * Incorporated file picker by Valle-R for backup/restore.
+$ 2.7.5
   % Version 2.7.5
    _ 2026-02-06
     * Added warning about Google's sinister plans.
