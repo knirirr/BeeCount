@@ -10,8 +10,8 @@ More information can be found on the [BeeCount home page](http://knirirr.com/bee
 ## How to get BeeCount
 
 BeeCount is no longer available from the Play Store due to Google's policies and might not
-be installable in 2027 for the same reason(I won't upload my official ID in order to keep 
-distributing FOSS apps). BeeCountwill remain accessible via this Github repo. Obtanium will 
+be installable in 2027 for the same reason (I won't upload my official ID in order to keep 
+distributing FOSS apps). BeeCount will remain accessible via this Github repo. Obtanium will 
 allow you to keep it updated:
 
 https://obtainium.imranr.dev/
@@ -47,10 +47,14 @@ BeeCount has been slightly re-written recently. The main change you'll notice is
 image has disappeared and the colour scheme has changed. This is to make maintenance easier as well
 as to bring the components up-to-date.
 
-Assistance is always welcome as I don't usually have much time free to devote to BeeCount work. 
-Anyone who's willing to look into issues with dumping/restoring the database would be most welcome;
- it works for me but some users report problems and it's not clear which versions of Android are
-affected. 
+Assistance is always welcome as I don't usually have much time free to devote to BeeCount work. For 
+example, some unit tests might be nice...
+
+## AI Use
+
+I've not used any LLMs to write or edit this code; though I'm obliged to at work, this is a hobby
+project. If I ever change my mind I'll mention it here. PRs should also disclose whether any have 
+been used. 
 
 ## Licence etc.
 
