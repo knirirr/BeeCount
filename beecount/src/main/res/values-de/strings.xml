@@ -16,11 +16,11 @@
     <string name="customTooBig">Leider wurde beim Versuch, das gewählte Hintergrundbild zu übernehmen, ein Speicherfehler verursacht.</string>
 
     <!-- WelcomeActivity -->
-    <string name="hello">Willkommen bei BeeCount! Der Zweck dieser App ist es, Zähler-Werte für verschiedene Strick- oder Häkel-Projekte separat zu speichern. Jedes Projekt kann aus vielen \"Zählungen\" bestehen, von denen jede so etwas wie eine Musterwiederholung oder eine Reihe, die Du überwachen willst, repräsentieren kann. Mit den Buttons unten erzeugst Du ein neues Projekt oder verwendest bzw. verwaltest ein bestehendes.\n\n Im Projekt-Editor lassen sich in einem bestehenden Projekt auch Zähler miteinander verbinden, so dass ein Zähler einen anderen mit hoch- oder runterzählt.\n\n Die Einstellungen können in den Einstellungsmenüs geändert werden (Menü-Button oder 3-Punkt-Icon).\n\n Solltest Du eine Frage haben, kannst Du die Ravelry Gruppe unter http://www.ravelry.com/groups/beecount aufsuchen, oder zwecks Bug-Report eine E-Mail an knirirr@gmail.com senden.\n\n Bitte lesen Sie die folgenden Informationen: https://github.com/knirirr/BeeCount?tab=readme-ov-file#how-to-get-beecount</string>
+    <string name="hello">Willkommen bei BeeCount! Der Zweck dieser App ist es, Zähler-Werte für verschiedene Strick- oder Häkel-Projekte separat zu speichern. Jedes Projekt kann aus vielen \"Zählern\" bestehen, von denen jede so etwas wie eine Musterwiederholung oder eine Reihe, die du zählen möchtest, repräsentieren kann. Mit den Buttons unten erzeugst du ein neues Projekt oder verwendest bzw. verwaltest ein Bestehendes.\n\n Im Projekt-Editor lassen sich in einem bestehenden Projekt auch Zähler miteinander koppeln, so dass ein Zähler einen anderen mit hoch- oder runterzählt.\n\n Die Einstellungen können in den Einstellungsmenüs geändert werden (Menü-Button oder 3-Punkt-Icon).\n\n Solltest du eine Frage haben, kannst du die Ravelry Gruppe unter http://www.ravelry.com/groups/beecount aufsuchen, oder zwecks Bug-Report eine E-Mail an knirirr@gmail.com senden.\n\n Bitte lies die folgenden Informationen: https://github.com/knirirr/BeeCount?tab=readme-ov-file#how-to-get-beecount</string>
     <string name="newProjectButton">Neues Projekt</string>
     <string name="viewProjectButton">Projekte ansehen</string>
     <string name="newProjTitle">Neues Projekt erstellen</string>
-    <string name="changeLogTitle">Änderungsinfo</string>
+    <string name="changeLogTitle">Versionsinfo</string>
 
     <!-- NewprojActivity -->
     <string name="labelNewprojSaveButton">Speichern</string>
@@ -32,7 +32,7 @@
     <string name="duplicate">Alle Zählernamen müssen verschieden sein!</string>
     <string name="boxFill">Bezeichnung </string>
     <string name="projectSaved">Projekt gespeichert!</string>
-    <string name="newProjectInstructions">[Translation needed] Please supply a name for your project in the top box, and a name for each count you add in the boxes below.</string>
+    <string name="newProjectInstructions">Gib deinem Projekt einen Namen und füge mindestens einen Zähler mit Namen hinzu.</string>
 
     <!-- ListprojActivity -->
     <string name="noCard">Die SD-Karte kann nicht verwendet werden!</string>
@@ -45,18 +45,18 @@
     <string name="noDb">Bitte lege die \"beecount.db\" hier: </string>
     <string name="importButton">Import</string>
     <string name="importCancelButton">Abbrechen</string>
-    <string name="confirmImport">Wollen Sie wirklich die gespeicherte \"beecount.db\" importieren? Ihre aktuellen Zähldaten werden überschrieben!</string>
-    <string name="your_projects">Ihre Projekte</string>
+    <string name="confirmImport">Möchtest du wirklich die gespeicherte \"beecount.db\" importieren? Deine aktuellen Zähldaten werden überschrieben!</string>
+    <string name="your_projects">Deine Projekte</string>
 
 
     <!-- CountingActivity -->
-    <string name="saveCountsButton">Sichern &amp; Beenden</string>
+    <string name="saveCountsButton">Speichern &amp; Zurück</string>
     <string name="projSaving">Speichern </string>
     <string name="hasAutoReset">%1$s hat Auto-Reset!</string>
     <string name="alertTitle">Buzzzz!</string>
-    <string name="willLinkReset">- %1$s wird %2$s um %3$d zurücksetzen.</string>
-    <string name="willLinkIncrease">- %1$s wird %2$s alle %3$d erhöhen.</string>
-    <string name="willLinkDecrease">- %1$s wird %2$s alle %3$d vermindern.</string>
+    <string name="willLinkReset">- \"%1$s\" wird \"%2$s\" um %3$d zurücksetzen.</string>
+    <string name="willLinkIncrease">- \"%1$s\" wird \"%2$s\" alle %3$d Schritte um 1 erhöhen.</string>
+    <string name="willLinkDecrease">- \"%1$s\" wird \"%2$s\" alle %3$d Schritte um 1 vermindern.</string>
     <string name="cloneButton">Projekt duplizieren</string>
     <string name="newName">Eine Bezeichnung für die Kopie des Projekts eingeben.</string>
     <string name="newCopyCreated">Eine neue Kopie wurde erstellt!</string>
@@ -72,25 +72,25 @@
     <string name="willAlert">- %1$s wird bei %2$d ein Signal geben.</string>
     <string name="deleteButton">Löschen</string>
     <string name="cancelButton">Abbrechen</string>
-    <string name="action_share">Mitteilen</string>
+    <string name="action_share">Teilen</string>
     <string name="send_to">Nachricht versenden</string>
 
     <!-- EditprojActivity -->
     <string name="titleEdit">Projekt Name</string>
-    <string name="addLinkButton">Link Zähler</string>
-    <string name="failedToSave">Leider konnten Ihre Daten nicht gespeichert werden. Bitte prüfen Sie Ihre Links und versuchen es nochmal.</string>
-    <string name="mismatch">Bitte prüfen Sie, welche Zählliste Sie verlinkt haben.</string>
+    <string name="addLinkButton">Zähler koppeln</string>
+    <string name="failedToSave">Leider konnten deine Daten nicht gespeichert werden. Bitte prüfe deine Links und versuche es nochmal.</string>
+    <string name="mismatch">Bitte prüfe, welche Zählliste du verlinkt hast.</string>
     <string name="zero">Der Link-Inkrementwert kann nicht Null sein, Speichern schlug fehl!</string>
     <string name="every">alle</string>
     <string name="incr_up"> erhöhen </string>
     <string name="incr_down"> vermindern </string>
     <string name="incr_reset"> zurücksetzen </string>
-    <string name="notesHere">Bemerkung</string>
-    <string name="notesHint">Bemerkung zur Liste einfügen&#8230;</string>
+    <string name="notesHere">Notiz</string>
+    <string name="notesHint">Notizen hinzufügen&#8230;</string>
     <string name="deleteCount">Zähler löschen</string>
-    <string name="reallyDeleteCount">Sind Sie sicher? Der Zähler wird sofort gelöscht.</string>
+    <string name="reallyDeleteCount">Bist du dir sicher? Der Zähler wird sofort gelöscht.</string>
     <string name="deleteLink">Link löschen</string>
-    <string name="reallyDeleteLink">Sind Sie sicher? Der Link wird sofort gelöscht.</string>
+    <string name="reallyDeleteLink">Bist du dir sicher? Der Link wird sofort gelöscht.</string>
     <string name="xWillYZ">%1$s wird %3$s alle %4$d %2$s.</string>
     <string name="linkPlaceholder">Link Information kommt hierhin</string>
 
@@ -103,7 +103,7 @@
     <!-- Preferences -->
     <string name="pref_bg">Hintergrund</string>
     <string name="pref_bg_summ">Wähle Standard-, eigenen oder keinen Hintergrund.</string>
-    <string name="pref_awake">Lass Bildschirm an</string>
+    <string name="pref_awake">Bildschirm anlassen</string>
     <string name="pref_awake_summ">Verhindert den Ruhezustand beim Zählen.</string>
     <string name="chooseImg">Hintergrundbild</string>
     <string name="explainImg">Wähle ein Hintergrundbild aus, wenn ein eigenes Bild angezeigt werden soll.</string>
@@ -112,42 +112,42 @@
     <string name="prefs_appearance">Aussehen</string>
     <string name="prefs_counting">Zählen</string>
     <string name="image_error">Hintergrundbild setzen fehlgeschlagen! Versuche es mit Gallery anstelle von File Manager.</string>
-    <string name="pref_note_font">Anmerkungs-Font</string>
-    <string name="pref_note_font_summ">Wähle diese Option um die Schriftgröße der Bemerkungen anzuheben.</string>
+    <string name="pref_note_font">Notizen Schriftgröße</string>
+    <string name="pref_note_font_summ">Wähle diese Option um die Schriftgröße der Notizen in der Zähler Ansicht zu erhöhen.</string>
     <string name="pref_sort_order">Sortierung</string>
     <string name="pref_sort_order_summ">Sortierung der Projektliste.</string>
-    <string name="pref_sound">Tonalarm</string>
+    <string name="pref_sound">Ton bei Reihenalarm</string>
     <string name="pref_sound_summary">Erzeuge einen Benachrichtigungston wenn ein Reihenalarm ausgelöst wird.</string>
     <string name="choose_alert">Benachrichtigungston</string>
     <string name="explain_alert">Wähle einen Benachrichtigungston aus.</string>
-    <string name="pref_negative">Lass negative Zählerstände zu</string>
+    <string name="pref_negative">Negative Zählerstände zulassen</string>
     <string name="pref_negative_summ">Wenn diese Option gewählt wird, können Zähler auch Zahlen kleiner 0 verwenden.</string>
     <string name="pref_duplicate">Verhindere gleiche Zählernamen</string>
     <string name="pref_duplicate_summary">Wähle diese Option, wenn Zählernamen eindeutig sein sollen.</string>
     <string name="pref_count_multiplier">Zähler Multiplizierer</string>
-    <string name="pref_count_multiplier_summary">Zeige eine Option um Zähler mit einem vorzugebenden Wert zu multiplizieren.</string>
+    <string name="pref_count_multiplier_summary">Zeige eine Option, um Zähler mit einem vorzugebenden Wert zu multiplizieren.</string>
     <string name="pref_button_sound">Zähler-Button Sound</string>
     <string name="pref_button_sound_summary">Erzeuge einen Sound wenn ein Zähl-Button (\" + \" oder \" - \") getippt wird.</string>
     <string name="choose_button_alert">Button Sound \'+\'</string>
     <string name="choose_button_down_alert">Button Sound \'-\'</string>
     <string name="explain_button_alert">Wähle einen Button-Sound aus.</string>
     <string name="explain_button_down_alert">Wähle einen Button-Sound aus.</string>
-    <string name="permission_please">BeeCount braucht die Erlaubnis, Ihre Gerätespeicher zu lesen, um einen benutzerdefinierten Hintergrund zu verwenden.</string>
+    <string name="permission_please">BeeCount braucht die Erlaubnis, deinen Gerätespeicher zu lesen, um einen benutzerdefinierten Hintergrund zu verwenden.</string>
     <string name="pref_loopstop">Link-Zähler Schleifen anhalten</string>
     <string name="pref_loopstop_summary">Das Programm könnte beim deaktivieren dieses Kontrollkästchens abstürzen...</string>
     <string name="pref_dark_theme">Dark Theme</string>
-    <string name="pref_dark_theme_summ">Möchten Sie stattdessen einen schwarzen Hintergrund?</string>
+    <string name="pref_dark_theme_summ">Möchtest du stattdessen einen schwarzen Hintergrund?</string>
 
 
     <!-- CountOptionsActivity -->
     <string name="setResetValue">Setze den Wert bei dem sich dieser Zähler zurücksetzen soll. Der Zähler wird auf 0 zurückgesetzt, solange der Reset-Level (s. unten) nicht auch geändert ist. Setze den Wert auf 0 um das zu verhindern.</string>
     <string name="setResetLevel">Wenn der Zähler \"%1$s\" zurückgesetzt wird, wird er zu dem Reset-Level-Wert hier zurückgesetzt. Damit er sich auf den Auto-Reset-Wert (s. oben) zurücksetzt, muss hier ein Wert größer als 0 gesetzt sein.</string>
-    <string name="editCountValue">Du kannst den momentanen Wert %2$d von \"%1$s\" hier ändern.</string>
+    <string name="editCountValue">du kannst den momentanen Wert %2$d von \"%1$s\" hier ändern.</string>
     <string name="addSomeAlerts">Jedem Zähler können keine bis mehrere Alarme zugewiesen werden, die ausgelöst werden, wenn der jeweils vorgegebene Wert erreicht wird. Verwende den \"+\"-Button rechts um Alarme hinzuzufügen und den jeweiligen Lösch-Button um ihn zu entfernen.</string>
     <string name="alertName">Neuer Alarm</string>
     <string name="countName">Neuer Zähler</string>
     <string name="deleteAlert">Lösche Alarm</string>
-    <string name="reallyDeleteAlert">Sind Sie sicher? Der Alarm wird sofort gelöscht.</string>
+    <string name="reallyDeleteAlert">Bist du dir sicher? Der Alarm wird sofort gelöscht.</string>
     <string name="yesDeleteIt">Löschen</string>
     <string name="noCancel">Abbrechen</string>
     <string name="countMult">Der angezeigte Wert wird mit dem hier eingegebenen Wert multipliziert.</string>
@@ -158,19 +158,19 @@
     <string name="hintTitle">Titel</string>
     <string name="hintProjectNotes">Projektnotizen.</string>
     <string name="hintInstructions">Anleitung.</string>
-    <string name="upgradeFail">Das Upgrade einiger Deiner Links zum neuen Format schlug fehl. Bitte prüfe Deine Projekte, um festzustellen welche betroffen sind und füge sie manuell hinzu. Entschuldige bitte diese Umstände.</string>
-    <string name="getHelp">Leider gibt es ein Problem mit Deiner Datenbank. Bitte sende eine E-Mail mit Deiner exportierten \"beecount.db\", falls Du Hilfe brauchst.</string>
+    <string name="upgradeFail">Das Upgrade einiger deiner Links zum neuen Format schlug fehl. Bitte prüfe deine Projekte, um festzustellen welche betroffen sind und füge sie manuell hinzu.</string>
+    <string name="getHelp">Leider gibt es ein Problem mit Deiner Datenbank. Bitte sende eine E-Mail mit Deiner exportierten \"beecount.db\", falls du Hilfe brauchst.</string>
     <string name="linkLoop">Bitte prüfe Deine Links - es scheint da ein Problem zu geben!</string>
     <string name="linkLoopError">Oh, nein!</string>
 
     <!-- calculations -->
-    <string name="calcButton">Berechnung</string>
+    <string name="calcButton">Rechner</string>
     <string name="aboutCalc">Diese Seite erlaubt die Berechnung von Zu- und Abnahmen unter Verwendung der \"Magischen Formel\", wie von Ann Budd, aus dem Original von Cheryl Brunette (publiziert in \"Sweater 101\"), beschrieben. Siehe auch die PDF-Datei unter http://www.annbuddknits.com/Magic_Increase_Decrease_Formula.pdf für mehr Details.</string>
     <string name="stitchTotal">Gesamtzahl der Maschen/Stiche</string>
     <string name="toIncrease">Anzahl der zu erhöhenden oder zu verringernden Maschen</string>
     <string name="increaseOutput">Erhöhe/vermindere jede %1$s Masche %2$d mal und jede %3$s Masche %4$d mal.</string>
-    <string name="calcTitle">Berechnungsergebnis</string>
-    <string name="calcError">Berechnungsfehler!</string>
+    <string name="calcTitle">Ergebnis</string>
+    <string name="calcError">Fehler!</string>
     <string name="updating_with_calc">Update der Projektnotizen!</string>
     <string name="dont_set_zero">Bitte alle Eingabewerte größer als Null setzen!</string>
     <string name="countLogButton">Log</string>
