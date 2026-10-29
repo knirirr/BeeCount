@@ -68,8 +68,8 @@
     <string name="postIncr">%1$s hat %2$s erhöht!</string>
     <string name="postReset">%1$s hat %2$s zurückgesetzt!</string>
     <string name="postDecr">%1$s hat %2$s verringert!</string>
-    <string name="willReset">- %1$s wird automatisch auf %2$d um %3$d zurückgesetzt.</string>
-    <string name="willAlert">- %1$s wird bei %2$d ein Signal geben.</string>
+    <string name="willReset">- \"%1$s\"" wird automatisch auf %2$d nach %3$d Schritten zurückgesetzt.</string>
+    <string name="willAlert">- \"%1$s\" wird bei \"%2$d\"" ein Signal geben.</string>
     <string name="deleteButton">Löschen</string>
     <string name="cancelButton">Abbrechen</string>
     <string name="action_share">Teilen</string>
