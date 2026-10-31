@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import com.knirirr.beecount.BuildConfig;
 import org.woheller69.freeDroidWarn.FreeDroidWarn;
 
 import java.io.File;

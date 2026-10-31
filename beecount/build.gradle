@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
+    buildFeatures {
+        buildConfig true
+    }
     defaultConfig {
         minSdkVersion 21
         compileSdkVersion 35
